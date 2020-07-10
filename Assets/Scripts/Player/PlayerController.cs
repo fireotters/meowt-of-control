@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,8 +8,11 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private Vector2 _movementVector;
+    private SpriteRenderer _sprite;
 
-    [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject emitterPos;
+
+    private Animator _animator;
     
     private float _currentSpeed;
 
@@ -19,12 +23,20 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
+        
+        if (emitterPos == null)
+        {
+            Debug.LogError("No emitter pos, can't shoot!");
+        }
     }
 
     private void Update()
     {
         _movementVector.x = Input.GetAxis(HorizontalAxis);
         _movementVector.y = Input.GetAxis(VerticalAxis);
+        
+        emitterPos.transform.position = SetEmitterPos();
 
         _animator.SetFloat(HorizontalAxis, _movementVector.x);
         _animator.SetFloat(VerticalAxis, _movementVector.y);
@@ -37,9 +49,34 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log("attack!");
+        
     }
-    
+
+    private Vector3 SetEmitterPos()
+    {
+        var position = transform.position;
+        var result = Vector3.zero;
+        
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            result = new Vector3(position.x, _sprite.bounds.extents.y, 0f);
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            result = new Vector3(position.x, -_sprite.bounds.extents.y, 0f);
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            result = new Vector3(_sprite.bounds.extents.x, position.y, 0f);
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            result = new Vector3(_sprite.bounds.extents.x, position.y, 0f);
+        }
+
+        return result;
+    }
+
     private void FixedUpdate()
     {
         _currentSpeed = movementSpeed;
