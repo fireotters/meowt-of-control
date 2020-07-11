@@ -1,8 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class FreezeTower : Tower
+﻿public class FreezeTower : Tower
 {
     // TODO Freeze Tower Logic
+    protected override void TrackAndShoot()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void Shoot()
+    {
+        throw new System.NotImplementedException();
+    }
 }

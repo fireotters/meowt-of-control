@@ -1,8 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CannonTower : Tower
+﻿public class CannonTower : Tower
 {
     // TODO Cannon Tower Logic
+    protected override void TrackAndShoot()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void Shoot()
+    {
+        throw new System.NotImplementedException();
+    }
 }

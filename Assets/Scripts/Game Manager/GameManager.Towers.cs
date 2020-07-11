@@ -64,7 +64,7 @@ public partial class GameManager : MonoBehaviour
         Vector2 plcCheckVector = new Vector2(placementCheck.position.x, placementCheck.position.y);
         Collider2D[] collidersFound = Physics2D.OverlapCircleAll(plcCheckVector, 0f);
 
-        if (collidersFound.Length > 0)
+        if (collidersFound.Length > 1)
         {
             // Colliders found, invalid placement. TODO alert player
             print("Colliders found, not placing tower");
