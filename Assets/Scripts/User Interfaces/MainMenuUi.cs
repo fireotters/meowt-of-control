@@ -71,16 +71,9 @@ public class MainMenuUi : BaseUi
         optionSFXSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("SFX"));
     }
 
-    public void SwapFullscreen()
+    public override void SwapFullscreen()
     {
-        if (Screen.fullScreen)
-        {
-            Screen.SetResolution(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2, false);
-        }
-        else
-        {
-            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-        }
+        base.SwapFullscreen();
         Invoke(nameof(SetBtnFullscreenText), 0.1f);
     }
 
@@ -109,5 +102,10 @@ public class MainMenuUi : BaseUi
     public void DoLevelLoad()
     {
         SceneManager.LoadScene("Level" + ""); //TODO Code for level select
+    }
+
+    public void DoAboutDevLoad()
+    {
+        SceneManager.LoadScene("AboutDevs");
     }
 }
