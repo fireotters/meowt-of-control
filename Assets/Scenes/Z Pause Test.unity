@@ -1330,9 +1330,13 @@ MonoBehaviour:
   fadeBlack: {fileID: 7366996096534652870}
   musicManagerIfNotFoundInScene: {fileID: 8774387490616601870, guid: 81e43bfc2c29e6a468390c166202ba9c,
     type: 3}
+  textCash: {fileID: 0}
+  textHealth: {fileID: 0}
+  purchaseButtons: []
   musicManager: {fileID: 0}
   choiceOfMusic: 1
   gamePausePanel: {fileID: 2023542678089064031}
+  gM: {fileID: 0}
 --- !u!223 &7366996095599613578
 Canvas:
   m_ObjectHideFlags: 0

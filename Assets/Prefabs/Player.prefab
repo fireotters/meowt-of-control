@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0.14878595, y: 0.15788823}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2991865322036998996
 CanvasRenderer:
@@ -109,9 +109,10 @@ GameObject:
   - component: {fileID: 2991865322832994295}
   - component: {fileID: 2991865322832994292}
   - component: {fileID: 2991865322832994283}
+  - component: {fileID: 439942934393228274}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,8 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2b2c34efc0f4049a69f40df9b93d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 15
-  shootCadence: 0.2
+  movementSpeed: 6
+  shootCadence: 0.6
   bulletPrefab: {fileID: 18814254652573277, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
     type: 3}
   gunEnd: {fileID: 2991865323443025736}
@@ -238,6 +239,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &439942934393228274
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991865322832994288}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.56, y: 2.56}
+  m_EdgeRadius: 0
 --- !u!1 &2991865323443025737
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,5 +298,5 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.06720033, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0.01824157, y: 0.15788817}
   m_Pivot: {x: 0.5, y: 0.5}

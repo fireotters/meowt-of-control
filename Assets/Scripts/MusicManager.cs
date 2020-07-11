@@ -75,8 +75,7 @@ public class MusicManager : MonoBehaviour
 
         // If the new track does not equal current track, replace the track
         // If it does, then ignore this and continue previous track
-        // If both old and new are 0, then restart playback anyway
-        else if (index != lastTrackRequested || index == 0)
+        else if (index != lastTrackRequested)
         {
             currentMusicPlayer.enabled = true;
             if (currentMusicPlayer.isPlaying)
