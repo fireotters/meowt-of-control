@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,8 +9,8 @@ public class MusicManager : MonoBehaviour
     {
 
     public AudioMixer mixer;
-    public AudioSource sfxDemo, currentMusicPlayer;
-    public AudioClip musicMainMenu, musicTrack1;
+    public AudioSource sfxDemo, currentMusicPlayer, currentMusicPlayer2;
+    public AudioClip musicMainMenu, stageMusicDrums, stageMusic;
     private int lastTrackRequested = -1; // When first created, pick the scene's chosen song
 
     public static MusicManager instance;
@@ -89,7 +90,7 @@ public class MusicManager : MonoBehaviour
                     break;
 
                 case 1:
-                    currentMusicPlayer.clip = musicTrack1;
+                    currentMusicPlayer.clip = stageMusic;
                     break;
             }
             currentMusicPlayer.Play();
