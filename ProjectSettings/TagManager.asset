@@ -56,6 +56,9 @@ TagManager:
   - name: UI
     uniqueID: 1508027155
     locked: 0
-  - name: Placeable Tower
+  - name: Placeable Tower - Green Layer
+    uniqueID: 1171422523
+    locked: 0
+  - name: Placeable Tower - Red Layer
     uniqueID: 2804198505
     locked: 0

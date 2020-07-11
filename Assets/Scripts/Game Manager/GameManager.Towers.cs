@@ -6,6 +6,7 @@ using UnityEngine;
 public partial class GameManager : MonoBehaviour
 {
     [Header("Placeable Towers Logic")]
+    public GameObject towerBarrierMask;
     private bool isPlacingTower = false;
     public Transform placeableParent, towersInPlayParent;
     public PlaceableTower basicPlaceable, cannonPlaceable, snowPlaceable;
@@ -13,6 +14,8 @@ public partial class GameManager : MonoBehaviour
 
     private PlaceableTower currentPlacingTower;
     private int currentPlacingTowerNum = -1;
+    [HideInInspector] public SpriteRenderer sprRedArea, sprGreenArea;
+    public Transform placementBlockersParent;
 
     public void SpawnPlaceableTower(int whichTower)
     {
@@ -27,6 +30,7 @@ public partial class GameManager : MonoBehaviour
             {
                 isPlacingTower = false;
                 currentPlacingTowerNum = -1;
+                ToggleTowerColourZones();
                 return;
             }
         }
@@ -51,6 +55,7 @@ public partial class GameManager : MonoBehaviour
         {
             currentPlacingTower = Instantiate(towerToSpawn, placeableParent);
             currentPlacingTowerNum = whichTower;
+            ToggleTowerColourZones();
         }
         else
         {
@@ -60,19 +65,9 @@ public partial class GameManager : MonoBehaviour
 
     public void AttemptTowerPlacement()
     {
-        Transform placementCheck = currentPlacingTower.transform.Find("PlacementCheck");
-        Vector2 plcCheckVector = new Vector2(placementCheck.position.x, placementCheck.position.y);
-        Collider2D[] collidersFound = Physics2D.OverlapCircleAll(plcCheckVector, 0f);
-
-        if (collidersFound.Length > 0)
-        {
-            // Colliders found, invalid placement. TODO alert player
-            print("Colliders found, not placing tower");
-        }
-        else
+        if (currentPlacingTower.placementIsValid)
         {
             PlaceTower();
-            print("No colliders found, placing tower");
         }
     }
 
@@ -93,17 +88,27 @@ public partial class GameManager : MonoBehaviour
         }
         if (towerToSpawn != null)
         {
+            // Place tower and a barrier spritemask
             Tower towerPlaced = Instantiate(towerToSpawn, towersInPlayParent);
             towerPlaced.transform.position = player.transform.position;
+            GameObject newBarrier = Instantiate(towerBarrierMask, placementBlockersParent);
+            newBarrier.transform.position = player.transform.position;
 
+            // Once tower is placed, disable cancel button, destroy placeable version, and toggle red zones
             gameUi.purchaseButtons[currentPlacingTowerNum].HideCancelOverlay();
             Destroy(currentPlacingTower.gameObject);
             isPlacingTower = false;
-
+            ToggleTowerColourZones();
         }
         else
         {
             Debug.LogError("GameManager.PlaceTower - Invalid tower type");
         }
+    }
+
+    private void ToggleTowerColourZones()
+    {
+        sprRedArea.enabled = isPlacingTower;
+        sprGreenArea.enabled = isPlacingTower;
     }
 }
