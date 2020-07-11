@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Pathfinding;
+﻿using Pathfinding;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
