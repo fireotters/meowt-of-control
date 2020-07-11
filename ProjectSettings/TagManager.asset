@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - SideTower
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -57,6 +58,9 @@ TagManager:
   - name: UI
     uniqueID: 1508027155
     locked: 0
-  - name: Placeable Tower
+  - name: Placeable Tower - Green Area
     uniqueID: 2804198505
+    locked: 0
+  - name: Placeable Tower - Red Area
+    uniqueID: 2041197969
     locked: 0
