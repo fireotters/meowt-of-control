@@ -5,7 +5,6 @@ public class BaseBullet : MonoBehaviour
     [SerializeField] private float speed = 1f, lifeSpan = 5f;
     private float _lifeLeft;
     private Rigidbody2D _rigidbody2D;
-    private SpriteRenderer _sprite;
 
     private void Awake()
     {
@@ -16,7 +15,6 @@ public class BaseBullet : MonoBehaviour
     private void Start()
     {
         _lifeLeft = lifeSpan;
-        _sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -35,7 +33,8 @@ public class BaseBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        _rigidbody2D.simulated = false;
-        _sprite.enabled = false;
+        if (other.collider.CompareTag("Player")
+        || other.collider.CompareTag("Projectile")) return;
+        Destroy(gameObject);
     }
 }
