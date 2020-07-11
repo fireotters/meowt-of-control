@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Projectile
-  - BigChungusEnemy
+  - SideTower
   layers:
   - Default
   - TransparentFX
@@ -16,7 +14,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -59,9 +57,6 @@ TagManager:
   - name: UI
     uniqueID: 1508027155
     locked: 0
-  - name: Placeable Tower - Green Layer
-    uniqueID: 1171422523
-    locked: 0
-  - name: Placeable Tower - Red Layer
+  - name: Placeable Tower
     uniqueID: 2804198505
     locked: 0

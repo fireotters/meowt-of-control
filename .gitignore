@@ -16,6 +16,9 @@
 # TextMesh Pro files
 [Aa]ssets/TextMesh*Pro/
 
+# A*Star Pathfinding files
+[Aa]ssets/AstarPathfindingProject/
+
 # Visual Studio cache directory
 .vs/
 
