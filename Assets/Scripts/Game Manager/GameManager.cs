@@ -10,6 +10,8 @@ public partial class GameManager : MonoBehaviour
     public PlayerController player;
     public int currentCash = 10000, currentHealth = 100, currentRound = 0;
     public GameUi gameUi;
+    private MusicManager musicManager;
+    public GameObject musicManagerIfNotFoundInScene;
 
     [Header("Enemy Management")]
     public int enemyCount = 0;
@@ -17,6 +19,17 @@ public partial class GameManager : MonoBehaviour
 
     private void Start()
     {
+        musicManager = FindObjectOfType<MusicManager>();
+        if (!musicManager)
+        {
+            Instantiate(musicManagerIfNotFoundInScene);
+            musicManager = FindObjectOfType<MusicManager>();
+        }
+        if (musicManager)
+        {
+            musicManager.ChangeMusicTrack(0);
+        }
+
         sprRedArea = placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
         sprGreenArea = placementBlockersParent.Find("ValidPlacements").Find("GreenArea").GetComponent<SpriteRenderer>();
         ToggleTowerColourZones();
