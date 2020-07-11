@@ -1,13 +1,22 @@
-﻿public class CannonTower : Tower
+﻿using UnityEngine;
+
+public class CannonTower : Tower
 {
-    // TODO Cannon Tower Logic
     protected override void TrackAndShoot()
     {
-        throw new System.NotImplementedException();
+        var lookDir = AcknowledgedEnemies[0].position - transform.position;
+        var angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        var rotationDir = new Vector3(0, 0, angle);
+        
+        BulletEmitter.rotation = Quaternion.Euler(rotationDir);
+
+        base.TrackAndShoot();
     }
 
     protected override void Shoot()
     {
-        throw new System.NotImplementedException();
+        Bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation);
+        
+        base.Shoot();
     }
 }

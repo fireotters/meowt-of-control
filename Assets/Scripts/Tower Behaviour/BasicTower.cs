@@ -15,11 +15,8 @@ public class BasicTower : Tower
 
     protected override void Shoot()
     {
-        var bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation);
+        Bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation);
         
-        bullet.Pew();
-
-        CanShoot = false;
-        CanShootAgain = shootCadence;
+        base.Shoot();
     }
 }

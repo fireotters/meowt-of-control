@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootCadence: 0.5
   gunEnd: {fileID: 1535464945606372571}
-  bulletPrefab: {fileID: 18814254652573277, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+  bulletPrefab: {fileID: 2062328406714552009, guid: 5ee637f1837d6954ca16a6af9fb07c7c,
     type: 3}
 --- !u!212 &9073352244127697376
 SpriteRenderer:
@@ -211,7 +211,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 5
 --- !u!1 &8753631192907237195
 GameObject:
   m_ObjectHideFlags: 0

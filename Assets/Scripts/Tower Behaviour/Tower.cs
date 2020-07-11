@@ -4,40 +4,43 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     [SerializeField] internal float shootCadence = 0.5f;
-    internal float CanShootAgain;
-    internal bool CanShoot;
+    private float _canShootAgain;
+    private bool _canShoot;
 
     internal Transform BulletEmitter;
     internal List<Transform> AcknowledgedEnemies;
+    internal BaseBullet Bullet;
     [SerializeField] internal Transform gunEnd;
     [SerializeField] internal BaseBullet bulletPrefab;
 
     private void Start()
     {
-        CanShootAgain = shootCadence;
+        _canShootAgain = shootCadence;
         AcknowledgedEnemies = new List<Transform>();
         BulletEmitter = transform.GetChild(0);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("entered!");
+        if (!other.CompareTag("Enemy") && !other.CompareTag("BigChungusEnemy")) return;
+        Debug.Log("enemy entered!");
         AcknowledgedEnemies.Add(other.transform);
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (!other.CompareTag("Enemy") && !other.CompareTag("BigChungusEnemy")) return;
         Debug.Log("exited!");
         AcknowledgedEnemies.RemoveAt(0);
     }
     
     private void Update()
     {
-        CanShootAgain -= Time.deltaTime;
+        _canShootAgain -= Time.deltaTime;
 
-        if (CanShootAgain <= 0)
+        if (_canShootAgain <= 0)
         {
-            CanShoot = true;
+            _canShoot = true;
         }
     }
     
@@ -51,11 +54,17 @@ public abstract class Tower : MonoBehaviour
 
     protected virtual void TrackAndShoot()
     {
-        if (CanShoot)
+        if (_canShoot)
         {
             Shoot();
         }
     }
-    protected abstract void Shoot();
+
+    protected virtual void Shoot()
+    {
+        Bullet.Pew();
+        _canShoot = false;
+        _canShootAgain = shootCadence;
+    }
     
 }
