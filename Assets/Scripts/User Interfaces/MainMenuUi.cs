@@ -92,20 +92,16 @@ public class MainMenuUi : BaseUi
     // Other functions
     public void OpenGame()
     {
-        SceneManager.LoadScene("Level1");
-        /*if (discordManager.UpdateDiscordRp(DiscordActivities.StartGameActivity()))
-        {
-            Debug.Log("Rich presence has been updated.");
-        }*/
+        StartCoroutine(FadeBlack("to"));
+        Invoke(nameof(OpenGame2), 1f);
     }
-
-    public void DoLevelLoad()
+    public void OpenGame2()
     {
-        SceneManager.LoadScene("Level" + ""); //TODO Code for level select
+        SceneManager.LoadScene("Z Pause Test");
     }
 
     public void DoAboutDevLoad()
     {
-        SceneManager.LoadScene("AboutDevs");
+        SceneManager.LoadScene("HelpMenu");
     }
 }

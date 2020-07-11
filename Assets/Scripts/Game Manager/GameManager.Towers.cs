@@ -78,12 +78,15 @@ public partial class GameManager : MonoBehaviour
         {
             case 0:
                 towerToSpawn = basicTower;
+                gameUi.UpdateCash(-100);
                 break;
             case 1:
                 towerToSpawn = cannonTower;
+                gameUi.UpdateCash(-200);
                 break;
             case 2:
                 towerToSpawn = snowTower;
+                gameUi.UpdateCash(-300);
                 break;
         }
         if (towerToSpawn != null)
