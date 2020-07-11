@@ -4,61 +4,27 @@ using System.Runtime.Remoting.Messaging;
 using UnityEditorInternal;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public partial class GameManager : MonoBehaviour
 {
     public int currentCash = 10000, currentHealth = 100;
-
-    [Header("Placeable Towers Logic")]
-    private bool isPlacingTower = false;
-    public Transform placeableParent;
-    public PlaceableTower basicPlaceable, cannonPlaceable, snowPlaceable;
-
-    private PlaceableTower currentPlacingTower;
-    private int currentPlacingTowerNum = -1;
-
     public GameUi gameUi;
+    public Transform placementBlockersParent;
+    public PlayerController player;
 
-    public void SpawnPlaceableTower(int whichTower)
+    private void Update()
     {
-        // If already placing a tower, destroy old choice.
-        if (isPlacingTower)
+        if (Input.GetKeyDown(KeyCode.Space) && isPlacingTower)
         {
-            gameUi.purchaseButtons[whichTower].HideCancelOverlay();
-            Destroy(currentPlacingTower.gameObject);
-
-            // If it's the same tower, then user is cancelling selection. Skip rest of function.
-            if (currentPlacingTowerNum == whichTower)
+            AttemptTowerPlacement();
+        }
+        if (Input.GetKeyDown(KeyCode.O)) // Debug: Show all placement blockers
+        {
+            foreach (Transform blocker in placementBlockersParent)
             {
-                isPlacingTower = false;
-                currentPlacingTowerNum = -1;
-                return;
+                SpriteRenderer spr = blocker.GetComponent<SpriteRenderer>();
+                spr.enabled = !spr.enabled;
             }
         }
-
-        // Placeable tower instantiation
-        isPlacingTower = true;
-        gameUi.UpdateCancelOverlays(whichTower);
-        PlaceableTower towerToSpawn = null;
-        switch (whichTower)
-        {
-            case 0:
-                towerToSpawn = basicPlaceable;
-                break;
-            case 1:
-                towerToSpawn = cannonPlaceable;
-                break;
-            case 2:
-                towerToSpawn = snowPlaceable;
-                break;
-        }
-        if (towerToSpawn != null)
-        {
-            currentPlacingTower = Instantiate(towerToSpawn, placeableParent);
-            currentPlacingTowerNum = whichTower;
-        }
-        else
-        {
-            Debug.LogError("GameManager.SpawnPlaceableTower - Invalid tower type");
-        }
     }
+
 }

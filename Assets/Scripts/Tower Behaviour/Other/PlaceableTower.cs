@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PlaceableTower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Transform player;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        player = GameObject.Find("Player").transform;
+    }
     void Update()
     {
-        
+        transform.position = player.position;
     }
 }
