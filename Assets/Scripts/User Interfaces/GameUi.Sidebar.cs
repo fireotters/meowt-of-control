@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public partial class GameUi : BaseUi
 {
     [Header("Purchasing UI")]
     public TextMeshProUGUI textCash;
-    public TextMeshProUGUI textHealth;
+    public TextMeshProUGUI textHealth, textRound;
     public PurchaseButton[] purchaseButtons;
+    public Image roundIndicator;
 
 
     internal void UpdateCash(int difference)
@@ -21,6 +23,12 @@ public partial class GameUi : BaseUi
     {
         gM.currentHealth += difference;
         textHealth.text = gM.currentHealth + "%";
+    }
+
+    internal void UpdateRoundIndicator()
+    {
+        float roundProgressLeft = (float)gM.enemyCount / (float)gM.enemyMaxCount;
+        roundIndicator.fillAmount = roundProgressLeft;
     }
 
     public void Purchase(int whichPurchase)
