@@ -2,12 +2,14 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameUi : BaseUi
+public partial class GameUi : BaseUi
 {
+    [Header("Game UI")]
     public MusicManager musicManager;
     public int choiceOfMusic;
 
     public GameObject gamePausePanel;
+    public GameManager gM;
 
     void Start()
     {
@@ -22,6 +24,10 @@ public class GameUi : BaseUi
 
         // Fade in the level
         StartCoroutine(FadeBlack("from"));
+
+        // Initialise UI values
+        UpdateCash(0);
+        UpdateHealth(0);
     }
 
     void Update()
@@ -34,6 +40,10 @@ public class GameUi : BaseUi
         {
             // Pause if pause panel isn't open, resume if it is open
             GameIsPaused(!gamePausePanel.activeInHierarchy);
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SwapFullscreen();
         }
     }
 
@@ -48,18 +58,6 @@ public class GameUi : BaseUi
         {
             musicManager.MusicIsPaused(intent);
             musicManager.FindAllSfxAndPlayPause(intent);
-        }
-    }
-
-    public void SwapFullscreen()
-    {
-        if (Screen.fullScreen)
-        {
-            Screen.SetResolution(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2, false);
-        }
-        else
-        {
-            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
         }
     }
 
