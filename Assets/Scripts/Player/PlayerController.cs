@@ -1,59 +1,67 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private SpriteRenderer _sprite;
     private Animator _animator;
 
     // Rigidbody Movement
     private Rigidbody2D _rigidbody2D;
-    [SerializeField] private float movementSpeed = 1;
+    [SerializeField] private float movementSpeed = 1, shootCadence = 0.2f;
     private float _currentSpeed;
-    private const string HorizontalAxis = "Horizontal";
-    private const string VerticalAxis = "Vertical";
+    private float _canShootAgain;
     private Vector2 _movementVector;
+
+    private bool _canShoot;
 
     // Weapon Aiming
     private Camera _cam;
-    private Vector2 mousePos;
-    private Transform bulletEmitter;
+    private Vector2 _mousePos;
+    private Transform _bulletEmitter;
+    [SerializeField] private BaseBullet bulletPrefab;
+    [SerializeField] private Transform gunEnd;
     
+    private const string HorizontalAxis = "Horizontal";
+    private const string VerticalAxis = "Vertical";
 
     private void Start()
     {
+        _canShootAgain = shootCadence;
+        
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _sprite = GetComponent<SpriteRenderer>();
         _cam = Camera.main;
 
-        bulletEmitter = transform.GetChild(0);
+        _bulletEmitter = transform.GetChild(0);
     }
 
     private void Update()
     {
+        _canShootAgain -= Time.deltaTime;
+        
         // Current movement vector, set character sprite
         _movementVector.x = Input.GetAxis(HorizontalAxis);
         _movementVector.y = Input.GetAxis(VerticalAxis);
 
         // Current mouse position
-        mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
+        _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
 
         _animator.SetFloat(HorizontalAxis, _movementVector.x);
         _animator.SetFloat(VerticalAxis, _movementVector.y);
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetMouseButton(0) && _canShootAgain <= 0)
         {
-            Attack();
+            _canShoot = true;
         }
     }
-
-    private void Attack()
+    
+    private void Shoot()
     {
+        var bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation);
         
+        bullet.Pew();
+
+        _canShoot = false;
+        _canShootAgain = shootCadence;
     }
 
     private void FixedUpdate()
@@ -68,9 +76,14 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("Speed", _rigidbody2D.velocity.magnitude);
 
         // Bullet emitter direction
-        Vector2 lookDir = mousePos - _rigidbody2D.position;
+        Vector2 lookDir = _mousePos - _rigidbody2D.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         Vector3 rotationDir = new Vector3(0, 0, angle);
-        bulletEmitter.rotation = Quaternion.Euler(rotationDir);
+        _bulletEmitter.rotation = Quaternion.Euler(rotationDir);
+
+        if (_canShoot)
+        {
+            Shoot();
+        }
     }
 }
