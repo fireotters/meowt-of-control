@@ -8,6 +8,8 @@ public partial class GameUi : BaseUi
     [Header("Purchasing UI")]
     public TextMeshProUGUI textCash;
     public TextMeshProUGUI textHealth;
+    public PurchaseButton[] purchaseButtons;
+
 
     internal void UpdateCash(int difference)
     {
@@ -23,19 +25,35 @@ public partial class GameUi : BaseUi
 
     public void Purchase(int whichPurchase)
     {
+        int priceToCheck = 0;
         switch (whichPurchase) {
             case 0:
-                UpdateCash(-100);
+                priceToCheck = 100;
                 break;
             case 1:
-                UpdateCash(-200);
+                priceToCheck = 200;
                 break;
             case 2:
-                UpdateCash(-300);
-                break;
-            case 3:
-                UpdateCash(-400);
+                priceToCheck = 300;
                 break;
         }
+
+        if (gM.currentCash >= priceToCheck)
+        {
+            gM.SpawnPlaceableTower(whichPurchase);
+        }
+        else
+        {
+            // TODO Play failure noise, blink price indicator
+        }
+    }
+
+    public void UpdateCancelOverlays(int whichTower)
+    {
+        foreach (PurchaseButton btn in purchaseButtons)
+        {
+            btn.HideCancelOverlay();
+        }
+        purchaseButtons[whichTower].ShowCancelOverlay();
     }
 }
