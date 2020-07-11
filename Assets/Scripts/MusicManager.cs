@@ -93,7 +93,18 @@ public class MusicManager : MonoBehaviour
                     currentMusicPlayer.clip = stageMusic;
                     break;
             }
+
             currentMusicPlayer.Play();
+            
+            if (currentMusicPlayer.clip == stageMusic)
+            {
+                currentMusicPlayer2.clip = stageMusicDrums;
+                currentMusicPlayer2.Play();
+            }
+            else
+            {
+                currentMusicPlayer2.Stop();
+            }
             lastTrackRequested = index;
         }
     }

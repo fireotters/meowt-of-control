@@ -46,7 +46,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.14
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -143,7 +143,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.14
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -243,6 +243,6 @@ MonoBehaviour:
   sfxDemo: {fileID: 0}
   currentMusicPlayer: {fileID: 8774387490616601871}
   currentMusicPlayer2: {fileID: 2592762527334569553}
-  musicMainMenu: {fileID: 8300000, guid: f86dea60bda9ccd4996d4e734e430c02, type: 3}
-  stageMusicDrums: {fileID: 8300000, guid: fe9a0e4852f92a14d9ba2ca1934cca12, type: 3}
-  stageMusic: {fileID: 8300000, guid: fb010b796fc998b4b909bdf83532726c, type: 3}
+  musicMainMenu: {fileID: 8300000, guid: 3d903e3978255454f912dd9a3972912c, type: 3}
+  stageMusicDrums: {fileID: 8300000, guid: c75fdf064194aa54db6d06a9c2face0f, type: 3}
+  stageMusic: {fileID: 8300000, guid: efb8d37e4f5bbf1408014ca0631c11e6, type: 3}
