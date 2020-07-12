@@ -8,7 +8,8 @@ public partial class GameManager : MonoBehaviour
 {
     [Header("GameManager")]
     public PlayerController player;
-    public int currentCash = 10000, currentHealth = 100, currentRound = 0;
+    public int currentCash = 10000, currentHealth = 100, currentPlayerHealth = 3, currentRound = 0;
+    private int maxPlayerHealth = 3;
     public GameUi gameUi;
 
     [Header("Enemy Management")]
@@ -60,6 +61,30 @@ public partial class GameManager : MonoBehaviour
             enemyCount -= 1;
         }
         print($"Enemy count: {enemyCount}");
+    }
+    public void DamagePlayer()
+    {
+        if (currentPlayerHealth != 0)
+        {
+            currentPlayerHealth--;
+            gameUi.UpdatePlayerHealth();
+        }
+    }
+
+    public void PickupItem(string type)
+    {
+        if (type == "milk")
+        {
+            if (currentPlayerHealth < maxPlayerHealth)
+            {
+                currentPlayerHealth = maxPlayerHealth;
+                gameUi.UpdatePlayerHealth();
+            }
+        }
+        else if (type == "yarn")
+        {
+
+        }
     }
 
 }

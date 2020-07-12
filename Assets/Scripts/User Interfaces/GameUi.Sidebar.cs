@@ -10,7 +10,8 @@ public partial class GameUi : BaseUi
     public TextMeshProUGUI textCash;
     public TextMeshProUGUI textHealth, textRound;
     public PurchaseButton[] purchaseButtons;
-    public Image roundIndicator;
+    public Sprite[] catFaces;
+    public Image roundIndicator, catFace;
 
 
     internal void UpdateCash(int difference)
@@ -29,6 +30,25 @@ public partial class GameUi : BaseUi
     {
         float roundProgressLeft = (float)gM.enemyCount / (float)gM.enemyMaxCount;
         roundIndicator.fillAmount = roundProgressLeft;
+    }
+
+    internal void UpdatePlayerHealth()
+    {
+        switch (gM.currentPlayerHealth)
+        {
+            case 3:
+                catFace.sprite = catFaces[0];
+                break;
+            case 2:
+                catFace.sprite = catFaces[2];
+                break;
+            case 1:
+                catFace.sprite = catFaces[5];
+                break;
+            case 0:
+                catFace.sprite = catFaces[6];
+                break;
+        }
     }
 
     public void Purchase(int whichPurchase)
