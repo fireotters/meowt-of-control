@@ -1,15 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 public class MusicManager : MonoBehaviour
     {
 
     public AudioMixer mixer;
-    public AudioSource sfxDemo, currentMusicPlayer;
-    public AudioClip musicMainMenu, musicTrack1;
+    public AudioSource sfxDemo, currentMusicPlayer, currentMusicPlayer2;
+    public AudioClip musicMainMenu, stageMusicDrums, stageMusic;
+    public AudioClip hoverButton, selectButton;
+    public float stressFadeSpeed = 0.08f;
+    public float maxPitch = 1.1f;
+    private bool stressMode;
     private int lastTrackRequested = -1; // When first created, pick the scene's chosen song
 
     public static MusicManager instance;
@@ -39,6 +45,16 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void ChangeStressMode()
+    {
+        stressMode = true;
+    }
+
+    public void ExitStressMode()
+    {
+        stressMode = false;
+    }
+
     public void FindAllSfxAndPlayPause(bool intent)
     {
         List<GameObject> listOfSfxObjects = new List<GameObject>();
@@ -66,10 +82,35 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void ButtonHoverSound()
+    {
+        // sfxDemo.clip = 
+    }
+    
+    private void Update()
+    {
+        if (stressMode && currentMusicPlayer.pitch < maxPitch)
+        {
+            currentMusicPlayer.pitch += Time.deltaTime * stressFadeSpeed;
+            currentMusicPlayer2.pitch += Time.deltaTime * stressFadeSpeed;
+        }
+        else if (!stressMode && currentMusicPlayer.pitch > 1)
+        {
+            currentMusicPlayer.pitch -= Time.deltaTime * stressFadeSpeed;
+            currentMusicPlayer2.pitch -= Time.deltaTime * stressFadeSpeed;
+        }
+    }
+
     public void ChangeMusicTrack(int index)
     {
         Debug.Log($"Music requested: {index} Music last played: {lastTrackRequested}");
-        if (index != lastTrackRequested || index == 0)
+
+        // If lastTrackRequested = -2, then play nothing
+        if (lastTrackRequested == -2) { }
+
+        // If the new track does not equal current track, replace the track
+        // If it does, then ignore this and continue previous track
+        else if (index != lastTrackRequested)
         {
             currentMusicPlayer.enabled = true;
             if (currentMusicPlayer.isPlaying)
@@ -83,10 +124,21 @@ public class MusicManager : MonoBehaviour
                     break;
 
                 case 1:
-                    currentMusicPlayer.clip = musicTrack1;
+                    currentMusicPlayer.clip = stageMusic;
                     break;
             }
-            currentMusicPlayer.Play();
+
+            if (currentMusicPlayer.clip == stageMusic)
+            {
+                currentMusicPlayer2.clip = stageMusicDrums;
+                currentMusicPlayer.Play();
+                currentMusicPlayer2.Play();
+            }
+            else
+            {
+                currentMusicPlayer.Play();
+                currentMusicPlayer2.Stop();
+            }
             lastTrackRequested = index;
         }
     }
@@ -96,10 +148,12 @@ public class MusicManager : MonoBehaviour
         if (intent == true && currentMusicPlayer.isPlaying)
         {
             currentMusicPlayer.Pause();
+            currentMusicPlayer2.Pause();
         }
         if (intent == false && !currentMusicPlayer.isPlaying)
         {
             currentMusicPlayer.UnPause();
+            currentMusicPlayer2.UnPause();
         }
     }
 

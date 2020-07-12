@@ -71,16 +71,9 @@ public class MainMenuUi : BaseUi
         optionSFXSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("SFX"));
     }
 
-    public void SwapFullscreen()
+    public override void SwapFullscreen()
     {
-        if (Screen.fullScreen)
-        {
-            Screen.SetResolution(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2, false);
-        }
-        else
-        {
-            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-        }
+        base.SwapFullscreen();
         Invoke(nameof(SetBtnFullscreenText), 0.1f);
     }
 
@@ -99,15 +92,16 @@ public class MainMenuUi : BaseUi
     // Other functions
     public void OpenGame()
     {
-        SceneManager.LoadScene("Level1");
-        /*if (discordManager.UpdateDiscordRp(DiscordActivities.StartGameActivity()))
-        {
-            Debug.Log("Rich presence has been updated.");
-        }*/
+        StartCoroutine(FadeBlack("to"));
+        Invoke(nameof(OpenGame2), 1f);
+    }
+    public void OpenGame2()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 
-    public void DoLevelLoad()
+    public void DoAboutDevLoad()
     {
-        SceneManager.LoadScene("Level" + ""); //TODO Code for level select
+        SceneManager.LoadScene("HelpMenu");
     }
 }

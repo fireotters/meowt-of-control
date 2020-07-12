@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public abstract class BaseUi : MonoBehaviour
 {
+    [Header("Base UI")]
     public GameObject fadeBlack;
     public GameObject musicManagerIfNotFoundInScene;
 
@@ -52,5 +55,18 @@ public abstract class BaseUi : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(1);
+    }
+
+    public virtual void SwapFullscreen()
+    {
+        print("Fullscreen Toggled");
+        if (Screen.fullScreen)
+        {
+            Screen.SetResolution(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2, false);
+        }
+        else
+        {
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+        }
     }
 }
