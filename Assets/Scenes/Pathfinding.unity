@@ -1574,9 +1574,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mobs:
   - {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
+  - {fileID: 1543178475637586489, guid: 8dfa6c5347a1ad24faf423ec16e1395d, type: 3}
   - {fileID: 3339407810785517692, guid: 6cf4790d101472a4bbdc0ef82f0f0e40, type: 3}
   basicSpawnRate: 3
-  bigChungusSpawnRate: 0
+  bigChungusSpawnRate: 5
   sanicSpawnRate: 10
   enemy_target: {fileID: 340457113}
 --- !u!1 &1286093858
@@ -2499,8 +2500,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mobs:
   - {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
+  - {fileID: 1543178475637586489, guid: 8dfa6c5347a1ad24faf423ec16e1395d, type: 3}
+  - {fileID: 3339407810785517692, guid: 6cf4790d101472a4bbdc0ef82f0f0e40, type: 3}
   basicSpawnRate: 3
-  bigChungusSpawnRate: 5
+  bigChungusSpawnRate: 100
   sanicSpawnRate: 10
   enemy_target: {fileID: 340457113}
 --- !u!1 &1647193801
@@ -3086,9 +3089,10 @@ MonoBehaviour:
   mobs:
   - {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
   - {fileID: 1543178475637586489, guid: 8dfa6c5347a1ad24faf423ec16e1395d, type: 3}
+  - {fileID: 3339407810785517692, guid: 6cf4790d101472a4bbdc0ef82f0f0e40, type: 3}
   basicSpawnRate: 3
-  bigChungusSpawnRate: 5
-  sanicSpawnRate: 0
+  bigChungusSpawnRate: 100
+  sanicSpawnRate: 100
   enemy_target: {fileID: 340457113}
 --- !u!1001 &1806923552
 PrefabInstance:
@@ -3244,9 +3248,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mobs:
   - {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
+  - {fileID: 1543178475637586489, guid: 8dfa6c5347a1ad24faf423ec16e1395d, type: 3}
+  - {fileID: 3339407810785517692, guid: 6cf4790d101472a4bbdc0ef82f0f0e40, type: 3}
   basicSpawnRate: 3
-  bigChungusSpawnRate: 5
-  sanicSpawnRate: 10
+  bigChungusSpawnRate: 100
+  sanicSpawnRate: 100
   enemy_target: {fileID: 340457113}
 --- !u!1 &1839683165
 GameObject:

@@ -12,9 +12,9 @@ public class EnemySpawner : MonoBehaviour
     private Vector2 spawnPlace;
 
     //Spawn rate of every mob
-    public float basicSpawnRate = 1f;
-    public float bigChungusSpawnRate = 5f;
-    public float sanicSpawnRate = 10f;
+    public float basicSpawnRate;
+    public float bigChungusSpawnRate;
+    public float sanicSpawnRate;
 
     public GameObject enemy_target;
 
@@ -29,7 +29,11 @@ public class EnemySpawner : MonoBehaviour
         mobs.Add(sanic);
         foreach (var mob in mobs)
         {
-            mob.GetComponent<AIDestinationSetter>().target = enemy_target.transform;
+
+            if (mob != null)
+            {
+                mob.GetComponent<AIDestinationSetter>().target = enemy_target.transform;
+            }
         }
 
         /*
