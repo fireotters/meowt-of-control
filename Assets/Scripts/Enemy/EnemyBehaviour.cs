@@ -1,5 +1,6 @@
 ﻿using Pathfinding;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -7,6 +8,14 @@ public class EnemyBehaviour : MonoBehaviour
     public int bigChungusLife;
     public int basicLife;
     public int sanicLife;
+
+    private int bigChungusMaxLife = 5;
+    private int basicMaxLife = 2;
+    private int sanicMaxLife = 1;
+
+    // Health bar
+    private float healthBarFullSize;
+    public Transform healthBar;
 
     private Vector2 enemyLastPos;
 
@@ -17,9 +26,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Start()
     {
-        bigChungusLife = 5;
-        basicLife = 2;
-        sanicLife = 1;
+        bigChungusLife = bigChungusMaxLife;
+        basicLife = basicMaxLife;
+        sanicLife = sanicMaxLife;
+
+        healthBarFullSize = healthBar.localScale.x;
     }
     
     void OnCollisionEnter2D(Collision2D col)
@@ -29,16 +40,22 @@ public class EnemyBehaviour : MonoBehaviour
         if (col.gameObject.tag == "Projectile" && gameObject.tag == "Enemy")
         {
             basicLife--;
+            float percentOfLifeLeft = (float)basicLife / (float)basicMaxLife;
+            ChangeHealthBar(percentOfLifeLeft);
         }
 
         if (col.gameObject.tag == "Projectile" && gameObject.tag == "BigChungusEnemy")
         {
             bigChungusLife--;
+            float percentOfLifeLeft = (float)bigChungusLife / (float)bigChungusMaxLife;
+            ChangeHealthBar(percentOfLifeLeft);
         }
 
         if (col.gameObject.tag == "Projectile" && gameObject.tag == "Sanic")
         {
             sanicLife--;
+            float percentOfLifeLeft = (float)sanicLife / (float)sanicMaxLife;
+            ChangeHealthBar(percentOfLifeLeft);
         }
 
         if (col.gameObject.tag == "Projectile" && basicLife == 0)
@@ -67,5 +84,12 @@ public class EnemyBehaviour : MonoBehaviour
             corpse.transform.position = enemyLastPos;
             Instantiate(corpse);
         }
+    }
+
+    private void ChangeHealthBar(float percentLifeLeft)
+    {
+            Vector3 scaleChange = healthBar.localScale;
+            scaleChange.x = percentLifeLeft;
+            healthBar.localScale = scaleChange;
     }
 }
