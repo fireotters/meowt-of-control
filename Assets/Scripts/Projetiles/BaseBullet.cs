@@ -35,6 +35,11 @@ public class BaseBullet : MonoBehaviour
     {
         if (other.collider.CompareTag("Player")
         || other.collider.CompareTag("Projectile")) return;
+        //Added to destroy the corpses
         Destroy(gameObject);
+        if (other.gameObject.tag == "Corpse")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
