@@ -99,8 +99,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void ChangeHealthBar(float percentLifeLeft)
     {
-            Vector3 scaleChange = healthBar.localScale;
-            scaleChange.x = percentLifeLeft;
-            healthBar.localScale = scaleChange;
+        Vector3 scaleChange = healthBar.localScale;
+        scaleChange.x = percentLifeLeft;
+        healthBar.localScale = scaleChange;
     }
 }

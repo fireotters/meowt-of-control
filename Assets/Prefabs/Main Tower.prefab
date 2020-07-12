@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerHealthPoints: 100
-  vida: {fileID: 0}
+  healthBar: {fileID: 444699590733312301}
 --- !u!222 &6372803061672135033
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.018, y: 0.104}
+  m_AnchoredPosition: {x: -0.028, y: 0.104}
   m_SizeDelta: {x: 38.6, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9045617292877201320

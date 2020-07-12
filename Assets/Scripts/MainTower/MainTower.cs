@@ -6,38 +6,35 @@ using UnityEngine.UI;
 public class MainTower : MonoBehaviour
 {
     public int towerHealthPoints;
-
-    public Text vida;
     
-    float curTime = 0;
+    float _curTime = 0;
     float nextDamage = 1;
     
-    
+    // Health bar
+    private float _healthBarFullSize;
+    public Transform healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        vida.text = towerHealthPoints.ToString();
+        _healthBarFullSize = healthBar.localScale.x;
     }
 
     void OnCollisionStay2D()
     {
-        if (curTime <= 0)
+        if (_curTime <= 0)
         {
             towerHealthPoints -= 1;
-
+            
+            ChangeHealthBar(towerHealthPoints / _healthBarFullSize);
+            
             Debug.Log("Tower hit!" + towerHealthPoints);
 
-            curTime = nextDamage;
+            _curTime = nextDamage;
         }
         else
         {
-            curTime -= Time.deltaTime;
+            _curTime -= Time.deltaTime;
         }
        
 
@@ -52,5 +49,10 @@ public class MainTower : MonoBehaviour
         Destroy(gameObject);
     }
     
-    
+    private void ChangeHealthBar(float percentLifeLeft)
+    {
+        Vector3 scaleChange = healthBar.localScale;
+        scaleChange.x = percentLifeLeft;
+        healthBar.localScale = scaleChange;
+    }
 }
