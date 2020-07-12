@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat(HorizontalAxis, _movementVector.x);
         _animator.SetFloat(VerticalAxis, _movementVector.y);
 
-        if (Input.GetMouseButton(1) && _canShootAgain <= 0)
+        if (Input.GetMouseButton(0) && _canShootAgain <= 0)
         {
             _canShoot = true;
         }
