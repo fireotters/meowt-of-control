@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1490768791
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 2
   m_Sprite: {fileID: 9027505516725341301, guid: b56a10564a6d15348b307626facc420c,
     type: 3}
@@ -129,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 5405810806751190165}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.32000002, y: 0.32000002, z: 0.32000002}
+  m_LocalScale: {x: 0.28, y: 0.28, z: 0.28}
   m_Children:
   - {fileID: 1558692945399509346}
   - {fileID: 4698008455672075865}
@@ -146,13 +146,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5405810806751190165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31d661e9e74d93343aa862a9a55a266f, type: 3}
+  m_Script: {fileID: 11500000, guid: c18785f3881eb854fa3c5cbb3c4dd0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootCadence: 2
+  shootCadence: 0.5
   gunEnd: {fileID: 6131310503200279371}
   bulletPrefab: {fileID: 4955034945373706700, guid: 3b165ed35b85a3e4990274444c36f459,
     type: 3}
+  _towerAnimator: {fileID: 236599304409860445}
 --- !u!58 &1952206501164173053
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -298,7 +299,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1490768791
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 709a613f04f3e774c95633587dc4d60b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
