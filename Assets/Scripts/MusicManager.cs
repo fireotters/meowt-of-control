@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 public class MusicManager : MonoBehaviour
     {
@@ -11,6 +12,9 @@ public class MusicManager : MonoBehaviour
     public AudioMixer mixer;
     public AudioSource sfxDemo, currentMusicPlayer, currentMusicPlayer2;
     public AudioClip musicMainMenu, stageMusicDrums, stageMusic;
+    public float stressFadeSpeed = 0.08f;
+    public float maxPitch = 1.1f;
+    private bool stressMode;
     private int lastTrackRequested = -1; // When first created, pick the scene's chosen song
 
     public static MusicManager instance;
@@ -66,6 +70,28 @@ public class MusicManager : MonoBehaviour
             }
         }
     }
+    
+
+    private void Update()
+    {
+        if (stressMode && currentMusicPlayer.pitch < maxPitch)
+        {
+            currentMusicPlayer.pitch += Time.deltaTime * stressFadeSpeed;
+            currentMusicPlayer2.pitch += Time.deltaTime * stressFadeSpeed;
+        }
+        else if (!stressMode && currentMusicPlayer.pitch > 1)
+        {
+            currentMusicPlayer.pitch -= Time.deltaTime * stressFadeSpeed;
+            currentMusicPlayer2.pitch -= Time.deltaTime * stressFadeSpeed;
+        }
+        
+        
+        //TESTING
+        if (Input.GetKeyDown("p"))
+        {
+            stressMode = !stressMode;
+        }
+    }
 
     public void ChangeMusicTrack(int index)
     {
@@ -99,6 +125,7 @@ public class MusicManager : MonoBehaviour
             if (currentMusicPlayer.clip == stageMusic)
             {
                 currentMusicPlayer2.clip = stageMusicDrums;
+                currentMusicPlayer.Play();
                 currentMusicPlayer2.Play();
             }
             else

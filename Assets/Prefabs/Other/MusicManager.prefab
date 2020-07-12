@@ -246,3 +246,5 @@ MonoBehaviour:
   musicMainMenu: {fileID: 8300000, guid: 3d903e3978255454f912dd9a3972912c, type: 3}
   stageMusicDrums: {fileID: 8300000, guid: c75fdf064194aa54db6d06a9c2face0f, type: 3}
   stageMusic: {fileID: 8300000, guid: efb8d37e4f5bbf1408014ca0631c11e6, type: 3}
+  stressFadeSpeed: 0.08
+  maxPitch: 1.2

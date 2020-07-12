@@ -27,7 +27,7 @@ public partial class GameManager : MonoBehaviour
         }
         if (musicManager)
         {
-            musicManager.ChangeMusicTrack(0);
+            musicManager.ChangeMusicTrack(1);
         }
 
         sprRedArea = placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
