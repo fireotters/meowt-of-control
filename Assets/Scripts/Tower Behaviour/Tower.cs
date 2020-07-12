@@ -22,16 +22,14 @@ public abstract class Tower : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
-        //if (!other.CompareTag("Enemy") && !other.CompareTag("BigChungusEnemy")) return;
+        if (!other.CompareTag("Enemy") && !other.CompareTag("BigChungusEnemy")) return;
         Debug.Log("enemy entered!");
         AcknowledgedEnemies.Add(other.transform);
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
-        //if (!other.CompareTag("Enemy") && !other.CompareTag("BigChungusEnemy")) return;
+        if (!other.CompareTag("Enemy") && !other.CompareTag("BigChungusEnemy")) return;
         Debug.Log("exited!");
         AcknowledgedEnemies.RemoveAt(0);
     }

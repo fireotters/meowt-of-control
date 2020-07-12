@@ -1,34 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class MainTower : MonoBehaviour
 {
-    public int towerHealthPoints;
-    
+    private GameManager _gameManager;
     float _curTime = 0;
     float nextDamage = 1;
-    
-    // Health bar
-    private float _healthBarFullSize;
-    public Transform healthBar;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        _healthBarFullSize = healthBar.localScale.x;
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
-    void OnCollisionStay2D()
+    private void OnCollisionStay2D()
     {
         if (_curTime <= 0)
         {
-            towerHealthPoints -= 1;
+            _gameManager.gameUi.UpdateHealth(-1);
             
-            ChangeHealthBar(towerHealthPoints / _healthBarFullSize);
-            
-            Debug.Log("Tower hit!" + towerHealthPoints);
+            Debug.Log("Tower hit!" + _gameManager.currentHealth);
 
             _curTime = nextDamage;
         }
@@ -38,21 +27,14 @@ public class MainTower : MonoBehaviour
         }
        
 
-        if (towerHealthPoints <= 0)
+        if (_gameManager.currentHealth <= 0)
         {
-            lose();
+            Lose();
         }
     }
 
-    void lose()
+    private void Lose()
     {
         Destroy(gameObject);
-    }
-    
-    private void ChangeHealthBar(float percentLifeLeft)
-    {
-        Vector3 scaleChange = healthBar.localScale;
-        scaleChange.x = percentLifeLeft;
-        healthBar.localScale = scaleChange;
     }
 }
