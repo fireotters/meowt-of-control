@@ -6,6 +6,11 @@ TagManager:
   tags:
   - SideTower
   - Projectile
+  - Enemy
+  - BigChungusEnemy
+  - Corpse
+  - MainTower
+  - Sanic
   layers:
   - Default
   - TransparentFX
@@ -16,9 +21,9 @@ TagManager:
   - 
   - 
   - Enemy
-  - 
-  - 
-  - 
+  - Corpse
+  - Big Chungus
+  - MainTower
   - 
   - 
   - 
@@ -52,15 +57,18 @@ TagManager:
   - name: Towers
     uniqueID: 406510319
     locked: 0
-  - name: Player
+  - name: Player & Drops
     uniqueID: 2939052017
-    locked: 0
-  - name: UI
-    uniqueID: 1508027155
     locked: 0
   - name: Placeable - Show Tower Range
     uniqueID: 2804198505
     locked: 0
   - name: Placeable - Invalid Areas
     uniqueID: 3498946023
+    locked: 0
+  - name: UI
+    uniqueID: 1508027155
+    locked: 0
+  - name: Corpse
+    uniqueID: 951818289
     locked: 0

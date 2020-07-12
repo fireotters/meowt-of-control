@@ -22,7 +22,7 @@ public class BaseBullet : MonoBehaviour
     {
         if (_lifeLeft > 0)
             _lifeLeft -= Time.deltaTime;
-        else if (_lifeLeft <= 0) 
+        else if (_lifeLeft <= 0)
             Destroy(gameObject);
     }
 
@@ -34,7 +34,12 @@ public class BaseBullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.CompareTag("Player")
-        || other.collider.CompareTag("Projectile")) return;
+            || other.collider.CompareTag("Projectile")) return;
+        //Added to destroy the corpses
         Destroy(gameObject);
+        if (other.collider.CompareTag("Corpse"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
