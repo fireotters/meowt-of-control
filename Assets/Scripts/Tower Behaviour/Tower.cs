@@ -78,25 +78,20 @@ public abstract class Tower : MonoBehaviour
     {
         if (Inbetween(angle, -45, 45))
         {
-            print("Looking right...");
             _towerAnimator.SetInteger(Direction, 3);
         }
         else if (Inbetween(angle, 45, 145))
         {
-            print("Looking up...");
             _towerAnimator.SetInteger(Direction, 2);
         }
         else if (Inbetween(angle, 145, 180) || Inbetween(angle, -180, -145))
         {
-            print("Looking left...");
             _towerAnimator.SetInteger(Direction, 1);
         }
         else if (Inbetween(angle, -145, -45))
         {
-            print("Looking down...");
             _towerAnimator.SetInteger(Direction, 0);
         }
-        
     }
 
     private static bool Inbetween(float target, float val1, float val2)
