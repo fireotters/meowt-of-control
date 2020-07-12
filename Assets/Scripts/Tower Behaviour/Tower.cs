@@ -14,6 +14,7 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] internal BaseBullet bulletPrefab;
     [SerializeField] internal Animator _towerAnimator;
     private static readonly int Direction = Animator.StringToHash("Direction");
+    [SerializeField] private SoundManager soundManager;
 
     private void Start()
     {
@@ -94,5 +95,7 @@ public abstract class Tower : MonoBehaviour
     {
         return target > val1 && target < val2;
     }
+    
+    //When destroyed, call soundManager SoundDestroyTurret();
     
 }

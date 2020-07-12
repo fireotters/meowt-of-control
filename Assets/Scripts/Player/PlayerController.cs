@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     
     private const string HorizontalAxis = "Horizontal";
     private const string VerticalAxis = "Vertical";
+    
+    //sound
+    [SerializeField] private SoundManager soundManager;
 
     private void Start()
     {
@@ -85,5 +88,7 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+        
+        // When loose health, call soundManager.soundPlayerHit();
     }
 }
