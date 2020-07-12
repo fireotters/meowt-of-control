@@ -97,7 +97,7 @@ public class MainMenuUi : BaseUi
     }
     public void OpenGame2()
     {
-        SceneManager.LoadScene("Z Pause Test");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void DoAboutDevLoad()
