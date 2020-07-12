@@ -9,13 +9,14 @@ public partial class GameManager : MonoBehaviour
     public GameObject towerBarrierMask;
     private bool isPlacingTower = false;
     public Transform placeableParent, towersInPlayParent;
-    public PlaceableTower basicPlaceable, cannonPlaceable, snowPlaceable;
-    public Tower basicTower, cannonTower, snowTower;
+    public PlaceableTower placeablePillow, placeableWater, placeableFridge;
+    public Tower towerPillow, towerWater, towerFridge;
 
     private PlaceableTower currentPlacingTower;
     private int currentPlacingTowerNum = -1;
-    [HideInInspector] public SpriteRenderer sprRedArea, sprGreenArea;
+    [HideInInspector] public SpriteRenderer sprTowerInvalidArea, sprTowerRange;
     public Transform placementBlockersParent;
+    public Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
 
     public void SpawnPlaceableTower(int whichTower)
     {
@@ -42,13 +43,13 @@ public partial class GameManager : MonoBehaviour
         switch (whichTower)
         {
             case 0:
-                towerToSpawn = basicPlaceable;
+                towerToSpawn = placeablePillow;
                 break;
             case 1:
-                towerToSpawn = cannonPlaceable;
+                towerToSpawn = placeableWater;
                 break;
             case 2:
-                towerToSpawn = snowPlaceable;
+                towerToSpawn = placeableFridge;
                 break;
         }
         if (towerToSpawn != null)
@@ -77,15 +78,15 @@ public partial class GameManager : MonoBehaviour
         switch (currentPlacingTowerNum)
         {
             case 0:
-                towerToSpawn = basicTower;
+                towerToSpawn = towerPillow;
                 gameUi.UpdateCash(-100);
                 break;
             case 1:
-                towerToSpawn = cannonTower;
+                towerToSpawn = towerWater;
                 gameUi.UpdateCash(-200);
                 break;
             case 2:
-                towerToSpawn = snowTower;
+                towerToSpawn = towerFridge;
                 gameUi.UpdateCash(-300);
                 break;
         }
@@ -93,9 +94,9 @@ public partial class GameManager : MonoBehaviour
         {
             // Place tower and a barrier spritemask
             Tower towerPlaced = Instantiate(towerToSpawn, towersInPlayParent);
-            towerPlaced.transform.position = player.transform.position;
+            towerPlaced.transform.position = player.transform.position + spritePivotOffset;
             GameObject newBarrier = Instantiate(towerBarrierMask, placementBlockersParent);
-            newBarrier.transform.position = player.transform.position;
+            newBarrier.transform.position = player.transform.position + spritePivotOffset;
 
             // Once tower is placed, disable cancel button, destroy placeable version, and toggle red zones
             gameUi.purchaseButtons[currentPlacingTowerNum].HideCancelOverlay();
@@ -111,7 +112,7 @@ public partial class GameManager : MonoBehaviour
 
     private void ToggleTowerColourZones()
     {
-        sprRedArea.enabled = isPlacingTower;
-        sprGreenArea.enabled = isPlacingTower;
+        sprTowerInvalidArea.enabled = isPlacingTower;
+        sprTowerRange.enabled = isPlacingTower;
     }
 }
