@@ -9,7 +9,7 @@ public partial class GameManager : MonoBehaviour
     [Header("GameManager")]
     public PlayerController player;
     public int currentCash = 50, currentHealth = 100, currentPlayerHealth = 3, currentRound = 0;
-    private int maxPlayerHealth = 3;
+    private int maxHealth = 100, maxPlayerHealth = 3;
     public GameUi gameUi;
 
     [Header("Enemy Management")]
@@ -81,10 +81,25 @@ public partial class GameManager : MonoBehaviour
                 currentPlayerHealth = maxPlayerHealth;
                 gameUi.UpdatePlayerHealth();
             }
+            else if (currentPlayerHealth == maxPlayerHealth)
+            {
+                if (currentHealth < maxHealth)
+                {
+                    gameUi.UpdateHealth(25);
+                }
+                else
+                {
+                    gameUi.UpdateCash(50);
+                }
+            }
         }
         else if (type == "yarn")
         {
-
+            gameUi.UpdateCash(50);
+        }
+        else
+        {
+            Debug.LogError("GameManger.PickupItem: Invalid pickup type");
         }
     }
 

@@ -16,7 +16,7 @@ public class DroppedItem : MonoBehaviour
     {
         if (collision.transform.name == "Player")
         {
-            gM.PickupItem("milk");
+            gM.PickupItem(typeOfDrop);
             Destroy(gameObject);
         }
     }

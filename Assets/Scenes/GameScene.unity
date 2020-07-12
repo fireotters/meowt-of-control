@@ -960,13 +960,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<b>Water-Balloon Launcher</b>
 
-    <i>Envy of kids everywhere.
-
-    Effectivive
-    against electric components.</i>
+    <i>Envy of kids everywhere.</i>
 
 
-    Mid rate, mid damage.'
+    Mid
+    damage. Low rate. High range.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1035,12 +1033,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 341489939}
-    characterCount: 111
+    characterCount: 82
     spriteCount: 0
-    spaceCount: 14
-    wordCount: 14
+    spaceCount: 12
+    wordCount: 12
     linkCount: 0
-    lineCount: 6
+    lineCount: 5
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1300,12 +1298,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385231756}
   m_CullTransparentMesh: 0
---- !u!4 &427677411 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1731651805}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &461186028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,8 +1359,8 @@ MonoBehaviour:
     <i>Antarctica in a box.</i>
 
 
-    Low rate,
-    slows enemies.'
+    Slows enemies.
+    Occasional high damage. Very low range.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1437,12 +1429,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 461186030}
-    characterCount: 60
+    characterCount: 90
     spriteCount: 0
-    spaceCount: 9
-    wordCount: 9
+    spaceCount: 13
+    wordCount: 13
     linkCount: 0
-    lineCount: 4
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -3307,12 +3299,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845307079}
   m_CullTransparentMesh: 0
---- !u!4 &860754172 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1713681650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &880041963
 GameObject:
   m_ObjectHideFlags: 0
@@ -5078,12 +5064,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106012526}
   m_CullTransparentMesh: 0
---- !u!4 &1206673532 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2983328646453367332}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1212748351
 GameObject:
   m_ObjectHideFlags: 0
@@ -5198,9 +5178,6 @@ Transform:
   - {fileID: 1647193802}
   - {fileID: 1286699609}
   - {fileID: 748824564}
-  - {fileID: 1206673532}
-  - {fileID: 427677411}
-  - {fileID: 860754172}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6251,7 +6228,7 @@ MonoBehaviour:
     into a rapid-fire turret.</i>
 
 
-    Fast rate, low damage.'
+    Fast rate. Low damage. Medium range.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6296,7 +6273,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 105
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -6320,12 +6297,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1364455179}
-    characterCount: 104
+    characterCount: 118
     spriteCount: 0
-    spaceCount: 14
-    wordCount: 14
+    spaceCount: 16
+    wordCount: 16
     linkCount: 0
-    lineCount: 6
+    lineCount: 7
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -7566,144 +7543,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -75.422}
   m_SizeDelta: {x: 202.06848, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1713681650
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1286093860}
-    m_Modifications:
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.396
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.973
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290847, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_Name
-      value: Drop-MilkCarton (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: edecdd96ca7c3f145baaa3dac85f23d8, type: 3}
---- !u!1001 &1731651805
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1286093860}
-    m_Modifications:
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.807
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.646
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290847, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_Name
-      value: Drop-MilkCarton (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: edecdd96ca7c3f145baaa3dac85f23d8, type: 3}
 --- !u!1 &1762191681
 GameObject:
   m_ObjectHideFlags: 0
@@ -9661,75 +9500,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f6e52b88a55b1f4f99a60ad4848e3a9, type: 3}
---- !u!1001 &2983328646453367332
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1286093860}
-    m_Modifications:
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.043
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.584
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290840, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983328645377290847, guid: edecdd96ca7c3f145baaa3dac85f23d8,
-        type: 3}
-      propertyPath: m_Name
-      value: Drop-MilkCarton
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: edecdd96ca7c3f145baaa3dac85f23d8, type: 3}
 --- !u!4 &3395703018965110772
 Transform:
   m_ObjectHideFlags: 0
