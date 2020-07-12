@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CannonTower : Tower
+public class PillowTower : Tower
 {
     protected override void TrackAndShoot()
     {
