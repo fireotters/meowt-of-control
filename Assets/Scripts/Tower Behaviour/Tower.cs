@@ -12,6 +12,8 @@ public abstract class Tower : MonoBehaviour
     internal BaseBullet Bullet;
     [SerializeField] internal Transform gunEnd;
     [SerializeField] internal BaseBullet bulletPrefab;
+    [SerializeField] internal Animator _towerAnimator;
+    private static readonly int Direction = Animator.StringToHash("Direction");
 
     private void Start()
     {
@@ -56,6 +58,7 @@ public abstract class Tower : MonoBehaviour
     {
         if (_canShoot)
         {
+            _towerAnimator.SetTrigger("Shoot");
             Shoot();
         }
     }
@@ -65,6 +68,31 @@ public abstract class Tower : MonoBehaviour
         Bullet.Pew();
         _canShoot = false;
         _canShootAgain = shootCadence;
+    }
+
+    protected void SetLookAnimation(float angle)
+    {
+        if (Inbetween(angle, -45, 45))
+        {
+            _towerAnimator.SetInteger(Direction, 3);
+        }
+        else if (Inbetween(angle, 45, 145))
+        {
+            _towerAnimator.SetInteger(Direction, 2);
+        }
+        else if (Inbetween(angle, 145, 180) || Inbetween(angle, -180, -145))
+        {
+            _towerAnimator.SetInteger(Direction, 1);
+        }
+        else if (Inbetween(angle, -145, -45))
+        {
+            _towerAnimator.SetInteger(Direction, 0);
+        }
+    }
+
+    private static bool Inbetween(float target, float val1, float val2)
+    {
+        return target > val1 && target < val2;
     }
     
 }
