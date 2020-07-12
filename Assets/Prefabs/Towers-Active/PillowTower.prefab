@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 5277329179738009870}
   - component: {fileID: 3579875188866723065}
   - component: {fileID: -627020821372308523}
+  - component: {fileID: 7557021272540512811}
   m_Layer: 0
   m_Name: PillowTower
   m_TagString: Untagged
@@ -311,3 +312,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!95 &7557021272540512811
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830705889166599032}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9841ee5f86e9b8941b77e8864931f62d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
