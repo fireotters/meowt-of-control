@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/HelpMenu.unity
     guid: 471d0915065ab7b44b560c05d56e94f3
   - enabled: 1
-    path: Assets/Scenes/GameScene-Crossy Only.unity
+    path: Assets/Scenes/GameScene.unity
     guid: cd8d3f20be291844da3ea86635067723
   m_configObjects: {}

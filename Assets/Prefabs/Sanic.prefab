@@ -166,8 +166,14 @@ PrefabInstance:
     - target: {fileID: 5657919249173126906, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
       propertyPath: maxSpeed
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5678617109969716404, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: heldItem
+      value: 
+      objectReference: {fileID: 2983328645377290847, guid: edecdd96ca7c3f145baaa3dac85f23d8,
+        type: 3}
     - target: {fileID: 7739615390887486111, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
       propertyPath: m_Controller

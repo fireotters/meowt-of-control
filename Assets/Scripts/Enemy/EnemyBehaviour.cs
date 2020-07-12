@@ -11,9 +11,13 @@ public class EnemyBehaviour : MonoBehaviour
     public int sanicLife;
     public int playerLife;
 
-    private int bigChungusMaxLife = 5;
-    private int basicMaxLife = 2;
-    private int sanicMaxLife = 1;
+    private int bigChungusMaxLife = 10;
+    private int basicMaxLife = 4;
+    private int sanicMaxLife = 2;
+
+    public GameObject heldItem;
+
+    private GameManager gM;
 
     // Health bar
     private float healthBarFullSize;
@@ -28,6 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Start()
     {
+        gM = FindObjectOfType<GameManager>();
         bigChungusLife = bigChungusMaxLife;
         basicLife = basicMaxLife;
         sanicLife = sanicMaxLife;
@@ -62,6 +67,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (col.gameObject.tag == "Projectile" && basicLife == 0)
         {
+            gM.KillEnemy();
             Vector2 enemyLastPos =
                 new Vector2(col.gameObject.transform.position.x, col.gameObject.transform.position.y);
             Destroy(gameObject);
@@ -71,25 +77,27 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (col.gameObject.tag == "Projectile" && bigChungusLife == 0)
         {
+            gM.KillEnemy();
             Vector2 enemyLastPos =
                 new Vector2(col.gameObject.transform.position.x, col.gameObject.transform.position.y);
             Destroy(gameObject);
-            corpse.transform.position = enemyLastPos;
-            Instantiate(corpse);
+            heldItem.transform.position = enemyLastPos;
+            Instantiate(heldItem);
         }
 
         if (col.gameObject.tag == "Projectile" && sanicLife == 0)
         {
+            gM.KillEnemy();
             Vector2 enemyLastPos =
                 new Vector2(col.gameObject.transform.position.x, col.gameObject.transform.position.y);
             Destroy(gameObject);
-            corpse.transform.position = enemyLastPos;
-            Instantiate(corpse);
+            heldItem.transform.position = enemyLastPos;
+            Instantiate(heldItem);
         }
         
         if (col.gameObject.tag == "Player")
         {
-            playerLife--;
+            gM.DamagePlayer();
         }
 
         if (col.gameObject.tag == "Player" && playerLife <= 0)

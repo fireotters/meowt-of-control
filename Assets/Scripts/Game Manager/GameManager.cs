@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
-using UnityEditorInternal;
-using UnityEngine;
+﻿using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
@@ -12,6 +8,7 @@ public partial class GameManager : MonoBehaviour
     public int currentCash = 50, currentHealth = 100, currentPlayerHealth = 3, currentRound = 0;
     private int maxHealth = 100, maxPlayerHealth = 3;
     public GameUi gameUi;
+    private float nextPlayerDmg = 0.0f;
 
     [Header("Enemy Management")]
     public int enemyCount = 0;
@@ -34,14 +31,8 @@ public partial class GameManager : MonoBehaviour
         if (enemyCount == 0) // TODO When enemy dies, tell gamemanager to remove one from enemyCount
         {
             enemyCount = -1;
-            RoundEndCelebrate();
             Invoke(nameof(StartNextRound), 2f);
         }
-    }
-
-    private void RoundEndCelebrate()
-    {
-        debugLevelTransitionSound.Play();
     }
 
     private void StartNextRound()
@@ -68,8 +59,9 @@ public partial class GameManager : MonoBehaviour
     }
     public void DamagePlayer()
     {
-        if (currentPlayerHealth != 0)
+        if (currentPlayerHealth != 0 && Time.time > nextPlayerDmg)
         {
+            nextPlayerDmg = Time.time + 3f;
             soundManager.SoundPlayerHit();
             currentPlayerHealth--;
             gameUi.UpdatePlayerHealth();
