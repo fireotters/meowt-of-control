@@ -12,7 +12,7 @@ public abstract class Tower : MonoBehaviour
     internal BaseBullet Bullet;
     [SerializeField] internal Transform gunEnd;
     [SerializeField] internal BaseBullet bulletPrefab;
-    private Animator _towerAnimator;
+    [SerializeField] internal Animator _towerAnimator;
     private static readonly int Direction = Animator.StringToHash("Direction");
 
     private void Start()
@@ -20,7 +20,6 @@ public abstract class Tower : MonoBehaviour
         _canShootAgain = shootCadence;
         AcknowledgedEnemies = new List<Transform>();
         BulletEmitter = transform.GetChild(0);
-        _towerAnimator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -61,15 +60,14 @@ public abstract class Tower : MonoBehaviour
     {
         if (_canShoot)
         {
+            _towerAnimator.SetTrigger("Shoot");
             Shoot();
         }
     }
 
     protected virtual void Shoot()
     {
-        _towerAnimator.SetBool("Shoot", true);
         Bullet.Pew();
-        _towerAnimator.SetBool("Shoot", false);
         _canShoot = false;
         _canShootAgain = shootCadence;
     }

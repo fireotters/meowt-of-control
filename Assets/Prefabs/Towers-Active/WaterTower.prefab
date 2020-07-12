@@ -113,7 +113,6 @@ GameObject:
   - component: {fileID: 2927316802024013298}
   - component: {fileID: 8928845258137198613}
   - component: {fileID: 1952206501164173053}
-  - component: {fileID: 8509655381090146442}
   m_Layer: 0
   m_Name: WaterTower
   m_TagString: Untagged
@@ -154,6 +153,7 @@ MonoBehaviour:
   gunEnd: {fileID: 6131310503200279371}
   bulletPrefab: {fileID: 4955034945373706700, guid: 3b165ed35b85a3e4990274444c36f459,
     type: 3}
+  _towerAnimator: {fileID: 236599304409860445}
 --- !u!58 &1952206501164173053
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,25 +170,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 12
---- !u!95 &8509655381090146442
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5405810806751190165}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f5aae7685368fe4a93de4503502705b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6991371751160506297
 GameObject:
   m_ObjectHideFlags: 0
