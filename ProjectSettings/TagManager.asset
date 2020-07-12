@@ -6,6 +6,11 @@ TagManager:
   tags:
   - SideTower
   - Projectile
+  - Enemy
+  - BigChungusEnemy
+  - Corpse
+  - MainTower
+  - Sanic
   layers:
   - Default
   - TransparentFX
@@ -16,8 +21,8 @@ TagManager:
   - 
   - 
   - Enemy
-  - 
-  - 
+  - Corpse
+  - Big Chungus
   - 
   - 
   - 
@@ -63,4 +68,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1508027155
+    locked: 0
+  - name: Corpse
+    uniqueID: 951818289
     locked: 0
