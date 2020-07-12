@@ -71,14 +71,17 @@ public class EnemySpawner : MonoBehaviour
             if (randCheck == 0) // Spawn big chungus
             {
                 Instantiate(mobs[1], spawnPlace, Quaternion.identity);
+                gM.enemyNumberSpawned++;
             }
             else if (randCheck < 3) // Spawn Sanic
             {
                 Instantiate(mobs[2], spawnPlace, Quaternion.identity);
+                gM.enemyNumberSpawned++;
             }
             else if (randCheck < 10) // Spawn Common
             {
                 Instantiate(mobs[0], spawnPlace, Quaternion.identity);
+                gM.enemyNumberSpawned++;
             }
         }
     }
