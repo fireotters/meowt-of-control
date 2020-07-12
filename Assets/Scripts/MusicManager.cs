@@ -12,6 +12,7 @@ public class MusicManager : MonoBehaviour
     public AudioMixer mixer;
     public AudioSource sfxDemo, currentMusicPlayer, currentMusicPlayer2;
     public AudioClip musicMainMenu, stageMusicDrums, stageMusic;
+    public AudioClip hoverButton, selectButton;
     public float stressFadeSpeed = 0.08f;
     public float maxPitch = 1.1f;
     private bool stressMode;
@@ -70,8 +71,12 @@ public class MusicManager : MonoBehaviour
             }
         }
     }
-    
 
+    public void ButtonHoverSound()
+    {
+        // sfxDemo.clip = 
+    }
+    
     private void Update()
     {
         if (stressMode && currentMusicPlayer.pitch < maxPitch)
@@ -85,7 +90,7 @@ public class MusicManager : MonoBehaviour
             currentMusicPlayer2.pitch -= Time.deltaTime * stressFadeSpeed;
         }
         
-        //TESTING
+        //TESTING DELETE
         if (Input.GetKeyDown("p"))
         {
             stressMode = !stressMode;

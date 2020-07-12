@@ -12,6 +12,7 @@ public abstract class Tower : MonoBehaviour
     internal BaseBullet Bullet;
     [SerializeField] internal Transform gunEnd;
     [SerializeField] internal BaseBullet bulletPrefab;
+    [SerializeField] private SoundManager soundManager;
 
     private void Start()
     {
@@ -68,5 +69,7 @@ public abstract class Tower : MonoBehaviour
         _canShoot = false;
         _canShootAgain = shootCadence;
     }
+    
+    //When destroyed, call soundManager SoundDestroyTurret();
     
 }

@@ -4635,8 +4635,6 @@ MonoBehaviour:
   currentHealth: 100
   currentRound: 0
   gameUi: {fileID: 2012510643}
-  musicManagerIfNotFoundInScene: {fileID: 8774387490616601870, guid: 81e43bfc2c29e6a468390c166202ba9c,
-    type: 3}
   enemyCount: 0
   enemyMaxCount: 0
   debugLevelTransitionSound: {fileID: 1076312996}
@@ -6706,7 +6704,7 @@ MonoBehaviour:
   - {fileID: 1053826700}
   roundIndicator: {fileID: 981979887}
   musicManager: {fileID: 0}
-  choiceOfMusic: -2
+  choiceOfMusic: 1
   gamePausePanel: {fileID: 619427784}
   gM: {fileID: 1377506641}
 --- !u!1 &2032824576

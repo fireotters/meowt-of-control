@@ -255,6 +255,8 @@ GameObject:
   - component: {fileID: 1831376927397124318}
   - component: {fileID: 6213731364343559203}
   - component: {fileID: 2666020163781443597}
+  - component: {fileID: 2843858875665603392}
+  - component: {fileID: -9093772615761385731}
   m_Layer: 0
   m_Name: FridgeTower
   m_TagString: Untagged
@@ -295,6 +297,7 @@ MonoBehaviour:
   gunEnd: {fileID: 5794147025758176986}
   bulletPrefab: {fileID: 6873564271939672047, guid: a9e3f6ebff6f9904d8aef7e43cc12cb1,
     type: 3}
+  soundManager: {fileID: -9093772615761385731}
 --- !u!58 &2666020163781443597
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -311,3 +314,121 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!82 &2843858875665603392
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8714421360546928328}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5321020551560296200, guid: d004f52ea00513f4493dc5fb271c249f,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 98ba76e0f8d035041afcd54998b6b1c8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &-9093772615761385731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8714421360546928328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f96d9f495ba624b8155882081d5517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundSource: {fileID: 2843858875665603392}
+  hoverSound: {fileID: 8300000, guid: a62ba84aa3f99294a9bab8bffb278ae8, type: 3}
+  selectSound: {fileID: 8300000, guid: 7894974a30dbf954791da38e96a30d26, type: 3}
+  destroyTurret: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
+  enemyImpact1: {fileID: 8300000, guid: 2c846f9b38c290c408c1b6d8e6d842c2, type: 3}
+  enemyImpact2: {fileID: 8300000, guid: bc4a30dc7dcf2cf4a88b55129f810e97, type: 3}
+  catCannon: {fileID: 8300000, guid: 54a53c0e6587e2344b8c0b7dbe44a97b, type: 3}
+  playerHit: {fileID: 8300000, guid: 8bc5f6e94971ac7439ef34144fbd38b4, type: 3}
+  mixer: {fileID: 24100000, guid: d004f52ea00513f4493dc5fb271c249f, type: 2}
