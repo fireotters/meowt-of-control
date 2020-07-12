@@ -1,25 +1,43 @@
 fileFormatVersion: 2
-guid: 60d6db3067922bc4f92af793a2333695
+guid: aa6b5b0bd3a7f7048adddff9c3707299
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2935846804084577621
-    second: basic_0
+      213: -8191739510646017925
+    second: bt_play_hover
   - first:
-      213: -6565554264192722864
-    second: basic_1
+      213: 3713549098536957005
+    second: bt_play
   - first:
-      213: 2810535661893641740
-    second: basic_2
+      213: -480254276019886394
+    second: bt_options_hover
   - first:
-      213: 9042057093310376850
-    second: basic_3
+      213: -6460607209241108654
+    second: bt_options
   - first:
-      213: 767947582787565696
-    second: basic_4
+      213: 2958514102543403041
+    second: bt_help_hover
   - first:
-      213: 7306088502116838923
-    second: basic_5
+      213: 1008705478319212569
+    second: bt_help
+  - first:
+      213: -3219683103784253410
+    second: bt_back
+  - first:
+      213: 5830344958925785552
+    second: bt_next
+  - first:
+      213: 650656284835190746
+    second: bt_exit
+  - first:
+      213: 4009284081192125275
+    second: bt_adios
+  - first:
+      213: 8359661988393023892
+    second: buttons_10
+  - first:
+      213: -7138311499508957143
+    second: buttons_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -63,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,127 +123,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: basic_0
+      name: bt_play_hover
       rect:
         serializedVersion: 2
-        x: 2
-        y: 65
-        width: 26
-        height: 20
+        x: 4
+        y: 192
+        width: 60
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baaa29fe2e6c147d0800000000000000
-      internalID: -2935846804084577621
+      spriteID: b7079671158115e80800000000000000
+      internalID: -8191739510646017925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_1
+      name: bt_play
       rect:
         serializedVersion: 2
-        x: 34
-        y: 64
-        width: 26
-        height: 20
+        x: 68
+        y: 192
+        width: 60
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 058dd39be2772e4a0800000000000000
-      internalID: -6565554264192722864
+      spriteID: d44744ada3d298330800000000000000
+      internalID: 3713549098536957005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_2
+      name: bt_options_hover
       rect:
         serializedVersion: 2
-        x: 2
-        y: 33
-        width: 26
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 161
+        width: 60
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c06ecbb2b47010720800000000000000
-      internalID: 2810535661893641740
+      spriteID: 6c6e8fbc74bc559f0800000000000000
+      internalID: -480254276019886394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_3
+      name: bt_options
       rect:
         serializedVersion: 2
-        x: 34
-        y: 32
-        width: 26
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 64
+        y: 161
+        width: 59
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29be09df407db7d70800000000000000
-      internalID: 9042057093310376850
+      spriteID: 25f1bd319ff4756a0800000000000000
+      internalID: -6460607209241108654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_4
+      name: bt_help_hover
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1
-        width: 26
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 128
+        width: 50
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0883c2ef14c48aa00800000000000000
-      internalID: 767947582787565696
+      spriteID: 1284511c6e0ce0920800000000000000
+      internalID: 2958514102543403041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basic_5
+      name: bt_help
       rect:
         serializedVersion: 2
-        x: 34
-        y: 0
-        width: 26
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 64
+        y: 128
+        width: 49
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0e6d3a88c0746560800000000000000
-      internalID: 7306088502116838923
+      spriteID: 9180536c944affd00800000000000000
+      internalID: 1008705478319212569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bt_back
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 70
+        width: 51
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e18cc9596436153d0800000000000000
+      internalID: -3219683103784253410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bt_next
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 70
+        width: 52
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d9c2c289db89e050800000000000000
+      internalID: 5830344958925785552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bt_exit
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 15
+        width: 34
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad71a789178970900800000000000000
+      internalID: 650656284835190746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bt_adios
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 2
+        width: 31
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b53c51731a6d3a730800000000000000
+      internalID: 4009284081192125275
       vertices: []
       indices: 
       edges: []
