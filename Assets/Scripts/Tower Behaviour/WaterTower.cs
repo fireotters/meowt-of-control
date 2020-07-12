@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BasicTower : Tower
+public class WaterTower : Tower
 {
     protected override void TrackAndShoot()
     {

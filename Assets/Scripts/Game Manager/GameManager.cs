@@ -17,8 +17,8 @@ public partial class GameManager : MonoBehaviour
 
     private void Start()
     {
-        sprRedArea = placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
-        sprGreenArea = placementBlockersParent.Find("ValidPlacements").Find("GreenArea").GetComponent<SpriteRenderer>();
+        sprTowerInvalidArea = placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
+        sprTowerRange = placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
         ToggleTowerColourZones();
         StartNextRound();
     }

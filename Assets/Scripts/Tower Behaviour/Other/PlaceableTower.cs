@@ -14,16 +14,30 @@ public class PlaceableTower : MonoBehaviour
         player = GameObject.Find("Player").transform;
         placementCheck = transform.Find("PlacementCheck");
     }
+
     void Update()
     {
         // Move tower placement to where player stands
-        transform.position = player.position;
+        transform.position = player.position + gM.spritePivotOffset;
 
         // Check for any red zones that block tower placement
         Vector2 plcCheckVector = new Vector2(placementCheck.position.x, placementCheck.position.y);
         Collider2D[] collidersFound = Physics2D.OverlapCircleAll(plcCheckVector, 0f);
+        List<Collider2D> interferingColliders = new List<Collider2D>();
 
-        placementIsValid = collidersFound.Length == 1;
-        gM.sprGreenArea.color = collidersFound.Length == 1 ? Color.green : Color.red;
+        foreach (Collider2D col in collidersFound)
+        {
+            if (col.name.StartsWith("Barrier"))
+            {
+                interferingColliders.Add(col);
+            }
+        }
+        if (interferingColliders.Count > 0)
+        {
+            print("PlaceableTower: " + interferingColliders.Count + " barrier colliders found");
+        }
+
+        placementIsValid = interferingColliders.Count == 0;
+        gM.sprTowerRange.color = interferingColliders.Count == 0 ? Color.blue : Color.red;
     }
 }
