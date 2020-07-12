@@ -1308,6 +1308,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.26968035
       objectReference: {fileID: 0}
+    - target: {fileID: 2991865322832994294, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991865322832994294, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991865322832994294, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f6932bd1ae7fc47be39b3b2d26e167, type: 3}
 --- !u!1 &599085791
@@ -1550,7 +1565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &619427785
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7234,6 +7249,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441852832465105233, guid: 3f6e52b88a55b1f4f99a60ad4848e3a9,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1752028989
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441852832465105233, guid: 3f6e52b88a55b1f4f99a60ad4848e3a9,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f6e52b88a55b1f4f99a60ad4848e3a9, type: 3}

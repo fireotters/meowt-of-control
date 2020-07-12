@@ -7,6 +7,8 @@ public class PlaceableTower : MonoBehaviour
     private Transform player, placementCheck;
     public bool placementIsValid = false;
     private GameManager gM;
+    private Color towerFailRed = new Color(0.66f, 0f, 0f, 0.4f);
+    private Color towerRangeBlue = new Color(0.34f, 0.45f, 1f, 0.4f);
 
     private void Awake()
     {
@@ -38,6 +40,6 @@ public class PlaceableTower : MonoBehaviour
         }
 
         placementIsValid = interferingColliders.Count == 0;
-        gM.sprTowerRange.color = interferingColliders.Count == 0 ? Color.blue : Color.red;
+        gM.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
     }
 }
