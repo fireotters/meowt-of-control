@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainTower : MonoBehaviour
 {
@@ -11,16 +12,26 @@ public class MainTower : MonoBehaviour
         _gameManager = FindObjectOfType<GameManager>();
     }
 
-    private void OnCollisionStay2D()
+    private void OnCollisionStay2D(Collision2D col)
     {
         if (_curTime <= 0)
         {
-            _gameManager.gameUi.UpdateHealth(-1);
+            if (col.gameObject.tag == "BigChungusEnemy")
+            {
+                _gameManager.gameUi.UpdateHealth(-5);
+            }
+            else if(col.gameObject.tag != "Player")
+            {
+                _gameManager.gameUi.UpdateHealth(-1);
+            }
+
+           
             
             Debug.Log("Tower hit!" + _gameManager.currentHealth);
 
             _curTime = nextDamage;
         }
+       
         else
         {
             _curTime -= Time.deltaTime;
@@ -36,5 +47,6 @@ public class MainTower : MonoBehaviour
     private void Lose()
     {
         Destroy(gameObject);
+        SceneManager.LoadScene("MainMenu");
     }
 }
