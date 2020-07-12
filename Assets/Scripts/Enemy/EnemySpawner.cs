@@ -12,17 +12,17 @@ public class EnemySpawner : MonoBehaviour
     private Vector2 spawnPlace;
 
     //Spawn rate of every mob
-    public float basicSpawnRate;
-    public float bigChungusSpawnRate;
-    public float sanicSpawnRate;
+    public float spawnRate;
 
     public GameObject enemy_target;
+    private GameManager gM;
 
     private float nextSpawn = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        gM = FindObjectOfType<GameManager>();
         //Adding mobs
         mobs.Add(basicEnemy);
         mobs.Add(bigChungus);
@@ -52,9 +52,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void spawnEnemy()
     {
-        if (Time.time > nextSpawn)
+        if (Time.time > nextSpawn && gM.enemyNumberSpawned < gM.enemyMaxCount)
         {
-            nextSpawn = Time.time + basicSpawnRate;
+            nextSpawn = Time.time + spawnRate;
             randX = Random.Range(-8.4f, 8.4f);
             randY = Random.Range(-3f, 3f);
             if (gameObject.tag.Equals("SideTower"))
@@ -66,26 +66,20 @@ public class EnemySpawner : MonoBehaviour
                 spawnPlace = new Vector2(randX, transform.position.y);
             }
 
-
-            Instantiate(mobs[0], spawnPlace, Quaternion.identity);
-
-            /*Instantiate(bigChungus, spawnPlace, Quaternion.identity);
-            Instantiate(sanic, spawnPlace, Quaternion.identity);
-            */
-        }
-
-        //New Big chungus every 5 sec (Pending to discuss)
-        if (Time.time > bigChungusSpawnRate)
-        {
-            bigChungusSpawnRate = Time.time + 5.0f;
-            Instantiate(mobs[1], spawnPlace, Quaternion.identity);
-        }
-
-        // New Sanic every 10 sec (Pending to discuss)
-        if (Time.time > sanicSpawnRate)
-        {
-            sanicSpawnRate = Time.time + 10.0f;
-            Instantiate(mobs[2], spawnPlace, Quaternion.identity);
+            // Half the time, nothing will spawn.
+            int randCheck = Random.Range(0, 20);
+            if (randCheck == 0) // Spawn big chungus
+            {
+                Instantiate(mobs[1], spawnPlace, Quaternion.identity);
+            }
+            else if (randCheck < 3) // Spawn Sanic
+            {
+                Instantiate(mobs[2], spawnPlace, Quaternion.identity);
+            }
+            else if (randCheck < 10) // Spawn Common
+            {
+                Instantiate(mobs[0], spawnPlace, Quaternion.identity);
+            }
         }
     }
 }

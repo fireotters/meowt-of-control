@@ -16,6 +16,7 @@ public partial class GameManager : MonoBehaviour
     [Header("Enemy Management")]
     public int enemyCount = 0;
     public int enemyMaxCount = 0;
+    public int enemyNumberSpawned = 0;
 
     private void Start()
     {
@@ -49,6 +50,7 @@ public partial class GameManager : MonoBehaviour
         currentCash += 50 * currentRound;
         enemyMaxCount = currentRound * 7;
         enemyCount = enemyMaxCount;
+        enemyNumberSpawned = 0;
         gameUi.textRound.text = currentRound.ToString();
         print($"Enemy count: {enemyCount}");
         gameUi.UpdateRoundIndicator();
