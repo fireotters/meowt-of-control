@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2991865322036998998}
   - component: {fileID: 2991865322036998996}
   - component: {fileID: 2991865322036998997}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BulletEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 2991865322832994292}
   - component: {fileID: 2991865322832994283}
   - component: {fileID: 439942934393228274}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2991865323443025736}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
