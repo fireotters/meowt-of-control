@@ -75,7 +75,12 @@ PrefabInstance:
     - target: {fileID: 18814254652573279, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
       propertyPath: m_Name
-      value: TowerBullet
+      value: BasicTowerBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 18814254652573279, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2fa230ff2cfc964fbb81c99bae6d5d0, type: 3}

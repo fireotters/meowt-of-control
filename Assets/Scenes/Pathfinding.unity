@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 340457117}
   m_Layer: 0
   m_Name: Main Tower
-  m_TagString: Untagged
+  m_TagString: MainTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1572,8 +1572,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234f6ba7804cad743b21f603474e2cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
-  spawnRate: 2
+  mobs: []
+  basicSpawnRate: 3
+  bigChungusSpawnRate: 5
+  sanicSpawnRate: 10
   enemy_target: {fileID: 340457113}
 --- !u!1 &1286093858
 GameObject:
@@ -1706,12 +1708,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIezjBd34aQIAAAoFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE2T2jAM/SuMz4VJQiGktzbLsj3sxyzt7CUXkyjEg2Nn/LHA7vDfKzsJydITQtKTnp7kfBImdAO5kWqjWPEoCyA/JsTZ5NtkCD7Aie6l2LIP6HPeWGEql0R9zis1TKI/dDAtazCK5T/FnrvkAJ1WsFKqel3sIZXaaHSXlGvAkJLGoQW6PifkhD/TxEHOaEWxsz7QSoLJBc0chAE1So1m0WoezRcdIJh9D1fzZBl3sOnCw6zIOa0bKNwMAzoMZ6tVh1zNktDnChyxSwtmSeKaSs6Z7igSc268BClttMUBMaFgFEf2vJwCFbB9ZRz9Mfi5LDWYTg9Fz3dMoXJtVfJLtnLWVB9afu+UW9cnWiw9rbbo43/xacu6VLJ+6PuGgethKpYfXuk5p9qM9B67774St+JI+YHuOLxVIJ7kRkkrCgwaZR3Uaojuhr/X0dIK8sPgb6neOG0z6N6vt1+um+Hipz+lnNW7dpGtY8ul19vfBChczm8k7C9GdyXQ61j81fCH7sen1QXumdIGQ92UwtHbSatcKll7zdw01qRSCfDujnQDgnJzfsEy5naFN7FR25vIPXWPqGvexfq3cQPx7iE/CG5CL/J4XZau5PERdPVsDWcCBtIu8IQ6pVKI9sL016BDba0qaT5C7S0rvl4WgWW8CGgUQ57TItjRabJL4uV8vouDZbwKEe1Pjwkck/KXlmenDi5NDMUFnln/aZlsFG38sReKHjfso5YjfkyUcpsrAPHcVugV0qCwCb7LYl0w1GcLxjDh100+M8JlfoAiuxbK/KTrk1E0G6pkpGHv0jhPRlL/LcnIhVz+AVBLAwQUAAAICAAACCHs/AGIHW0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0UqqZualBopF5anJyYopBUqKuZZKluZmxcZK5gZm5hWFyqlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHs4wXd+GkCAAAKBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHs/AGIHW0AAAB4AAAACQAkAAAAAAAAAAAAAAC2AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAG4DAAAAAA==
+    dataString: UEsDBBQAAAgIAAAIIexyz+W9cgIAABYFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWxofijt9YQ0gNJJrSTiy/CXmMNsuSR5ADJ8N+7km3sUC7I7+1bvf2wPwkTuobMSLVRLN/KHMiPCbFn8m0ykI9wpgcpduwD+pg3lpvSBlEX80oNk4j7VqZlBUax7Kc4cBvsIdgIVkhVrfMDJFIbjXBBuQaklDRWLRD6nJAz/k1jK7ngaR7a0weeYm9yxWMGwoAahc5n82gxXyzDuJN4s+9+tIiDeNkpp0unbETGaVVDbssYEviLWRR4+As6ve/NotgpBNbaBXuz2ObPJOdMd16JudSuFwmtdYOVYkDOKNbuDPqzIEKkBHYojS1lrH8uCg2m642ilxVT2MU2Mfkl29ZWVB9bo++UN/aqMIicszbp9j9+6ju6ULJ67O/1PXuHKVl2fKWXjGoz6v0YXo28u36dKD/SPYe3EsST3CjZiBxJoxorbTTMV8PjrbSkhOw44K3VO7CphwH0o+4HbWu4uurPCWfVvh1pC+y4dC13+wEK5/MbDbvt0V0KRK2Lvxr+0MN4zTrigSltkOqqFNbeXjbKhpK165mtpjGJVAIc3JmuQVBuLi+YxtyP8I4bXXvHPFD7QnWXd1z/ntxJHDzEe94d9SJPt2HpUp62oMvnxnAmYDBtiSfsUyKFaDdMfyWtateogmYj1aFh+dfNIhCES4/OQ8gymnt7Oo33cRgsFvvQC8LIR7VbPSawTMpfWp9dd3BoYkgucM36z8xko2jtlj1X9LRhH5Uc+WOikLtMAYjnNkPfIQ0KL8FXM1/nDPuzA2OYcOMmnynhMjtCnt4Spa7S9dkomg5ZUlKzd2kskpLEfVdSciXXf1BLAwQUAAAICAAACCHs/AGIHW0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0UqqZualBopF5anJyYopBUqKuZZKluZmxcZK5gZm5hWFyqlIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHscs/lvXICAAAWBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHs/AGIHW0AAAB4AAAACQAkAAAAAAAAAAAAAAC/AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAHcDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 0
+  showNavGraphs: 1
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -2207,6 +2209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae1d4a09803eca4d97c10f67448f2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerBarrierMask: {fileID: 0}
   placeableParent: {fileID: 1821216492}
   towersInPlayParent: {fileID: 1647193802}
   basicPlaceable: {fileID: -9166788285384668290, guid: fc7e51142267c4d4d9dd911139b36adf,
@@ -2221,11 +2224,17 @@ MonoBehaviour:
     type: 3}
   snowTower: {fileID: 6213731364343559203, guid: 7fba5b41335d375428be0b6413347502,
     type: 3}
-  currentCash: 10000
-  currentHealth: 100
-  gameUi: {fileID: 2012510643}
+  sprRedArea: {fileID: 0}
+  sprGreenArea: {fileID: 0}
   placementBlockersParent: {fileID: 1366110676}
   player: {fileID: 1999612378}
+  currentCash: 10000
+  currentHealth: 100
+  currentRound: 0
+  gameUi: {fileID: 2012510643}
+  enemyCount: 0
+  enemyMaxCount: 0
+  debugLevelTransitionSound: {fileID: 0}
 --- !u!1 &1445376394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,8 +2500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234f6ba7804cad743b21f603474e2cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
-  spawnRate: 2
+  mobs: []
+  basicSpawnRate: 3
+  bigChungusSpawnRate: 5
+  sanicSpawnRate: 10
   enemy_target: {fileID: 340457113}
 --- !u!1 &1647193801
 GameObject:
@@ -3074,8 +3085,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234f6ba7804cad743b21f603474e2cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
-  spawnRate: 2
+  mobs:
+  - {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
+  - {fileID: 1543178475637586489, guid: 8dfa6c5347a1ad24faf423ec16e1395d, type: 3}
+  basicSpawnRate: 3
+  bigChungusSpawnRate: 5
+  sanicSpawnRate: 10
   enemy_target: {fileID: 340457113}
 --- !u!1001 &1806923552
 PrefabInstance:
@@ -3229,8 +3244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234f6ba7804cad743b21f603474e2cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
-  spawnRate: 2
+  mobs: []
+  basicSpawnRate: 3
+  bigChungusSpawnRate: 5
+  sanicSpawnRate: 10
   enemy_target: {fileID: 340457113}
 --- !u!1 &1839683165
 GameObject:
@@ -3612,7 +3629,7 @@ PrefabInstance:
     - target: {fileID: 2991865322832994293, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2991865322832994293, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
@@ -3858,10 +3875,12 @@ MonoBehaviour:
     type: 3}
   textCash: {fileID: 191626781}
   textHealth: {fileID: 1762191683}
+  textRound: {fileID: 0}
   purchaseButtons:
   - {fileID: 1325310574}
   - {fileID: 1002186689}
   - {fileID: 1053826700}
+  roundIndicator: {fileID: 0}
   musicManager: {fileID: 0}
   choiceOfMusic: -2
   gamePausePanel: {fileID: 0}
