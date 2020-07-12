@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class FreezeTower : Tower
+public class FridgeTower : Tower
 {
     // TODO Actually implement big chungus enemies
 
