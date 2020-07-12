@@ -144,10 +144,12 @@ public class MusicManager : MonoBehaviour
         if (intent == true && currentMusicPlayer.isPlaying)
         {
             currentMusicPlayer.Pause();
+            currentMusicPlayer2.Pause();
         }
         if (intent == false && !currentMusicPlayer.isPlaying)
         {
             currentMusicPlayer.UnPause();
+            currentMusicPlayer2.UnPause();
         }
     }
 
