@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
-using UnityEditorInternal;
-using UnityEngine;
+﻿using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
