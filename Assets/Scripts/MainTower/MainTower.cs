@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainTower : MonoBehaviour
 {
+    public MusicManager musicManager;
     private GameManager _gameManager;
     float _curTime = 0;
     float nextDamage = 1;
@@ -36,12 +38,18 @@ public class MainTower : MonoBehaviour
         {
             _curTime -= Time.deltaTime;
         }
-       
 
         if (_gameManager.currentHealth <= 0)
         {
             Lose();
         }
+
+        if (_gameManager.currentHealth <= 25)
+        {
+            musicManager.ChangeStressMode();
+    }
+
+
     }
 
     private void Lose()
