@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -115669099269803078}
   - component: {fileID: -3422457413032900100}
   - component: {fileID: -6577770174657913922}
+  - component: {fileID: 5678617109969716404}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -211,3 +212,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5678617109969716404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925385967676941599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c8d737e3ed69fa429e414da6254ca4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corpse: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
+  bigChungusLife: 5
+  basicLife: 2
+  sanicLife: 1

@@ -1572,9 +1572,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234f6ba7804cad743b21f603474e2cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobs: []
+  mobs:
+  - {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
+  - {fileID: 3339407810785517692, guid: 6cf4790d101472a4bbdc0ef82f0f0e40, type: 3}
   basicSpawnRate: 3
-  bigChungusSpawnRate: 5
+  bigChungusSpawnRate: 0
   sanicSpawnRate: 10
   enemy_target: {fileID: 340457113}
 --- !u!1 &1286093858
@@ -1641,7 +1643,7 @@ SpriteRenderer:
   m_Size: {x: 14, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1286093860
@@ -1713,7 +1715,7 @@ MonoBehaviour:
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 1
+  showNavGraphs: 0
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -2212,21 +2214,16 @@ MonoBehaviour:
   towerBarrierMask: {fileID: 0}
   placeableParent: {fileID: 1821216492}
   towersInPlayParent: {fileID: 1647193802}
-  basicPlaceable: {fileID: -9166788285384668290, guid: fc7e51142267c4d4d9dd911139b36adf,
-    type: 3}
-  cannonPlaceable: {fileID: -1453272720415698455, guid: 1a43f6afcd3eb954d9eafd0d29711f3d,
-    type: 3}
-  snowPlaceable: {fileID: 2833609314111091963, guid: aa27b97a982d88949b5cccecad7385f0,
-    type: 3}
-  basicTower: {fileID: 3579875188866723065, guid: 4c09e215fd7dc8441a7c97d6cb2f4db7,
-    type: 3}
-  cannonTower: {fileID: 8928845258137198613, guid: c28637312c8d76b47bffb84a6105c3f5,
-    type: 3}
-  snowTower: {fileID: 6213731364343559203, guid: 7fba5b41335d375428be0b6413347502,
-    type: 3}
-  sprRedArea: {fileID: 0}
-  sprGreenArea: {fileID: 0}
+  placeablePillow: {fileID: 0}
+  placeableWater: {fileID: 0}
+  placeableFridge: {fileID: 0}
+  towerPillow: {fileID: 0}
+  towerWater: {fileID: 0}
+  towerFridge: {fileID: 0}
+  sprTowerInvalidArea: {fileID: 0}
+  sprTowerRange: {fileID: 0}
   placementBlockersParent: {fileID: 1366110676}
+  spritePivotOffset: {x: 0, y: 0.5, z: 0}
   player: {fileID: 1999612378}
   currentCash: 10000
   currentHealth: 100
@@ -2500,7 +2497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234f6ba7804cad743b21f603474e2cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobs: []
+  mobs:
+  - {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
   basicSpawnRate: 3
   bigChungusSpawnRate: 5
   sanicSpawnRate: 10
@@ -3090,7 +3088,7 @@ MonoBehaviour:
   - {fileID: 1543178475637586489, guid: 8dfa6c5347a1ad24faf423ec16e1395d, type: 3}
   basicSpawnRate: 3
   bigChungusSpawnRate: 5
-  sanicSpawnRate: 10
+  sanicSpawnRate: 0
   enemy_target: {fileID: 340457113}
 --- !u!1001 &1806923552
 PrefabInstance:
@@ -3244,7 +3242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234f6ba7804cad743b21f603474e2cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobs: []
+  mobs:
+  - {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
   basicSpawnRate: 3
   bigChungusSpawnRate: 5
   sanicSpawnRate: 10
@@ -3629,7 +3628,7 @@ PrefabInstance:
     - target: {fileID: 2991865322832994293, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2991865322832994293, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}

@@ -87,5 +87,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sanic
       objectReference: {fileID: 0}
+    - target: {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Sanic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657919249173126906, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}

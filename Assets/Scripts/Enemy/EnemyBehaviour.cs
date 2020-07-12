@@ -6,42 +6,67 @@ using UnityEngine.UIElements;
 public class EnemyBehaviour : MonoBehaviour
 {
     public GameObject corpse;
-    public int bigChungusLife = 5;
-    public int basicLife = 2;
-    public int sanicLife = 1;
+    public int bigChungusLife;
+    public int basicLife;
+    public int sanicLife;
 
     private Vector2 enemyLastPos;
     // Start is called before the first frame update
     void Start()
     {
-        
+     bigChungusLife = 5;
+     basicLife = 2;
+     sanicLife = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     
+
     void OnCollisionEnter2D (Collision2D col){
-        if (col.gameObject.tag == "Enemy")
+
+        //Very redundant but actually works so idc I wanna sleep
+        
+        if (col.gameObject.tag == "Projectile" && gameObject.tag == "Enemy")
         {
             basicLife--;
-            Debug.Log(("AAAAAAAAAAAA"));
         }
-        if (col.gameObject.tag == "Enemy" && basicLife == 0) {
+
+        if (col.gameObject.tag == "Projectile" && gameObject.tag == "BigChungusEnemy")
+        {
+            bigChungusLife--;
+        }
+        
+        if (col.gameObject.tag == "Projectile" && gameObject.tag == "Sanic")
+        {
+            sanicLife--;
+        }
+        
+        if (col.gameObject.tag == "Projectile" && basicLife == 0) {
             Vector2 enemyLastPos = new Vector2(col.gameObject.transform.position.x, col.gameObject.transform.position.y);
-            Destroy (col.gameObject);
+            Destroy (gameObject);
             corpse.transform.position = enemyLastPos;
             Instantiate(corpse);
         }
-
-        if (col.gameObject.tag == "Corpse")
-        {
-            Destroy(col.gameObject);
+        
+        if (col.gameObject.tag == "Projectile" && bigChungusLife == 0) {
+            Vector2 enemyLastPos = new Vector2(col.gameObject.transform.position.x, col.gameObject.transform.position.y);
+            Destroy (gameObject);
+            corpse.transform.position = enemyLastPos;
+            Instantiate(corpse);
         }
         
+        if (col.gameObject.tag == "Projectile" && sanicLife == 0) {
+            Vector2 enemyLastPos = new Vector2(col.gameObject.transform.position.x, col.gameObject.transform.position.y);
+            Destroy (gameObject);
+            corpse.transform.position = enemyLastPos;
+            Instantiate(corpse);
+        }
         
     }
-    
+
+   
 }
