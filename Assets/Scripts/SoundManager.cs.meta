@@ -3,16 +3,7 @@ guid: 78f96d9f495ba624b8155882081d5517
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - buttonSoundSource: {instanceID: 0}
-  - hoverSound: {fileID: 8300000, guid: a62ba84aa3f99294a9bab8bffb278ae8, type: 3}
-  - selectSound: {fileID: 8300000, guid: 7894974a30dbf954791da38e96a30d26, type: 3}
-  - destroyTurret: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
-  - enemyImpact1: {fileID: 8300000, guid: 2c846f9b38c290c408c1b6d8e6d842c2, type: 3}
-  - enemyImpact2: {fileID: 8300000, guid: bc4a30dc7dcf2cf4a88b55129f810e97, type: 3}
-  - catCannon: {fileID: 8300000, guid: 54a53c0e6587e2344b8c0b7dbe44a97b, type: 3}
-  - playerHit: {fileID: 8300000, guid: 8bc5f6e94971ac7439ef34144fbd38b4, type: 3}
-  - mixer: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

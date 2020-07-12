@@ -45,6 +45,16 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void ChangeStressMode()
+    {
+        stressMode = true;
+    }
+
+    public void ExitStressMode()
+    {
+        stressMode = false;
+    }
+
     public void FindAllSfxAndPlayPause(bool intent)
     {
         List<GameObject> listOfSfxObjects = new List<GameObject>();
@@ -88,12 +98,6 @@ public class MusicManager : MonoBehaviour
         {
             currentMusicPlayer.pitch -= Time.deltaTime * stressFadeSpeed;
             currentMusicPlayer2.pitch -= Time.deltaTime * stressFadeSpeed;
-        }
-        
-        //TESTING DELETE
-        if (Input.GetKeyDown("p"))
-        {
-            stressMode = !stressMode;
         }
     }
 

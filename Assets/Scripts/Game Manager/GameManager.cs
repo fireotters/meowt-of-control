@@ -6,7 +6,8 @@ using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
-    [Header("GameManager")]
+    public SoundManager soundManager;
+    public MusicManager musicManager;
     public PlayerController player;
     public int currentCash = 50, currentHealth = 100, currentPlayerHealth = 3, currentRound = 0;
     private int maxHealth = 100, maxPlayerHealth = 3;
@@ -69,6 +70,7 @@ public partial class GameManager : MonoBehaviour
     {
         if (currentPlayerHealth != 0)
         {
+            soundManager.SoundPlayerHit();
             currentPlayerHealth--;
             gameUi.UpdatePlayerHealth();
         }
@@ -92,6 +94,11 @@ public partial class GameManager : MonoBehaviour
                 else
                 {
                     gameUi.UpdateCash(50);
+                }
+
+                if (currentHealth > 25)
+                {
+                    musicManager.ExitStressMode();
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using Pathfinding;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -30,7 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
         bigChungusLife = bigChungusMaxLife;
         basicLife = basicMaxLife;
         sanicLife = sanicMaxLife;
-        playerLife = 2;
+        playerLife = 6;
         healthBarFullSize = healthBar.localScale.x;
     }
     
@@ -94,6 +95,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (col.gameObject.tag == "Player" && playerLife <= 0)
         {
             Destroy(col.gameObject);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
