@@ -146,10 +146,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5405810806751190165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31d661e9e74d93343aa862a9a55a266f, type: 3}
+  m_Script: {fileID: 11500000, guid: c18785f3881eb854fa3c5cbb3c4dd0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootCadence: 2
+  shootCadence: 0.5
   gunEnd: {fileID: 6131310503200279371}
   bulletPrefab: {fileID: 4955034945373706700, guid: 3b165ed35b85a3e4990274444c36f459,
     type: 3}
