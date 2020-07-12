@@ -85,7 +85,6 @@ public class MusicManager : MonoBehaviour
             currentMusicPlayer2.pitch -= Time.deltaTime * stressFadeSpeed;
         }
         
-        
         //TESTING
         if (Input.GetKeyDown("p"))
         {
@@ -120,8 +119,6 @@ public class MusicManager : MonoBehaviour
                     break;
             }
 
-            currentMusicPlayer.Play();
-            
             if (currentMusicPlayer.clip == stageMusic)
             {
                 currentMusicPlayer2.clip = stageMusicDrums;
@@ -130,6 +127,7 @@ public class MusicManager : MonoBehaviour
             }
             else
             {
+                currentMusicPlayer.Play();
                 currentMusicPlayer2.Stop();
             }
             lastTrackRequested = index;
