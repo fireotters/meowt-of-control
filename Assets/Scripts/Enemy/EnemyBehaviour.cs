@@ -8,6 +8,7 @@ public class EnemyBehaviour : MonoBehaviour
     public int bigChungusLife;
     public int basicLife;
     public int sanicLife;
+    public int playerLife;
 
     private int bigChungusMaxLife = 5;
     private int basicMaxLife = 2;
@@ -29,7 +30,7 @@ public class EnemyBehaviour : MonoBehaviour
         bigChungusLife = bigChungusMaxLife;
         basicLife = basicMaxLife;
         sanicLife = sanicMaxLife;
-
+        playerLife = 2;
         healthBarFullSize = healthBar.localScale.x;
     }
     
@@ -83,6 +84,16 @@ public class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
             corpse.transform.position = enemyLastPos;
             Instantiate(corpse);
+        }
+        
+        if (col.gameObject.tag == "Player")
+        {
+            playerLife--;
+        }
+
+        if (col.gameObject.tag == "Player" && playerLife <= 0)
+        {
+            Destroy(col.gameObject);
         }
     }
 
