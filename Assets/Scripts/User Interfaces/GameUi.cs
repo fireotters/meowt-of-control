@@ -11,6 +11,7 @@ public partial class GameUi : BaseUi
     public GameObject gamePausePanel;
     public GameObject gameOverPanel;
     public GameManager gM;
+    public GameObject player;
 
     void Start()
     {
@@ -34,6 +35,11 @@ public partial class GameUi : BaseUi
     void Update()
     {
         CheckKeyInputs();
+        // if (player == null)
+        // {
+        //     gameOver(!gamePausePanel.activeInHierarchy);
+        // }
+        
     }
     private void CheckKeyInputs()
     {
@@ -46,11 +52,7 @@ public partial class GameUi : BaseUi
         {
             SwapFullscreen();
         }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            gameOver(!gameOverPanel.activeInHierarchy);
-        }
+        
     }
 
     public void GameIsPaused(bool intent)
@@ -67,21 +69,18 @@ public partial class GameUi : BaseUi
         }
     }
 
-    public void gameOver(bool intent)
-    {
-        gameOverPanel.SetActive(intent);
-        Time.timeScale = (intent == true) ? 0 : 1;
-    }
+    // public void gameOver(bool intent)
+    // {
+    //     gameOverPanel.SetActive(intent);
+    //     Time.timeScale = (intent == true) ? 0 : 1;
+    // }
 
-    public void restart()
-    {
-        SceneManager.LoadScene(2);
-        Time.timeScale = 1;
-
-        
-    }
-
-   
+    // public void restart()
+    // {
+    //     SceneManager.LoadScene(2);
+    //     Time.timeScale = 1;
+    //     gamePausePanel.SetActive(false);
+    // }
 
     public void ExitLevel()
     {

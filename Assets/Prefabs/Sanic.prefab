@@ -128,6 +128,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5454482125737441040, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5657919249173126906, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
       propertyPath: maxSpeed
