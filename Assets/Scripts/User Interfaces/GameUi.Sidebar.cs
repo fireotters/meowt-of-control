@@ -8,10 +8,11 @@ public partial class GameUi : BaseUi
 {
     [Header("Purchasing UI")]
     public TextMeshProUGUI textCash;
-    public TextMeshProUGUI textHealth, textRound;
+    public TextMeshProUGUI textHealth, textRound, textCatHealth;
     public PurchaseButton[] purchaseButtons;
     public Sprite[] catFaces;
     public Image roundIndicator, catFace;
+    public GameObject buildModeTexts;
 
 
     internal void UpdateCash(int difference)
@@ -49,6 +50,7 @@ public partial class GameUi : BaseUi
                 catFace.sprite = catFaces[6];
                 break;
         }
+        textCatHealth.text = gM.currentPlayerHealth.ToString();
     }
 
     public void Purchase(int whichPurchase)
@@ -56,13 +58,13 @@ public partial class GameUi : BaseUi
         int priceToCheck = 0;
         switch (whichPurchase) {
             case 0:
-                priceToCheck = 100;
+                priceToCheck = gM.pricePillow;
                 break;
             case 1:
-                priceToCheck = 200;
+                priceToCheck = gM.priceWater;
                 break;
             case 2:
-                priceToCheck = 300;
+                priceToCheck = gM.priceFridge;
                 break;
         }
 

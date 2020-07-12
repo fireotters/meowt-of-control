@@ -8,7 +8,7 @@ public partial class GameManager : MonoBehaviour
 {
     [Header("GameManager")]
     public PlayerController player;
-    public int currentCash = 10000, currentHealth = 100, currentPlayerHealth = 3, currentRound = 0;
+    public int currentCash = 50, currentHealth = 100, currentPlayerHealth = 3, currentRound = 0;
     private int maxPlayerHealth = 3;
     public GameUi gameUi;
 
@@ -45,6 +45,7 @@ public partial class GameManager : MonoBehaviour
     private void StartNextRound()
     {
         currentRound += 1;
+        currentCash += 50 * currentRound;
         enemyMaxCount = currentRound * 7;
         enemyCount = enemyMaxCount;
         gameUi.textRound.text = currentRound.ToString();

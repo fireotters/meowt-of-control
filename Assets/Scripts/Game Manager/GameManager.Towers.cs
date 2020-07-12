@@ -18,6 +18,8 @@ public partial class GameManager : MonoBehaviour
     public Transform placementBlockersParent;
     public Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
 
+    [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50;
+
     public void SpawnPlaceableTower(int whichTower)
     {
         // If already placing a tower, destroy old choice.
@@ -79,15 +81,15 @@ public partial class GameManager : MonoBehaviour
         {
             case 0:
                 towerToSpawn = towerPillow;
-                gameUi.UpdateCash(-100);
+                gameUi.UpdateCash(-pricePillow);
                 break;
             case 1:
                 towerToSpawn = towerWater;
-                gameUi.UpdateCash(-200);
+                gameUi.UpdateCash(-priceWater);
                 break;
             case 2:
                 towerToSpawn = towerFridge;
-                gameUi.UpdateCash(-300);
+                gameUi.UpdateCash(-priceFridge);
                 break;
         }
         if (towerToSpawn != null)
@@ -114,5 +116,6 @@ public partial class GameManager : MonoBehaviour
     {
         sprTowerInvalidArea.enabled = isPlacingTower;
         sprTowerRange.enabled = isPlacingTower;
+        gameUi.buildModeTexts.SetActive(isPlacingTower);
     }
 }
