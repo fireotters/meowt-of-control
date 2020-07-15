@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4925385967676941587}
+  - component: {fileID: 2579667382344482714}
   - component: {fileID: 4925385967676941596}
   - component: {fileID: 6018084922672946227}
   - component: {fileID: 5657919249173126906}
   - component: {fileID: -115669099269803078}
   - component: {fileID: -3422457413032900100}
   - component: {fileID: -6577770174657913922}
-  - component: {fileID: 5678617109969716404}
   - component: {fileID: 7739615390887486111}
   m_Layer: 8
   m_Name: Enemy
@@ -39,6 +39,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2579667382344482714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925385967676941599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c8d737e3ed69fa429e414da6254ca4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreScrapColliders: 0
+  scrap: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
+  enemyMaxHits: 0
 --- !u!212 &4925385967676941596
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -215,25 +230,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.04, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &5678617109969716404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4925385967676941599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c8d737e3ed69fa429e414da6254ca4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  corpse: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
-  bigChungusLife: 5
-  basicLife: 2
-  sanicLife: 1
-  playerLife: 0
-  heldItem: {fileID: 0}
-  healthBar: {fileID: 3462690377786985872}
 --- !u!95 &7739615390887486111
 Animator:
   serializedVersion: 3
@@ -264,7 +260,7 @@ GameObject:
   - component: {fileID: 3462690377786985872}
   - component: {fileID: 3887996381213992194}
   m_Layer: 8
-  m_Name: Health Bar
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,7 +317,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1508027155
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: e0bdd3ab7e43d8d4e8e0f365fe99f72c, type: 3}
   m_Color: {r: 0.6792453, g: 0, b: 0, a: 1}

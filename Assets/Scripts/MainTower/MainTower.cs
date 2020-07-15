@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class MainTower : MonoBehaviour
 {
-    public MusicManager musicManager;
     private GameManager _gameManager;
     float _curTime = 0;
     float nextDamage = 1;
@@ -18,7 +17,7 @@ public class MainTower : MonoBehaviour
     {
         if (_curTime <= 0)
         {
-            if (col.gameObject.tag == "BigChungusEnemy")
+            if (col.gameObject.tag == "LargeEnemy")
             {
                 _gameManager.gameUi.UpdateHealth(-5);
             }
@@ -46,7 +45,7 @@ public class MainTower : MonoBehaviour
 
         if (_gameManager.currentHealth <= 25)
         {
-            musicManager.ChangeStressMode();
+            _gameManager.gameUi.musicManager.ChangeStressMode();
     }
 
 

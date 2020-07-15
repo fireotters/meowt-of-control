@@ -3,10 +3,9 @@
 public partial class GameManager : MonoBehaviour
 {
     public SoundManager soundManager;
-    public MusicManager musicManager;
     public PlayerController player;
     public int currentCash = 50, currentHealth = 100, currentPlayerHealth = 3, currentRound = 0;
-    private int maxHealth = 100, maxPlayerHealth = 3;
+    private const int maxHealth = 100, maxPlayerHealth = 3, hpMilkHeals = 25;
     public GameUi gameUi;
     private float nextPlayerDmg = 0.0f;
 
@@ -14,6 +13,7 @@ public partial class GameManager : MonoBehaviour
     public int enemyCount = 0;
     public int enemyMaxCount = 0;
     public int enemyNumberSpawned = 0;
+    public GameObject dropMilk, dropYarn;
 
     private void Start()
     {
@@ -47,16 +47,15 @@ public partial class GameManager : MonoBehaviour
         gameUi.UpdateRoundIndicator();
     }
 
-    public AudioSource debugLevelTransitionSound;
-    public void KillEnemy()
+    public void IncrementEnemyKillCount()
     {
-        gameUi.UpdateRoundIndicator();
         if (enemyCount > 0)
         {
             enemyCount -= 1;
         }
-        print($"Enemy count: {enemyCount}");
+        gameUi.UpdateRoundIndicator();
     }
+
     public void DamagePlayer()
     {
         if (currentPlayerHealth != 0 && Time.time > nextPlayerDmg)
@@ -79,9 +78,9 @@ public partial class GameManager : MonoBehaviour
             }
             else if (currentPlayerHealth == maxPlayerHealth)
             {
-                if (currentHealth < maxHealth)
+                if (currentHealth <= maxHealth - hpMilkHeals)
                 {
-                    gameUi.UpdateHealth(25);
+                    gameUi.UpdateHealth(hpMilkHeals);
                 }
                 else
                 {
@@ -90,7 +89,7 @@ public partial class GameManager : MonoBehaviour
 
                 if (currentHealth > 25)
                 {
-                    musicManager.ExitStressMode();
+                    gameUi.musicManager.ExitStressMode();
                 }
             }
         }

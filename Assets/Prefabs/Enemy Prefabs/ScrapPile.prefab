@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4349836573955106205}
   - component: {fileID: 4349836573955106178}
   m_Layer: 9
-  m_Name: Corpse
-  m_TagString: Corpse
+  m_Name: ScrapPile
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4349836573955106206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29336917, y: -0.90040714, z: 0}
+  m_LocalPosition: {x: -1.2174814, y: 1.0855762, z: 0}
   m_LocalScale: {x: 0.08593846, y: 0.08920972, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 951818289
-  m_SortingLayer: 8
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -8630800276387887019, guid: 75183467f67242841972d815728d9094,
     type: 3}

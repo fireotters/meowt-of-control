@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2689079090142765758}
   - component: {fileID: 2689079090142765757}
   m_Layer: 0
-  m_Name: EnemySpawnerLeft
-  m_TagString: SideTower
+  m_Name: EnemySpawner
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2689079090142765759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6, y: -0.37, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobs:
-  - {fileID: 4925385967676941599, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
+  - {fileID: 3001893311751525338, guid: 1d5a6dc55ed808446a62780a01a055fa, type: 3}
   - {fileID: 1543178475637586489, guid: 8dfa6c5347a1ad24faf423ec16e1395d, type: 3}
   - {fileID: 3339407810785517692, guid: 6cf4790d101472a4bbdc0ef82f0f0e40, type: 3}
-  basicSpawnRate: 3
-  bigChungusSpawnRate: 100
-  sanicSpawnRate: 10
+  isHorizontalSpawner: 0
+  enemiesInPlayParent: {fileID: 0}
+  spawnRate: 0
   enemy_target: {fileID: 0}

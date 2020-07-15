@@ -34,10 +34,10 @@ public class PlaceableTower : MonoBehaviour
                 interferingColliders.Add(col);
             }
         }
-        if (interferingColliders.Count > 0)
+        /*if (interferingColliders.Count > 0)
         {
             print("PlaceableTower: " + interferingColliders.Count + " barrier colliders found");
-        }
+        }*/
 
         placementIsValid = interferingColliders.Count == 0;
         gM.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;

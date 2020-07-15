@@ -13,6 +13,9 @@ public partial class GameUi : BaseUi
     public GameManager gM;
     public GameObject player;
 
+    [Header("Unity Inspector Organisation")]
+    public Transform dropsInPlayParent;
+
     void Start()
     {
         // Change music track

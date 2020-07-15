@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 18814254652573279, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
       propertyPath: m_TagString
-      value: Projectile
+      value: PlayerBullet
       objectReference: {fileID: 0}
     - target: {fileID: 5118090845900072925, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
