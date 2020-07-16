@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class PillowTower : Tower
 {
     protected override void TrackAndShoot()
     {
-        if (AcknowledgedEnemies[0].position != null)
+        var enemyToTarget = AcknowledgedEnemies.FirstOrDefault();
+
+        if (enemyToTarget != null)
         {
-            var lookDir = AcknowledgedEnemies[0].position - transform.position;
+            var lookDir = enemyToTarget.position - transform.position;
             var angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
             SetLookAnimation(angle);
             var rotationDir = new Vector3(0, 0, angle);

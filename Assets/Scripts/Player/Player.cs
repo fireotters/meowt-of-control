@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    internal void ReduceBulletsLeft()
+    public void ReduceBulletsLeft()
     {
         ShowAmmoPanel();
         bulletsLeft--;
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    internal void IncreaseBulletsLeft()
+    public void IncreaseBulletsLeft()
     {
         if (bulletsLeft < 6 && Time.time > nextBulletReload)
         {
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    internal void ShowAmmoPanel()
+    public void ShowAmmoPanel()
     {
         CancelInvoke(nameof(HideAmmoPanel));
         Invoke(nameof(HideAmmoPanel), 1f);

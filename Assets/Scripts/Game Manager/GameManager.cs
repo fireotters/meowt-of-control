@@ -11,10 +11,14 @@ public partial class GameManager : MonoBehaviour
     public int enemyCount = 0;
     public int enemyMaxCount = 0;
     public int enemyNumberSpawned = 0;
+
     public GameObject dropMilk, dropYarn;
+    internal MainTower _mainTower;
+    [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
 
     private void Start()
     {
+        _mainTower = FindObjectOfType<MainTower>();
         sprTowerInvalidArea = placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
         sprTowerRange = placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
         ToggleTowerColourZones();

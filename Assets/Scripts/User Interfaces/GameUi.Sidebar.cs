@@ -12,7 +12,7 @@ public partial class GameUi : BaseUi
     public PurchaseButton[] purchaseButtons;
     public Sprite[] catFaces;
     public Image roundIndicator, catFace;
-    public GameObject buildModeTexts;
+    public GameObject buildModeTexts, launchModeTexts;
 
 
     internal void UpdateYarn(int difference)
@@ -65,6 +65,9 @@ public partial class GameUi : BaseUi
                 break;
             case 2:
                 priceToCheck = gM.priceFridge;
+                break;
+            case 3:
+                priceToCheck = gM.priceMissile;
                 break;
         }
 
