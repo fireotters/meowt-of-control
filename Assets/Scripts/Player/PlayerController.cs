@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Transform _bulletEmitter;
     [SerializeField] private BaseBullet bulletPrefab;
     [SerializeField] private Transform gunEnd;
+    private Player _player;
     
     private const string HorizontalAxis = "Horizontal";
     private const string VerticalAxis = "Vertical";
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _cam = Camera.main;
+        _player = GetComponent<Player>();
 
         _bulletEmitter = transform.GetChild(0);
     }
@@ -53,16 +55,23 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(1) && _canShootAgain <= 0)
         {
-            _canShoot = true;
+            if(_player.gunEnoughAmmo)
+            {
+                _canShoot = true;
+            }
+            else
+            {
+                _player.ShowAmmoPanel();
+            }
         }
     }
     
     private void Shoot()
     {
         var bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation);
-        
         bullet.Pew();
 
+        _player.ReduceBulletsLeft();
         _canShoot = false;
         _canShootAgain = shootCadence;
     }

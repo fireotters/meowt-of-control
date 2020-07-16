@@ -15,16 +15,16 @@ public partial class GameUi : BaseUi
     public GameObject buildModeTexts;
 
 
-    internal void UpdateCash(int difference)
+    internal void UpdateYarn(int difference)
     {
-        gM.currentCash += difference;
-        textCash.text = gM.currentCash.ToString();
+        gM.currentYarn += difference;
+        textCash.text = gM.currentYarn.ToString();
     }
 
-    internal void UpdateHealth(int difference)
+    internal void UpdateMainTowerHealth(int difference)
     {
-        gM.currentHealth += difference;
-        textHealth.text = gM.currentHealth + "%";
+        gM.mainTowerHealth += difference;
+        textHealth.text = gM.mainTowerHealth + "%";
     }
 
     internal void UpdateRoundIndicator()
@@ -35,7 +35,7 @@ public partial class GameUi : BaseUi
 
     internal void UpdatePlayerHealth()
     {
-        switch (gM.currentPlayerHealth)
+        switch (gM.player.currentPlayerHealth)
         {
             case 3:
                 catFace.sprite = catFaces[0];
@@ -50,7 +50,7 @@ public partial class GameUi : BaseUi
                 catFace.sprite = catFaces[6];
                 break;
         }
-        textCatHealth.text = gM.currentPlayerHealth.ToString();
+        textCatHealth.text = gM.player.currentPlayerHealth.ToString();
     }
 
     public void Purchase(int whichPurchase)
@@ -68,7 +68,7 @@ public partial class GameUi : BaseUi
                 break;
         }
 
-        if (gM.currentCash >= priceToCheck)
+        if (gM.currentYarn >= priceToCheck)
         {
             gM.SpawnPlaceableTower(whichPurchase);
         }

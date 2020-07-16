@@ -31,8 +31,8 @@ public partial class GameUi : BaseUi
         StartCoroutine(FadeBlack("from"));
 
         // Initialise UI values
-        UpdateCash(0);
-        UpdateHealth(0);
+        UpdateYarn(0);
+        UpdateMainTowerHealth(0);
     }
 
     void Update()

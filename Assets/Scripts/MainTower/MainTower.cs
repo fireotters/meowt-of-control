@@ -19,16 +19,16 @@ public class MainTower : MonoBehaviour
         {
             if (col.gameObject.tag == "LargeEnemy")
             {
-                _gameManager.gameUi.UpdateHealth(-5);
+                _gameManager.gameUi.UpdateMainTowerHealth(-5);
             }
             else if(col.gameObject.tag != "Player")
             {
-                _gameManager.gameUi.UpdateHealth(-1);
+                _gameManager.gameUi.UpdateMainTowerHealth(-1);
             }
 
            
             
-            Debug.Log("Tower hit!" + _gameManager.currentHealth);
+            Debug.Log("Tower hit!" + _gameManager.mainTowerHealth);
 
             _curTime = nextDamage;
         }
@@ -38,12 +38,12 @@ public class MainTower : MonoBehaviour
             _curTime -= Time.deltaTime;
         }
 
-        if (_gameManager.currentHealth <= 0)
+        if (_gameManager.mainTowerHealth <= 0)
         {
             Lose();
         }
 
-        if (_gameManager.currentHealth <= 25)
+        if (_gameManager.mainTowerHealth <= 25)
         {
             _gameManager.gameUi.musicManager.ChangeStressMode();
     }

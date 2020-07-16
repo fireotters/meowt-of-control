@@ -58,11 +58,6 @@ public class Enemy : MonoBehaviour
                 // No item spawns 7/10 of the time
             }
         }
-        // Hitting player damages them
-        else if (col.gameObject.CompareTag("Player"))
-        {
-            gM.DamagePlayer();
-        }
         // Big chungus ignores the collision with scraps
         else if (ignoreScrapColliders && col.gameObject.CompareTag("Scrap"))
         {

@@ -2,12 +2,10 @@
 
 public partial class GameManager : MonoBehaviour
 {
-    public SoundManager soundManager;
-    public PlayerController player;
-    public int currentCash = 50, currentHealth = 100, currentPlayerHealth = 3, currentRound = 0;
-    private const int maxHealth = 100, maxPlayerHealth = 3, hpMilkHeals = 25;
+    public Player player;
+    public int currentYarn = 50, mainTowerHealth = 100, currentRound = 0;
+    private const int maxMainTowerHealth = 100, hpMilkHeals = 25;
     public GameUi gameUi;
-    private float nextPlayerDmg = 0.0f;
 
     [Header("Enemy Management")]
     public int enemyCount = 0;
@@ -38,7 +36,7 @@ public partial class GameManager : MonoBehaviour
     private void StartNextRound()
     {
         currentRound += 1;
-        currentCash += 50 * currentRound;
+        currentYarn += 50 * currentRound;
         enemyMaxCount = currentRound * 7;
         enemyCount = enemyMaxCount;
         enemyNumberSpawned = 0;
@@ -56,50 +54,20 @@ public partial class GameManager : MonoBehaviour
         gameUi.UpdateRoundIndicator();
     }
 
-    public void DamagePlayer()
+    public void HandleMilkPickup()
     {
-        if (currentPlayerHealth != 0 && Time.time > nextPlayerDmg)
+        if (mainTowerHealth <= maxMainTowerHealth - hpMilkHeals)
         {
-            nextPlayerDmg = Time.time + 3f;
-            soundManager.SoundPlayerHit();
-            currentPlayerHealth--;
-            gameUi.UpdatePlayerHealth();
-        }
-    }
-
-    public void PickupItem(string type)
-    {
-        if (type == "milk")
-        {
-            if (currentPlayerHealth < maxPlayerHealth)
-            {
-                currentPlayerHealth = maxPlayerHealth;
-                gameUi.UpdatePlayerHealth();
-            }
-            else if (currentPlayerHealth == maxPlayerHealth)
-            {
-                if (currentHealth <= maxHealth - hpMilkHeals)
-                {
-                    gameUi.UpdateHealth(hpMilkHeals);
-                }
-                else
-                {
-                    gameUi.UpdateCash(50);
-                }
-
-                if (currentHealth > 25)
-                {
-                    gameUi.musicManager.ExitStressMode();
-                }
-            }
-        }
-        else if (type == "yarn")
-        {
-            gameUi.UpdateCash(50);
+            gameUi.UpdateMainTowerHealth(hpMilkHeals);
         }
         else
         {
-            Debug.LogError("GameManger.PickupItem: Invalid pickup type");
+            gameUi.UpdateYarn(50);
+        }
+
+        if (mainTowerHealth > 25)
+        {
+            gameUi.musicManager.ExitStressMode();
         }
     }
 

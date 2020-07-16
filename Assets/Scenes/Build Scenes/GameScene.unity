@@ -1159,16 +1159,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212998530}
   m_CullTransparentMesh: 0
---- !u!114 &268270789 stripped
+--- !u!114 &300768503 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -4181197451277083936, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
+  m_CorrespondingSourceObject: {fileID: 1529135591953529364, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
     type: 3}
   m_PrefabInstance: {fileID: 590359839}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78f96d9f495ba624b8155882081d5517, type: 3}
+  m_Script: {fileID: 11500000, guid: 19fe4168260c76f43a8d93e52276fcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &341489937
@@ -1901,20 +1901,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1286093860}
     m_Modifications:
-    - target: {fileID: 2991865322036998999, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
     - target: {fileID: 2991865322832994288, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991865322832994288, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2991865322832994293, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
@@ -1970,36 +1960,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991865322832994293, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.22492313
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991865322832994293, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.26968035
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991865322832994294, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991865322832994294, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991865322832994294, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991865323443025737, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f6932bd1ae7fc47be39b3b2d26e167, type: 3}
@@ -2813,18 +2773,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &935334504 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2991865322832994292, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-    type: 3}
-  m_PrefabInstance: {fileID: 590359839}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2b2c34efc0f4049a69f40df9b93d2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &956071832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5558,11 +5506,9 @@ MonoBehaviour:
   pricePillow: 10
   priceWater: 30
   priceFridge: 50
-  soundManager: {fileID: 268270789}
-  player: {fileID: 935334504}
-  currentCash: 50
-  currentHealth: 100
-  currentPlayerHealth: 3
+  player: {fileID: 300768503}
+  currentYarn: 50
+  mainTowerHealth: 100
   currentRound: 0
   gameUi: {fileID: 2012510643}
   enemyCount: 0

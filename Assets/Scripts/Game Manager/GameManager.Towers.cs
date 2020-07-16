@@ -81,15 +81,15 @@ public partial class GameManager : MonoBehaviour
         {
             case 0:
                 towerToSpawn = towerPillow;
-                gameUi.UpdateCash(-pricePillow);
+                gameUi.UpdateYarn(-pricePillow);
                 break;
             case 1:
                 towerToSpawn = towerWater;
-                gameUi.UpdateCash(-priceWater);
+                gameUi.UpdateYarn(-priceWater);
                 break;
             case 2:
                 towerToSpawn = towerFridge;
-                gameUi.UpdateCash(-priceFridge);
+                gameUi.UpdateYarn(-priceFridge);
                 break;
         }
         if (towerToSpawn != null)
