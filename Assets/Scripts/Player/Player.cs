@@ -4,21 +4,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    internal int bulletsLeft = 6, currentPlayerHealth = 3;
-    internal bool gunEnoughAmmo = true;
-    [SerializeField] private GameObject[] bulletIndicators;
+    [Header("Tweakable Variables")]
+    public int bulletsLeft = 6;
+    public int currentPlayerHealth = 3;
+    private readonly float reloadTimePerBullet = 0.1f;
+    private readonly int maxBullets = 6, maxPlayerHealth = 3;
+    // If maxBullets is changed, bullet indicators need to be added in Unity, and assigned to bulletIndicators[]
 
-    private GameObject bulletIndicatorsPanel;
-    private readonly int maxPlayerHealth = 3;
+    [Header("Private Components / Other Variables")]
+    private float nextPlayerDmg = 0.0f;
     private GameManager gM;
     private SoundManager soundManager;
-    private float nextPlayerDmg = 0.0f, nextBulletReload = 0.0f;
+
+    [Header("Weapon Variables")]
+    [SerializeField] private GameObject[] bulletIndicators;
+    public AudioClip audNoAmmo, audReload;
+    [HideInInspector] public bool gunCanBeUsed = true;
+    private bool gunIsReloading = false;
+    private GameObject ammoPanel, ammoPanelNoAmmoOverlay;
+    private AudioSource ammoPanelSounds;
 
     private void Start()
     {
-        bulletIndicatorsPanel = transform.Find("BulletsRemaining").gameObject;
+        ammoPanel = transform.Find("BulletsRemaining").gameObject;
         gM = FindObjectOfType<GameManager>();
         soundManager = GetComponent<SoundManager>();
+        ammoPanelSounds = ammoPanel.GetComponent<AudioSource>();
+        ammoPanelNoAmmoOverlay = ammoPanel.transform.Find("NoShooting").gameObject;
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -30,45 +42,73 @@ public class Player : MonoBehaviour
         }
         else if (col.gameObject.CompareTag("MainTower"))
         {
-            IncreaseBulletsLeft();
+            AttemptReload();
         }
     }
 
-    public void ReduceBulletsLeft()
-    {
-        ShowAmmoPanel();
-        bulletsLeft--;
-        bulletIndicators[bulletsLeft].SetActive(false);
-        if (bulletsLeft == 0)
-        {
-            gunEnoughAmmo = false;
-        }
-    }
 
-    public void IncreaseBulletsLeft()
+    /* ------------------------------------------------------------------------------------------------------------------
+     * Reload Mechanics
+     * If gun has less than 'maxBullets' bullets, allow a reload. Cannot shoot until reload is over. Loads one bullet per 'reloadTimePerBullet' until full.
+     * ------------------------------------------------------------------------------------------------------------------ */
+    public void AttemptReload()
     {
-        if (bulletsLeft < 6 && Time.time > nextBulletReload)
+        if (bulletsLeft < maxBullets && !gunIsReloading)
         {
-            nextBulletReload = Time.time + 0.5f;
-            gunEnoughAmmo = true;
-
+            gunIsReloading = true;
+            gunCanBeUsed = false;
             ShowAmmoPanel();
+            ammoPanelSounds.clip = audReload;
+            ammoPanelSounds.Play();
+
+            StartCoroutine(ReloadAction());
+        }
+    }
+
+    private IEnumerator ReloadAction()
+    {
+        while (!gunCanBeUsed)
+        {
             bulletsLeft++;
             bulletIndicators[bulletsLeft - 1].SetActive(true);
+            yield return new WaitForSeconds(reloadTimePerBullet);
+            if (bulletsLeft == 6)
+            {
+                gunCanBeUsed = true;
+            }
         }
+        gunIsReloading = false;
+        ShowAmmoPanel();
     }
+
+    /* ------------------------------------------------------------------------------------------------------------------
+     * Ammo Panel
+     * Shown when player shoots / attempts to shoot. Hidden 1 second after last request to show it.
+     * ------------------------------------------------------------------------------------------------------------------ */
 
     public void ShowAmmoPanel()
     {
         CancelInvoke(nameof(HideAmmoPanel));
         Invoke(nameof(HideAmmoPanel), 1f);
-        bulletIndicatorsPanel.SetActive(true);
+        ammoPanel.SetActive(true);
+        if (!gunCanBeUsed || gunIsReloading)
+        {
+            ammoPanelNoAmmoOverlay.SetActive(true);
+        }
+        else
+        {
+            ammoPanelNoAmmoOverlay.SetActive(false);
+        }
     }
     private void HideAmmoPanel()
     {
-        bulletIndicatorsPanel.SetActive(false);
+        ammoPanel.SetActive(false);
     }
 
+    /* ------------------------------------------------------------------------------------------------------------------
+     * Damage Player
+     * Player can be reduced by one health state every 3 seconds.
+     * ------------------------------------------------------------------------------------------------------------------ */
     public void DamagePlayer()
     {
         if (currentPlayerHealth != 0 && Time.time > nextPlayerDmg)
@@ -80,6 +120,36 @@ public class Player : MonoBehaviour
         }
     }
 
+    /* ------------------------------------------------------------------------------------------------------------------
+     * BulletWasShot / NoAmmo
+     * If no bullets, gun cannot be shot. If shooting is attempted with no bullets, NoAmmo shows ammo panel and plays a sound effect.
+     * ------------------------------------------------------------------------------------------------------------------ */
+    public void BulletWasShot()
+    {
+        ShowAmmoPanel();
+        bulletsLeft--;
+        bulletIndicators[bulletsLeft].SetActive(false);
+        if (bulletsLeft == 0)
+        {
+            gunCanBeUsed = false;
+        }
+    }
+
+    public void NoAmmo()
+    {
+        ShowAmmoPanel();
+        if (!ammoPanelSounds.isPlaying && !gunIsReloading)
+        {
+            ammoPanelSounds.clip = audNoAmmo;
+            ammoPanelSounds.Play();
+        }
+    }
+
+    /* ------------------------------------------------------------------------------------------------------------------
+     * PickupItem
+     * If milk is picked up: heal the player, or send to GameManager (heal main tower or sell for yarn).
+     * If yarn is picked up: deposit 50 yarn.
+     * ------------------------------------------------------------------------------------------------------------------ */
     public void PickupItem(string type)
     {
         if (type == "milk")
@@ -103,4 +173,5 @@ public class Player : MonoBehaviour
             Debug.LogError("GameManger.PickupItem: Invalid pickup type");
         }
     }
+
 }
