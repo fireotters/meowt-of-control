@@ -45,13 +45,11 @@ public class Player : MonoBehaviour
             AttemptReload();
         }
     }
-
-
-    /* ------------------------------------------------------------------------------------------------------------------
-     * Reload Mechanics
-     * If gun has less than 'maxBullets' bullets, allow a reload. Cannot shoot until reload is over. Loads one bullet per 'reloadTimePerBullet' until full.
-     * ------------------------------------------------------------------------------------------------------------------ */
-    public void AttemptReload()
+    
+    /// <summary>
+    /// If gun has less than 'maxBullets' bullets, allow a reload. Cannot shoot until reload is over. Loads one bullet per 'reloadTimePerBullet' until full.
+    /// </summary>
+    private void AttemptReload()
     {
         if (bulletsLeft < maxBullets && !gunIsReloading)
         {
@@ -80,13 +78,11 @@ public class Player : MonoBehaviour
         gunIsReloading = false;
         ShowAmmoPanel();
     }
-
-    /* ------------------------------------------------------------------------------------------------------------------
-     * Ammo Panel
-     * Shown when player shoots / attempts to shoot. Hidden 1 second after last request to show it.
-     * ------------------------------------------------------------------------------------------------------------------ */
-
-    public void ShowAmmoPanel()
+    
+    /// <summary>
+    /// Shown when player shoots / attempts to shoot. Hidden 1 second after last request to show it.
+    /// </summary>
+    private void ShowAmmoPanel()
     {
         CancelInvoke(nameof(HideAmmoPanel));
         Invoke(nameof(HideAmmoPanel), 1f);
@@ -104,12 +100,11 @@ public class Player : MonoBehaviour
     {
         ammoPanel.SetActive(false);
     }
-
-    /* ------------------------------------------------------------------------------------------------------------------
-     * Damage Player
-     * Player can be reduced by one health state every 3 seconds.
-     * ------------------------------------------------------------------------------------------------------------------ */
-    public void DamagePlayer()
+    
+    /// <summary>
+    /// Player can be reduced by one health state every 3 seconds.
+    /// </summary>
+    private void DamagePlayer()
     {
         if (currentPlayerHealth != 0 && Time.time > nextPlayerDmg)
         {
@@ -119,11 +114,10 @@ public class Player : MonoBehaviour
             gM.gameUi.UpdatePlayerHealth();
         }
     }
-
-    /* ------------------------------------------------------------------------------------------------------------------
-     * BulletWasShot / NoAmmo
-     * If no bullets, gun cannot be shot. If shooting is attempted with no bullets, NoAmmo shows ammo panel and plays a sound effect.
-     * ------------------------------------------------------------------------------------------------------------------ */
+    
+    /// <summary>
+    /// If no bullets, gun cannot be shot. If shooting is attempted with no bullets, NoAmmo shows ammo panel and plays a sound effect.
+    /// </summary>
     public void BulletWasShot()
     {
         ShowAmmoPanel();
@@ -145,11 +139,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    /* ------------------------------------------------------------------------------------------------------------------
-     * PickupItem
-     * If milk is picked up: heal the player, or send to GameManager (heal main tower or sell for yarn).
-     * If yarn is picked up: deposit 50 yarn.
-     * ------------------------------------------------------------------------------------------------------------------ */
+    /// <summary>
+    /// Function that handles picking up items.
+    /// 
+    /// If milk is picked up: heal the player, or send to GameManager (heal main tower or sell for yarn).
+    /// If yarn is picked up: deposit 50 yarn.
+    /// </summary>
+    /// <param name="type">Item type</param>
     public void PickupItem(string type)
     {
         if (type == "milk")

@@ -14,14 +14,12 @@ public partial class GameManager : MonoBehaviour
     private int currentPlacingTowerNum = -1, newPlacingTowerNum = -1;
     public Transform placementBlockersParent;
     public Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
-
-    /* ------------------------------------------------------------------------------------------------------------------
-     * Placeable Tower Spawning
-     * 
-     * When player selects a tower to place, spawn a placeable version of the prefab on top of them.
-     * - If they're swapping from another tower, remove the old and spawn a new placeable tower.
-     * ------------------------------------------------------------------------------------------------------------------ */
-
+    
+    /// <summary>
+    /// When player selects a tower to place, spawn a placeable version of the prefab on top of them.
+    /// - If they're swapping from another tower, remove the old and spawn a new placeable tower.
+    /// </summary>
+    /// <param name="whichTower">Tower type to place</param>
     public void SpawnPlaceableTower(int whichTower)
     {
         newPlacingTowerNum = whichTower;

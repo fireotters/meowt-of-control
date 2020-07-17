@@ -8,14 +8,10 @@ public partial class GameUi : BaseUi
     [HideInInspector] public bool isMissileReticuleActive = false;
     private Color missileRangeOrange = new Color(0.81f, 0.4f, 0.08f, 0.4f);
     private Color towerRangeBlue = new Color(0.34f, 0.45f, 1f, 0.4f);
-
-    /* ------------------------------------------------------------------------------------------------------------------
-     * Gameplay Area Zones
-     * 
-     * ToggleTowerColorZones enables or disables: Build Mode hints on placement limits and building ranges
-     * 
-     * ToggleMissileReticuleChanges swaps elements of the screen if Missile Mode is selected or unselected
-     * ------------------------------------------------------------------------------------------------------------------ */
+    
+    /// <summary>
+    /// Enables or disables build Mode hints on placement limits and building ranges.
+    /// </summary>
     public void ToggleTowerColourZones()
     {
         sprTowerInvalidArea.enabled = gM.isPlacingTower;
@@ -23,6 +19,9 @@ public partial class GameUi : BaseUi
         buildModeTexts.SetActive(gM.isPlacingTower);
     }
 
+    /// <summary>
+    /// Swaps elements of the screen if Missile Mode is selected or unselected
+    /// </summary>
     public void ToggleMissileReticuleChanges()
     {
         if (isMissileReticuleActive)

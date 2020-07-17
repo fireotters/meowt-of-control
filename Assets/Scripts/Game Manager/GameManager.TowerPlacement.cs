@@ -7,14 +7,12 @@ public partial class GameManager : MonoBehaviour
 {
     public GameObject towerBarrierMask;
     public Tower towerPillow, towerWater, towerFridge;
-
-    /* ------------------------------------------------------------------------------------------------------------------
-     * Tower Placement
-     * 
-     * When player confirms placement, check if the PlaceableTower gameobject says placement is valid.
-     * If yes, place a tower and deduct cost.
-     * ------------------------------------------------------------------------------------------------------------------ */
-    public void AttemptTowerPlacement()
+    
+    /// <summary>
+    /// When player confirms placement, check if the PlaceableTower gameobject says placement is valid.
+    /// If yes, place a tower and deduct cost.
+    /// </summary>
+    private void AttemptTowerPlacement()
     {
         if (currentPlacingTower.placementIsValid)
         {
