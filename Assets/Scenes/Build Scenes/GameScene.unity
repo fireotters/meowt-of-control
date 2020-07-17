@@ -357,7 +357,7 @@ PrefabInstance:
     - target: {fileID: 711508781348516571, guid: 17ec55aef0224034fb0766a4432bab19,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 711508781348516571, guid: 17ec55aef0224034fb0766a4432bab19,
         type: 3}
@@ -404,40 +404,35 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1180051059031598308, guid: 17ec55aef0224034fb0766a4432bab19,
+    - target: {fileID: 892163036474717428, guid: 17ec55aef0224034fb0766a4432bab19,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ff0a1a109dfbd6f4fb6d281bb4138136, type: 2}
-    - target: {fileID: 6400554395487805001, guid: 17ec55aef0224034fb0766a4432bab19,
+      propertyPath: m_Offset.x
+      value: 0.023162842
+      objectReference: {fileID: 0}
+    - target: {fileID: 892163036474717428, guid: 17ec55aef0224034fb0766a4432bab19,
         type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0d3a6a703ca18494d8dc72762f1e6ddd, type: 3}
-    - target: {fileID: 6400554395487805001, guid: 17ec55aef0224034fb0766a4432bab19,
+      propertyPath: m_Size.x
+      value: 1.0791924
+      objectReference: {fileID: 0}
+    - target: {fileID: 892163036474717428, guid: 17ec55aef0224034fb0766a4432bab19,
         type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
+      propertyPath: m_Offset.y
+      value: 0.004339829
+      objectReference: {fileID: 0}
+    - target: {fileID: 892163036474717428, guid: 17ec55aef0224034fb0766a4432bab19,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.78813434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157174889668610991, guid: 17ec55aef0224034fb0766a4432bab19,
+        type: 3}
+      propertyPath: m_Name
+      value: Sprite Anim (scale the parent)
       objectReference: {fileID: 0}
     - target: {fileID: 7017425527328657448, guid: 17ec55aef0224034fb0766a4432bab19,
         type: 3}
       propertyPath: m_Name
       value: Main Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188016716022455448, guid: 17ec55aef0224034fb0766a4432bab19,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188016716022455448, guid: 17ec55aef0224034fb0766a4432bab19,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 2.9746027
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188016716022455448, guid: 17ec55aef0224034fb0766a4432bab19,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 6.091524
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ec55aef0224034fb0766a4432bab19, type: 3}
@@ -2460,15 +2455,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1286093860}
     m_Modifications:
-    - target: {fileID: 439942934393228274, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
+    - target: {fileID: 1271751210965227688, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 439942934393228274, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.7
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2991865322832994288, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
@@ -2528,6 +2518,11 @@ PrefabInstance:
     - target: {fileID: 2991865322832994293, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5990823862842332950, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6458,6 +6453,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerBarrierMask: {fileID: 3831679843561744280, guid: 4d9a79aa5d4756a49bc04c43bfd1df5b,
     type: 3}
+  towerPillow: {fileID: 3579875188866723065, guid: 4c09e215fd7dc8441a7c97d6cb2f4db7,
+    type: 3}
+  towerWater: {fileID: 8928845258137198613, guid: c28637312c8d76b47bffb84a6105c3f5,
+    type: 3}
+  towerFridge: {fileID: 6213731364343559203, guid: 7fba5b41335d375428be0b6413347502,
+    type: 3}
+  isPlacingTower: 0
+  isPlacingMissile: 0
   placeableParent: {fileID: 1821216492}
   towersInPlayParent: {fileID: 1647193802}
   placeablePillow: {fileID: -9166788285384668290, guid: fc7e51142267c4d4d9dd911139b36adf,
@@ -6468,28 +6471,20 @@ MonoBehaviour:
     type: 3}
   placeableMissile: {fileID: -9166788285384668290, guid: 44e73b799e2407244aead9fb3f3a34e8,
     type: 3}
-  towerPillow: {fileID: 3579875188866723065, guid: 4c09e215fd7dc8441a7c97d6cb2f4db7,
-    type: 3}
-  towerWater: {fileID: 8928845258137198613, guid: c28637312c8d76b47bffb84a6105c3f5,
-    type: 3}
-  towerFridge: {fileID: 6213731364343559203, guid: 7fba5b41335d375428be0b6413347502,
-    type: 3}
-  sprTowerInvalidArea: {fileID: 0}
-  sprTowerRange: {fileID: 0}
   placementBlockersParent: {fileID: 1366110676}
   spritePivotOffset: {x: 0, y: 0.5, z: 0}
   player: {fileID: 300768503}
   currentYarn: 50
   mainTowerHealth: 100
   currentRound: 0
-  gameUi: {fileID: 2012510643}
-  enemyCount: 0
-  enemyMaxCount: 0
-  enemyNumberSpawned: 0
   dropMilk: {fileID: 2983328645377290847, guid: edecdd96ca7c3f145baaa3dac85f23d8,
     type: 3}
   dropYarn: {fileID: 2983328645377290847, guid: 9138ed32a89541b43aa30ca9e155b3bc,
     type: 3}
+  enemyCount: 0
+  enemyMaxCount: 0
+  enemyNumberSpawned: 0
+  gameUi: {fileID: 2012510643}
   pricePillow: 10
   priceWater: 30
   priceFridge: 50
@@ -9699,6 +9694,9 @@ MonoBehaviour:
   fadeBlack: {fileID: 1019973954}
   musicManagerIfNotFoundInScene: {fileID: 8774387490616601870, guid: 81e43bfc2c29e6a468390c166202ba9c,
     type: 3}
+  sprTowerInvalidArea: {fileID: 0}
+  sprTowerRange: {fileID: 0}
+  isMissileReticuleActive: 0
   textCash: {fileID: 191626781}
   textHealth: {fileID: 1762191683}
   textRound: {fileID: 150260927}
@@ -9724,7 +9722,6 @@ MonoBehaviour:
   choiceOfMusic: 1
   gamePausePanel: {fileID: 619427784}
   gameOverPanel: {fileID: 0}
-  gM: {fileID: 1377506641}
   player: {fileID: 0}
   dropsInPlayParent: {fileID: 2082092014}
 --- !u!1 &2032824576

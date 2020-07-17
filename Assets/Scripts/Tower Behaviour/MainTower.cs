@@ -14,7 +14,7 @@ public class MainTower : MonoBehaviour
     private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
-        _mainTowerAnimator = GetComponent<Animator>();
+        _mainTowerAnimator = GetComponentInChildren<Animator>();
         _audioSource = GetComponent<AudioSource>();
     }
 
@@ -22,11 +22,11 @@ public class MainTower : MonoBehaviour
     {
         if (_curTime <= 0)
         {
-            if (col.gameObject.tag == "LargeEnemy")
+            if (col.gameObject.CompareTag("LargeEnemy"))
             {
                 _gameManager.gameUi.UpdateMainTowerHealth(-5);
             }
-            else if(col.gameObject.tag == "Enemy")
+            else if(col.gameObject.CompareTag("Enemy"))
             {
                 _gameManager.gameUi.UpdateMainTowerHealth(-1);
             }

@@ -10,21 +10,29 @@ public partial class GameUi : BaseUi
 
     public GameObject gamePausePanel;
     public GameObject gameOverPanel;
-    public GameManager gM;
+    private GameManager gM;
     public GameObject player;
 
     [Header("Unity Inspector Organisation")]
     public Transform dropsInPlayParent;
 
-    void Start()
+    private void Awake()
     {
-        // Change music track
+        gM = FindObjectOfType<GameManager>();
+        sprTowerInvalidArea = gM.placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
+        sprTowerRange = gM.placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
+
         musicManager = FindObjectOfType<MusicManager>();
         if (!musicManager)
         {
             Instantiate(musicManagerIfNotFoundInScene);
             musicManager = FindObjectOfType<MusicManager>();
         }
+    }
+
+    void Start()
+    {
+        // Change music track
         musicManager.ChangeMusicTrack(choiceOfMusic);
 
         // Fade in the level

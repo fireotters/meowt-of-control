@@ -2,26 +2,25 @@
 
 public partial class GameManager : MonoBehaviour
 {
+    [Header("Stat Variables")]
     public Player player;
     public int currentYarn = 50, mainTowerHealth = 100, currentRound = 0;
     private const int maxMainTowerHealth = 100, hpMilkHeals = 25;
-    public GameUi gameUi;
-
-    [Header("Enemy Management")]
-    public int enemyCount = 0;
-    public int enemyMaxCount = 0;
-    public int enemyNumberSpawned = 0;
-
     public GameObject dropMilk, dropYarn;
-    internal MainTower _mainTower;
+
+    [Header("Enemy Variables")]
+    public int enemyCount = 0;
+    public int enemyMaxCount = 0, enemyNumberSpawned = 0;
+
+    [Header("Other Variables")]
+    public GameUi gameUi;
+    private MainTower _mainTower;
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
 
     private void Start()
     {
         _mainTower = FindObjectOfType<MainTower>();
-        sprTowerInvalidArea = placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
-        sprTowerRange = placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
-        ToggleTowerColourZones();
+        gameUi.ToggleTowerColourZones();
         StartNextRound();
     }
     private void Update()
