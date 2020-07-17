@@ -8,7 +8,9 @@ public class EnemySpawner : MonoBehaviour
     private GameObject basicEnemy, sanic, bigChungus;
     public List<GameObject> mobs;
     private float randX, randY;
-    
+    public bool isHorizontalSpawner;
+    public Transform enemiesInPlayParent;
+
     private Vector2 spawnPlace;
 
     //Spawn rate of every mob
@@ -47,42 +49,43 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         //Basic mob spawn
-        spawnEnemy();
+        SpawnEnemy();
     }
 
-    private void spawnEnemy()
+    private void SpawnEnemy()
     {
         if (Time.time > nextSpawn && gM.enemyNumberSpawned < gM.enemyMaxCount)
         {
             nextSpawn = Time.time + spawnRate;
-            randX = Random.Range(-8.4f, 8.4f);
-            randY = Random.Range(-3f, 3f);
-            if (gameObject.tag.Equals("SideTower"))
+            if (isHorizontalSpawner)
             {
-                spawnPlace = new Vector2(transform.position.x, randY);
+                randX = Random.Range(-8.4f, 8.4f);
+                spawnPlace = new Vector2(randX, transform.position.y);
             }
             else
             {
-                spawnPlace = new Vector2(randX, transform.position.y);
+                randY = Random.Range(-3f, 3f);
+                spawnPlace = new Vector2(transform.position.x, randY);
             }
 
-            // Half the time, nothing will spawn.
+            // Half the time, something will spawn.
             int randCheck = Random.Range(0, 20);
             if (randCheck == 0) // Spawn big chungus
             {
-                Instantiate(mobs[1], spawnPlace, Quaternion.identity);
+                Instantiate(mobs[1], spawnPlace, Quaternion.identity, enemiesInPlayParent);
                 gM.enemyNumberSpawned++;
             }
             else if (randCheck < 3) // Spawn Sanic
             {
-                Instantiate(mobs[2], spawnPlace, Quaternion.identity);
+                Instantiate(mobs[2], spawnPlace, Quaternion.identity, enemiesInPlayParent);
                 gM.enemyNumberSpawned++;
             }
             else if (randCheck < 10) // Spawn Common
             {
-                Instantiate(mobs[0], spawnPlace, Quaternion.identity);
+                Instantiate(mobs[0], spawnPlace, Quaternion.identity, enemiesInPlayParent);
                 gM.enemyNumberSpawned++;
             }
+            // Other half the time, nothing will spawn.
         }
     }
 }

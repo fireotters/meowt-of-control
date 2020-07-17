@@ -22,7 +22,7 @@ public class FridgeTower : Tower
     {
         foreach (var enemyTransform in transforms)
         {
-            if (enemyTransform.CompareTag("BigChungusEnemy"))
+            if (enemyTransform.CompareTag("LargeEnemy"))
             {
                 return enemyTransform;
             }

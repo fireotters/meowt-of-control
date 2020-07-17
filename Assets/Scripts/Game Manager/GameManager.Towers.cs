@@ -7,9 +7,9 @@ public partial class GameManager : MonoBehaviour
 {
     [Header("Placeable Towers Logic")]
     public GameObject towerBarrierMask;
-    private bool isPlacingTower = false;
+    private bool isPlacingTower = false, isPlacingMissile = false;
     public Transform placeableParent, towersInPlayParent;
-    public PlaceableTower placeablePillow, placeableWater, placeableFridge;
+    public PlaceableTower placeablePillow, placeableWater, placeableFridge, placeableMissile;
     public Tower towerPillow, towerWater, towerFridge;
 
     private PlaceableTower currentPlacingTower;
@@ -18,7 +18,6 @@ public partial class GameManager : MonoBehaviour
     public Transform placementBlockersParent;
     public Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
 
-    [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50;
 
     public void SpawnPlaceableTower(int whichTower)
     {
@@ -26,13 +25,22 @@ public partial class GameManager : MonoBehaviour
         if (isPlacingTower)
         {
             gameUi.purchaseButtons[whichTower].HideCancelOverlay();
-            Destroy(currentPlacingTower.gameObject);
+            if (currentPlacingTower != null)
+            {
+                Destroy(currentPlacingTower.gameObject);
+            }
 
             // If it's the same tower, then user is cancelling selection. Skip rest of function.
             if (currentPlacingTowerNum == whichTower)
             {
                 isPlacingTower = false;
                 currentPlacingTowerNum = -1;
+                if (whichTower == 3)
+                {
+                    _mainTower.CancelShooting();
+                    isMissileReticuleActive = false;
+                    ToggleMissileReticuleChanges();
+                }
                 ToggleTowerColourZones();
                 return;
             }
@@ -53,17 +61,35 @@ public partial class GameManager : MonoBehaviour
             case 2:
                 towerToSpawn = placeableFridge;
                 break;
+            case 3:
+                towerToSpawn = placeableMissile;
+                break;
         }
+
+        // Spawn tower where player is standing
         if (towerToSpawn != null)
         {
             currentPlacingTower = Instantiate(towerToSpawn, placeableParent);
             currentPlacingTowerNum = whichTower;
+
+            // Spawn missile reticule on mouse
+            if (whichTower == 3)
+            {
+                _mainTower.PrepToShoot();
+                isMissileReticuleActive = true;
+                ToggleMissileReticuleChanges();
+                return;
+            }
             ToggleTowerColourZones();
         }
         else
         {
-            Debug.LogError("GameManager.SpawnPlaceableTower - Invalid tower type");
+            Debug.LogError("GameManager.SpawnPlaceableTower - Invalid tower type or unassigned PlaceableTower");
         }
+    }
+    private void SpawnMissileReticule()
+    {
+
     }
 
     public void AttemptTowerPlacement()
@@ -81,15 +107,18 @@ public partial class GameManager : MonoBehaviour
         {
             case 0:
                 towerToSpawn = towerPillow;
-                gameUi.UpdateCash(-pricePillow);
+                gameUi.UpdateYarn(-pricePillow);
                 break;
             case 1:
                 towerToSpawn = towerWater;
-                gameUi.UpdateCash(-priceWater);
+                gameUi.UpdateYarn(-priceWater);
                 break;
             case 2:
                 towerToSpawn = towerFridge;
-                gameUi.UpdateCash(-priceFridge);
+                gameUi.UpdateYarn(-priceFridge);
+                break;
+            case 3:
+                _mainTower.AnimateShooting();
                 break;
         }
         if (towerToSpawn != null)
@@ -106,6 +135,16 @@ public partial class GameManager : MonoBehaviour
             isPlacingTower = false;
             ToggleTowerColourZones();
         }
+        else if (currentPlacingTowerNum == 3)
+        {
+            gameUi.purchaseButtons[currentPlacingTowerNum].HideCancelOverlay();
+            Destroy(currentPlacingTower.gameObject);
+            isPlacingTower = false;
+            ToggleTowerColourZones();
+
+            isMissileReticuleActive = false;
+            ToggleMissileReticuleChanges();
+        }
         else
         {
             Debug.LogError("GameManager.PlaceTower - Invalid tower type");
@@ -117,5 +156,29 @@ public partial class GameManager : MonoBehaviour
         sprTowerInvalidArea.enabled = isPlacingTower;
         sprTowerRange.enabled = isPlacingTower;
         gameUi.buildModeTexts.SetActive(isPlacingTower);
+    }
+
+    private bool isMissileReticuleActive = false;
+    private Color missileRangeOrange = new Color(0.81f, 0.4f, 0.08f, 0.4f);
+    private Color towerRangeBlue = new Color(0.34f, 0.45f, 1f, 0.4f);
+    private void ToggleMissileReticuleChanges()
+    {
+        if (isMissileReticuleActive) {
+            sprTowerInvalidArea.enabled = false;
+            sprTowerRange.enabled = true;
+            gameUi.buildModeTexts.SetActive(false);
+
+            sprTowerRange.color = missileRangeOrange;
+            gameUi.launchModeTexts.SetActive(true);
+        }
+        else
+        {
+            sprTowerInvalidArea.enabled = isPlacingTower;
+            sprTowerRange.enabled = isPlacingTower;
+            gameUi.buildModeTexts.SetActive(isPlacingTower);
+
+            sprTowerRange.color = towerRangeBlue;
+            gameUi.launchModeTexts.SetActive(false);
+        }
     }
 }

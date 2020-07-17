@@ -33,13 +33,12 @@ public class BaseBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Player")
-            || other.collider.CompareTag("Projectile")) return;
-        //Added to destroy the corpses
-        Destroy(gameObject);
-        if (other.collider.CompareTag("Corpse"))
+        //Destroy scrap TODO improve
+        if (other.collider.CompareTag("Scrap"))
         {
             Destroy(other.gameObject);
         }
+
+        Destroy(gameObject);
     }
 }

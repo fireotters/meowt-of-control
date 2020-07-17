@@ -13,6 +13,9 @@ public partial class GameUi : BaseUi
     public GameManager gM;
     public GameObject player;
 
+    [Header("Unity Inspector Organisation")]
+    public Transform dropsInPlayParent;
+
     void Start()
     {
         // Change music track
@@ -28,8 +31,8 @@ public partial class GameUi : BaseUi
         StartCoroutine(FadeBlack("from"));
 
         // Initialise UI values
-        UpdateCash(0);
-        UpdateHealth(0);
+        UpdateYarn(0);
+        UpdateMainTowerHealth(0);
     }
 
     void Update()
