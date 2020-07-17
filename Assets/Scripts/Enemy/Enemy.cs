@@ -40,8 +40,9 @@ public class Enemy : MonoBehaviour
                 gM.IncrementEnemyKillCount();
                 Vector2 enemyLastPos = new Vector2(col.gameObject.transform.position.x, col.gameObject.transform.position.y);
                 Destroy(gameObject);
-                scrap.transform.position = enemyLastPos;
-                Instantiate(scrap, gM.gameUi.dropsInPlayParent);
+
+                GameObject scrapDrop = Instantiate(scrap, gM.gameUi.dropsInPlayParent);
+                scrapDrop.transform.position = enemyLastPos;
 
                 int randCheck = Random.Range(0, 10);
                 // 3/10 of the time, one of two items will drop
