@@ -38,6 +38,8 @@ public class PlaceableTower : MonoBehaviour
                 }
             }
 
+            // If there are no barriers blocking placement, turn the overlay colour for the turret's range to blue.
+            // If at least one barrier, turn the overlay colour to red.
             placementIsValid = interferingColliders.Count == 0;
             gM.gameUi.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
         }

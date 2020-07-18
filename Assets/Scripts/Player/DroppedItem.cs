@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DroppedItem : MonoBehaviour
 {
-    public string typeOfDrop;
+    public Player.PickupType typeOfDrop;
     private GameManager gM;
 
     void Start()

@@ -23,27 +23,28 @@ public partial class GameManager : MonoBehaviour
     private void PlaceTower()
     {
         Tower towerToSpawn = null;
-        switch (currentPlacingTowerNum)
+        switch (currentPurchase)
         {
-            case 0:
+            case PurchaseType.PillowTower:
                 towerToSpawn = towerPillow;
                 gameUi.UpdateYarn(-pricePillow);
                 break;
-            case 1:
+            case PurchaseType.WaterTower:
                 towerToSpawn = towerWater;
                 gameUi.UpdateYarn(-priceWater);
                 break;
-            case 2:
+            case PurchaseType.FridgeTower:
                 towerToSpawn = towerFridge;
                 gameUi.UpdateYarn(-priceFridge);
                 break;
-            case 3:
+            case PurchaseType.Missile:
                 _mainTower.AnimateShooting();
                 break;
         }
-        if (towerToSpawn != null)
+
+        if (towerToSpawn != null || currentPurchase == PurchaseType.Missile)
         {
-            if (currentPlacingTowerNum != 3)
+            if (currentPurchase != PurchaseType.Missile)
             {
                 // Place tower and a barrier spritemask
                 Tower towerPlaced = Instantiate(towerToSpawn, towersInPlayParent);
@@ -53,14 +54,15 @@ public partial class GameManager : MonoBehaviour
             }
             else
             {
+                // Disable Missile Mode changes
                 gameUi.isMissileReticuleActive = false;
                 gameUi.ToggleMissileReticuleChanges();
             }
 
-            // Once tower is placed or missile fired, disable cancel button, destroy placeable version, and toggle red zones.
-            gameUi.purchaseButtons[currentPlacingTowerNum].HideCancelOverlay();
+            // Once tower is placed or missile fired, disable cancel button, destroy placeable version, and disable Build / Missile Mode.
+            gameUi.purchaseButtons[indexOfCurrentPurchase].HideCancelOverlay();
             Destroy(currentPlacingTower.gameObject);
-            isPlacingTower = false;
+            isAlreadyPlacingObject = false;
             gameUi.ToggleTowerColourZones();
         }
         else

@@ -146,27 +146,30 @@ public class Player : MonoBehaviour
     /// If yarn is picked up: deposit 50 yarn.
     /// </summary>
     /// <param name="type">Item type</param>
-    public void PickupItem(string type)
+    /// 
+
+    public enum PickupType { Milk, Yarn }
+    public void PickupItem(PickupType type)
     {
-        if (type == "milk")
+        switch (type)
         {
-            if (currentPlayerHealth < maxPlayerHealth)
-            {
-                currentPlayerHealth = maxPlayerHealth;
-                gM.gameUi.UpdatePlayerHealth();
-            }
-            else if (currentPlayerHealth == maxPlayerHealth)
-            {
-                gM.HandleMilkPickup();
-            }
-        }
-        else if (type == "yarn")
-        {
-            gM.gameUi.UpdateYarn(50);
-        }
-        else
-        {
-            Debug.LogError("GameManger.PickupItem: Invalid pickup type");
+            case PickupType.Milk:
+                if (currentPlayerHealth < maxPlayerHealth)
+                {
+                    currentPlayerHealth = maxPlayerHealth;
+                    gM.gameUi.UpdatePlayerHealth();
+                }
+                else if (currentPlayerHealth == maxPlayerHealth)
+                {
+                    gM.HandleMilkPickup();
+                }
+                break;
+            case PickupType.Yarn:
+                gM.gameUi.UpdateYarn(50);
+                break;
+            default:
+                Debug.LogError("GameManger.PickupItem: Invalid pickup type");
+                break;
         }
     }
 

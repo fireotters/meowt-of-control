@@ -1,55 +1,74 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
     [Header("Placeable Towers Logic")]
-    [HideInInspector] public bool isPlacingTower = false, isPlacingMissile = false;
+    [HideInInspector] public bool isAlreadyPlacingObject = false;
     public Transform placeableParent, towersInPlayParent;
     public PlaceableTower placeablePillow, placeableWater, placeableFridge, placeableMissile;
 
     private bool isCancellingTower = false;
     private PlaceableTower currentPlacingTower;
-    private int currentPlacingTowerNum = -1, newPlacingTowerNum = -1;
+    private PurchaseType currentPurchase = PurchaseType.NoPurchaseActive, newPurchase = PurchaseType.NoPurchaseActive;
     public Transform placementBlockersParent;
     public Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
     
-    /// <summary>
-    /// When player selects a tower to place, spawn a placeable version of the prefab on top of them.
-    /// - If they're swapping from another tower, remove the old and spawn a new placeable tower.
-    /// </summary>
-    /// <param name="whichTower">Tower type to place</param>
-    public void SpawnPlaceableTower(int whichTower)
-    {
-        newPlacingTowerNum = whichTower;
 
-        if (isPlacingTower)
+    public enum PurchaseType { PillowTower, WaterTower, FridgeTower, Missile, NoPurchaseActive }
+    private int indexOfNewPurchase, indexOfCurrentPurchase;
+    /// <summary>
+    /// When player selects a tower purchase, spawn a placeable version of a tower prefab on top of them.<br/>
+    ///  - If they're swapping from another tower, remove the old and spawn a new placeable tower.<br/>
+    /// <br/>
+    /// When player selects a missile purchase, activate Missile Mode.
+    /// </summary>
+    /// <param name="whichPurchase">Purchase that's been approved by GameUi.Purchase()</param>
+    public void SpawnPurchasedObject(PurchaseType whichPurchase)
+    {
+        newPurchase = whichPurchase;
+        indexOfNewPurchase = Array.IndexOf(Enum.GetValues(newPurchase.GetType()), newPurchase);
+
+        if (isAlreadyPlacingObject)
         {
-            DestroyOldTowerSpawnNewOne();
+            DestroyOldPurchase();
+            IfSamePurchaseThenCancelPurchase();
         }
         if (!isCancellingTower)
         {
-            SpawnPlaceableTowerWherePlayerStanding(DecideTowerToSpawn());
+            if (newPurchase != PurchaseType.Missile)
+            {
+                SpawnPlaceableTower(DecideTowerToSpawn());
+            }
+            else
+            {
+                SpawnMissileReticule();
+            }
         }
         isCancellingTower = false;
     }
 
-    private void DestroyOldTowerSpawnNewOne()
+    private void DestroyOldPurchase()
     {
-        gameUi.purchaseButtons[newPlacingTowerNum].HideCancelOverlay();
+        gameUi.purchaseButtons[indexOfNewPurchase].HideCancelOverlay();
+
         if (currentPlacingTower != null)
         {
             Destroy(currentPlacingTower.gameObject);
         }
+    }
 
+    private void IfSamePurchaseThenCancelPurchase()
+    {
         // If it's the same tower, then user is cancelling selection. Skip rest of function.
-        if (currentPlacingTowerNum == newPlacingTowerNum)
+        if (currentPurchase == newPurchase)
         {
-            isPlacingTower = false;
+            isAlreadyPlacingObject = false;
             isCancellingTower = true;
-            currentPlacingTowerNum = -1;
-            if (newPlacingTowerNum == 3)
+            currentPurchase = PurchaseType.NoPurchaseActive;
+            if (newPurchase == PurchaseType.Missile)
             {
                 _mainTower.CancelShooting();
                 gameUi.isMissileReticuleActive = false;
@@ -61,38 +80,28 @@ public partial class GameManager : MonoBehaviour
 
     private PlaceableTower DecideTowerToSpawn()
     {
-        isPlacingTower = true;
-        gameUi.UpdateCancelOverlays(newPlacingTowerNum);
-        switch (newPlacingTowerNum)
+        isAlreadyPlacingObject = true;
+        gameUi.UpdateCancelOverlays(indexOfNewPurchase);
+        switch (newPurchase)
         {
-            case 0:
+            case PurchaseType.PillowTower:
                 return placeablePillow;
-            case 1:
+            case PurchaseType.WaterTower:
                 return placeableWater;
-            case 2:
+            case PurchaseType.FridgeTower:
                 return placeableFridge;
-            case 3:
-                return placeableMissile;
         }
         return null;
     }
 
-    private void SpawnPlaceableTowerWherePlayerStanding(PlaceableTower towerToSpawn)
+    private void SpawnPlaceableTower(PlaceableTower towerToSpawn)
     {
         // Spawn tower where player is standing
         if (towerToSpawn != null)
         {
             currentPlacingTower = Instantiate(towerToSpawn, placeableParent);
-            currentPlacingTowerNum = newPlacingTowerNum;
-
-            // Spawn missile reticule on mouse
-            if (newPlacingTowerNum == 3)
-            {
-                _mainTower.PrepToShoot();
-                gameUi.isMissileReticuleActive = true;
-                gameUi.ToggleMissileReticuleChanges();
-                return;
-            }
+            currentPurchase = newPurchase;
+            indexOfCurrentPurchase = Array.IndexOf(Enum.GetValues(currentPurchase.GetType()), currentPurchase);
             gameUi.ToggleTowerColourZones();
         }
         else
@@ -105,7 +114,18 @@ public partial class GameManager : MonoBehaviour
 
     private void SpawnMissileReticule()
     {
+        isAlreadyPlacingObject = true;
+        gameUi.UpdateCancelOverlays(indexOfNewPurchase);
 
+        currentPlacingTower = Instantiate(placeableMissile, placeableParent);
+        currentPurchase = newPurchase;
+        indexOfCurrentPurchase = Array.IndexOf(Enum.GetValues(currentPurchase.GetType()), currentPurchase);
+
+        _mainTower.PrepToShoot();
+
+        gameUi.isMissileReticuleActive = true;
+        gameUi.ToggleMissileReticuleChanges();
+        gameUi.ToggleTowerColourZones();
     }
 
 }

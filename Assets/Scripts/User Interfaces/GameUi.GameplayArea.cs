@@ -14,9 +14,9 @@ public partial class GameUi : BaseUi
     /// </summary>
     public void ToggleTowerColourZones()
     {
-        sprTowerInvalidArea.enabled = gM.isPlacingTower;
-        sprTowerRange.enabled = gM.isPlacingTower;
-        buildModeTexts.SetActive(gM.isPlacingTower);
+        sprTowerInvalidArea.enabled = gM.isAlreadyPlacingObject;
+        sprTowerRange.enabled = gM.isAlreadyPlacingObject;
+        buildModeTexts.SetActive(gM.isAlreadyPlacingObject);
     }
 
     /// <summary>
@@ -35,9 +35,9 @@ public partial class GameUi : BaseUi
         }
         else
         {
-            sprTowerInvalidArea.enabled = gM.isPlacingTower;
-            sprTowerRange.enabled = gM.isPlacingTower;
-            buildModeTexts.SetActive(gM.isPlacingTower);
+            sprTowerInvalidArea.enabled = gM.isAlreadyPlacingObject;
+            sprTowerRange.enabled = gM.isAlreadyPlacingObject;
+            buildModeTexts.SetActive(gM.isAlreadyPlacingObject);
 
             sprTowerRange.color = towerRangeBlue;
             launchModeTexts.SetActive(false);

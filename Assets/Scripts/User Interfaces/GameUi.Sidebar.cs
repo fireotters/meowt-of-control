@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -53,31 +54,44 @@ public partial class GameUi : BaseUi
         textCatHealth.text = gM.player.currentPlayerHealth.ToString();
     }
 
-    public void Purchase(int whichPurchase)
+    public void Purchase(GameManager.PurchaseType whichPurchase)
     {
         int priceToCheck = 0;
         switch (whichPurchase) {
-            case 0:
+            case GameManager.PurchaseType.PillowTower:
                 priceToCheck = gM.pricePillow;
                 break;
-            case 1:
+            case GameManager.PurchaseType.WaterTower:
                 priceToCheck = gM.priceWater;
                 break;
-            case 2:
+            case GameManager.PurchaseType.FridgeTower:
                 priceToCheck = gM.priceFridge;
                 break;
-            case 3:
+            case GameManager.PurchaseType.Missile:
                 priceToCheck = gM.priceMissile;
                 break;
         }
 
         if (gM.currentYarn >= priceToCheck)
         {
-            gM.SpawnPlaceableTower(whichPurchase);
+            gM.SpawnPurchasedObject(whichPurchase);
         }
         else
         {
             // TODO Play failure noise, blink price indicator
+        }
+    }
+
+    public void PurchaseFromButton(string whichPurchase)
+    {
+        GameManager.PurchaseType purchaseType;
+        if (Enum.TryParse(whichPurchase, true, out purchaseType))
+        {
+            Purchase(purchaseType);
+        }
+        else
+        {
+            Debug.LogError("GameUi.Sidebar: PurchaseFromButton passed invalid string (" + whichPurchase + ")");
         }
     }
 
