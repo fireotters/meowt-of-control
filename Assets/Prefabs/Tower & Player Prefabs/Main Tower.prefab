@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4490132163999071551}
   - component: {fileID: 8142104466477650549}
-  - component: {fileID: 920216493581363665}
   - component: {fileID: 855298351892549993}
   m_Layer: 11
-  m_Name: Animated (Don't scale this one)
+  m_Name: Sprite Anim (scale the parent)
   m_TagString: MainTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +29,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
-  m_Father: {fileID: 711508781348516571}
+  m_Father: {fileID: 8466374891389072911}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -89,14 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!222 &920216493581363665
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4157174889668610991}
-  m_CullTransparentMesh: 0
 --- !u!95 &855298351892549993
 Animator:
   serializedVersion: 3
@@ -124,7 +115,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 711508781348516571}
+  - component: {fileID: 8466374891389072911}
   - component: {fileID: 4449699719289497710}
   - component: {fileID: 8765036374434404196}
   - component: {fileID: 892163036474717428}
@@ -136,26 +127,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &711508781348516571
-RectTransform:
+--- !u!4 &8466374891389072911
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7017425527328657448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1453, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 4490132163999071551}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.1453}
-  m_SizeDelta: {x: 1, y: 0.68293047}
-  m_Pivot: {x: 0.5, y: 0.68}
 --- !u!114 &4449699719289497710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +265,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.023162842, y: -0.1194458}
+  m_Offset: {x: 0.023162842, y: 0.004339829}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -290,7 +276,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4257812, y: 1.0357056}
+  m_Size: {x: 1.0791924, y: 0.78813434}
   m_EdgeRadius: 0
 --- !u!50 &7086779616409355995
 Rigidbody2D:

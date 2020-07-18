@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6692040349411958347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 3119685658630606555}
   - component: {fileID: 7041295643592731852}
   - component: {fileID: 1497326520120884441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5442753292562857989}
   - component: {fileID: 5974910887476621690}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 889684979433047795}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BulletEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: -7584987788621169609}
   - component: {fileID: 8925459461024323710}
   - component: {fileID: 3029643768634409679}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PillowTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

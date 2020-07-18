@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4698008455672075865}
   - component: {fileID: 6547229320230678435}
   - component: {fileID: 236599304409860445}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: -2057182064340076554}
   - component: {fileID: 3411499906903156240}
   - component: {fileID: 2135279427459182253}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WaterTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1558692945399509346}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BulletEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6131310503200279371}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310732263382787222}
   - component: {fileID: 9171214116215032677}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: basewater
   m_TagString: Untagged
   m_Icon: {fileID: 0}

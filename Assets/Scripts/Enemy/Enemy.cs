@@ -48,13 +48,13 @@ public class Enemy : MonoBehaviour
                 // 3/10 of the time, one of two items will drop
                 if (randCheck == 0) // Drop 50 yarn
                 {
-                    Instantiate(gM.dropYarn, gM.gameUi.dropsInPlayParent);
-                    gM.enemyNumberSpawned++;
+                    GameObject yarnDrop = Instantiate(gM.dropYarn, gM.gameUi.dropsInPlayParent);
+                    yarnDrop.transform.position = enemyLastPos;
                 }
                 else if (randCheck < 3)
                 {
-                    Instantiate(gM.dropMilk, gM.gameUi.dropsInPlayParent);
-                    gM.enemyNumberSpawned++;
+                    GameObject milkDrop = Instantiate(gM.dropMilk, gM.gameUi.dropsInPlayParent);
+                    milkDrop.transform.position = enemyLastPos;
                 }
                 // No item spawns 7/10 of the time
             }
