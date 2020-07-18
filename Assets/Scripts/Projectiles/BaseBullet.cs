@@ -5,10 +5,14 @@ public class BaseBullet : MonoBehaviour
     [SerializeField] private float speed = 1f, lifeSpan = 5f;
     private float _lifeLeft;
     private Rigidbody2D _rigidbody2D;
+    private SpriteRenderer _sprRenderer;
+    private BoxCollider2D _collider;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<BoxCollider2D>();
+        _sprRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
@@ -38,7 +42,17 @@ public class BaseBullet : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        else if (!other.collider.CompareTag("Enemy") && !other.collider.CompareTag("LargeEnemy"))
+        {
+            return;
+        }
+        _collider.enabled = false;
+        _sprRenderer.enabled = false;
+        Invoke(nameof(ActuallyDestroy), 1f);
+    }
 
+    private void ActuallyDestroy()
+    {
         Destroy(gameObject);
     }
 }

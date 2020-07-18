@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4698008455672075865}
   - component: {fileID: 6547229320230678435}
   - component: {fileID: 236599304409860445}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1490768791
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 2
   m_Sprite: {fileID: 9027505516725341301, guid: b56a10564a6d15348b307626facc420c,
     type: 3}
@@ -115,7 +115,8 @@ GameObject:
   - component: {fileID: 1952206501164173053}
   - component: {fileID: -2057182064340076554}
   - component: {fileID: 3411499906903156240}
-  m_Layer: 0
+  - component: {fileID: 2135279427459182253}
+  m_Layer: 10
   m_Name: WaterTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,9 +130,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5405810806751190165}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.28, y: 0.28, z: 0.28}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_Children:
   - {fileID: 1558692945399509346}
   - {fileID: 4698008455672075865}
@@ -155,8 +156,8 @@ MonoBehaviour:
   gunEnd: {fileID: 6131310503200279371}
   bulletPrefab: {fileID: 4955034945373706700, guid: 3b165ed35b85a3e4990274444c36f459,
     type: 3}
-  soundManager: {fileID: 3411499906903156240}
   _towerAnimator: {fileID: 236599304409860445}
+  soundManager: {fileID: 3411499906903156240}
 --- !u!58 &1952206501164173053
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -291,6 +292,32 @@ MonoBehaviour:
   catCannon: {fileID: 8300000, guid: 54a53c0e6587e2344b8c0b7dbe44a97b, type: 3}
   playerHit: {fileID: 8300000, guid: 8bc5f6e94971ac7439ef34144fbd38b4, type: 3}
   mixer: {fileID: 24100000, guid: d004f52ea00513f4493dc5fb271c249f, type: 2}
+--- !u!61 &2135279427459182253
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5405810806751190165}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.361285, y: 2.232867}
+  m_EdgeRadius: 0
 --- !u!1 &6991371751160506297
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1558692945399509346}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BulletEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6131310503200279371}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310732263382787222}
   - component: {fileID: 9171214116215032677}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: basewater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +447,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1490768791
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 709a613f04f3e774c95633587dc4d60b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

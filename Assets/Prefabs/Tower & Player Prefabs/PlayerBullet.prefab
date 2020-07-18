@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 18814254652573277}
   - component: {fileID: 18814254652573276}
   - component: {fileID: 5118090845900072925}
-  - component: {fileID: -1206319604720721697}
+  - component: {fileID: 5682024531859764299}
   m_Layer: 14
-  m_Name: Bullet
+  m_Name: PlayerBullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1355915279
   m_SortingLayer: 5
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: aaabb300dc02cb246b50bbc013d86ad2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a56ae8c3e5eb11b47af036dc7faaa8e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f23fa2d01798894a9021fce1ac5e7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  speed: 600
   lifeSpan: 5
 --- !u!50 &18814254652573276
 Rigidbody2D:
@@ -146,7 +146,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.08, y: 0.047156744}
   m_EdgeRadius: 0
---- !u!82 &-1206319604720721697
+--- !u!82 &5682024531859764299
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +157,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5321020551560296200, guid: d004f52ea00513f4493dc5fb271c249f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 565f4dea6cdfeff478c5c61194ae3d6d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c97c8aca26131134a98d0a80ea517ca2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

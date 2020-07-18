@@ -13,10 +13,10 @@ TextureImporter:
     second: buttons_m2
   - first:
       213: -4694355065557524589
-    second: tutorial-buttons_3
+    second: buttons-m
   - first:
       213: -945675483308755687
-    second: tutorial-buttons_4
+    second: buttons-m-move
   - first:
       213: 324935613331680862
     second: tutorial-buttons_5
@@ -116,7 +116,7 @@ TextureImporter:
         width: 369
         height: 243
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -137,7 +137,7 @@ TextureImporter:
         width: 193
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: buttons_m2
       rect:
         serializedVersion: 2
-        x: 896
+        x: 895
         y: 45
         width: 193
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -174,12 +174,12 @@ TextureImporter:
       name: buttons_space
       rect:
         serializedVersion: 2
-        x: 416
+        x: 415
         y: 51
         width: 244
         height: 116
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,6 +187,48 @@ TextureImporter:
       bones: []
       spriteID: a7edf271a335c8460800000000000000
       internalID: 7245257409494507130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-m
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 45
+        width: 193
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f53eb80fc4adeb0800000000000000
+      internalID: -4694355065557524589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-m-move
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 47
+        width: 223
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 915f598882940e2f0800000000000000
+      internalID: -945675483308755687
       vertices: []
       indices: 
       edges: []

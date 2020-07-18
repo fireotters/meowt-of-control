@@ -55,13 +55,13 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(1) && _canShootAgain <= 0)
         {
-            if(_player.gunEnoughAmmo)
+            if(_player.gunCanBeUsed)
             {
                 _canShoot = true;
             }
             else
             {
-                _player.ShowAmmoPanel();
+                _player.NoAmmo();
             }
         }
     }
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation);
         bullet.Pew();
 
-        _player.ReduceBulletsLeft();
+        _player.BulletWasShot();
         _canShoot = false;
         _canShootAgain = shootCadence;
     }

@@ -21,11 +21,11 @@ TagManager:
   - 
   - Enemy
   - Scrap
-  - 
+  - Towers
   - MainTower
   - BlocksPlayerExit
   - Player
-  - BulletIgnoresPlayer
+  - FriendlyProjectile
   - 
   - 
   - 

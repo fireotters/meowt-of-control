@@ -104,4 +104,9 @@ public class MainMenuUi : BaseUi
     {
         SceneManager.LoadScene("HelpMenu");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

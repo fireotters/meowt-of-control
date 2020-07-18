@@ -37,13 +37,11 @@ public class PlaceableTower : MonoBehaviour
                     interferingColliders.Add(col);
                 }
             }
-            /*if (interferingColliders.Count > 0)
-            {
-                print("PlaceableTower: " + interferingColliders.Count + " barrier colliders found");
-            }*/
 
+            // If there are no barriers blocking placement, turn the overlay colour for the turret's range to blue.
+            // If at least one barrier, turn the overlay colour to red.
             placementIsValid = interferingColliders.Count == 0;
-            gM.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
+            gM.gameUi.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
         }
     }
 }
