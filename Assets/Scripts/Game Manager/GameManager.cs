@@ -25,7 +25,7 @@ public partial class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isPlacingTower)
+        if (Input.GetKeyDown(KeyCode.Space) && isAlreadyPlacingObject)
         {
             AttemptTowerPlacement();
         }
@@ -59,13 +59,14 @@ public partial class GameManager : MonoBehaviour
 
     public void HandleMilkPickup()
     {
-        if (mainTowerHealth <= maxMainTowerHealth - hpMilkHeals)
+        if (mainTowerHealth < maxMainTowerHealth)
         {
-            gameUi.UpdateMainTowerHealth(hpMilkHeals);
-        }
-        else
-        {
-            gameUi.UpdateYarn(50);
+            int hpToHeal = maxMainTowerHealth - mainTowerHealth;
+            if (hpToHeal > hpMilkHeals)
+            {
+                hpToHeal = hpMilkHeals;
+            }
+            gameUi.UpdateMainTowerHealth(hpToHeal);
         }
 
         if (mainTowerHealth > 25)

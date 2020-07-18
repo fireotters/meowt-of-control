@@ -59,10 +59,6 @@ public partial class GameUi : BaseUi
             // Pause if pause panel isn't open, resume if it is open
             GameIsPaused(!gamePausePanel.activeInHierarchy);
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            SwapFullscreen();
-        }
         
     }
 
