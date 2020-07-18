@@ -39,7 +39,6 @@ public partial class GameUi : BaseUi
         StartCoroutine(FadeBlack("from"));
 
         // Initialise UI values
-        UpdateYarn(0);
         UpdateMainTowerHealth(0);
     }
 

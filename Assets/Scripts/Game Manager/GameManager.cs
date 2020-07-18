@@ -39,7 +39,7 @@ public partial class GameManager : MonoBehaviour
     private void StartNextRound()
     {
         currentRound += 1;
-        currentYarn += 50 * currentRound;
+        gameUi.UpdateYarn(50 * currentRound);
         enemyMaxCount = currentRound * 7;
         enemyCount = enemyMaxCount;
         enemyNumberSpawned = 0;
