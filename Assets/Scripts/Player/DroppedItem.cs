@@ -14,7 +14,7 @@ public class DroppedItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.name == "Player")
+        if (collision.CompareTag("Player"))
         {
             gM.player.PickupItem(typeOfDrop);
             Destroy(gameObject);

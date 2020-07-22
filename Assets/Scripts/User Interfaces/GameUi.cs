@@ -75,18 +75,17 @@ public partial class GameUi : BaseUi
         }
     }
 
-    // public void gameOver(bool intent)
-    // {
-    //     gameOverPanel.SetActive(intent);
-    //     Time.timeScale = (intent == true) ? 0 : 1;
-    // }
+    public void GameIsOverShowUi()
+    {
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
 
-    // public void restart()
-    // {
-    //     SceneManager.LoadScene(2);
-    //     Time.timeScale = 1;
-    //     gamePausePanel.SetActive(false);
-    // }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("GameScene");
+        Time.timeScale = 1;
+    }
 
     public void ExitLevel()
     {
