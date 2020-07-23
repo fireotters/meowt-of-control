@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.RestService;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,14 +8,17 @@ public class Player : MonoBehaviour
     [Header("Tweakable Variables")]
     public int bulletsLeft = 6;
     public int currentPlayerHealth = 3;
-    private readonly float reloadTimePerBullet = 0.1f;
+    private readonly float reloadTimePerBullet = 0.25f;
     private readonly int maxBullets = 6, maxPlayerHealth = 3;
     // If maxBullets is changed, bullet indicators need to be added in Unity, and assigned to bulletIndicators[]
 
     [Header("Private Components / Other Variables")]
     private float nextPlayerDmg = 0.0f;
-    private GameManager gM;
-    private SoundManager soundManager;
+    private const float playerDmgInterval = 2f;
+    private GameManager _gM;
+    private SoundManager _soundManager;
+    private Animator _spriteAnimator;
+    private PlayerController _playerController;
 
     [Header("Weapon Variables")]
     [SerializeField] private GameObject[] bulletIndicators;
@@ -27,10 +31,12 @@ public class Player : MonoBehaviour
     private void Start()
     {
         ammoPanel = transform.Find("BulletsRemaining").gameObject;
-        gM = FindObjectOfType<GameManager>();
-        soundManager = GetComponent<SoundManager>();
+        _gM = FindObjectOfType<GameManager>();
+        _soundManager = GetComponent<SoundManager>();
         ammoPanelSounds = ammoPanel.GetComponent<AudioSource>();
         ammoPanelNoAmmoOverlay = ammoPanel.transform.Find("NoShooting").gameObject;
+        _spriteAnimator = transform.GetChild(2).GetComponent<Animator>();
+        _playerController = GetComponent<PlayerController>();
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -40,10 +46,10 @@ public class Player : MonoBehaviour
         {
             DamagePlayer();
         }
-        else if (col.gameObject.CompareTag("MainTower"))
-        {
-            AttemptReload();
-        }
+        //else if (col.gameObject.CompareTag("MainTower"))
+        //{
+        //    AttemptReload();
+        //}
     }
     
     /// <summary>
@@ -53,30 +59,42 @@ public class Player : MonoBehaviour
     {
         if (bulletsLeft < maxBullets && !gunIsReloading)
         {
+            // Tell the game that gun is being reloaded
             gunIsReloading = true;
             gunCanBeUsed = false;
+
+            // Reset bullet count to 0 each time gun is reloaded
+            bulletsLeft = 0;
+            foreach (GameObject bulletIndicator in bulletIndicators)
+            {
+                bulletIndicator.SetActive(false);
+            }
+
+            // Show ammo panel, play sounds, begin reload coroutine
             ShowAmmoPanel();
             ammoPanelSounds.clip = audReload;
             ammoPanelSounds.Play();
-
             StartCoroutine(ReloadAction());
         }
     }
 
     private IEnumerator ReloadAction()
     {
+        _spriteAnimator.SetBool("Reloading", true);
         while (!gunCanBeUsed)
         {
+            yield return new WaitForSeconds(reloadTimePerBullet);
             bulletsLeft++;
             bulletIndicators[bulletsLeft - 1].SetActive(true);
-            yield return new WaitForSeconds(reloadTimePerBullet);
             if (bulletsLeft == 6)
             {
                 gunCanBeUsed = true;
             }
+            ShowAmmoPanel();
         }
         gunIsReloading = false;
         ShowAmmoPanel();
+        _spriteAnimator.SetBool("Reloading", false);
     }
     
     /// <summary>
@@ -108,12 +126,58 @@ public class Player : MonoBehaviour
     {
         if (currentPlayerHealth != 0 && Time.time > nextPlayerDmg)
         {
-            nextPlayerDmg = Time.time + 3f;
-            soundManager.SoundPlayerHit();
+            nextPlayerDmg = Time.time + playerDmgInterval;
+            _soundManager.SoundPlayerHit();
             currentPlayerHealth--;
-            gM.gameUi.UpdatePlayerHealth();
+            _gM.gameUi.UpdatePlayerHealth();
+            if (currentPlayerHealth == 0)
+            {
+                PlayerIsDead();
+                _gM.GameIsOverPlayEndScene();
+            }
+            else
+            {
+                StartCoroutine(BlinkDamage());
+            }
         }
     }
+
+    private IEnumerator BlinkDamage()
+    {
+        float elapsedTime = 0f;
+        float blinkInterval = 0.2f;
+        float fastBlinkInterval = blinkInterval / 4f;
+
+        SpriteRenderer[] ArrayOfRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        while (elapsedTime < playerDmgInterval)
+        {
+            // When a third of the invuln timer remains, blink much faster
+            if (elapsedTime >= (playerDmgInterval / 3f) * 2)
+            {
+                blinkInterval = fastBlinkInterval;
+            }
+
+            SetSpriteAlphas(ArrayOfRenderers, 0.5f);
+            yield return new WaitForSeconds(blinkInterval);
+
+            SetSpriteAlphas(ArrayOfRenderers, 0.8f);
+            yield return new WaitForSeconds(blinkInterval);
+
+            elapsedTime += blinkInterval * 2;
+        }
+        SetSpriteAlphas(ArrayOfRenderers, 1f);
+    }
+    private void SetSpriteAlphas(SpriteRenderer[] inputArray, float desiredAlpha)
+    {
+        Color origColor;
+        foreach (SpriteRenderer r in inputArray)
+        {
+            origColor = r.color;
+            r.color = new Color(origColor.r, origColor.g, origColor.b, desiredAlpha);
+        }
+    }
+
     
     /// <summary>
     /// If no bullets, gun cannot be shot. If shooting is attempted with no bullets, NoAmmo shows ammo panel and plays a sound effect.
@@ -126,6 +190,7 @@ public class Player : MonoBehaviour
         if (bulletsLeft == 0)
         {
             gunCanBeUsed = false;
+            AttemptReload();
         }
     }
 
@@ -139,6 +204,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    public enum PickupType { Milk, Yarn }
+    
     /// <summary>
     /// Function that handles picking up items.
     /// 
@@ -146,9 +213,6 @@ public class Player : MonoBehaviour
     /// If yarn is picked up: deposit 50 yarn.
     /// </summary>
     /// <param name="type">Item type</param>
-    /// 
-
-    public enum PickupType { Milk, Yarn }
     public void PickupItem(PickupType type)
     {
         switch (type)
@@ -157,20 +221,28 @@ public class Player : MonoBehaviour
                 if (currentPlayerHealth < maxPlayerHealth)
                 {
                     currentPlayerHealth = maxPlayerHealth;
-                    gM.gameUi.UpdatePlayerHealth();
+                    _gM.gameUi.UpdatePlayerHealth();
                 }
                 else if (currentPlayerHealth == maxPlayerHealth)
                 {
-                    gM.HandleMilkPickup();
+                    _gM.HandleMilkPickup();
                 }
                 break;
             case PickupType.Yarn:
-                gM.gameUi.UpdateYarn(50);
+                _gM.gameUi.UpdateYarn(50);
                 break;
             default:
                 Debug.LogError("GameManger.PickupItem: Invalid pickup type");
                 break;
         }
+    }
+
+    private void PlayerIsDead()
+    {
+        GetComponent<Rigidbody2D>().simulated = false;
+        _playerController.enabled = false;
+        _spriteAnimator.SetBool("Dying", true);
+        _gM.GameIsOverPlayEndScene();
     }
 
 }
