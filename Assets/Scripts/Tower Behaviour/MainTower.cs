@@ -9,7 +9,7 @@ public class MainTower : MonoBehaviour
     private AudioSource _audioSource;
     public AudioClip catCannon1, catCannon2;
     float _curTime = 0;
-    float nextDamage = 1;
+    private const float nextDamage = 1f;
 
     private void Start()
     {
@@ -24,14 +24,12 @@ public class MainTower : MonoBehaviour
         {
             if (col.gameObject.CompareTag("LargeEnemy"))
             {
-                _gameManager.gameUi.UpdateMainTowerHealth(-5);
+                _gameManager.gameUi.UpdateMainTowerHealth(-10);
             }
             else if(col.gameObject.CompareTag("Enemy"))
             {
-                _gameManager.gameUi.UpdateMainTowerHealth(-1);
+                _gameManager.gameUi.UpdateMainTowerHealth(-5);
             }
-
-            //Debug.Log("Tower hit! " + _gameManager.mainTowerHealth);
 
             _curTime = nextDamage;
         }
@@ -43,10 +41,10 @@ public class MainTower : MonoBehaviour
 
         if (_gameManager.mainTowerHealth <= 0)
         {
-            Lose();
+            _gameManager.player.PlayerIsDead();
         }
 
-        if (_gameManager.mainTowerHealth <= 25)
+        if (_gameManager.mainTowerHealth <= 25 && _gameManager.mainTowerHealth != 0)
         {
             _gameManager.gameUi.musicManager.ChangeStressMode();
         }
@@ -77,11 +75,5 @@ public class MainTower : MonoBehaviour
     {
         _audioSource.clip = catCannon2;
         _audioSource.Play();
-    }
-
-    private void Lose() // TODO Improve
-    {
-        Destroy(gameObject);
-        SceneManager.LoadScene("MainMenu");
     }
 }

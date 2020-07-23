@@ -63,15 +63,18 @@ public partial class GameUi : BaseUi
 
     public void GameIsPaused(bool intent)
     {
-        // Show or hide pause panel and set timescale
-        gamePausePanel.SetActive(intent);
-        Time.timeScale = (intent == true) ? 0 : 1;
-
-        // If music manager is present, pause or resume music/sfx
-        if (musicManager != null)
+        if (!gM.gameIsOver)
         {
-            musicManager.MusicIsPaused(intent);
-            musicManager.FindAllSfxAndPlayPause(intent);
+            // Show or hide pause panel and set timescale
+            gamePausePanel.SetActive(intent);
+            Time.timeScale = (intent == true) ? 0 : 1;
+
+            // If music manager is present, pause or resume music/sfx
+            if (musicManager != null)
+            {
+                musicManager.MusicIsPaused(intent);
+                musicManager.FindAllSfxAndPlayPause(intent);
+            }
         }
     }
 

@@ -124,8 +124,8 @@ public partial class GameManager : MonoBehaviour
         _mainTower.PrepToShoot();
 
         gameUi.isMissileReticuleActive = true;
-        gameUi.ToggleMissileReticuleChanges();
         gameUi.ToggleTowerColourZones();
+        gameUi.ToggleMissileReticuleChanges();
     }
 
 }

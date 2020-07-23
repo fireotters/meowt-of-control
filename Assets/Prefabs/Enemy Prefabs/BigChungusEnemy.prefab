@@ -220,11 +220,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2983328645377290847, guid: 9138ed32a89541b43aa30ca9e155b3bc,
         type: 3}
+    - target: {fileID: 6018084922672946227, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: graphMask.value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7739615390887486111, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 9736e92f9c54e7145bc690326e41f04a, type: 2}
+    - target: {fileID: 8983143596283506444, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8983143596283506444, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.3998196
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5678617109969716404, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}

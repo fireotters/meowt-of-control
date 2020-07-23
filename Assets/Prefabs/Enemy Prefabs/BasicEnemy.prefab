@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: enemyMaxHits
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2579667382344482714, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: breaksThruScrap
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4925385967676941587, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,6 +81,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BasicEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018084922672946227, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: drawGizmos
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9609ebb8cb8a10449936b8ff34ce49c6, type: 3}

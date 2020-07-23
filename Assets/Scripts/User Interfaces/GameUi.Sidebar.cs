@@ -25,6 +25,10 @@ public partial class GameUi : BaseUi
     internal void UpdateMainTowerHealth(int difference)
     {
         gM.mainTowerHealth += difference;
+        if (gM.mainTowerHealth < 0)
+        {
+            gM.mainTowerHealth = 0;
+        }
         textHealth.text = gM.mainTowerHealth + "%";
     }
 

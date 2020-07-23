@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.RestService;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -45,6 +44,11 @@ public class Player : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy") || col.gameObject.CompareTag("LargeEnemy"))
         {
             DamagePlayer();
+        }
+        else if (col.gameObject.CompareTag("Scrap") && Input.GetKey(KeyCode.LeftShift) && _gM.currentYarn >= 1)
+        {
+            Destroy(col.gameObject);
+            _gM.gameUi.UpdateYarn(-1);
         }
         //else if (col.gameObject.CompareTag("MainTower"))
         //{
@@ -229,7 +233,7 @@ public class Player : MonoBehaviour
                 }
                 break;
             case PickupType.Yarn:
-                _gM.gameUi.UpdateYarn(50);
+                _gM.gameUi.UpdateYarn(20);
                 break;
             default:
                 Debug.LogError("GameManger.PickupItem: Invalid pickup type");
@@ -237,7 +241,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void PlayerIsDead()
+    public void PlayerIsDead()
     {
         GetComponent<Rigidbody2D>().simulated = false;
         _playerController.enabled = false;
