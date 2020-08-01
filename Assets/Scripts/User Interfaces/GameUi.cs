@@ -34,6 +34,7 @@ public partial class GameUi : BaseUi
     {
         // Change music track
         musicManager.ChangeMusicTrack(choiceOfMusic);
+        musicManager.SetMixerVolumes();
 
         // Fade in the level
         StartCoroutine(FadeBlack("from"));
@@ -86,6 +87,7 @@ public partial class GameUi : BaseUi
 
     public void RestartGame()
     {
+        musicManager.ChangeBackToStageMusicOnRetry();
         SceneManager.LoadScene("GameScene");
         Time.timeScale = 1;
     }

@@ -49,5 +49,5 @@ MonoBehaviour:
   - {fileID: 3339407810785517692, guid: 6cf4790d101472a4bbdc0ef82f0f0e40, type: 3}
   isHorizontalSpawner: 0
   enemiesInPlayParent: {fileID: 0}
-  spawnRate: 0
+  spawnRate: 6
   enemy_target: {fileID: 0}

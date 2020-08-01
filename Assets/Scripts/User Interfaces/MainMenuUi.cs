@@ -36,14 +36,13 @@ public class MainMenuUi : BaseUi
         {
             musicManager.sfxDemo = optionSFXSlider.GetComponent<AudioSource>();
             musicManager.ChangeMusicTrack(0);
+            musicManager.SetMixerVolumes();
         }
         if (!PlayerPrefs.HasKey("Music") || !PlayerPrefs.HasKey("SFX"))
         {
             PlayerPrefs.SetFloat("Music", 0.5f);
             PlayerPrefs.SetFloat("SFX", 0.5f);
         }
-        mixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("Music")) * 20);
-        mixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFX")) * 20);
         StartCoroutine(FadeBlack("from"));
     }
 

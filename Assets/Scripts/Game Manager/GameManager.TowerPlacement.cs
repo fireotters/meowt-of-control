@@ -5,6 +5,7 @@ using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
+    [Header("Tower Placement Variables")]
     public GameObject towerBarrierMask;
     public Tower towerPillow, towerWater, towerFridge;
     

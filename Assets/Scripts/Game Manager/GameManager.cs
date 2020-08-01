@@ -48,23 +48,19 @@ public partial class GameManager : MonoBehaviour
 
     private void StartNextRound()
     {
+        // Iterate current round and grant yarn
         currentRound += 1;
         gameUi.UpdateYarn(20 * currentRound);
+
+        // Manage enemy counts. Spawnrate increases each round. RoundNo*7 enemies per round.
+        IncreaseEnemySpawnRate();
         enemyMaxCount = currentRound * 7;
         enemyCount = enemyMaxCount;
         enemyNumberSpawned = 0;
-        gameUi.textRound.text = currentRound.ToString();
         print($"Enemy count: {enemyCount}");
-        gameUi.UpdateRoundIndicator();
-    }
 
-    public void IncrementEnemyKillCount()
-    {
-        if (enemyCount > 0)
-        {
-            enemyCount--;
-            enemyTotalKilledEver++;
-        }
+        // Update round indicator number & percentage marker
+        gameUi.textRound.text = currentRound.ToString();
         gameUi.UpdateRoundIndicator();
     }
 
@@ -89,7 +85,7 @@ public partial class GameManager : MonoBehaviour
     public void GameIsOverPlayEndScene()
     {
         gameIsOver = true;
-        gameUi.musicManager.ExitStressMode();
+        gameUi.musicManager.ChangeToGameOverMusic();
         gameUi.Invoke(nameof(gameUi.GameIsOverShowUi), 3f);
     }
 }

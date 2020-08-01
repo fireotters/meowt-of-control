@@ -242,10 +242,11 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: d004f52ea00513f4493dc5fb271c249f, type: 2}
   sfxDemo: {fileID: 0}
   currentMusicPlayer: {fileID: 8774387490616601871}
-  currentMusicPlayer2: {fileID: 2592762527334569553}
+  currentMusicPlayerDrums: {fileID: 2592762527334569553}
   musicMainMenu: {fileID: 8300000, guid: 3d903e3978255454f912dd9a3972912c, type: 3}
   stageMusicDrums: {fileID: 8300000, guid: c75fdf064194aa54db6d06a9c2face0f, type: 3}
   stageMusic: {fileID: 8300000, guid: efb8d37e4f5bbf1408014ca0631c11e6, type: 3}
+  stageGameOver: {fileID: 8300000, guid: d07e72b373315534c9ef5c58c9c95c36, type: 3}
   hoverButton: {fileID: 0}
   selectButton: {fileID: 0}
   stressFadeSpeed: 0.08

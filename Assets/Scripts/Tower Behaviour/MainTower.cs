@@ -39,7 +39,7 @@ public class MainTower : MonoBehaviour
             _curTime -= Time.deltaTime;
         }
 
-        if (_gameManager.mainTowerHealth <= 0)
+        if (_gameManager.mainTowerHealth <= 0 && !_gameManager.gameIsOver)
         {
             _gameManager.player.PlayerIsDead();
         }
