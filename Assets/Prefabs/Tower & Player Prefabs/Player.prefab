@@ -456,8 +456,7 @@ MonoBehaviour:
   - {fileID: 9063877085762309202}
   - {fileID: 8799544160593554068}
   - {fileID: 5426066150870881726}
-  audNoAmmo: {fileID: 8300000, guid: 5985e05a082e08843878fabfcd7eb25b, type: 3}
-  audReload: {fileID: 8300000, guid: bac6831c1a4988d4e8fc1b4c85ecdfc6, type: 3}
+  audReload: {fileID: 8300000, guid: d7a27daffc95fce4186957c50a436066, type: 3}
   gunCanBeUsed: 1
 --- !u!50 &2991865322832994295
 Rigidbody2D:
@@ -499,7 +498,7 @@ MonoBehaviour:
   enemyImpact1: {fileID: 8300000, guid: 2c846f9b38c290c408c1b6d8e6d842c2, type: 3}
   enemyImpact2: {fileID: 8300000, guid: bc4a30dc7dcf2cf4a88b55129f810e97, type: 3}
   catCannon: {fileID: 8300000, guid: 54a53c0e6587e2344b8c0b7dbe44a97b, type: 3}
-  playerHit: {fileID: 8300000, guid: 8bc5f6e94971ac7439ef34144fbd38b4, type: 3}
+  playerHit: {fileID: 8300000, guid: 6a9aa87e8b9716e4fb32e382a359fd98, type: 3}
   mixer: {fileID: 24100000, guid: d004f52ea00513f4493dc5fb271c249f, type: 2}
 --- !u!82 &-727260445644836773
 AudioSource:

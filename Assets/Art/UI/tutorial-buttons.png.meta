@@ -19,7 +19,7 @@ TextureImporter:
     second: buttons-m-move
   - first:
       213: 324935613331680862
-    second: tutorial-buttons_5
+    second: buttons_L_shift
   - first:
       213: 7245257409494507130
     second: buttons_space
@@ -200,7 +200,7 @@ TextureImporter:
         width: 193
         height: 300
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -221,7 +221,7 @@ TextureImporter:
         width: 223
         height: 301
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,6 +229,27 @@ TextureImporter:
       bones: []
       spriteID: 915f598882940e2f0800000000000000
       internalID: -945675483308755687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_L_shift
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 188
+        width: 242
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5e228ff737628400800000000000000
+      internalID: 324935613331680862
       vertices: []
       indices: 
       edges: []

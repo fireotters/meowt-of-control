@@ -74,10 +74,6 @@ public class PlayerController : MonoBehaviour
             {
                 _canShoot = true;
             }
-            else
-            {
-                _player.NoAmmo();
-            }
         }
     }
     

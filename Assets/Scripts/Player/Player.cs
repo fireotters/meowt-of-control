@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     [Header("Weapon Variables")]
     [SerializeField] private GameObject[] bulletIndicators;
-    public AudioClip audNoAmmo, audReload;
+    public AudioClip audReload;
     [HideInInspector] public bool gunCanBeUsed = true;
     private bool gunIsReloading = false;
     private GameObject ammoPanel, ammoPanelNoAmmoOverlay;
@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
 
     
     /// <summary>
-    /// If no bullets, gun cannot be shot. If shooting is attempted with no bullets, NoAmmo shows ammo panel and plays a sound effect.
+    /// If no bullets, gun cannot be shot. 
     /// </summary>
     public void BulletWasShot()
     {
@@ -195,16 +195,6 @@ public class Player : MonoBehaviour
         {
             gunCanBeUsed = false;
             AttemptReload();
-        }
-    }
-
-    public void NoAmmo()
-    {
-        ShowAmmoPanel();
-        if (!ammoPanelSounds.isPlaying && !gunIsReloading)
-        {
-            ammoPanelSounds.clip = audNoAmmo;
-            ammoPanelSounds.Play();
         }
     }
 

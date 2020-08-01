@@ -30,6 +30,10 @@ public partial class GameManager : MonoBehaviour
         {
             AttemptTowerPlacement();
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            gameUi.ToggleDemolishText();
+        }
         if (enemyCount == 0)
         {
             enemyCount = -1;
