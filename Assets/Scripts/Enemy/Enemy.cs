@@ -21,9 +21,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        healthBar = transform.Find("HealthBar");
         gM = FindObjectOfType<GameManager>();
         enemyHitsRemaining = enemyMaxHits;
+        healthBar = transform.Find("HealthBar");
         healthBarFullSize = healthBar.localScale.x;
     }
 

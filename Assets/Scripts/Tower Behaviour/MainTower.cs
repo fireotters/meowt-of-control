@@ -11,11 +11,18 @@ public class MainTower : MonoBehaviour
     float _curTime = 0;
     private const float nextDamage = 1f;
 
+    // Health bar
+    private float healthBarFullSize;
+    private Transform healthBar;
+
     private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
         _mainTowerAnimator = GetComponentInChildren<Animator>();
         _audioSource = GetComponent<AudioSource>();
+
+        healthBar = transform.Find("HealthBar");
+        healthBarFullSize = healthBar.localScale.x;
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -25,10 +32,12 @@ public class MainTower : MonoBehaviour
             if (col.gameObject.CompareTag("LargeEnemy"))
             {
                 _gameManager.gameUi.UpdateMainTowerHealth(-10);
+                ChangeHealthBar();
             }
             else if(col.gameObject.CompareTag("Enemy"))
             {
                 _gameManager.gameUi.UpdateMainTowerHealth(-5);
+                ChangeHealthBar();
             }
 
             _curTime = nextDamage;
@@ -75,5 +84,12 @@ public class MainTower : MonoBehaviour
     {
         _audioSource.clip = catCannon2;
         _audioSource.Play();
+    }
+    public void ChangeHealthBar()
+    {
+        Vector3 scaleChange = healthBar.localScale;
+        float percentOfLifeLeft = (float)_gameManager.mainTowerHealth / (float)100;
+        scaleChange.x = percentOfLifeLeft * healthBarFullSize;
+        healthBar.localScale = scaleChange;
     }
 }
