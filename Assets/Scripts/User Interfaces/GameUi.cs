@@ -79,22 +79,16 @@ public partial class GameUi : BaseUi
         }
     }
 
-    public void GameIsOverShowUi()
+    public void ExitGameFromPause()
     {
-        gameOverPanel.SetActive(true);
-        Time.timeScale = 0;
-    }
-
-    public void RestartGame()
-    {
-        musicManager.ChangeBackToStageMusicOnRetry();
-        SceneManager.LoadScene("GameScene");
-        Time.timeScale = 1;
-    }
-
-    public void ExitLevel()
-    {
-        SceneManager.LoadScene("MainMenu");
-        Time.timeScale = 1;
+        if (IsThisAHighScore(gM.currentRound))
+        {
+            GameIsOverShowUi();
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+            Time.timeScale = 1;
+        }
     }
 }
