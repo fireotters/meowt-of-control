@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private PlayerController _playerController;
 
     [Header("Weapon Variables")]
-    [SerializeField] private GameObject[] bulletIndicators;
+    [SerializeField] private GameObject[] bulletIndicators = default;
     public AudioClip audReload;
     [HideInInspector] public bool gunCanBeUsed = true;
     private bool gunIsReloading = false;

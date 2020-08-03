@@ -75,18 +75,18 @@ public partial class GameUi : BaseUi
     }
     private void CheckAndSaveHighscore()
     {
-        // Set highscore's name depending on which panel's InputField is being used.
-        string nameFromField = currentNameField.text;
-
-        // Renames blank names to 'Anonymous Cat'
-        if (string.IsNullOrWhiteSpace(nameFromField))
-        {
-            nameFromField = "Anonymous Cat";
-        }
-
-        // Submit high score
         if (IsThisAHighScore(gM.currentRound))
         {
+            // Set highscore's name depending on which panel's InputField is being used.
+            string nameFromField = currentNameField.text;
+
+            // Renames blank names to 'Anonymous Cat'
+            if (string.IsNullOrWhiteSpace(nameFromField))
+            {
+                nameFromField = "Anonymous Cat";
+            }
+
+            // Submit high score
             PlayerPrefs.SetInt("HighscoreNum", gM.currentRound);
             PlayerPrefs.SetString("HighscoreName", nameFromField);
         }

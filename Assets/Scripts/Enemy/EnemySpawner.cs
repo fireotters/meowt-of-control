@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private GameObject basicEnemy, sanic, bigChungus;
+    private const GameObject basicEnemy = default, sanic = default, bigChungus = default;
     public List<GameObject> mobs;
     private float randX, randY;
     public bool isHorizontalSpawner;

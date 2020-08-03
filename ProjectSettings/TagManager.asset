@@ -68,6 +68,9 @@ TagManager:
   - name: Placeable - Invalid Areas
     uniqueID: 3498946023
     locked: 0
+  - name: Bullets
+    uniqueID: 3802474161
+    locked: 0
   - name: UI
     uniqueID: 1508027155
     locked: 0

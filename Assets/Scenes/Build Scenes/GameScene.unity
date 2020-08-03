@@ -8881,7 +8881,7 @@ MonoBehaviour:
     type: 3}
   placementBlockersParent: {fileID: 1366110676}
   player: {fileID: 300768503}
-  currentYarn: 0
+  currentYarn: 100
   mainTowerHealth: 100
   currentRound: 0
   dropMilk: {fileID: 2983328645377290847, guid: edecdd96ca7c3f145baaa3dac85f23d8,
@@ -8899,6 +8899,7 @@ MonoBehaviour:
   priceFridge: 50
   priceMissile: 20
   gameIsOver: 0
+  scrap: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
 --- !u!1 &1390663259
 GameObject:
   m_ObjectHideFlags: 0
@@ -10307,6 +10308,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622554227}
   m_CullTransparentMesh: 0
+--- !u!1 &1624796667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1624796668}
+  m_Layer: 5
+  m_Name: TowerUiTimerParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1624796668
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624796667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1839683169}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1919.9999, y: 1079.4257}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1640060763
 GameObject:
   m_ObjectHideFlags: 0
@@ -12408,6 +12444,7 @@ RectTransform:
   - {fileID: 1019973955}
   - {fileID: 619427785}
   - {fileID: 1507661164}
+  - {fileID: 1624796668}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

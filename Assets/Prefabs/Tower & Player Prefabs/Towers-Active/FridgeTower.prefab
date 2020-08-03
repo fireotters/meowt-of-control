@@ -256,7 +256,6 @@ GameObject:
   - component: {fileID: 6213731364343559203}
   - component: {fileID: 2666020163781443597}
   - component: {fileID: 2843858875665603392}
-  - component: {fileID: -9093772615761385731}
   - component: {fileID: 5928513874277092700}
   m_Layer: 10
   m_Name: FridgeTower
@@ -298,8 +297,11 @@ MonoBehaviour:
   gunEnd: {fileID: 5794147025758176986}
   bulletPrefab: {fileID: 6873564271939672047, guid: a9e3f6ebff6f9904d8aef7e43cc12cb1,
     type: 3}
+  maxLifespan: 5
+  timerUiPrefab: {fileID: 5833921825391891483, guid: 62d22d53f5dbe064192085e2cd44f4c0,
+    type: 3}
   _towerAnimator: {fileID: 4405177943123508307}
-  soundManager: {fileID: -9093772615761385731}
+  audTowerDestroy: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
 --- !u!58 &2666020163781443597
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -413,27 +415,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-9093772615761385731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8714421360546928328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78f96d9f495ba624b8155882081d5517, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundSource: {fileID: 2843858875665603392}
-  hoverSound: {fileID: 8300000, guid: a62ba84aa3f99294a9bab8bffb278ae8, type: 3}
-  selectSound: {fileID: 8300000, guid: 7894974a30dbf954791da38e96a30d26, type: 3}
-  destroyTurret: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
-  enemyImpact1: {fileID: 8300000, guid: 2c846f9b38c290c408c1b6d8e6d842c2, type: 3}
-  enemyImpact2: {fileID: 8300000, guid: bc4a30dc7dcf2cf4a88b55129f810e97, type: 3}
-  catCannon: {fileID: 8300000, guid: 54a53c0e6587e2344b8c0b7dbe44a97b, type: 3}
-  playerHit: {fileID: 8300000, guid: 8bc5f6e94971ac7439ef34144fbd38b4, type: 3}
-  mixer: {fileID: 24100000, guid: d004f52ea00513f4493dc5fb271c249f, type: 2}
 --- !u!61 &5928513874277092700
 BoxCollider2D:
   m_ObjectHideFlags: 0

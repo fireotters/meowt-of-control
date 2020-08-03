@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 8928845258137198613}
   - component: {fileID: 1952206501164173053}
   - component: {fileID: -2057182064340076554}
-  - component: {fileID: 3411499906903156240}
   - component: {fileID: 2135279427459182253}
   m_Layer: 10
   m_Name: WaterTower
@@ -156,8 +155,11 @@ MonoBehaviour:
   gunEnd: {fileID: 6131310503200279371}
   bulletPrefab: {fileID: 4955034945373706700, guid: 3b165ed35b85a3e4990274444c36f459,
     type: 3}
+  maxLifespan: 5
+  timerUiPrefab: {fileID: 5833921825391891483, guid: 62d22d53f5dbe064192085e2cd44f4c0,
+    type: 3}
   _towerAnimator: {fileID: 236599304409860445}
-  soundManager: {fileID: 3411499906903156240}
+  audTowerDestroy: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
 --- !u!58 &1952206501164173053
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -271,27 +273,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3411499906903156240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5405810806751190165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78f96d9f495ba624b8155882081d5517, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundSource: {fileID: -2057182064340076554}
-  hoverSound: {fileID: 8300000, guid: a62ba84aa3f99294a9bab8bffb278ae8, type: 3}
-  selectSound: {fileID: 8300000, guid: 7894974a30dbf954791da38e96a30d26, type: 3}
-  destroyTurret: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
-  enemyImpact1: {fileID: 8300000, guid: 2c846f9b38c290c408c1b6d8e6d842c2, type: 3}
-  enemyImpact2: {fileID: 8300000, guid: bc4a30dc7dcf2cf4a88b55129f810e97, type: 3}
-  catCannon: {fileID: 8300000, guid: 54a53c0e6587e2344b8c0b7dbe44a97b, type: 3}
-  playerHit: {fileID: 8300000, guid: 8bc5f6e94971ac7439ef34144fbd38b4, type: 3}
-  mixer: {fileID: 24100000, guid: d004f52ea00513f4493dc5fb271c249f, type: 2}
 --- !u!61 &2135279427459182253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -390,7 +371,7 @@ GameObject:
   - component: {fileID: 310732263382787222}
   - component: {fileID: 9171214116215032677}
   m_Layer: 10
-  m_Name: basewater
+  m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

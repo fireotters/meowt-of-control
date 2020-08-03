@@ -4,7 +4,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public bool ignoreScrapColliders = false, breaksThruScrap = false;
-    public GameObject scrap;
     public int enemyMaxHits;
     internal int enemyHitsRemaining;
 
@@ -60,7 +59,7 @@ public class Enemy : MonoBehaviour
 
     private void DropScrapAndItems(Vector2 enemyLastPos)
     {
-        GameObject scrapDrop = Instantiate(scrap, gM.gameUi.dropsInPlayParent);
+        GameObject scrapDrop = Instantiate(gM.scrap, gM.gameUi.dropsInPlayParent);
         scrapDrop.transform.position = enemyLastPos;
 
         int randCheck = Random.Range(0, 30);
