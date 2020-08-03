@@ -6,7 +6,6 @@ public class PillowTower : Tower
     protected override void TrackAndShoot()
     {
         var enemyToTarget = AcknowledgedEnemies.FirstOrDefault();
-
         if (enemyToTarget != null)
         {
             var lookDir = enemyToTarget.position - transform.position;
@@ -15,6 +14,10 @@ public class PillowTower : Tower
             var rotationDir = new Vector3(0, 0, angle);
 
             BulletEmitter.rotation = Quaternion.Euler(rotationDir);
+        }
+        else
+        {
+            AcknowledgedEnemies.Remove(enemyToTarget);
         }
 
         base.TrackAndShoot();
