@@ -8,6 +8,7 @@ public partial class GameUi : BaseUi
     [HideInInspector] public bool isMissileReticuleActive = false;
     private Color missileRangeOrange = new Color(0.81f, 0.4f, 0.08f, 0.4f);
     private Color towerRangeBlue = new Color(0.34f, 0.45f, 1f, 0.4f);
+    public GameObject demolishTexts;
     
     /// <summary>
     /// Enables or disables build Mode hints on placement limits and building ranges.
@@ -42,5 +43,10 @@ public partial class GameUi : BaseUi
             sprTowerRange.color = towerRangeBlue;
             launchModeTexts.SetActive(false);
         }
+    }
+
+    public void ToggleDemolishText()
+    {
+        demolishTexts.SetActive(Input.GetKey(KeyCode.LeftShift));
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public partial class GameManager : MonoBehaviour
 {
     [Header("Placeable Towers Logic")]
+    public Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
     [HideInInspector] public bool isAlreadyPlacingObject = false;
     public Transform placeableParent, towersInPlayParent;
     public PlaceableTower placeablePillow, placeableWater, placeableFridge, placeableMissile;
@@ -14,7 +15,6 @@ public partial class GameManager : MonoBehaviour
     private PlaceableTower currentPlacingTower;
     private PurchaseType currentPurchase = PurchaseType.NoPurchaseActive, newPurchase = PurchaseType.NoPurchaseActive;
     public Transform placementBlockersParent;
-    public Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
     
 
     public enum PurchaseType { PillowTower, WaterTower, FridgeTower, Missile, NoPurchaseActive }
@@ -124,8 +124,8 @@ public partial class GameManager : MonoBehaviour
         _mainTower.PrepToShoot();
 
         gameUi.isMissileReticuleActive = true;
-        gameUi.ToggleMissileReticuleChanges();
         gameUi.ToggleTowerColourZones();
+        gameUi.ToggleMissileReticuleChanges();
     }
 
 }

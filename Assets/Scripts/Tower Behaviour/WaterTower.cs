@@ -16,6 +16,10 @@ public class WaterTower : Tower
 
             BulletEmitter.rotation = Quaternion.Euler(rotationDir);
         }
+        else
+        {
+            AcknowledgedEnemies.Remove(enemyToTarget);
+        }
 
         base.TrackAndShoot();
     }

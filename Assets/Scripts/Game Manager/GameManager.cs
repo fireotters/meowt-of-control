@@ -4,7 +4,7 @@ public partial class GameManager : MonoBehaviour
 {
     [Header("Stat Variables")]
     public Player player;
-    public int currentYarn = 50, mainTowerHealth = 100, currentRound = 0;
+    public int currentYarn = 0, mainTowerHealth = 100, currentRound = 0;
     private const int maxMainTowerHealth = 100, hpMilkHeals = 25;
     public GameObject dropMilk, dropYarn;
 
@@ -16,6 +16,7 @@ public partial class GameManager : MonoBehaviour
     public GameUi gameUi;
     [HideInInspector] public MainTower _mainTower;
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
+    public bool gameIsOver = false;
 
     private void Start()
     {
@@ -29,32 +30,37 @@ public partial class GameManager : MonoBehaviour
         {
             AttemptTowerPlacement();
         }
-        if (enemyCount == 0) // TODO When enemy dies, tell gamemanager to remove one from enemyCount
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            gameUi.ToggleDemolishText();
+        }
+        if (enemyCount == 0)
         {
             enemyCount = -1;
             Invoke(nameof(StartNextRound), 2f);
+        }
+        // Every 60 frames, tell Astar to scan for new navigation data
+        if (Time.frameCount % 60 == 0)
+        {
+            AstarPath.active.Scan();
         }
     }
 
     private void StartNextRound()
     {
+        // Iterate current round and grant yarn
         currentRound += 1;
-        gameUi.UpdateYarn(50 * currentRound);
+        gameUi.UpdateYarn(20 * currentRound);
+
+        // Manage enemy counts. Spawnrate increases each round. RoundNo*7 enemies per round.
+        IncreaseEnemySpawnRate();
         enemyMaxCount = currentRound * 7;
         enemyCount = enemyMaxCount;
         enemyNumberSpawned = 0;
-        gameUi.textRound.text = currentRound.ToString();
         print($"Enemy count: {enemyCount}");
-        gameUi.UpdateRoundIndicator();
-    }
 
-    public void IncrementEnemyKillCount()
-    {
-        if (enemyCount > 0)
-        {
-            enemyCount--;
-            enemyTotalKilledEver++;
-        }
+        // Update round indicator number & percentage marker
+        gameUi.textRound.text = currentRound.ToString();
         gameUi.UpdateRoundIndicator();
     }
 
@@ -68,6 +74,7 @@ public partial class GameManager : MonoBehaviour
                 hpToHeal = hpMilkHeals;
             }
             gameUi.UpdateMainTowerHealth(hpToHeal);
+            _mainTower.ChangeHealthBar();
         }
 
         if (mainTowerHealth > 25)
@@ -78,6 +85,8 @@ public partial class GameManager : MonoBehaviour
 
     public void GameIsOverPlayEndScene()
     {
+        gameIsOver = true;
+        gameUi.musicManager.ChangeToGameOverMusic();
         gameUi.Invoke(nameof(gameUi.GameIsOverShowUi), 3f);
     }
 }

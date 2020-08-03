@@ -26,7 +26,7 @@ TagManager:
   - BlocksPlayerExit
   - Player
   - FriendlyProjectile
-  - 
+  - EnemyWalksThruScrap
   - 
   - 
   - 
@@ -50,14 +50,14 @@ TagManager:
   - name: Ground (below everything)
     uniqueID: 1752028989
     locked: 0
+  - name: Scrap
+    uniqueID: 951818289
+    locked: 0
   - name: Enemies
     uniqueID: 4205608065
     locked: 0
   - name: Towers
     uniqueID: 406510319
-    locked: 0
-  - name: Scrap
-    uniqueID: 951818289
     locked: 0
   - name: Player & Drops
     uniqueID: 2939052017

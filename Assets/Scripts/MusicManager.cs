@@ -10,8 +10,8 @@ public class MusicManager : MonoBehaviour
     {
 
     public AudioMixer mixer;
-    public AudioSource sfxDemo, currentMusicPlayer, currentMusicPlayer2;
-    public AudioClip musicMainMenu, stageMusicDrums, stageMusic;
+    public AudioSource sfxDemo, currentMusicPlayer, currentMusicPlayerDrums;
+    public AudioClip musicMainMenu, stageMusicDrums, stageMusic, stageGameOver;
     public AudioClip hoverButton, selectButton;
     public float stressFadeSpeed = 0.08f;
     public float maxPitch = 1.1f;
@@ -45,14 +45,42 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void SetMixerVolumes()
+    {
+        mixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("Music")) * 20);
+        mixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFX")) * 20);
+    }
+
     public void ChangeStressMode()
     {
-        stressMode = true;
+        if (currentMusicPlayer.clip != stageGameOver)
+        {
+            stressMode = true;
+        }
     }
 
     public void ExitStressMode()
     {
         stressMode = false;
+    }
+
+    public void ChangeToGameOverMusic()
+    {
+        stressMode = false;
+        currentMusicPlayer.clip = stageGameOver;
+        currentMusicPlayer.pitch = 1;
+        currentMusicPlayer.Play();
+        currentMusicPlayer.loop = false;
+        currentMusicPlayerDrums.Stop();
+    }
+
+    public void ChangeBackToStageMusicOnRetry()
+    {
+        currentMusicPlayer.clip = stageMusic;
+        currentMusicPlayer.Stop();
+        currentMusicPlayer.Play();
+        currentMusicPlayerDrums.Stop();
+        currentMusicPlayerDrums.Play();
     }
 
     public void FindAllSfxAndPlayPause(bool intent)
@@ -92,12 +120,12 @@ public class MusicManager : MonoBehaviour
         if (stressMode && currentMusicPlayer.pitch < maxPitch)
         {
             currentMusicPlayer.pitch += Time.deltaTime * stressFadeSpeed;
-            currentMusicPlayer2.pitch += Time.deltaTime * stressFadeSpeed;
+            currentMusicPlayerDrums.pitch += Time.deltaTime * stressFadeSpeed;
         }
         else if (!stressMode && currentMusicPlayer.pitch > 1)
         {
             currentMusicPlayer.pitch -= Time.deltaTime * stressFadeSpeed;
-            currentMusicPlayer2.pitch -= Time.deltaTime * stressFadeSpeed;
+            currentMusicPlayerDrums.pitch -= Time.deltaTime * stressFadeSpeed;
         }
     }
 
@@ -130,14 +158,14 @@ public class MusicManager : MonoBehaviour
 
             if (currentMusicPlayer.clip == stageMusic)
             {
-                currentMusicPlayer2.clip = stageMusicDrums;
+                currentMusicPlayerDrums.clip = stageMusicDrums;
                 currentMusicPlayer.Play();
-                currentMusicPlayer2.Play();
+                currentMusicPlayerDrums.Play();
             }
             else
             {
                 currentMusicPlayer.Play();
-                currentMusicPlayer2.Stop();
+                currentMusicPlayerDrums.Stop();
             }
             lastTrackRequested = index;
         }
@@ -148,12 +176,12 @@ public class MusicManager : MonoBehaviour
         if (intent == true && currentMusicPlayer.isPlaying)
         {
             currentMusicPlayer.Pause();
-            currentMusicPlayer2.Pause();
+            currentMusicPlayerDrums.Pause();
         }
         if (intent == false && !currentMusicPlayer.isPlaying)
         {
             currentMusicPlayer.UnPause();
-            currentMusicPlayer2.UnPause();
+            currentMusicPlayerDrums.UnPause();
         }
     }
 

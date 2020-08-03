@@ -37,12 +37,7 @@ public class BaseBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        //Destroy scrap TODO improve
-        if (other.collider.CompareTag("Scrap"))
-        {
-            Destroy(other.gameObject);
-        }
-        else if (!other.collider.CompareTag("Enemy") && !other.collider.CompareTag("LargeEnemy"))
+        if (!other.collider.CompareTag("Enemy") && !other.collider.CompareTag("LargeEnemy"))
         {
             return;
         }

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.RestService;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -22,7 +21,7 @@ public class Player : MonoBehaviour
 
     [Header("Weapon Variables")]
     [SerializeField] private GameObject[] bulletIndicators;
-    public AudioClip audNoAmmo, audReload;
+    public AudioClip audReload;
     [HideInInspector] public bool gunCanBeUsed = true;
     private bool gunIsReloading = false;
     private GameObject ammoPanel, ammoPanelNoAmmoOverlay;
@@ -45,6 +44,11 @@ public class Player : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy") || col.gameObject.CompareTag("LargeEnemy"))
         {
             DamagePlayer();
+        }
+        else if (col.gameObject.CompareTag("Scrap") && Input.GetKey(KeyCode.LeftShift) && _gM.currentYarn >= 1)
+        {
+            Destroy(col.gameObject);
+            _gM.gameUi.UpdateYarn(-1);
         }
         //else if (col.gameObject.CompareTag("MainTower"))
         //{
@@ -180,7 +184,7 @@ public class Player : MonoBehaviour
 
     
     /// <summary>
-    /// If no bullets, gun cannot be shot. If shooting is attempted with no bullets, NoAmmo shows ammo panel and plays a sound effect.
+    /// If no bullets, gun cannot be shot. 
     /// </summary>
     public void BulletWasShot()
     {
@@ -191,16 +195,6 @@ public class Player : MonoBehaviour
         {
             gunCanBeUsed = false;
             AttemptReload();
-        }
-    }
-
-    public void NoAmmo()
-    {
-        ShowAmmoPanel();
-        if (!ammoPanelSounds.isPlaying && !gunIsReloading)
-        {
-            ammoPanelSounds.clip = audNoAmmo;
-            ammoPanelSounds.Play();
         }
     }
 
@@ -229,7 +223,7 @@ public class Player : MonoBehaviour
                 }
                 break;
             case PickupType.Yarn:
-                _gM.gameUi.UpdateYarn(50);
+                _gM.gameUi.UpdateYarn(20);
                 break;
             default:
                 Debug.LogError("GameManger.PickupItem: Invalid pickup type");
@@ -237,7 +231,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void PlayerIsDead()
+    public void PlayerIsDead()
     {
         GetComponent<Rigidbody2D>().simulated = false;
         _playerController.enabled = false;
