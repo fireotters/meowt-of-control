@@ -107,4 +107,12 @@ public partial class GameUi : BaseUi
         }
         purchaseButtons[whichTower].ShowCancelOverlay();
     }
+
+    public void BlockPurchaseUi()
+    {
+        foreach (PurchaseButton btn in purchaseButtons)
+        {
+            btn.GetComponent<Button>().interactable = false;
+        }
+    }
 }

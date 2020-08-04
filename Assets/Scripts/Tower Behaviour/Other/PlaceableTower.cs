@@ -48,7 +48,7 @@ public class PlaceableTower : MonoBehaviour
         }
     }
 
-    private void ResizeRangeIndicator() //TODO maybe ask GameManager which is being placed instead
+    private void ResizeRangeIndicator() //TODO maybe ask GameManager.TowerSelection which is being placed instead
     {
         if (gameObject.name.EndsWith("Pillow(Clone)"))
         {
@@ -61,6 +61,10 @@ public class PlaceableTower : MonoBehaviour
         else if (gameObject.name.EndsWith("Fridge(Clone)"))
         {
             rangeSpriteMask.localScale *= gM.towerManager.rangeOfFridge;
+        }
+        else if (gameObject.name.EndsWith("Reticule(Clone)"))
+        {
+            rangeSpriteMask.localScale *= gM.towerManager.rangeOfMissileExpl;
         }
         else
         {

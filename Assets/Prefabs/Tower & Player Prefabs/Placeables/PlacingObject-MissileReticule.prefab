@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5840847152448726491}
   - component: {fileID: 2454404186388872651}
   m_Layer: 0
-  m_Name: SpriteMask
+  m_Name: RangeSpriteMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3356255708531535700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 3507769882438765482}
   m_RootOrder: 0
@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 3831679843561744280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_Children:
   - {fileID: 5840847152448726491}
   m_Father: {fileID: 0}

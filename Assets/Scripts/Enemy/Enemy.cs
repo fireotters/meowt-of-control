@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
         enemyHitsRemaining = enemyMaxHits;
         healthBar = transform.Find("HealthBar");
         healthBarFullSize = healthBar.localScale.x;
+        GetComponent<AIDestinationSetter>().target = gM.mainTower.transform;
     }
 
     void OnCollisionEnter2D(Collision2D col)

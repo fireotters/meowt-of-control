@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BaseBullet bulletPrefab = default;
     private Transform _gunEnd;
     private Player _player;
-    
+    private GameManager _gM;
+
     private const string HorizontalAxis = "Horizontal";
     private const string VerticalAxis = "Vertical";
     
@@ -32,7 +33,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _canShootAgain = shootCadence;
-        
+
+        _gM = FindObjectOfType<GameManager>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteAnimator = GetComponentInChildren<Animator>();
         _cam = Camera.main;
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
     
     private void Shoot()
     {
-        var bullet = Instantiate(bulletPrefab, _gunEnd.transform.position, _gunEnd.rotation);
+        var bullet = Instantiate(bulletPrefab, _gunEnd.transform.position, _gunEnd.rotation, _gM.projectilesInPlayParent);
         bullet.Pew();
 
         _player.BulletWasShot();

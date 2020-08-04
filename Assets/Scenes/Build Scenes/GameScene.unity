@@ -294,6 +294,11 @@ PrefabInstance:
       propertyPath: enemiesInPlayParent
       value: 
       objectReference: {fileID: 874312741}
+    - target: {fileID: 2689079090142765757, guid: 3d942665da529664d8c94d9e152f2191,
+        type: 3}
+      propertyPath: _spawnController
+      value: 
+      objectReference: {fileID: 1228024617}
     - target: {fileID: 2689079090142765758, guid: 3d942665da529664d8c94d9e152f2191,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -549,7 +554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656471469}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &43329372
 MonoBehaviour:
@@ -566,6 +571,7 @@ MonoBehaviour:
   rangeOfPillow: 0.8
   rangeOfWater: 1.6
   rangeOfFridge: 1.2
+  rangeOfMissileExpl: 1
   firerateOfPillow: 0
   firerateOfWater: 0
   firerateOfFridge: 0
@@ -4253,6 +4259,7 @@ Transform:
   m_LocalPosition: {x: -1.3812579, y: -0.002231311, z: 58.586403}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1228024616}
   - {fileID: 2012510642}
   - {fileID: 1377506640}
   - {fileID: 1445376397}
@@ -4482,7 +4489,7 @@ PrefabInstance:
     - target: {fileID: 5088228723093291430, guid: 90a15e2b23abdab489c184fbdc43e6bb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5088228723093291430, guid: 90a15e2b23abdab489c184fbdc43e6bb,
         type: 3}
@@ -4644,6 +4651,7 @@ Transform:
   - {fileID: 748824564}
   - {fileID: 1405260056}
   - {fileID: 1366110676}
+  - {fileID: 1902851123}
   m_Father: {fileID: 1286093860}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6325,6 +6333,11 @@ PrefabInstance:
       propertyPath: enemiesInPlayParent
       value: 
       objectReference: {fileID: 874312741}
+    - target: {fileID: 2689079090142765757, guid: 3d942665da529664d8c94d9e152f2191,
+        type: 3}
+      propertyPath: _spawnController
+      value: 
+      objectReference: {fileID: 1228024617}
     - target: {fileID: 2689079090142765758, guid: 3d942665da529664d8c94d9e152f2191,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7138,6 +7151,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212748351}
   m_CullTransparentMesh: 0
+--- !u!1 &1228024615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1228024616}
+  - component: {fileID: 1228024617}
+  m_Layer: 0
+  m_Name: EnemySpawnerController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1228024616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228024615}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.26725793, y: 0.004031311, z: -58.586403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 656471469}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1228024617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228024615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3276774a8c0ad2044a8fa7fb924b2e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBasic: {fileID: 5638070982843042143, guid: 1d5a6dc55ed808446a62780a01a055fa,
+    type: 3}
+  enemySanic: {fileID: 5314625887060572921, guid: 6cf4790d101472a4bbdc0ef82f0f0e40,
+    type: 3}
+  enemyBigChungus: {fileID: 8285731635449962684, guid: 8dfa6c5347a1ad24faf423ec16e1395d,
+    type: 3}
+  spawnRate: 3
+  enemiesInPlayParent: {fileID: 874312741}
+  _enemySpawners:
+  - {fileID: 1021358796}
+  - {fileID: 1499340173}
+  - {fileID: 546069734}
+  - {fileID: 1659950868}
 --- !u!1 &1236713266
 GameObject:
   m_ObjectHideFlags: 0
@@ -8890,7 +8959,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656471469}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1377506641
 MonoBehaviour:
@@ -8904,11 +8973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae1d4a09803eca4d97c10f67448f2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawners:
-  - {fileID: 1021358796}
-  - {fileID: 1499340173}
-  - {fileID: 546069734}
-  - {fileID: 1659950868}
+  _spawnController: {fileID: 1228024617}
   towerBarrierMask: {fileID: 3831679843561744280, guid: 4d9a79aa5d4756a49bc04c43bfd1df5b,
     type: 3}
   towerPillow: {fileID: 3579875188866723065, guid: 4c09e215fd7dc8441a7c97d6cb2f4db7,
@@ -8943,7 +9008,7 @@ MonoBehaviour:
   enemyNumberSpawned: 0
   enemyTotalKilledEver: 0
   gameUi: {fileID: 2012510643}
-  _mainTower: {fileID: 0}
+  mainTower: {fileID: 0}
   pricePillow: 10
   priceWater: 30
   priceFridge: 50
@@ -8951,6 +9016,7 @@ MonoBehaviour:
   gameIsOver: 0
   scrap: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
   towerManager: {fileID: 43329372}
+  projectilesInPlayParent: {fileID: 1902851123}
 --- !u!1 &1390663259
 GameObject:
   m_ObjectHideFlags: 0
@@ -9587,7 +9653,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656471469}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1467218471
 GameObject:
@@ -9892,6 +9958,11 @@ PrefabInstance:
       propertyPath: enemiesInPlayParent
       value: 
       objectReference: {fileID: 874312741}
+    - target: {fileID: 2689079090142765757, guid: 3d942665da529664d8c94d9e152f2191,
+        type: 3}
+      propertyPath: _spawnController
+      value: 
+      objectReference: {fileID: 1228024617}
     - target: {fileID: 2689079090142765758, guid: 3d942665da529664d8c94d9e152f2191,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13120,6 +13191,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885811152}
   m_CullTransparentMesh: 0
+--- !u!1 &1902851122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1902851123}
+  m_Layer: 0
+  m_Name: Projectiles In Play
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1902851123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902851122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 811657169}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1904376499
 GameObject:
   m_ObjectHideFlags: 0
@@ -13635,6 +13736,11 @@ PrefabInstance:
       propertyPath: enemiesInPlayParent
       value: 
       objectReference: {fileID: 874312741}
+    - target: {fileID: 2689079090142765757, guid: 3d942665da529664d8c94d9e152f2191,
+        type: 3}
+      propertyPath: _spawnController
+      value: 
+      objectReference: {fileID: 1228024617}
     - target: {fileID: 2689079090142765758, guid: 3d942665da529664d8c94d9e152f2191,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14031,7 +14137,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 656471469}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2012510643
 MonoBehaviour:

@@ -39,7 +39,7 @@ public partial class GameManager : MonoBehaviour
                 gameUi.UpdateYarn(-priceFridge);
                 break;
             case PurchaseType.Missile:
-                _mainTower.AnimateShooting();
+                mainTower.AnimateShooting();
                 break;
         }
 

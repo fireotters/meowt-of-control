@@ -10,7 +10,7 @@ public abstract class Tower : MonoBehaviour
     private bool _canShoot; 
     internal Transform BulletEmitter;
     internal List<Transform> AcknowledgedEnemies;
-    internal BaseBullet Bullet;
+    internal BaseBullet bullet;
     [SerializeField] internal Transform gunEnd = default;
     [SerializeField] internal BaseBullet bulletPrefab = default;
     internal Transform enemyToTarget;
@@ -56,16 +56,18 @@ public abstract class Tower : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Dismiss collider if it isn't an enemy
         if (!other.CompareTag("Enemy") && !other.CompareTag("LargeEnemy")) return;
-        Debug.Log("enemy entered!");
+
         AcknowledgedEnemies.Add(other.transform);
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
+        // Dismiss collider if it isn't an enemy
         if (!other.CompareTag("Enemy") && !other.CompareTag("LargeEnemy")) return;
-        Debug.Log("exited!");
-        AcknowledgedEnemies.RemoveAt(0);
+
+        AcknowledgedEnemies.Remove(other.transform);
     }
     
     private void Update()
@@ -124,7 +126,7 @@ public abstract class Tower : MonoBehaviour
 
     protected virtual void Shoot()
     {
-        Bullet.Pew();
+        bullet.Pew();
         _canShoot = false;
         _canShootAgain = shootCadence;
     }

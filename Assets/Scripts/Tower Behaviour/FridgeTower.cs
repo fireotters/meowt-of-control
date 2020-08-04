@@ -35,7 +35,7 @@ public class FridgeTower : Tower
     
     protected override void Shoot()
     {
-        Bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation);
+        bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation, _gM.projectilesInPlayParent);
         
         base.Shoot();
     }
