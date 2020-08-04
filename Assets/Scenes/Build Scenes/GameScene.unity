@@ -520,6 +520,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27221596}
   m_CullTransparentMesh: 0
+--- !u!1 &43329370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 43329371}
+  - component: {fileID: 43329372}
+  m_Layer: 0
+  m_Name: TowerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &43329371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43329370}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 656471469}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &43329372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43329370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc1102405f357447b30b77abef2f789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeOfPillow: 0.8
+  rangeOfWater: 1.6
+  rangeOfFridge: 1.2
+  firerateOfPillow: 0
+  firerateOfWater: 0
+  firerateOfFridge: 0
 --- !u!1001 &49787379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4133,7 +4182,7 @@ RectTransform:
   - {fileID: 385231757}
   - {fileID: 177251154}
   m_Father: {fileID: 1839683169}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4208,6 +4257,7 @@ Transform:
   - {fileID: 1377506640}
   - {fileID: 1445376397}
   - {fileID: 782655947}
+  - {fileID: 43329371}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6041,7 +6091,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1839683169}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8900,6 +8950,7 @@ MonoBehaviour:
   priceMissile: 20
   gameIsOver: 0
   scrap: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
+  towerManager: {fileID: 43329372}
 --- !u!1 &1390663259
 GameObject:
   m_ObjectHideFlags: 0
@@ -9738,7 +9789,7 @@ RectTransform:
   - {fileID: 113499974}
   - {fileID: 1684493018}
   m_Father: {fileID: 1839683169}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10336,7 +10387,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1839683169}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12441,10 +12492,10 @@ RectTransform:
   m_Children:
   - {fileID: 1190736913}
   - {fileID: 1212748352}
+  - {fileID: 1624796668}
   - {fileID: 1019973955}
   - {fileID: 619427785}
   - {fileID: 1507661164}
-  - {fileID: 1624796668}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

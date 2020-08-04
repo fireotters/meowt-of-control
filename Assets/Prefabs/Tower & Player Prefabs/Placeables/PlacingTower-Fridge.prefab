@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 592285099284619278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 6862113726746391952}
   m_RootOrder: 2
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -796021273
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 5b19db86f3f38c347b96df78f4b8e9a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 875464651282801814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_Children:
   - {fileID: 4559251359905278349}
   - {fileID: 8514892471050312047}
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementIsValid: 0
+  isMissileReticule: 0
+  rangeMultiplier: 1.2
 --- !u!1 &6891927540656971686
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +157,7 @@ Transform:
   m_GameObject: {fileID: 6891927540656971686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.16000001, z: -0.032}
-  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 6862113726746391952}
   m_RootOrder: 1
@@ -197,7 +199,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -796021273
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 4
   m_Sprite: {fileID: -6026158435268871439, guid: 070d596f5d4129c4a9d53a3cb817ab0d,
     type: 3}
@@ -252,7 +254,7 @@ GameObject:
   - component: {fileID: 3186379793413271808}
   - component: {fileID: 3833012565425049129}
   m_Layer: 0
-  m_Name: SpriteMask
+  m_Name: RangeSpriteMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 7911753692067454380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6862113726746391952}
   m_RootOrder: 3
@@ -315,8 +317,8 @@ SpriteMask:
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: -1490768791
   m_BackSortingLayerID: -1355915279
-  m_FrontSortingLayer: 5
-  m_BackSortingLayer: 4
+  m_FrontSortingLayer: 6
+  m_BackSortingLayer: 5
   m_FrontSortingOrder: 0
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 1

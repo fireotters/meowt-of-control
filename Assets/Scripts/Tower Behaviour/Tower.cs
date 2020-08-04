@@ -13,6 +13,9 @@ public abstract class Tower : MonoBehaviour
     internal BaseBullet Bullet;
     [SerializeField] internal Transform gunEnd = default;
     [SerializeField] internal BaseBullet bulletPrefab = default;
+    internal Transform enemyToTarget;
+    private CircleCollider2D rangeCollider;
+    internal float rangeOfTower;
 
     [Header("Timer Functionality")]
     [SerializeField] private float maxLifespan = default;
@@ -29,14 +32,21 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] internal Animator _towerAnimator = default;
     private static readonly int Direction = Animator.StringToHash("Direction");
     [SerializeField] private AudioClip audTowerDestroy = default;
-    private GameManager _gM;
+    internal GameManager _gM;
+
+    protected virtual void Awake()
+    {
+        _gM = FindObjectOfType<GameManager>();
+    }
 
     private void Start()
     {
         _canShootAgain = shootCadence;
         AcknowledgedEnemies = new List<Transform>();
         BulletEmitter = transform.GetChild(0);
-        _gM = FindObjectOfType<GameManager>();
+
+        rangeCollider = GetComponent<CircleCollider2D>();
+        rangeCollider.radius *= rangeOfTower;
 
         timerUiParent = FindObjectOfType<Canvas>().transform.Find("TowerUiTimerParent");
         currentTimerUi = Instantiate(timerUiPrefab, timerUiParent).GetComponent<Image>();
@@ -87,6 +97,21 @@ public abstract class Tower : MonoBehaviour
 
     protected virtual void TrackAndShoot()
     {
+        // Tracking logic
+        if (enemyToTarget != null)
+        {
+            var lookDir = enemyToTarget.position - transform.position;
+            var angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+            SetLookAnimation(angle);
+            var rotationDir = new Vector3(0, 0, angle);
+
+            BulletEmitter.rotation = Quaternion.Euler(rotationDir);
+        }
+        else
+        {
+            AcknowledgedEnemies.Remove(enemyToTarget);
+        }
+
         // While able to shoot, subtract from tower timer
         timeLeft -= Time.deltaTime;
 

@@ -18,6 +18,7 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
     public bool gameIsOver = false;
     public GameObject scrap;
+    public TowerManager towerManager;
 
     private void Start()
     {

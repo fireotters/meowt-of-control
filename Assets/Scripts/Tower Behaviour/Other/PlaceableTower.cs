@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlaceableTower : MonoBehaviour
 {
-    private Transform player, placementCheck;
+    private Transform player, placementCheck, rangeSpriteMask;
     public bool placementIsValid = false;
     public bool isMissileReticule = false;
     private GameManager gM;
@@ -16,6 +17,8 @@ public class PlaceableTower : MonoBehaviour
         gM = FindObjectOfType<GameManager>();
         player = GameObject.Find("Player").transform;
         placementCheck = transform.Find("PlacementCheck");
+        rangeSpriteMask = transform.Find("RangeSpriteMask");
+        ResizeRangeIndicator();
     }
 
     void Update()
@@ -42,6 +45,26 @@ public class PlaceableTower : MonoBehaviour
             // If at least one barrier, turn the overlay colour to red.
             placementIsValid = interferingColliders.Count == 0;
             gM.gameUi.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
+        }
+    }
+
+    private void ResizeRangeIndicator() //TODO maybe ask GameManager which is being placed instead
+    {
+        if (gameObject.name.EndsWith("Pillow(Clone)"))
+        {
+            rangeSpriteMask.localScale *= gM.towerManager.rangeOfPillow;
+        }
+        else if (gameObject.name.EndsWith("Water(Clone)"))
+        {
+            rangeSpriteMask.localScale *= gM.towerManager.rangeOfWater;
+        }
+        else if (gameObject.name.EndsWith("Fridge(Clone)"))
+        {
+            rangeSpriteMask.localScale *= gM.towerManager.rangeOfFridge;
+        }
+        else
+        {
+            Debug.LogError("Invalid name for determining PlaceableTower range indicator: " + gameObject.name);
         }
     }
 }

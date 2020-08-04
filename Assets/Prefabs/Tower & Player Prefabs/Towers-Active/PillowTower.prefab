@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 628753697950758304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 5277329179738009870}
   m_RootOrder: 1
@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 2225871966929968740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 5277329179738009870}
   m_RootOrder: 2
@@ -273,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 4830705889166599032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 0.8}
   m_Children:
   - {fileID: 889684979433047795}
   - {fileID: 3119685658630606555}
@@ -297,7 +297,8 @@ MonoBehaviour:
   gunEnd: {fileID: 6692040349411958347}
   bulletPrefab: {fileID: 2062328406714552009, guid: 5ee637f1837d6954ca16a6af9fb07c7c,
     type: 3}
-  maxLifespan: 5
+  rangeOfTower: 1
+  maxLifespan: 20
   timerUiPrefab: {fileID: 5833921825391891483, guid: 62d22d53f5dbe064192085e2cd44f4c0,
     type: 3}
   _towerAnimator: {fileID: 1497326520120884441}
@@ -317,7 +318,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6.849552
+  m_Radius: 6.4
 --- !u!82 &-7584987788621169609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -439,5 +440,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.361285, y: 2.232867}
+  m_Size: {x: 2.8, y: 1.4}
   m_EdgeRadius: 0
