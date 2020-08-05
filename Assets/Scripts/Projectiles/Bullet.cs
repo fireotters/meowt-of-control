@@ -13,8 +13,8 @@ public class Bullet : MonoBehaviour
 
     [Header("Specific Bullet Type Attributes")]
     [SerializeField] private BulletType typeOfBullet = default;
-    [SerializeField] private GameObject attachedExplosion = default;
-    private GameObject attachedExplosionInstance;
+    [SerializeField] private GameObject attachedFizzle = default;
+    private GameObject attachedFizzleInstance;
 
     [SerializeField] private GameObject secondaryEffect = default;
     private GameObject secondaryEffectInstance;
@@ -54,7 +54,12 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        // Pretend to be gone. Stay for .25 seconds to play sound effects & explosion effects
+        // Pretend bullet has disappeared. Stay for .25 seconds to play sound effects & explosion effects.
+        PretendBulletIsGone();
+    }
+
+    private void PretendBulletIsGone()
+    {
         _collider.enabled = false;
         _sprRenderer.enabled = false;
         PlayExplosionEffect();
@@ -63,14 +68,11 @@ public class Bullet : MonoBehaviour
         Invoke(nameof(ActuallyDestroy), .25f);
     }
 
-    // Only the player bullet has an explosion effect right now
+
     private void PlayExplosionEffect()
     {
-        if (typeOfBullet == BulletType.Player)
-        {
-            attachedExplosionInstance = Instantiate(attachedExplosion);
-            attachedExplosionInstance.transform.position = transform.position;
-        }
+        attachedFizzleInstance = Instantiate(attachedFizzle);
+        attachedFizzleInstance.transform.position = transform.position;
     }
 
     // Water Balloon and Fridge towers have secondary effects from their projectiles
@@ -86,6 +88,6 @@ public class Bullet : MonoBehaviour
     private void ActuallyDestroy()
     {
         Destroy(gameObject);
-        Destroy(attachedExplosionInstance);
+        Destroy(attachedFizzleInstance);
     }
 }
