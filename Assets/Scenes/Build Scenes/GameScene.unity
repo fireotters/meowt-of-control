@@ -5650,7 +5650,7 @@ GameObject:
   - component: {fileID: 997048238}
   m_Layer: 12
   m_Name: PlayerColliderS
-  m_TagString: Untagged
+  m_TagString: PlayerCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10481,7 +10481,7 @@ GameObject:
   - component: {fileID: 1640060767}
   m_Layer: 12
   m_Name: PlayerColliderE
-  m_TagString: Untagged
+  m_TagString: PlayerCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12896,7 +12896,7 @@ GameObject:
   - component: {fileID: 1880984520}
   m_Layer: 12
   m_Name: PlayerColliderW
-  m_TagString: Untagged
+  m_TagString: PlayerCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14790,7 +14790,7 @@ GameObject:
   - component: {fileID: 3395703018965110774}
   m_Layer: 12
   m_Name: PlayerColliderN
-  m_TagString: Untagged
+  m_TagString: PlayerCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

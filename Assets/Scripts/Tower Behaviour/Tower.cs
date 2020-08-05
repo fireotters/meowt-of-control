@@ -10,9 +10,9 @@ public abstract class Tower : MonoBehaviour
     private bool _canShoot; 
     internal Transform BulletEmitter;
     internal List<Transform> AcknowledgedEnemies;
-    internal BaseBullet bullet;
+    internal Bullet bullet;
     [SerializeField] internal Transform gunEnd = default;
-    [SerializeField] internal BaseBullet bulletPrefab = default;
+    [SerializeField] internal Bullet bulletPrefab = default;
     internal Transform enemyToTarget;
     private CircleCollider2D rangeCollider;
     internal float rangeOfTower;

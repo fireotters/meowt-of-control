@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5118090845900072925}
   - component: {fileID: 5682024531859764299}
   m_Layer: 14
-  m_Name: PlayerBullet
+  m_Name: Bullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 600
   lifeSpan: 5
-  isPlayerBullet: 1
-  playerBulletExplosion: {fileID: 2039779501809772672, guid: 47aee6ecd88127f4192a88cf25fd43f1,
-    type: 3}
+  typeOfBullet: 0
+  attachedExplosion: {fileID: 0}
+  secondaryEffect: {fileID: 0}
 --- !u!50 &18814254652573276
 Rigidbody2D:
   serializedVersion: 4

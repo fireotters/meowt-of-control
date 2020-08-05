@@ -20,7 +20,12 @@ PrefabInstance:
     - target: {fileID: 2579667382344482714, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
       propertyPath: breaksThruScrap
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579667382344482714, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: enemyMaxHealth
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4925385967676941587, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}

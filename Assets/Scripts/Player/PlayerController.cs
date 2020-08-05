@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private Camera _cam;
     private Vector2 _mousePos;
     private Transform _bulletEmitter;
-    [SerializeField] private BaseBullet bulletPrefab = default;
+    [SerializeField] private Bullet bulletPrefab = default;
     private Transform _gunEnd;
     private Player _player;
     private GameManager _gM;

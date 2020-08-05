@@ -10,6 +10,8 @@ TagManager:
   - Scrap
   - PlayerBullet
   - LargeEnemy
+  - PlayerCollider
+  - AOE
   layers:
   - Default
   - TransparentFX
