@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a18f16578078a48920630784d1ee1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootCadence: 3
+  shootCadence: 2
   gunEnd: {fileID: 5794147025758176986}
   bulletPrefab: {fileID: 6873564271939672047, guid: a9e3f6ebff6f9904d8aef7e43cc12cb1,
     type: 3}

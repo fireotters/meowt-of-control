@@ -28,7 +28,6 @@ public class EnemySpawnerController : MonoBehaviour
         {
             // Iterate spawn rate and GameManager's spawned enemy count
             nextSpawn = Time.time + spawnRate;
-            _gM.enemyNumberSpawned++;
 
             // Choose one of four directions for the new enemy to come from
             int randSpawner = Random.Range(0, 4);
@@ -47,6 +46,11 @@ public class EnemySpawnerController : MonoBehaviour
             else if (randEnemy < 25) // Spawn Basic (20/30 chance)
             {
                 _chosenSpawner.PrepToSpawnEnemy(enemyBasic);
+            }
+
+            if (randEnemy < 25)
+            {
+                _gM.enemyNumberSpawned++;
             }
             // Nothing spawns at all (5/30 chance)
         }

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MainTower : MonoBehaviour
 {
-    private GameManager _gameManager;
+    private GameManager _gM;
     private Animator _mainTowerAnimator;
     private AudioSource _audioSource;
     public AudioClip catCannon1, catCannon2;
@@ -15,14 +15,18 @@ public class MainTower : MonoBehaviour
     private float healthBarFullSize;
     private Transform healthBar;
 
+    private Transform confettiLaunchPoint;
+    [SerializeField] private GameObject confetti = default;
+
     private void Start()
     {
-        _gameManager = FindObjectOfType<GameManager>();
+        _gM = FindObjectOfType<GameManager>();
         _mainTowerAnimator = GetComponentInChildren<Animator>();
         _audioSource = GetComponent<AudioSource>();
 
         healthBar = transform.Find("HealthBar");
         healthBarFullSize = healthBar.localScale.x;
+        confettiLaunchPoint = transform.Find("ConfettiLaunchPoint");
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -31,12 +35,12 @@ public class MainTower : MonoBehaviour
         {
             if (col.gameObject.CompareTag("LargeEnemy"))
             {
-                _gameManager.gameUi.UpdateMainTowerHealth(-10);
+                _gM.gameUi.UpdateMainTowerHealth(-10);
                 ChangeHealthBar();
             }
             else if(col.gameObject.CompareTag("Enemy"))
             {
-                _gameManager.gameUi.UpdateMainTowerHealth(-5);
+                _gM.gameUi.UpdateMainTowerHealth(-5);
                 ChangeHealthBar();
             }
 
@@ -48,14 +52,14 @@ public class MainTower : MonoBehaviour
             _curTime -= Time.deltaTime;
         }
 
-        if (_gameManager.mainTowerHealth <= 0 && !_gameManager.gameIsOver)
+        if (_gM.mainTowerHealth <= 0 && !_gM.gameIsOver)
         {
-            _gameManager.player.PlayerIsDead();
+            _gM.player.PlayerIsDead();
         }
 
-        if (_gameManager.mainTowerHealth <= 25 && _gameManager.mainTowerHealth != 0)
+        if (_gM.mainTowerHealth <= 25 && _gM.mainTowerHealth != 0)
         {
-            _gameManager.gameUi.musicManager.ChangeStressMode();
+            _gM.gameUi.musicManager.ChangeStressMode();
         }
     }
 
@@ -74,21 +78,23 @@ public class MainTower : MonoBehaviour
 
     public void AnimateShooting()
     {
-        _gameManager.gameUi.UpdateYarn(-_gameManager.priceMissile);
         _mainTowerAnimator.SetBool("isShooting", true);
-        Invoke(nameof(SoundOfShooting), 0.5f);
+
+        Invoke(nameof(ShootConfetti), 0.5f);
         Invoke(nameof(CancelShooting), 2f);
     }
 
-    private void SoundOfShooting()
+    private void ShootConfetti()
     {
+        Instantiate(confetti, confettiLaunchPoint.position, transform.rotation, _gM.projectilesInPlayParent);
         _audioSource.clip = catCannon2;
         _audioSource.Play();
     }
+
     public void ChangeHealthBar()
     {
         Vector3 scaleChange = healthBar.localScale;
-        float percentOfLifeLeft = (float)_gameManager.mainTowerHealth / (float)100;
+        float percentOfLifeLeft = (float)_gM.mainTowerHealth / (float)100;
         scaleChange.x = percentOfLifeLeft * healthBarFullSize;
         healthBar.localScale = scaleChange;
     }
