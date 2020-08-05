@@ -9014,7 +9014,10 @@ MonoBehaviour:
   priceFridge: 50
   priceMissile: 20
   gameIsOver: 0
-  scrap: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
+  scrapEnemy: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740,
+    type: 3}
+  scrapTower: {fileID: 7869481387820674937, guid: 3ea2c64b41e33364c874fce1e266694e,
+    type: 3}
   towerManager: {fileID: 43329372}
   projectilesInPlayParent: {fileID: 1902851123}
 --- !u!1 &1390663259

@@ -177,10 +177,9 @@ public abstract class Tower : MonoBehaviour
         transform.Find("tower").gameObject.SetActive(false);
         transform.Find("base").gameObject.SetActive(false);
 
-        // Drop a differently coloured piece of scrap. TODO replace with recoloured sprite
-        GameObject towerScrapDrop = Instantiate(_gM.scrap, _gM.gameUi.dropsInPlayParent);
+        // Drop a differently coloured piece of scrap
+        GameObject towerScrapDrop = Instantiate(_gM.scrapTower, _gM.gameUi.dropsInPlayParent);
         towerScrapDrop.transform.position = transform.position;
-        towerScrapDrop.GetComponent<SpriteRenderer>().color = new Color(0.21f, 0.65f, 0.97f);
 
         Invoke(nameof(DestroyTurret), 1f);
     }

@@ -18,7 +18,7 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector] public MainTower mainTower;
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
     public bool gameIsOver = false;
-    public GameObject scrap;
+    public GameObject scrapEnemy, scrapTower;
     public TowerManager towerManager;
     public Transform projectilesInPlayParent;
 

@@ -8,6 +8,11 @@ public class BaseBullet : MonoBehaviour
     private SpriteRenderer _sprRenderer;
     private BoxCollider2D _collider;
 
+    [Header("PlayerBullet Only Attributes")]
+    [SerializeField] private bool isPlayerBullet = false;
+    [SerializeField] private GameObject playerBulletExplosion = default;
+    private GameObject attachedExplosion;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -43,11 +48,17 @@ public class BaseBullet : MonoBehaviour
         }
         _collider.enabled = false;
         _sprRenderer.enabled = false;
-        Invoke(nameof(ActuallyDestroy), 1f);
+        if (isPlayerBullet)
+        {
+            attachedExplosion = Instantiate(playerBulletExplosion);
+            attachedExplosion.transform.position = transform.position;
+        }
+        Invoke(nameof(ActuallyDestroy), .25f);
     }
 
     private void ActuallyDestroy()
     {
         Destroy(gameObject);
+        Destroy(attachedExplosion);
     }
 }

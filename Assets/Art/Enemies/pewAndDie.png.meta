@@ -19,10 +19,10 @@ TextureImporter:
     second: explosion_5
   - first:
       213: -8630800276387887019
-    second: scrap
+    second: scrap_enemy
   - first:
       213: -2491288444633955914
-    second: pewAndDie_6
+    second: scrap_tower
   - first:
       213: -4378977926363776544
     second: pewAndDie_7
@@ -156,12 +156,12 @@ TextureImporter:
       name: explosion_1
       rect:
         serializedVersion: 2
-        x: 10
-        y: 73
-        width: 12
-        height: 14
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: explosion_2
       rect:
         serializedVersion: 2
-        x: 38
-        y: 68
-        width: 22
-        height: 23
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,12 +198,12 @@ TextureImporter:
       name: explosion_3
       rect:
         serializedVersion: 2
-        x: 3
-        y: 33
-        width: 28
-        height: 31
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: explosion_4
       rect:
         serializedVersion: 2
-        x: 35
-        y: 33
-        width: 28
-        height: 31
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,12 +240,12 @@ TextureImporter:
       name: explosion_5
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1
-        width: 27
-        height: 31
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -258,11 +258,32 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scrap
+      name: scrap_enemy
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 9
+        y: 8
+        width: 32
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5588e8660ec393880800000000000000
+      internalID: -8630800276387887019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrap_tower
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 8
         width: 32
         height: 18
       alignment: 0
@@ -272,8 +293,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5588e8660ec393880800000000000000
-      internalID: -8630800276387887019
+      spriteID: 6b1ce88eb5a2d6dd0800000000000000
+      internalID: -2491288444633955914
       vertices: []
       indices: 
       edges: []

@@ -99,6 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 600
   lifeSpan: 5
+  isPlayerBullet: 1
+  playerBulletExplosion: {fileID: 2039779501809772672, guid: 47aee6ecd88127f4192a88cf25fd43f1,
+    type: 3}
 --- !u!50 &18814254652573276
 Rigidbody2D:
   serializedVersion: 4

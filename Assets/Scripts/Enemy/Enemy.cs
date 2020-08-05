@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     internal int enemyHitsRemaining;
 
     private GameManager gM;
+    private Vector2 droppedItemOffset = new Vector2(0f, -0.5f);
 
     // Health bar
     private float healthBarFullSize;
@@ -60,7 +61,7 @@ public class Enemy : MonoBehaviour
 
     private void DropScrapAndItems(Vector2 enemyLastPos)
     {
-        GameObject scrapDrop = Instantiate(gM.scrap, gM.gameUi.dropsInPlayParent);
+        GameObject scrapDrop = Instantiate(gM.scrapEnemy, gM.gameUi.dropsInPlayParent);
         scrapDrop.transform.position = enemyLastPos;
 
         int randCheck = Random.Range(0, 30);
@@ -68,13 +69,13 @@ public class Enemy : MonoBehaviour
         if (randCheck == 0)
         {
             GameObject yarnDrop = Instantiate(gM.dropYarn, gM.gameUi.dropsInPlayParent);
-            yarnDrop.transform.position = enemyLastPos;
+            yarnDrop.transform.position = enemyLastPos + droppedItemOffset;
         }
         // 3/30 of the time, milk will drop
         else if (randCheck < 3)
         {
             GameObject milkDrop = Instantiate(gM.dropMilk, gM.gameUi.dropsInPlayParent);
-            milkDrop.transform.position = enemyLastPos;
+            milkDrop.transform.position = enemyLastPos + droppedItemOffset;
         }
     }
 }
