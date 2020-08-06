@@ -25,6 +25,7 @@ public partial class GameUi : BaseUi
     /// </summary>
     public void ToggleMissileReticuleChanges()
     {
+        Debug.Log("ay");
         if (isMissileReticuleActive)
         {
             sprTowerInvalidArea.enabled = false;

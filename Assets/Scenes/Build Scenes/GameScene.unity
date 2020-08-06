@@ -507,6 +507,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1286093860}
     m_Modifications:
+    - target: {fileID: 2082419847514504311, guid: 17ec55aef0224034fb0766a4432bab19,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7017425527328657448, guid: 17ec55aef0224034fb0766a4432bab19,
         type: 3}
       propertyPath: m_Name
@@ -577,6 +582,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764477939193931637, guid: 17ec55aef0224034fb0766a4432bab19,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ec55aef0224034fb0766a4432bab19, type: 3}
@@ -7782,8 +7792,6 @@ MonoBehaviour:
   priceMissile: 20
   gameIsOver: 0
   scrapEnemy: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740,
-    type: 3}
-  scrapTower: {fileID: 7869481387820674937, guid: 3ea2c64b41e33364c874fce1e266694e,
     type: 3}
   towerManager: {fileID: 43329372}
   projectilesInPlayParent: {fileID: 1902851123}

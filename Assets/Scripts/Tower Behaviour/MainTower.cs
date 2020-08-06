@@ -12,20 +12,23 @@ public class MainTower : MonoBehaviour
     private const float nextDamage = 1f;
 
     // Health bar
-    private float healthBarFullSize;
-    private Transform healthBar;
+    private float _healthBarFullSize;
+    private Transform _healthBar;
+    [SerializeField] private SpriteRenderer _normalSprite = default, _deathSprite = default;
 
     private Transform confettiLaunchPoint;
     [SerializeField] private GameObject confetti = default;
     private Vector3 cursorPos;
+
     private void Start()
     {
         _gM = FindObjectOfType<GameManager>();
         _mainTowerAnimator = GetComponentInChildren<Animator>();
         _audioSource = GetComponent<AudioSource>();
 
-        healthBar = transform.Find("HealthBar");
-        healthBarFullSize = healthBar.localScale.x;
+        _healthBar = transform.Find("HealthBar");
+        _healthBarFullSize = _healthBar.localScale.x;
+
         confettiLaunchPoint = transform.Find("ConfettiLaunchPoint");
     }
 
@@ -54,7 +57,7 @@ public class MainTower : MonoBehaviour
 
         if (_gM.mainTowerHealth <= 0 && !_gM.gameIsOver)
         {
-            _gM.player.PlayerIsDead();
+            TowerIsDead();
         }
 
         if (_gM.mainTowerHealth <= 25 && _gM.mainTowerHealth != 0)
@@ -97,9 +100,17 @@ public class MainTower : MonoBehaviour
 
     public void ChangeHealthBar()
     {
-        Vector3 scaleChange = healthBar.localScale;
+        Vector3 scaleChange = _healthBar.localScale;
         float percentOfLifeLeft = (float)_gM.mainTowerHealth / (float)100;
-        scaleChange.x = percentOfLifeLeft * healthBarFullSize;
-        healthBar.localScale = scaleChange;
+        scaleChange.x = percentOfLifeLeft * _healthBarFullSize;
+        _healthBar.localScale = scaleChange;
+    }
+
+    private void TowerIsDead()
+    {
+        _mainTowerAnimator.enabled = false;
+        _normalSprite.enabled = false;
+        _deathSprite.enabled = true;
+        _gM.player.PlayerIsDead();
     }
 }

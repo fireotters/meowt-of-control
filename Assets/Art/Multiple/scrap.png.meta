@@ -7,7 +7,16 @@ TextureImporter:
     second: scrap_enemy
   - first:
       213: -5817249713676571791
-    second: scrap_tower
+    second: scrap_boxTower
+  - first:
+      213: 5080264137296596014
+    second: scrap_pillowTower
+  - first:
+      213: 4405962465801672676
+    second: scrap_WaterTower
+  - first:
+      213: -4156871948698838512
+    second: scrap_fridgeTower
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -96,12 +105,12 @@ TextureImporter:
       name: scrap_enemy
       rect:
         serializedVersion: 2
-        x: 9
-        y: 8
+        x: 1
+        y: 41
         width: 32
         height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -114,15 +123,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scrap_tower
+      name: scrap_boxTower
       rect:
         serializedVersion: 2
-        x: 56
-        y: 8
+        x: 37
+        y: 41
         width: 32
         height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -130,6 +139,69 @@ TextureImporter:
       bones: []
       spriteID: 17ba09ed43af44fa0800000000000000
       internalID: -5817249713676571791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrap_pillowTower
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 41
+        width: 32
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2c48b40159b08640800000000000000
+      internalID: 5080264137296596014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrap_WaterTower
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 14
+        width: 32
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e710d3d48f152d30800000000000000
+      internalID: 4405962465801672676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrap_fridgeTower
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 14
+        width: 32
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01a15099cf2df46c0800000000000000
+      internalID: -4156871948698838512
       vertices: []
       indices: 
       edges: []

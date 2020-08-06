@@ -34,6 +34,10 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] private AudioClip audTowerDestroy = default;
     internal GameManager _gM;
 
+
+    [SerializeField] private GameObject _attachedScrap = default;
+    [HideInInspector] public GameObject attachedPlacementBlocker;
+
     protected virtual void Awake()
     {
         _gM = FindObjectOfType<GameManager>();
@@ -178,7 +182,7 @@ public abstract class Tower : MonoBehaviour
         transform.Find("base").gameObject.SetActive(false);
 
         // Drop a differently coloured piece of scrap
-        GameObject towerScrapDrop = Instantiate(_gM.scrapTower, _gM.gameUi.dropsInPlayParent);
+        GameObject towerScrapDrop = Instantiate(_attachedScrap, _gM.gameUi.dropsInPlayParent);
         towerScrapDrop.transform.position = transform.position;
 
         Invoke(nameof(DestroyTurret), 1f);

@@ -54,6 +54,7 @@ public class Confetti : MonoBehaviour
     private void Explode()
     {
         GameObject remainsCopy = Instantiate(confettiRemains, _gM.projectilesInPlayParent);
+        remainsCopy.GetComponent<ConfettiExplosion>().rangeOfExplosion = _gM.towerManager.rangeOfMissileExpl;
         remainsCopy.transform.position = transform.position;
         Destroy(gameObject);
     }

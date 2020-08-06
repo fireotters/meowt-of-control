@@ -118,7 +118,7 @@ public partial class GameUi : BaseUi
     {
         foreach (PurchaseButton btn in purchaseButtons)
         {
-            btn.GetComponent<Button>().interactable = false;
+            btn.BlockClicking();
         }
     }
 }

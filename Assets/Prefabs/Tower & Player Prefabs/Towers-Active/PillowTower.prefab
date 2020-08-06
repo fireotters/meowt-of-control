@@ -297,12 +297,14 @@ MonoBehaviour:
   gunEnd: {fileID: 6692040349411958347}
   bulletPrefab: {fileID: 2062328406714552009, guid: 5ee637f1837d6954ca16a6af9fb07c7c,
     type: 3}
-  rangeOfTower: 1
-  maxLifespan: 20
+  maxLifespan: 10
   timerUiPrefab: {fileID: 5833921825391891483, guid: 62d22d53f5dbe064192085e2cd44f4c0,
     type: 3}
   _towerAnimator: {fileID: 1497326520120884441}
   audTowerDestroy: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
+  _attachedScrap: {fileID: 2800798197951234208, guid: fed3859f9e94617419e865a05d99c80c,
+    type: 3}
+  attachedPlacementBlocker: {fileID: 0}
 --- !u!58 &-627020821372308523
 CircleCollider2D:
   m_ObjectHideFlags: 0

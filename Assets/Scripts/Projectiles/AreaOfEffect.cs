@@ -31,7 +31,7 @@ public class AreaOfEffect : MonoBehaviour
     {
         if (col.CompareTag("AOE") && col.GetComponent<AreaOfEffect>().typeOfEffect == typeOfEffect)
         {
-            Debug.Log(Vector3.Distance(col.transform.position, transform.position));
+            // Debug.Log(Vector3.Distance(col.transform.position, transform.position)); // Uncomment to test distance between two of the same AOE
             if (Vector3.Distance(col.transform.position, transform.position) < 0.2f)
             {
                 // Destroy the older copy of the AOE

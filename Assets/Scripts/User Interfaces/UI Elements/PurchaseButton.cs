@@ -11,8 +11,9 @@ public class PurchaseButton : MonoBehaviour
 
     public float cooldown;
     private float _cooldownRemaining = 0;
+    private bool gameOverButtonBlocked = false;
 
-    [Header("Specific Bullet Type Attributes")]
+    [Header("Missile-Only Attributes")]
     public float missileButtonCooldown;
     [SerializeField] private bool isMissileButton = false;
     private bool inMissileCancelAnim = false;
@@ -85,17 +86,27 @@ public class PurchaseButton : MonoBehaviour
     public void ShowTimerOverlay()
     {
         _timerOverlay.SetActive(true);
-        _btn.interactable = false;
         _cooldownRemaining = cooldown;
+        _btn.interactable = false;
     }
 
     /// <summary>
-    /// Cancel the timer overlay on the button. Purchase can be made again.
+    /// Cancel the timer overlay on the button. Purchase can be made again.<br/>
+    /// - Doesn't re-enable button if game is over
     /// </summary>
     private void HideTimerOverlay()
     {
         _timerOverlay.SetActive(false);
-        _btn.interactable = true;
         inMissileCancelAnim = false;
+        if (!gameOverButtonBlocked)
+        {
+            _btn.interactable = true;
+        }
+    }
+
+    public void BlockClicking()
+    {
+        _btn.interactable = false;
+        gameOverButtonBlocked = true;
     }
 }

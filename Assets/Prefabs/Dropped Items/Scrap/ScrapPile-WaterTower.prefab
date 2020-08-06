@@ -7,16 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 190959101785212045, guid: 64f5dc81289a23e469f6ca2393846740,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4405962465801672676, guid: d8fee84688dafc644a50c4437fe3c798,
+        type: 3}
     - target: {fileID: 4349836573955106204, guid: 64f5dc81289a23e469f6ca2393846740,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5817249713676571791, guid: d8fee84688dafc644a50c4437fe3c798,
+      objectReference: {fileID: 4405962465801672676, guid: d8fee84688dafc644a50c4437fe3c798,
         type: 3}
     - target: {fileID: 4349836573955106206, guid: 64f5dc81289a23e469f6ca2393846740,
         type: 3}
       propertyPath: m_Name
-      value: ScrapPile-Tower
+      value: ScrapPile-WaterTower
       objectReference: {fileID: 0}
     - target: {fileID: 4349836573955106207, guid: 64f5dc81289a23e469f6ca2393846740,
         type: 3}

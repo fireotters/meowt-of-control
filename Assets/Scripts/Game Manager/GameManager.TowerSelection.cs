@@ -54,6 +54,14 @@ public partial class GameManager : MonoBehaviour
     {
         gameUi.purchaseButtons[indexOfNewPurchase].HideCancelOverlay();
 
+        // If missile selection is replaced with another selection, toggle missile mode changes
+        if (currentPurchase == PurchaseType.Missile)
+        {
+                mainTower.CancelShooting();
+                gameUi.isMissileReticuleActive = false;
+                gameUi.ToggleMissileReticuleChanges();
+        }
+
         if (currentPlacingTower != null)
         {
             Destroy(currentPlacingTower.gameObject);
@@ -123,8 +131,8 @@ public partial class GameManager : MonoBehaviour
 
         mainTower.PrepToShoot();
 
-        gameUi.isMissileReticuleActive = true;
         gameUi.ToggleTowerColourZones();
+        gameUi.isMissileReticuleActive = true;
         gameUi.ToggleMissileReticuleChanges();
     }
 
