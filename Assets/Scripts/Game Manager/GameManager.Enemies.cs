@@ -5,7 +5,7 @@ using UnityEngine;
 public partial class GameManager : MonoBehaviour
 {
     [Header("EnemySpawn Variables")]
-    public EnemySpawner[] spawners;
+    [SerializeField] private EnemySpawnerController _spawnController = default;
 
 
     /// <summary>
@@ -13,16 +13,13 @@ public partial class GameManager : MonoBehaviour
     /// </summary>
     private void IncreaseEnemySpawnRate()
     {
-        foreach (EnemySpawner spawner in spawners)
+        if (_spawnController.spawnRate > 2)
         {
-            if (spawner.spawnRate > 2)
-            {
-                spawner.spawnRate *= 0.9f;
-            }
-            if (spawner.spawnRate < 2)
-            {
-                spawner.spawnRate = 2;
-            }
+            _spawnController.spawnRate *= 0.9f;
+        }
+        if (_spawnController.spawnRate < 2)
+        {
+            _spawnController.spawnRate = 2;
         }
     }
     public void IncrementEnemyKillCount()

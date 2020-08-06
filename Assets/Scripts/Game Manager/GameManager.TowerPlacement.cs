@@ -39,9 +39,11 @@ public partial class GameManager : MonoBehaviour
                 gameUi.UpdateYarn(-priceFridge);
                 break;
             case PurchaseType.Missile:
-                _mainTower.AnimateShooting();
+                mainTower.AnimateShooting();
+                gameUi.UpdateYarn(-priceMissile);
                 break;
         }
+        gameUi.BeginPurchaseCooldown(indexOfCurrentPurchase);
 
         if (towerToSpawn != null || currentPurchase == PurchaseType.Missile)
         {

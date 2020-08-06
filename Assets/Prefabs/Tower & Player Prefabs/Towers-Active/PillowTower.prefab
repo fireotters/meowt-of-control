@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 628753697950758304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 5277329179738009870}
   m_RootOrder: 1
@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 2225871966929968740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 5277329179738009870}
   m_RootOrder: 2
@@ -256,7 +256,6 @@ GameObject:
   - component: {fileID: 3579875188866723065}
   - component: {fileID: -627020821372308523}
   - component: {fileID: -7584987788621169609}
-  - component: {fileID: 8925459461024323710}
   - component: {fileID: 3029643768634409679}
   m_Layer: 10
   m_Name: PillowTower
@@ -274,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 4830705889166599032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 0.8}
   m_Children:
   - {fileID: 889684979433047795}
   - {fileID: 3119685658630606555}
@@ -298,8 +297,12 @@ MonoBehaviour:
   gunEnd: {fileID: 6692040349411958347}
   bulletPrefab: {fileID: 2062328406714552009, guid: 5ee637f1837d6954ca16a6af9fb07c7c,
     type: 3}
+  rangeOfTower: 1
+  maxLifespan: 20
+  timerUiPrefab: {fileID: 5833921825391891483, guid: 62d22d53f5dbe064192085e2cd44f4c0,
+    type: 3}
   _towerAnimator: {fileID: 1497326520120884441}
-  soundManager: {fileID: 8925459461024323710}
+  audTowerDestroy: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
 --- !u!58 &-627020821372308523
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -315,7 +318,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6.849552
+  m_Radius: 6.4
 --- !u!82 &-7584987788621169609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -413,27 +416,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8925459461024323710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4830705889166599032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78f96d9f495ba624b8155882081d5517, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundSource: {fileID: -7584987788621169609}
-  hoverSound: {fileID: 8300000, guid: a62ba84aa3f99294a9bab8bffb278ae8, type: 3}
-  selectSound: {fileID: 8300000, guid: 7894974a30dbf954791da38e96a30d26, type: 3}
-  destroyTurret: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
-  enemyImpact1: {fileID: 8300000, guid: 2c846f9b38c290c408c1b6d8e6d842c2, type: 3}
-  enemyImpact2: {fileID: 8300000, guid: bc4a30dc7dcf2cf4a88b55129f810e97, type: 3}
-  catCannon: {fileID: 8300000, guid: 54a53c0e6587e2344b8c0b7dbe44a97b, type: 3}
-  playerHit: {fileID: 8300000, guid: 8bc5f6e94971ac7439ef34144fbd38b4, type: 3}
-  mixer: {fileID: 24100000, guid: d004f52ea00513f4493dc5fb271c249f, type: 2}
 --- !u!61 &3029643768634409679
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -458,5 +440,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.361285, y: 2.232867}
+  m_Size: {x: 2.8, y: 1.4}
   m_EdgeRadius: 0

@@ -70,7 +70,7 @@ public partial class GameManager : MonoBehaviour
             currentPurchase = PurchaseType.NoPurchaseActive;
             if (newPurchase == PurchaseType.Missile)
             {
-                _mainTower.CancelShooting();
+                mainTower.CancelShooting();
                 gameUi.isMissileReticuleActive = false;
                 gameUi.ToggleMissileReticuleChanges();
             }
@@ -121,11 +121,20 @@ public partial class GameManager : MonoBehaviour
         currentPurchase = newPurchase;
         indexOfCurrentPurchase = Array.IndexOf(Enum.GetValues(currentPurchase.GetType()), currentPurchase);
 
-        _mainTower.PrepToShoot();
+        mainTower.PrepToShoot();
 
         gameUi.isMissileReticuleActive = true;
         gameUi.ToggleTowerColourZones();
         gameUi.ToggleMissileReticuleChanges();
     }
 
+
+    private void GameOverResetPurchaseState()
+    {
+        gameUi.BlockPurchaseUi();
+        if (currentPurchase != PurchaseType.NoPurchaseActive)
+        {
+            SpawnPurchasedObject(currentPurchase);
+        }
+    }
 }

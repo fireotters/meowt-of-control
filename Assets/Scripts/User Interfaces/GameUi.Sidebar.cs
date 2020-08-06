@@ -58,7 +58,7 @@ public partial class GameUi : BaseUi
         textCatHealth.text = gM.player.currentPlayerHealth.ToString();
     }
 
-    public void Purchase(GameManager.PurchaseType whichPurchase)
+    public void ClickedPurchaseButton(GameManager.PurchaseType whichPurchase)
     {
         int priceToCheck = 0;
         switch (whichPurchase) {
@@ -91,13 +91,19 @@ public partial class GameUi : BaseUi
         GameManager.PurchaseType purchaseType;
         if (Enum.TryParse(whichPurchase, true, out purchaseType))
         {
-            Purchase(purchaseType);
+            ClickedPurchaseButton(purchaseType);
         }
         else
         {
             Debug.LogError("GameUi.Sidebar: PurchaseFromButton passed invalid string (" + whichPurchase + ")");
         }
     }
+
+    public void BeginPurchaseCooldown(int whichPurchase)
+    {
+        purchaseButtons[whichPurchase].ShowTimerOverlay();
+    }
+
 
     public void UpdateCancelOverlays(int whichTower)
     {
@@ -106,5 +112,13 @@ public partial class GameUi : BaseUi
             btn.HideCancelOverlay();
         }
         purchaseButtons[whichTower].ShowCancelOverlay();
+    }
+
+    public void BlockPurchaseUi()
+    {
+        foreach (PurchaseButton btn in purchaseButtons)
+        {
+            btn.GetComponent<Button>().interactable = false;
+        }
     }
 }

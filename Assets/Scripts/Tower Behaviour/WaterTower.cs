@@ -1,32 +1,25 @@
 ﻿using System.Linq;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class WaterTower : Tower
 {
+    protected override void Awake()
+    {
+        base.Awake();
+        rangeOfTower = _gM.towerManager.rangeOfWater;
+    }
+
     protected override void TrackAndShoot()
     {
-        var enemyToTarget = AcknowledgedEnemies.FirstOrDefault();
-
-        if (enemyToTarget != null)
-        {
-            var lookDir = enemyToTarget.position - transform.position;
-            var angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-            SetLookAnimation(angle);
-            var rotationDir = new Vector3(0, 0, angle);
-
-            BulletEmitter.rotation = Quaternion.Euler(rotationDir);
-        }
-        else
-        {
-            AcknowledgedEnemies.Remove(enemyToTarget);
-        }
+        enemyToTarget = AcknowledgedEnemies.FirstOrDefault();
 
         base.TrackAndShoot();
     }
 
     protected override void Shoot()
     {
-        Bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation);
+        bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation, _gM.projectilesInPlayParent);
         
         base.Shoot();
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
@@ -14,36 +15,47 @@ public partial class GameManager : MonoBehaviour
 
     [Header("Other Variables")]
     public GameUi gameUi;
-    [HideInInspector] public MainTower _mainTower;
+    [HideInInspector] public MainTower mainTower;
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
     public bool gameIsOver = false;
+    public GameObject scrapEnemy, scrapTower;
+    public TowerManager towerManager;
+    public Transform projectilesInPlayParent;
 
     private void Start()
     {
-        _mainTower = FindObjectOfType<MainTower>();
+        mainTower = FindObjectOfType<MainTower>();
         gameUi.ToggleTowerColourZones();
         StartNextRound();
+
+        // Every 2 seconds, tell Astar to scan for new navigation data
+        InvokeRepeating(nameof(RefreshAstar), 0f, 2f);
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isAlreadyPlacingObject)
+        // If game is not over, perform per-frame key checks and StartNextRound check
+        if (!gameIsOver)
         {
-            AttemptTowerPlacement();
+            if (Input.GetKeyDown(KeyCode.Space) && isAlreadyPlacingObject)
+            {
+                AttemptTowerPlacement();
+            }
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                gameUi.ToggleDemolishText();
+            }
+            if (enemyCount == 0)
+            {
+                enemyCount = -1;
+                Invoke(nameof(StartNextRound), 2f);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            gameUi.ToggleDemolishText();
-        }
-        if (enemyCount == 0)
-        {
-            enemyCount = -1;
-            Invoke(nameof(StartNextRound), 2f);
-        }
-        // Every 60 frames, tell Astar to scan for new navigation data
-        if (Time.frameCount % 60 == 0)
-        {
-            AstarPath.active.Scan();
-        }
+
+    }
+
+    private void RefreshAstar()
+    {
+        AstarPath.active.Scan();
     }
 
     private void StartNextRound()
@@ -74,7 +86,7 @@ public partial class GameManager : MonoBehaviour
                 hpToHeal = hpMilkHeals;
             }
             gameUi.UpdateMainTowerHealth(hpToHeal);
-            _mainTower.ChangeHealthBar();
+            mainTower.ChangeHealthBar();
         }
 
         if (mainTowerHealth > 25)
@@ -86,6 +98,7 @@ public partial class GameManager : MonoBehaviour
     public void GameIsOverPlayEndScene()
     {
         gameIsOver = true;
+        GameOverResetPurchaseState();
         gameUi.musicManager.ChangeToGameOverMusic();
         gameUi.Invoke(nameof(gameUi.GameIsOverShowUi), 3f);
     }

@@ -1,21 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlaceableTower : MonoBehaviour
 {
-    private Transform player, placementCheck;
+    private Transform player, placementCheck, rangeSpriteMask;
     public bool placementIsValid = false;
-    public bool isMissileReticule = false;
     private GameManager gM;
     private Color towerFailRed = new Color(0.66f, 0f, 0f, 0.4f);
     private Color towerRangeBlue = new Color(0.34f, 0.45f, 1f, 0.4f);
+
+    [Header("Missile Only Attributes")]
+    public bool isMissileReticule = false;
+    public float timerBeforeMissileCanLaunch = 0.5f;
 
     private void Awake()
     {
         gM = FindObjectOfType<GameManager>();
         player = GameObject.Find("Player").transform;
         placementCheck = transform.Find("PlacementCheck");
+        rangeSpriteMask = transform.Find("RangeSpriteMask");
+        ResizeRangeIndicator();
     }
 
     void Update()
@@ -23,7 +29,15 @@ public class PlaceableTower : MonoBehaviour
         // Move tower placement to where player stands
         transform.position = player.position + gM.spritePivotOffset;
 
-        if (!isMissileReticule)
+        if (isMissileReticule)
+        {
+            timerBeforeMissileCanLaunch -= Time.deltaTime;
+            if (timerBeforeMissileCanLaunch <= 0)
+            {
+                placementIsValid = true;
+            }
+        }
+        else
         {
             // Check for any red zones that block tower placement
             Vector2 plcCheckVector = new Vector2(placementCheck.position.x, placementCheck.position.y);
@@ -42,6 +56,30 @@ public class PlaceableTower : MonoBehaviour
             // If at least one barrier, turn the overlay colour to red.
             placementIsValid = interferingColliders.Count == 0;
             gM.gameUi.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
+        }
+    }
+
+    private void ResizeRangeIndicator() //TODO maybe ask GameManager.TowerSelection which is being placed instead
+    {
+        if (gameObject.name.EndsWith("Pillow(Clone)"))
+        {
+            rangeSpriteMask.localScale *= gM.towerManager.rangeOfPillow;
+        }
+        else if (gameObject.name.EndsWith("Water(Clone)"))
+        {
+            rangeSpriteMask.localScale *= gM.towerManager.rangeOfWater;
+        }
+        else if (gameObject.name.EndsWith("Fridge(Clone)"))
+        {
+            rangeSpriteMask.localScale *= gM.towerManager.rangeOfFridge;
+        }
+        else if (gameObject.name.EndsWith("Reticule(Clone)"))
+        {
+            rangeSpriteMask.localScale *= gM.towerManager.rangeOfMissileExpl;
+        }
+        else
+        {
+            Debug.LogError("Invalid name for determining PlaceableTower range indicator: " + gameObject.name);
         }
     }
 }
