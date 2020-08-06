@@ -17,6 +17,7 @@ public class MainTower : MonoBehaviour
 
     private Transform confettiLaunchPoint;
     [SerializeField] private GameObject confetti = default;
+    private Vector3 cursorPos;
 
     private void Start()
     {
@@ -80,13 +81,17 @@ public class MainTower : MonoBehaviour
     {
         _mainTowerAnimator.SetBool("isShooting", true);
 
+        cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Invoke(nameof(ShootConfetti), 0.5f);
         Invoke(nameof(CancelShooting), 2f);
     }
 
     private void ShootConfetti()
     {
-        Instantiate(confetti, confettiLaunchPoint.position, transform.rotation, _gM.projectilesInPlayParent);
+        GameObject confettiCopy = Instantiate(confetti, _gM.projectilesInPlayParent);
+        confettiCopy.transform.position = confettiLaunchPoint.position;
+        confettiCopy.GetComponent<Confetti>().landingCoords = cursorPos;
+
         _audioSource.clip = catCannon2;
         _audioSource.Play();
     }

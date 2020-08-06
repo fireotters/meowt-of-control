@@ -2945,6 +2945,16 @@ PrefabInstance:
       propertyPath: cooldown
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 767394635752762644, guid: 801c1f847ca1091448be0a446300e784,
+        type: 3}
+      propertyPath: isMissileButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 767394635752762644, guid: 801c1f847ca1091448be0a446300e784,
+        type: 3}
+      propertyPath: missileButtonCooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 767394635752762645, guid: 801c1f847ca1091448be0a446300e784,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
