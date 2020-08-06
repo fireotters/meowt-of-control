@@ -7,7 +7,7 @@ public class AreaOfEffect : MonoBehaviour
     private enum AoeType { Water, Ice }
     [SerializeField] private AoeType typeOfEffect = default;
     [HideInInspector] public float lifeLeft;
-    [SerializeField] private float lifeSpan;
+    [SerializeField] private float lifeSpan = default;
 
     private void Start()
     {
