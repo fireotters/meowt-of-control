@@ -15,10 +15,13 @@ public class MainTower : MonoBehaviour
     private float healthBarFullSize;
     private Transform healthBar;
 
+<<<<<<< Updated upstream
+=======
     private Transform confettiLaunchPoint;
     [SerializeField] private GameObject confetti = default;
     private Vector3 cursorPos;
 
+>>>>>>> Stashed changes
     private void Start()
     {
         _gM = FindObjectOfType<GameManager>();
@@ -83,15 +86,19 @@ public class MainTower : MonoBehaviour
 
         cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Invoke(nameof(ShootConfetti), 0.5f);
+>>>>>>> Stashed changes
         Invoke(nameof(CancelShooting), 2f);
     }
 
     private void ShootConfetti()
     {
+<<<<<<< Updated upstream
+=======
         GameObject confettiCopy = Instantiate(confetti, _gM.projectilesInPlayParent);
         confettiCopy.transform.position = confettiLaunchPoint.position;
         confettiCopy.GetComponent<Confetti>().landingCoords = cursorPos;
 
+>>>>>>> Stashed changes
         _audioSource.clip = catCannon2;
         _audioSource.Play();
     }

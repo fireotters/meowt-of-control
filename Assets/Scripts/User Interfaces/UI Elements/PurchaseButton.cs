@@ -17,6 +17,11 @@ public class PurchaseButton : MonoBehaviour
     [SerializeField] private bool isMissileButton = false;
     private bool inMissileCancelAnim = false;
 
+    [Header("Specific Bullet Type Attributes")]
+    public float missileButtonCooldown;
+    [SerializeField] private bool isMissileButton = false;
+    private bool inMissileCancelAnim = false;
+
     private void Start()
     {
         _cancelOverlay = transform.Find("CancelOverlay").gameObject;
@@ -48,6 +53,7 @@ public class PurchaseButton : MonoBehaviour
     /// Show a cancel overlay on the button.<br/>
     /// - Called by GameUi.Sidebar to the currently selected button, to allow cancellation of purchase.
     /// </summary>
+>>>>>>> Stashed changes
     public void ShowCancelOverlay() {
         _cancelOverlay.SetActive(true);
     }
@@ -97,5 +103,6 @@ public class PurchaseButton : MonoBehaviour
         _timerOverlay.SetActive(false);
         _btn.interactable = true;
         inMissileCancelAnim = false;
+>>>>>>> Stashed changes
     }
 }
