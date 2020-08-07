@@ -16,7 +16,7 @@ public class PurchaseButton : MonoBehaviour
     [Header("Missile-Only Attributes")]
     public float missileButtonCooldown;
     [SerializeField] private bool isMissileButton = false;
-    private bool inMissileCancelAnim = false;
+    private bool missilePurchaseCancelled = false, inMissileCancelAnim = false;
 
     private void Start()
     {
@@ -64,6 +64,11 @@ public class PurchaseButton : MonoBehaviour
         _cancelOverlay.SetActive(false);
     }
 
+    public void FlagMissileCancel()
+    {
+        missilePurchaseCancelled = true;
+    }
+
     /// <summary>
     /// Begins a short cooldown upon cancelling the Missile purchase button.<br/>
     /// - Allows an animation to finish playing. Prevents anim mismatch if a missile is launched during Box's Cancel animation.
@@ -71,8 +76,9 @@ public class PurchaseButton : MonoBehaviour
     private void CheckIfCancellingMissile()
     {
         // If missile is cancelled, put a cooldown of 2sec on the button
-        if (isMissileButton && _cancelOverlay.activeInHierarchy == true)
+        if (isMissileButton && missilePurchaseCancelled)
         {
+            missilePurchaseCancelled = false;
             inMissileCancelAnim = true;
             ShowTimerOverlay();
             _cooldownRemaining = missileButtonCooldown;

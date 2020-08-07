@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -14,6 +15,13 @@ public class PlaceableTower : MonoBehaviour
     [Header("Missile Only Attributes")]
     public bool isMissileReticule = false;
     public float timerBeforeMissileCanLaunch = 0.5f;
+    private Vector2 cursorPos, missileReticuleOrigin = new Vector2(6.5f, -4f);
+    private readonly float[][] screenBounds = new float[3][]
+    {
+        new float[] { -9f,  6.5f}, // X bounds for playfield
+        new float[] { -5f, 5f }, // Y bounds for playfield & UI
+        new float[] { 6.5f, 9f} // X bounds for UI (used to tell reticule to slide up/down along UI edge)
+    };
 
     private void Awake()
     {
@@ -22,15 +30,29 @@ public class PlaceableTower : MonoBehaviour
         placementCheck = transform.Find("PlacementCheck");
         rangeSpriteMask = transform.Find("RangeSpriteMask");
         ResizeRangeIndicator();
+        transform.position = missileReticuleOrigin;
     }
 
     void Update()
     {
-        // Move tower placement to where player stands
-        transform.position = player.position + gM.spritePivotOffset;
 
         if (isMissileReticule)
         {
+            // Move missile reticule to cursor
+            cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (cursorPos.y > screenBounds[1][0] && cursorPos.y < screenBounds[1][1])
+            {
+                if (cursorPos.x > screenBounds[0][0] && cursorPos.x < screenBounds[0][1])
+                {
+                    transform.position = cursorPos;
+                }
+                else if (cursorPos.x > screenBounds[2][0] && cursorPos.x < screenBounds[2][1])
+                {
+                    cursorPos.x = screenBounds[2][0];
+                    transform.position = cursorPos;
+                }
+            }
+
             timerBeforeMissileCanLaunch -= Time.deltaTime;
             if (timerBeforeMissileCanLaunch <= 0)
             {
@@ -39,6 +61,9 @@ public class PlaceableTower : MonoBehaviour
         }
         else
         {
+            // Move tower placement to where player stands
+            transform.position = player.position + gM.spritePivotOffset;
+
             // Check for any red zones that block tower placement
             Vector2 plcCheckVector = new Vector2(placementCheck.position.x, placementCheck.position.y);
             Collider2D[] collidersFound = Physics2D.OverlapCircleAll(plcCheckVector, 0f);

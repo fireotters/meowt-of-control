@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainTower : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class MainTower : MonoBehaviour
 
     private Transform confettiLaunchPoint;
     [SerializeField] private GameObject confetti = default;
-    private Vector3 cursorPos;
+    private Vector2 cursorPos;
 
     private void Start()
     {

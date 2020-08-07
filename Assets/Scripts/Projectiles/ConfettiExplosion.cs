@@ -9,6 +9,7 @@ public class ConfettiExplosion : MonoBehaviour
     internal float rangeOfExplosion;
 
     private float _damageLifeSpan, _objectLifeLeft = 3f;
+    [SerializeField] private float missileMaxDamage = default;
 
     private void Start()
     {
@@ -38,6 +39,27 @@ public class ConfettiExplosion : MonoBehaviour
             return;
         }
         Enemy hitEnemy = col.GetComponent<Enemy>();
-        hitEnemy.DealDamage(4);
+        float distFromBlast = Vector2.Distance(col.transform.position, transform.position);
+        float normalizedDist = distFromBlast / 2.4f; // 2.4f is approximately the maximum range of the missile
+
+        float finalDamage;
+        if (normalizedDist < 0.25f)
+        {
+            finalDamage = missileMaxDamage;
+        }
+        else if (normalizedDist < 0.5f)
+        {
+            finalDamage = missileMaxDamage * 0.75f;
+        }
+        else if (normalizedDist < 0.75f)
+        {
+            finalDamage = missileMaxDamage * 0.5f;
+        }
+        else
+        {
+            finalDamage = missileMaxDamage * 0.25f;
+        }
+        //Debug.Log("Missile dealt damage: " + finalDamage);
+        hitEnemy.DealDamage(finalDamage);
     }
 }

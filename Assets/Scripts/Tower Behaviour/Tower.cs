@@ -19,9 +19,11 @@ public abstract class Tower : MonoBehaviour
     private CircleCollider2D rangeCollider;
     internal float rangeOfTower;
 
-    [Header("Timer Functionality")]
-    [SerializeField] private float maxOverheat = default;
-    [SerializeField] private float overheatRecoverySpeed = 3f, overheatShootingPenalty = default;
+    private enum RecoverSpeed { Slow, Mid, Fast }
+    [Header("Overheat (Max is 10, scale penalties accordingly)")]
+    [SerializeField] private float penaltyPerShot = default;
+    [SerializeField] private RecoverSpeed overheatRecoverSpeed = default;
+    private float maxOverheat = 10, overheatRecoveryNum;
     private float timeOverheated = 0f;
     private bool towerGone = false;
 
@@ -59,6 +61,20 @@ public abstract class Tower : MonoBehaviour
         currentTimerUi = Instantiate(timerUiPrefab, timerUiParent).transform;
         currentTimerUi.transform.position = transform.position + timerUiOffset;
         currentTimerUiFill = currentTimerUi.Find("Fill").GetComponent<Image>();
+
+        // Determine multiplier for recovery speed
+        switch (overheatRecoverSpeed)
+        {
+            case RecoverSpeed.Slow:
+                overheatRecoveryNum = 6f;
+                break;
+            case RecoverSpeed.Mid:
+                overheatRecoveryNum = 4f;
+                break;
+            case RecoverSpeed.Fast:
+                overheatRecoveryNum = 2f;
+                break;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -87,6 +103,11 @@ public abstract class Tower : MonoBehaviour
         }
 
         UpdateTimerUi();
+
+        if (timeOverheated > 0)
+        {
+            timeOverheated -= Time.deltaTime / overheatRecoveryNum;
+        }
     }
     
     /// <summary>
@@ -97,13 +118,6 @@ public abstract class Tower : MonoBehaviour
         if (AcknowledgedEnemies.Count > 0)
         {
             TrackAndShoot();
-        }
-        else
-        {
-            if (timeOverheated > 0)
-            {
-                timeOverheated -= Time.deltaTime / overheatRecoverySpeed;
-            }
         }
     }
 
@@ -123,9 +137,6 @@ public abstract class Tower : MonoBehaviour
         {
             AcknowledgedEnemies.Remove(enemyToTarget);
         }
-
-        // While able to shoot, subtract from tower timer
-        timeOverheated += Time.deltaTime;
 
         if (_canShoot)
         {
@@ -169,17 +180,19 @@ public abstract class Tower : MonoBehaviour
 
     private IEnumerator ShotIncreasesOverheat()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 3; i++)
         {
-            timeOverheated += overheatShootingPenalty / 10;
+            timeOverheated += penaltyPerShot / 3;
             yield return new WaitForSeconds(shootCadence / 10);
         }
-        Debug.Log(timeOverheated);
     }
 
     private void UpdateTimerUi()
     {
-        currentTimerUiFill.fillAmount = timeOverheated / maxOverheat;
+        if (currentTimerUiFill != null)
+        {
+            currentTimerUiFill.fillAmount = timeOverheated / maxOverheat;
+        }
         if (timeOverheated >= maxOverheat && !towerGone)
         {
             towerGone = true;
@@ -199,6 +212,7 @@ public abstract class Tower : MonoBehaviour
         transform.Find("tower").gameObject.SetActive(false);
         transform.Find("base").gameObject.SetActive(false);
         Destroy(currentTimerUi.gameObject);
+        Destroy(attachedPlacementBlocker);
 
         // Drop a differently coloured piece of scrap
         GameObject towerScrapDrop = Instantiate(_attachedScrap, _gM.gameUi.dropsInPlayParent);

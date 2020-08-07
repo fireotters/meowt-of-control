@@ -52,15 +52,17 @@ public partial class GameManager : MonoBehaviour
 
     private void DestroyOldPurchase()
     {
-        gameUi.purchaseButtons[indexOfNewPurchase].HideCancelOverlay();
-
         // If missile selection is replaced with another selection, toggle missile mode changes
         if (currentPurchase == PurchaseType.Missile)
         {
-                mainTower.CancelShooting();
-                gameUi.isMissileReticuleActive = false;
-                gameUi.ToggleMissileReticuleChanges();
+            mainTower.CancelShooting();
+            gameUi.isMissileReticuleActive = false;
+            gameUi.ToggleMissileReticuleChanges();
+
+            gameUi.purchaseButtons[indexOfNewPurchase].FlagMissileCancel();
         }
+
+        gameUi.purchaseButtons[indexOfNewPurchase].HideCancelOverlay();
 
         if (currentPlacingTower != null)
         {
