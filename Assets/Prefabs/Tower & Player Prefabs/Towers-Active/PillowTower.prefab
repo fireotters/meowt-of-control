@@ -297,7 +297,9 @@ MonoBehaviour:
   gunEnd: {fileID: 6692040349411958347}
   bulletPrefab: {fileID: 2062328406714552009, guid: 5ee637f1837d6954ca16a6af9fb07c7c,
     type: 3}
-  maxLifespan: 10
+  maxOverheat: 10
+  overheatRecoverySpeed: 3
+  overheatShootingPenalty: 0.25
   timerUiPrefab: {fileID: 5833921825391891483, guid: 62d22d53f5dbe064192085e2cd44f4c0,
     type: 3}
   _towerAnimator: {fileID: 1497326520120884441}

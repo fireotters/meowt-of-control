@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,14 +20,15 @@ public abstract class Tower : MonoBehaviour
     internal float rangeOfTower;
 
     [Header("Timer Functionality")]
-    [SerializeField] private float maxLifespan = default;
-    private float timeLeft;
+    [SerializeField] private float maxOverheat = default;
+    [SerializeField] private float overheatRecoverySpeed = 3f, overheatShootingPenalty = default;
+    private float timeOverheated = 0f;
     private bool towerGone = false;
 
     [Header("Timer UI")]
     public GameObject timerUiPrefab;
-    private Image currentTimerUi;
-    private Transform timerUiParent;
+    private Image currentTimerUiFill;
+    private Transform currentTimerUi, timerUiParent;
     private Vector3 timerUiOffset = new Vector2(0f, -0.5f);
 
     [Header("Animation, etc")]
@@ -53,9 +56,9 @@ public abstract class Tower : MonoBehaviour
         rangeCollider.radius *= rangeOfTower;
 
         timerUiParent = FindObjectOfType<Canvas>().transform.Find("TowerUiTimerParent");
-        currentTimerUi = Instantiate(timerUiPrefab, timerUiParent).GetComponent<Image>();
+        currentTimerUi = Instantiate(timerUiPrefab, timerUiParent).transform;
         currentTimerUi.transform.position = transform.position + timerUiOffset;
-        timeLeft = maxLifespan;
+        currentTimerUiFill = currentTimerUi.Find("Fill").GetComponent<Image>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -86,6 +89,9 @@ public abstract class Tower : MonoBehaviour
         UpdateTimerUi();
     }
     
+    /// <summary>
+    /// When enemy is in range, track and shoot it. When no enemy, reduce overheat.
+    /// </summary>
     private void FixedUpdate()
     {
         if (AcknowledgedEnemies.Count > 0)
@@ -94,9 +100,9 @@ public abstract class Tower : MonoBehaviour
         }
         else
         {
-            if (timeLeft < maxLifespan)
+            if (timeOverheated > 0)
             {
-                timeLeft += Time.deltaTime / 4f;
+                timeOverheated -= Time.deltaTime / overheatRecoverySpeed;
             }
         }
     }
@@ -119,7 +125,7 @@ public abstract class Tower : MonoBehaviour
         }
 
         // While able to shoot, subtract from tower timer
-        timeLeft -= Time.deltaTime;
+        timeOverheated += Time.deltaTime;
 
         if (_canShoot)
         {
@@ -133,6 +139,7 @@ public abstract class Tower : MonoBehaviour
         bullet.Pew();
         _canShoot = false;
         _canShootAgain = shootCadence;
+        StartCoroutine(ShotIncreasesOverheat());
     }
 
     protected void SetLookAnimation(float angle)
@@ -160,10 +167,20 @@ public abstract class Tower : MonoBehaviour
         return target > val1 && target < val2;
     }
 
+    private IEnumerator ShotIncreasesOverheat()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            timeOverheated += overheatShootingPenalty / 10;
+            yield return new WaitForSeconds(shootCadence / 10);
+        }
+        Debug.Log(timeOverheated);
+    }
+
     private void UpdateTimerUi()
     {
-        currentTimerUi.fillAmount = timeLeft / maxLifespan;
-        if (timeLeft <= 0f && !towerGone)
+        currentTimerUiFill.fillAmount = timeOverheated / maxOverheat;
+        if (timeOverheated >= maxOverheat && !towerGone)
         {
             towerGone = true;
             DisableTurretPlayDestroySound();
@@ -172,6 +189,7 @@ public abstract class Tower : MonoBehaviour
 
     private void DisableTurretPlayDestroySound()
     {
+        // Play destruction sound
         AudioSource audioSrc = GetComponent<AudioSource>();
         audioSrc.clip = audTowerDestroy;
         audioSrc.Play();
@@ -180,6 +198,7 @@ public abstract class Tower : MonoBehaviour
         _canShootAgain = 3f;
         transform.Find("tower").gameObject.SetActive(false);
         transform.Find("base").gameObject.SetActive(false);
+        Destroy(currentTimerUi.gameObject);
 
         // Drop a differently coloured piece of scrap
         GameObject towerScrapDrop = Instantiate(_attachedScrap, _gM.gameUi.dropsInPlayParent);
