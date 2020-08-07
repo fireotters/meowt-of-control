@@ -7,13 +7,17 @@ using UnityEngine.UI;
 
 public partial class GameUi : BaseUi
 {
-    [Header("Purchasing UI")]
-    public TextMeshProUGUI textCash;
-    public TextMeshProUGUI textHealth, textRound, textCatHealth;
+    [Header("Main Sidebar UI")]
+    public Image roundIndicator;
+    public TextMeshProUGUI textCash, textRound;
     public PurchaseButton[] purchaseButtons;
-    public Sprite[] catFaces;
-    public Image roundIndicator, catFace;
     public GameObject buildModeTexts, launchModeTexts;
+
+    [Header("Cat Health UI")]
+    public TextMeshProUGUI textBoxHealth;
+    public TextMeshProUGUI textCatHealth;
+    public Sprite[] gunCatFaces, boxCatFaces;
+    public Image gunCatFace, boxCatFace;
 
 
     internal void UpdateYarn(int difference)
@@ -22,14 +26,33 @@ public partial class GameUi : BaseUi
         textCash.text = gM.currentYarn.ToString();
     }
 
-    internal void UpdateMainTowerHealth(int difference)
+    internal void UpdateBoxCatHealth(int difference)
     {
         gM.mainTowerHealth += difference;
         if (gM.mainTowerHealth < 0)
         {
             gM.mainTowerHealth = 0;
         }
-        textHealth.text = gM.mainTowerHealth + "%";
+
+        int indexOfBoxCatFace;
+        if (gM.mainTowerHealth > 65) // High health
+        {
+            indexOfBoxCatFace = 3;
+        }
+        else if (gM.mainTowerHealth > 35) // Mid health
+        {
+            indexOfBoxCatFace = 2;
+        }
+        else if (gM.mainTowerHealth >0 ) // Low health
+        {
+            indexOfBoxCatFace = 1;
+        }
+        else // Dead
+        {
+            indexOfBoxCatFace = 0;
+        }
+        boxCatFace.sprite = boxCatFaces[indexOfBoxCatFace];
+        textBoxHealth.text = gM.mainTowerHealth + "%";
     }
 
     internal void UpdateRoundIndicator()
@@ -40,21 +63,7 @@ public partial class GameUi : BaseUi
 
     internal void UpdatePlayerHealth()
     {
-        switch (gM.player.currentPlayerHealth)
-        {
-            case 3:
-                catFace.sprite = catFaces[0];
-                break;
-            case 2:
-                catFace.sprite = catFaces[2];
-                break;
-            case 1:
-                catFace.sprite = catFaces[5];
-                break;
-            case 0:
-                catFace.sprite = catFaces[6];
-                break;
-        }
+        gunCatFace.sprite = gunCatFaces[gM.player.currentPlayerHealth];
         textCatHealth.text = gM.player.currentPlayerHealth.ToString();
     }
 

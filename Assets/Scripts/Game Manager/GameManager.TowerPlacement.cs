@@ -78,6 +78,7 @@ public partial class GameManager : MonoBehaviour
         gameUi.purchaseButtons[indexOfCurrentPurchase].HideCancelOverlay();
         Destroy(currentPlacingTower.gameObject);
         isAlreadyPlacingObject = false;
+        currentPurchase = PurchaseType.NoPurchaseActive;
         gameUi.ToggleTowerColourZones();
     }
 }

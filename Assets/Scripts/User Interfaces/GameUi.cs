@@ -40,7 +40,7 @@ public partial class GameUi : BaseUi
         StartCoroutine(FadeBlack("from"));
 
         // Initialise UI values
-        UpdateMainTowerHealth(0);
+        UpdateBoxCatHealth(0);
     }
 
     void Update()

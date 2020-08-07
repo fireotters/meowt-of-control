@@ -1,49 +1,49 @@
 fileFormatVersion: 2
-guid: 9655da4e2aee0744386b51b1fc1ca32a
+guid: 7d9023c48958a64429c705a685f5d8ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -935988467929061547
-    second: confetti_ball_0
+      213: 5707218116961789024
+    second: pillow_shop
   - first:
-      213: -5833816435771975693
-    second: confetti_ground
+      213: 3556181715638617739
+    second: water_shop
   - first:
-      213: -7358098400467298271
-    second: confetti_ball_3
+      213: -8816031292267695619
+    second: fridge_shop
   - first:
-      213: 8636431150146372764
-    second: balls_and_aoes_3
+      213: 7263181891274304025
+    second: total_yarn
   - first:
-      213: 2321315138453025039
-    second: confetti_aoe
+      213: -7975249404588759376
+    second: total_milk
   - first:
-      213: 974107324047498728
-    second: confetti_ball_1
+      213: -9005941153719796207
+    second: life_6
   - first:
-      213: 7046095536523008446
-    second: balls_and_aoes_6
+      213: 2163036573998151787
+    second: life_3
   - first:
-      213: 2692513938954374917
-    second: balls_and_aoes_7
+      213: 8599436577718238185
+    second: life_5
   - first:
-      213: -6027390739043368692
-    second: freeze_aoe
+      213: -9080700020481880845
+    second: life_4
   - first:
-      213: -5055782726153564177
-    second: balls_and_aoes_9
+      213: -6774437969098921397
+    second: life 2
   - first:
-      213: 9222781551617642839
-    second: confetti_ball_2
+      213: -7334886338573059942
+    second: life_1
   - first:
-      213: -10614914252275708
-    second: balls_and_aoes_11
+      213: 8852797563311604980
+    second: life_over
   - first:
-      213: -894897186248960640
-    second: balls_and_aoes_12
+      213: -7420991742971661633
+    second: yarn_collect
   - first:
-      213: -339683034738473260
-    second: water_aoe
+      213: 6071220295474305178
+    second: milk_collect
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -87,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: confetti_ball_0
+      name: pillow_shop
       rect:
         serializedVersion: 2
-        x: 7
+        x: 2
         y: 64
-        width: 18
-        height: 30
+        width: 30
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,40 +143,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 557e93f8273b203f0800000000000000
-      internalID: -935988467929061547
+      spriteID: 0646e25a3ac143f40800000000000000
+      internalID: 5707218116961789024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: confetti_ball_3
+      name: water_shop
       rect:
         serializedVersion: 2
-        x: 39
-        y: 64
-        width: 18
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 128d6c95d78c2e990800000000000000
-      internalID: -7358098400467298271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: confetti_ball_1
-      rect:
-        serializedVersion: 2
-        x: 7
+        x: 5
         y: 32
-        width: 18
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b86016dcd681a5130800000000000000
+      internalID: 3556181715638617739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fridge_shop
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1
+        width: 25
         height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -185,20 +185,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ed15fe3379b48d00800000000000000
-      internalID: 974107324047498728
+      spriteID: df1f7afbf3a27a580800000000000000
+      internalID: -8816031292267695619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: freeze_aoe
+      name: total_yarn
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 65
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a6478b2710cc460800000000000000
+      internalID: 7263181891274304025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: total_milk
       rect:
         serializedVersion: 2
         x: 36
-        y: 42
-        width: 25
-        height: 9
+        y: 32
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,71 +227,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0147dcae086a5ca0800000000000000
-      internalID: -6027390739043368692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: confetti_ball_2
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 0
-        width: 18
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7511231f4f6edff70800000000000000
-      internalID: 9222781551617642839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: water_aoe
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 10
-        width: 25
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d6cf226414394bf0800000000000000
-      internalID: -339683034738473260
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: confetti_ground
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 71
-        width: 25
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f7d9fc4cde1a0fa0800000000000000
-      internalID: -5833816435771975693
+      spriteID: 0b66754dbe8325190800000000000000
+      internalID: -7975249404588759376
       vertices: []
       indices: 
       edges: []

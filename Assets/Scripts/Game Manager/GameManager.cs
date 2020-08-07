@@ -85,7 +85,7 @@ public partial class GameManager : MonoBehaviour
             {
                 hpToHeal = hpMilkHeals;
             }
-            gameUi.UpdateMainTowerHealth(hpToHeal);
+            gameUi.UpdateBoxCatHealth(hpToHeal);
             mainTower.ChangeHealthBar();
         }
 

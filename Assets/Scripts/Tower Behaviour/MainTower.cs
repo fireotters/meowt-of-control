@@ -38,12 +38,12 @@ public class MainTower : MonoBehaviour
         {
             if (col.gameObject.CompareTag("LargeEnemy"))
             {
-                _gM.gameUi.UpdateMainTowerHealth(-10);
+                _gM.gameUi.UpdateBoxCatHealth(-10);
                 ChangeHealthBar();
             }
             else if(col.gameObject.CompareTag("Enemy"))
             {
-                _gM.gameUi.UpdateMainTowerHealth(-5);
+                _gM.gameUi.UpdateBoxCatHealth(-5);
                 ChangeHealthBar();
             }
 
