@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 583328650190263801, guid: ceba8740550026c4e8f049267ba78c1c,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 201493a8b01e64d4fa9b466e890b271a,
+        type: 2}
     - target: {fileID: 2812247609020428681, guid: ceba8740550026c4e8f049267ba78c1c,
         type: 3}
       propertyPath: m_Controller
@@ -68,10 +74,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7389248549782536482, guid: ceba8740550026c4e8f049267ba78c1c,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7875933819525586668, guid: ceba8740550026c4e8f049267ba78c1c,
         type: 3}
       propertyPath: m_Name
       value: FridgeFizzle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4974048070513433643, guid: ceba8740550026c4e8f049267ba78c1c, type: 3}
+    - {fileID: 2812247609020428681, guid: ceba8740550026c4e8f049267ba78c1c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ceba8740550026c4e8f049267ba78c1c, type: 3}

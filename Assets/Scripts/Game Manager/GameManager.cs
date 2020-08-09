@@ -19,7 +19,7 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
     public bool gameIsOver = false;
     public GameObject scrapEnemy;
-    public Transform projectilesInPlayParent;
+    public Transform projectilesParent, projectilesParentExtras;
     private int yarnMultiplier = 0;
 
     private void Start()

@@ -121,7 +121,6 @@ public class MusicManager : MonoBehaviour
             currentMusicPlayer.pitch -= Time.deltaTime * stressFadeSpeed;
             currentMusicPlayerDrums.pitch -= Time.deltaTime * stressFadeSpeed;
         }
-        Debug.Log(Mathf.Round(currentMusicPlayer.time) + " " + Mathf.Round(currentMusicPlayerDrums.time));
     }
 
     public void ChangeMusicTrack(int index)

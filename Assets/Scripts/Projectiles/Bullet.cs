@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _sprRenderer;
     private BoxCollider2D _collider;
+    private GameManager _gM;
 
     private enum BulletType { Player, Pillow, Water, Fridge }
 
@@ -21,6 +22,7 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
+        _gM = FindObjectOfType<GameManager>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _sprRenderer = GetComponent<SpriteRenderer>();
@@ -65,13 +67,13 @@ public class Bullet : MonoBehaviour
         PlayExplosionEffect();
 
         CreateSecondaryEffect();
-        Invoke(nameof(ActuallyDestroy), .25f);
+        Invoke(nameof(ActuallyDestroy), 0.25f);
     }
 
 
     private void PlayExplosionEffect()
     {
-        attachedFizzleInstance = Instantiate(attachedFizzle);
+        attachedFizzleInstance = Instantiate(attachedFizzle, _gM.projectilesParentExtras);
         attachedFizzleInstance.transform.position = transform.position;
     }
 
@@ -80,11 +82,14 @@ public class Bullet : MonoBehaviour
     {
         if (typeOfBullet == BulletType.Water || typeOfBullet == BulletType.Fridge)
         {
-            secondaryEffectInstance = Instantiate(secondaryEffect);
+            secondaryEffectInstance = Instantiate(secondaryEffect, _gM.projectilesParentExtras);
             secondaryEffectInstance.transform.position = transform.position;
         }
     }
 
+    /// <summary>
+    /// Fully remove the Bullet object after attached fizzle has expired.
+    /// </summary>
     private void ActuallyDestroy()
     {
         Destroy(gameObject);
