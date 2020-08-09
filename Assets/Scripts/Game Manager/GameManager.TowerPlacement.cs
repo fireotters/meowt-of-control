@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -17,11 +18,11 @@ public partial class GameManager : MonoBehaviour
     {
         if (currentPlacingTower.placementIsValid)
         {
-            PlaceTower();
+            CompletePurchase();
         }
     }
 
-    private void PlaceTower()
+    private void CompletePurchase()
     {
         Tower towerToSpawn = null;
         switch (currentPurchase)
@@ -39,7 +40,7 @@ public partial class GameManager : MonoBehaviour
                 gameUi.UpdateYarn(-priceFridge);
                 break;
             case PurchaseType.Missile:
-                mainTower.AnimateShooting();
+                mainTower.AnimateShooting(currentPlacingTower);
                 gameUi.UpdateYarn(-priceMissile);
                 break;
         }
@@ -47,30 +48,37 @@ public partial class GameManager : MonoBehaviour
 
         if (towerToSpawn != null || currentPurchase == PurchaseType.Missile)
         {
-            if (currentPurchase != PurchaseType.Missile)
-            {
-                // Place tower and a barrier spritemask
-                Tower towerPlaced = Instantiate(towerToSpawn, towersInPlayParent);
-                towerPlaced.transform.position = player.transform.position + spritePivotOffset;
-                GameObject newBarrier = Instantiate(towerBarrierMask, placementBlockersParent);
-                newBarrier.transform.position = player.transform.position + spritePivotOffset;
-            }
-            else
-            {
-                // Disable Missile Mode changes
-                gameUi.isMissileReticuleActive = false;
-                gameUi.ToggleMissileReticuleChanges();
-            }
-
-            // Once tower is placed or missile fired, disable cancel button, destroy placeable version, and disable Build / Missile Mode.
-            gameUi.purchaseButtons[indexOfCurrentPurchase].HideCancelOverlay();
-            Destroy(currentPlacingTower.gameObject);
-            isAlreadyPlacingObject = false;
-            gameUi.ToggleTowerColourZones();
+            ActuallyPlaceThePurchase(towerToSpawn);
         }
         else
         {
             Debug.LogError("GameManager.PlaceTower - Invalid tower type");
         }
+    }
+
+    private void ActuallyPlaceThePurchase(Tower towerToSpawn)
+    {
+        if (currentPurchase != PurchaseType.Missile)
+        {
+            // Place tower and a barrier spritemask. Attach the two, so when the tower is destroyed, so is the barrier.
+            Tower towerPlaced = Instantiate(towerToSpawn, towersInPlayParent);
+            towerPlaced.transform.position = player.transform.position + spritePivotOffset;
+            GameObject newBarrier = Instantiate(towerBarrierMask, placementBlockersParent);
+            newBarrier.transform.position = player.transform.position + spritePivotOffset;
+            towerPlaced.attachedPlacementBlocker = newBarrier;
+        }
+        else
+        {
+            // Disable Missile Mode changes
+            gameUi.isMissileReticuleActive = false;
+            gameUi.ToggleMissileReticuleChanges();
+        }
+
+        // Once tower is placed or missile fired, disable cancel button, destroy placeable version, and disable Build / Missile Mode.
+        gameUi.purchaseButtons[indexOfCurrentPurchase].HideCancelOverlay();
+        Destroy(currentPlacingTower.gameObject);
+        isAlreadyPlacingObject = false;
+        currentPurchase = PurchaseType.NoPurchaseActive;
+        gameUi.ToggleTowerColourZones();
     }
 }

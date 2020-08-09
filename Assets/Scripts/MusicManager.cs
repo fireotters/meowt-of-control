@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 
 public class MusicManager : MonoBehaviour
     {
@@ -71,16 +67,14 @@ public class MusicManager : MonoBehaviour
         currentMusicPlayer.pitch = 1;
         currentMusicPlayer.Play();
         currentMusicPlayer.loop = false;
+        currentMusicPlayerDrums.pitch = 1;
         currentMusicPlayerDrums.Stop();
     }
 
-    public void ChangeBackToStageMusicOnRetry()
+    public void ResetStageMusicOnRetry()
     {
-        currentMusicPlayer.clip = stageMusic;
         currentMusicPlayer.Stop();
-        currentMusicPlayer.Play();
         currentMusicPlayerDrums.Stop();
-        currentMusicPlayerDrums.Play();
     }
 
     public void FindAllSfxAndPlayPause(bool intent)
@@ -133,44 +127,39 @@ public class MusicManager : MonoBehaviour
     {
         Debug.Log($"Music requested: {index} Music last played: {lastTrackRequested}");
 
-        // If lastTrackRequested = -2, then play nothing
-        if (lastTrackRequested == -2) { }
-
-        // If the new track does not equal current track, replace the track
-        // If it does, then ignore this and continue previous track
-        else if (index != lastTrackRequested)
+        // If the new track does not equal current track, reset player
+        if (index != lastTrackRequested)
         {
             currentMusicPlayer.enabled = true;
             if (currentMusicPlayer.isPlaying)
             {
                 currentMusicPlayer.Stop();
             }
-            switch (index)
-            {
-                case 0:
-                    currentMusicPlayer.clip = musicMainMenu;
-                    break;
-
-                case 1:
-                    currentMusicPlayer.clip = stageMusic;
-                    break;
-            }
-
-            if (currentMusicPlayer.clip == stageMusic)
-            {
-                currentMusicPlayerDrums.clip = stageMusicDrums;
-                currentMusicPlayer.Play();
-                currentMusicPlayerDrums.Play();
-            }
-            else
-            {
-                currentMusicPlayer.Play();
-                currentMusicPlayerDrums.Stop();
-            }
-            lastTrackRequested = index;
         }
-    }
 
+        // Play main menu music and stop drums
+        if (index == 0)
+        {
+            currentMusicPlayer.clip = musicMainMenu;
+            currentMusicPlayer.Play();
+            currentMusicPlayerDrums.Stop();
+        }
+        // Play stage music and start drums
+        else if (index == 1)
+        {
+            currentMusicPlayer.clip = stageMusic;
+            currentMusicPlayerDrums.clip = stageMusicDrums;
+            currentMusicPlayer.Play();
+            currentMusicPlayerDrums.Play();
+        }
+        // Play nothing
+        if (lastTrackRequested == -2) { }
+
+        lastTrackRequested = index;
+    }
+    private void Why()
+    {
+    }
     public void MusicIsPaused(bool intent)
     {
         if (intent == true && currentMusicPlayer.isPlaying)

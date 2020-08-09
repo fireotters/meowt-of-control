@@ -35,11 +35,11 @@ public class EnemySpawnerController : MonoBehaviour
 
             // Determine which enemy to spawn
             int randEnemy = Random.Range(0, 30);
-            if (randEnemy == 0) // Spawn Big Chungus (1/30 chance)
+            if (randEnemy == 0 && _gM.currentRound > 2) // Spawn Big Chungus (1/30 chance)
             {
                 _chosenSpawner.PrepToSpawnEnemy(enemyBigChungus);
             }
-            else if (randEnemy < 5) // Spawn Sanic (4/30 chance)
+            else if (randEnemy < 5 && _gM.currentRound > 1) // Spawn Sanic (4/30 chance)
             {
                 _chosenSpawner.PrepToSpawnEnemy(enemySanic);
             }

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2039779501809772672, guid: 47aee6ecd88127f4192a88cf25fd43f1,
         type: 3}
       propertyPath: m_Name
-      value: PlayerBulletExplosion
+      value: PlayerBulletFizzle
       objectReference: {fileID: 0}
     - target: {fileID: 3151865213501103725, guid: 47aee6ecd88127f4192a88cf25fd43f1,
         type: 3}
@@ -66,6 +66,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151865213501103725, guid: 47aee6ecd88127f4192a88cf25fd43f1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151865213501103725, guid: 47aee6ecd88127f4192a88cf25fd43f1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47aee6ecd88127f4192a88cf25fd43f1, type: 3}

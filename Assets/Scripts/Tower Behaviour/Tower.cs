@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,17 +17,20 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] internal Bullet bulletPrefab = default;
     internal Transform enemyToTarget;
     private CircleCollider2D rangeCollider;
-    internal float rangeOfTower;
+    public float rangeOfTower;
 
-    [Header("Timer Functionality")]
-    [SerializeField] private float maxLifespan = default;
-    private float timeLeft;
+    private enum RecoverSpeed { Slow, Mid, Fast }
+    [Header("Overheat (Max is 10, scale penalties accordingly)")]
+    [SerializeField] private float penaltyPerShot = default;
+    [SerializeField] private RecoverSpeed overheatRecoverSpeed = default;
+    private readonly float maxOverheat = 10;
+    private float timeOverheated = 0f, overheatRecoveryRate;
     private bool towerGone = false;
 
     [Header("Timer UI")]
     public GameObject timerUiPrefab;
-    private Image currentTimerUi;
-    private Transform timerUiParent;
+    private Image currentTimerUiFill;
+    private Transform currentTimerUi, timerUiParent;
     private Vector3 timerUiOffset = new Vector2(0f, -0.5f);
 
     [Header("Animation, etc")]
@@ -33,6 +38,10 @@ public abstract class Tower : MonoBehaviour
     private static readonly int Direction = Animator.StringToHash("Direction");
     [SerializeField] private AudioClip audTowerDestroy = default;
     internal GameManager _gM;
+
+
+    [SerializeField] private GameObject _attachedScrap = default;
+    [HideInInspector] public GameObject attachedPlacementBlocker;
 
     protected virtual void Awake()
     {
@@ -49,9 +58,23 @@ public abstract class Tower : MonoBehaviour
         rangeCollider.radius *= rangeOfTower;
 
         timerUiParent = FindObjectOfType<Canvas>().transform.Find("TowerUiTimerParent");
-        currentTimerUi = Instantiate(timerUiPrefab, timerUiParent).GetComponent<Image>();
+        currentTimerUi = Instantiate(timerUiPrefab, timerUiParent).transform;
         currentTimerUi.transform.position = transform.position + timerUiOffset;
-        timeLeft = maxLifespan;
+        currentTimerUiFill = currentTimerUi.Find("Fill").GetComponent<Image>();
+
+        // Determine multiplier for recovery speed
+        switch (overheatRecoverSpeed)
+        {
+            case RecoverSpeed.Slow:
+                overheatRecoveryRate = 0.5f;
+                break;
+            case RecoverSpeed.Mid:
+                overheatRecoveryRate = 2f;
+                break;
+            case RecoverSpeed.Fast:
+                overheatRecoveryRate = 4f;
+                break;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -80,20 +103,22 @@ public abstract class Tower : MonoBehaviour
         }
 
         UpdateTimerUi();
+
+        if (timeOverheated > 0)
+        {
+            // If no enemies, recover at full speed. If shooting, recover at quarter speed.
+            timeOverheated -= Time.deltaTime * overheatRecoveryRate / (enemyToTarget == null ? 1 : 4);
+        }
     }
     
+    /// <summary>
+    /// When enemy is in range, track and shoot it. When no enemy, reduce overheat.
+    /// </summary>
     private void FixedUpdate()
     {
         if (AcknowledgedEnemies.Count > 0)
         {
             TrackAndShoot();
-        }
-        else
-        {
-            if (timeLeft < maxLifespan)
-            {
-                timeLeft += Time.deltaTime / 4f;
-            }
         }
     }
 
@@ -114,9 +139,6 @@ public abstract class Tower : MonoBehaviour
             AcknowledgedEnemies.Remove(enemyToTarget);
         }
 
-        // While able to shoot, subtract from tower timer
-        timeLeft -= Time.deltaTime;
-
         if (_canShoot)
         {
             _towerAnimator.SetTrigger("Shoot");
@@ -129,6 +151,7 @@ public abstract class Tower : MonoBehaviour
         bullet.Pew();
         _canShoot = false;
         _canShootAgain = shootCadence;
+        StartCoroutine(ShotIncreasesOverheat());
     }
 
     protected void SetLookAnimation(float angle)
@@ -156,10 +179,22 @@ public abstract class Tower : MonoBehaviour
         return target > val1 && target < val2;
     }
 
+    private IEnumerator ShotIncreasesOverheat()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            timeOverheated += penaltyPerShot / 3;
+            yield return new WaitForSeconds(shootCadence / 10);
+        }
+    }
+
     private void UpdateTimerUi()
     {
-        currentTimerUi.fillAmount = timeLeft / maxLifespan;
-        if (timeLeft <= 0f && !towerGone)
+        if (currentTimerUiFill != null)
+        {
+            currentTimerUiFill.fillAmount = timeOverheated / maxOverheat;
+        }
+        if (timeOverheated >= maxOverheat && !towerGone)
         {
             towerGone = true;
             DisableTurretPlayDestroySound();
@@ -168,6 +203,7 @@ public abstract class Tower : MonoBehaviour
 
     private void DisableTurretPlayDestroySound()
     {
+        // Play destruction sound
         AudioSource audioSrc = GetComponent<AudioSource>();
         audioSrc.clip = audTowerDestroy;
         audioSrc.Play();
@@ -176,9 +212,11 @@ public abstract class Tower : MonoBehaviour
         _canShootAgain = 3f;
         transform.Find("tower").gameObject.SetActive(false);
         transform.Find("base").gameObject.SetActive(false);
+        Destroy(currentTimerUi.gameObject);
+        Destroy(attachedPlacementBlocker);
 
         // Drop a differently coloured piece of scrap
-        GameObject towerScrapDrop = Instantiate(_gM.scrapTower, _gM.gameUi.dropsInPlayParent);
+        GameObject towerScrapDrop = Instantiate(_attachedScrap, _gM.gameUi.dropsInPlayParent);
         towerScrapDrop.transform.position = transform.position;
 
         Invoke(nameof(DestroyTurret), 1f);
@@ -187,6 +225,11 @@ public abstract class Tower : MonoBehaviour
     private void DestroyTurret()
     {
         Destroy(gameObject);
+    }
+
+    public void BigEnemyDestroysTower()
+    {
+        timeOverheated = maxOverheat;
     }
     
 }

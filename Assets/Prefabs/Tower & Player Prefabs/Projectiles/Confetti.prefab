@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 500
+  landingCoords: {x: 0, y: 0}
+  confettiRemains: {fileID: 9221182995087451776, guid: 00183911bac2597459fae9704805b249,
+    type: 3}
 --- !u!212 &6090977655624223792
 SpriteRenderer:
   m_ObjectHideFlags: 0

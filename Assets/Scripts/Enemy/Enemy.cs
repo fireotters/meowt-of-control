@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public bool breaksThruScrap = false;
+    public bool breaksThruObstacles = false;
     public float enemyMaxHealth;
     public float enemyHealthRemaining;
 
@@ -67,8 +67,8 @@ public class Enemy : MonoBehaviour
         }
         if (standingOnWater)
         {
-            enemyHealthRemaining -= Time.deltaTime * waterDamageScale;
-            ChangeHealthBar();
+            float chipDamage = Time.deltaTime * waterDamageScale;
+            DealDamage(chipDamage);
         }
     }
 
@@ -82,14 +82,26 @@ public class Enemy : MonoBehaviour
         // Being hit by projectile reduces HP by one
         if (col.gameObject.CompareTag("PlayerBullet"))
         {
-            enemyHealthRemaining--;
-            ChangeHealthBar();
+            DealDamage(1);
         }
         // Big chungus destroys any scrap he touches.
-        else if (breaksThruScrap && col.gameObject.CompareTag("Scrap"))
+        else if (breaksThruObstacles)
         {
-            Destroy(col.gameObject);
+            if (col.gameObject.CompareTag("Scrap"))
+            {
+                Destroy(col.gameObject);
+            }
+            else if (col.gameObject.CompareTag("Tower"))
+            {
+                col.transform.GetComponent<Tower>().BigEnemyDestroysTower();
+            }
         }
+    }
+    
+    public void DealDamage(float damage)
+    {
+        enemyHealthRemaining -= damage;
+        ChangeHealthBar();
     }
 
     private void ChangeHealthBar()

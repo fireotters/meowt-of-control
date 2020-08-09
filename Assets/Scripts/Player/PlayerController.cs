@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     
     private void Shoot()
     {
-        var bullet = Instantiate(bulletPrefab, _gunEnd.transform.position, _gunEnd.rotation, _gM.projectilesInPlayParent);
+        var bullet = Instantiate(bulletPrefab, _gunEnd.transform.position, _gunEnd.rotation, _gM.projectilesParent);
         bullet.Pew();
 
         _player.BulletWasShot();

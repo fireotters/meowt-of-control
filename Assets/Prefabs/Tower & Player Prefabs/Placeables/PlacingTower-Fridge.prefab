@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84eb48fb01447b46a08d40b41b82a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedTower: {fileID: 6213731364343559203, guid: 7fba5b41335d375428be0b6413347502,
+    type: 3}
   placementIsValid: 0
-  isMissileReticule: 0
-  rangeMultiplier: 1.2
 --- !u!1 &6891927540656971686
 GameObject:
   m_ObjectHideFlags: 0

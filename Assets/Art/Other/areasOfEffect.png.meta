@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: d8fee84688dafc644a50c4437fe3c798
+guid: a74a8d88980a0cc41bbd9082110f63c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4701778010454498531
-    second: scrap_enemy
+      213: -6512453611038986156
+    second: areasOfEffect_Ice
   - first:
-      213: -5817249713676571791
-    second: scrap_tower
+      213: -6194454358034119534
+    second: areasOfEffect_Water
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,43 +93,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scrap_enemy
+      name: areasOfEffect_Ice
       rect:
         serializedVersion: 2
-        x: 9
-        y: 8
-        width: 32
-        height: 18
+        x: 3
+        y: 43
+        width: 25
+        height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ec12ed7032104140800000000000000
-      internalID: 4701778010454498531
+      spriteID: 450bfc9f1fd1f95a0800000000000000
+      internalID: -6512453611038986156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scrap_tower
+      name: areasOfEffect_Water
       rect:
         serializedVersion: 2
-        x: 56
-        y: 8
-        width: 32
-        height: 18
+        x: 3
+        y: 10
+        width: 25
+        height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17ba09ed43af44fa0800000000000000
-      internalID: -5817249713676571791
+      spriteID: 294810cb490e80aa0800000000000000
+      internalID: -6194454358034119534
       vertices: []
       indices: 
       edges: []
