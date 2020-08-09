@@ -9,7 +9,7 @@ public partial class GameUi : BaseUi
 {
     [Header("Main Sidebar UI")]
     public Image roundIndicator;
-    public TextMeshProUGUI textCash, textRound;
+    public TextMeshProUGUI textYarn, textRound;
     public PurchaseButton[] purchaseButtons;
     public GameObject buildModeTexts, launchModeTexts;
 
@@ -23,7 +23,7 @@ public partial class GameUi : BaseUi
     internal void UpdateYarn(int difference)
     {
         gM.currentYarn += difference;
-        textCash.text = gM.currentYarn.ToString();
+        textYarn.text = gM.currentYarn.ToString();
     }
 
     internal void UpdateBoxCatHealth(int difference)
@@ -91,7 +91,10 @@ public partial class GameUi : BaseUi
         }
         else
         {
-            // TODO Play failure noise, blink price indicator
+            textYarn.color = Color.red;
+            textYarn.GetComponent<AudioSource>().Play();
+            CancelInvoke(nameof(EndYarnRedFlash));
+            Invoke(nameof(EndYarnRedFlash), 0.5f);
         }
     }
 
@@ -129,5 +132,9 @@ public partial class GameUi : BaseUi
         {
             btn.BlockClicking();
         }
+    }
+    private void EndYarnRedFlash()
+    {
+        textYarn.color = Color.white;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public bool breaksThruScrap = false;
+    public bool breaksThruObstacles = false;
     public float enemyMaxHealth;
     public float enemyHealthRemaining;
 
@@ -85,9 +85,16 @@ public class Enemy : MonoBehaviour
             DealDamage(1);
         }
         // Big chungus destroys any scrap he touches.
-        else if (breaksThruScrap && col.gameObject.CompareTag("Scrap"))
+        else if (breaksThruObstacles)
         {
-            Destroy(col.gameObject);
+            if (col.gameObject.CompareTag("Scrap"))
+            {
+                Destroy(col.gameObject);
+            }
+            else if (col.gameObject.CompareTag("Tower"))
+            {
+                col.transform.GetComponent<Tower>().BigEnemyDestroysTower();
+            }
         }
     }
     

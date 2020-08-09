@@ -6,15 +6,17 @@ public class ConfettiExplosion : MonoBehaviour
 {
 
     private CircleCollider2D rangeCollider;
-    internal float rangeOfExplosion;
+    private float rangeOfExplosion;
 
     private float _damageLifeSpan, _objectLifeLeft = 3f;
     [SerializeField] private float missileMaxDamage = default;
+    [SerializeField] private MissileReticle attachedReticle = default;
 
     private void Start()
     {
         rangeCollider = GetComponent<CircleCollider2D>();
-        rangeCollider.radius *= rangeOfExplosion;
+        rangeOfExplosion = attachedReticle.rangeOfMissile;
+        transform.localScale *= attachedReticle.rangeOfMissile;
         _damageLifeSpan = _objectLifeLeft - 0.1f;
     }
 
@@ -40,7 +42,7 @@ public class ConfettiExplosion : MonoBehaviour
         }
         Enemy hitEnemy = col.GetComponent<Enemy>();
         float distFromBlast = Vector2.Distance(col.transform.position, transform.position);
-        float normalizedDist = distFromBlast / 2.4f; // 2.4f is approximately the maximum range of the missile
+        float normalizedDist = distFromBlast / rangeOfExplosion;
 
         float finalDamage;
         if (normalizedDist < 0.25f)

@@ -7,7 +7,6 @@ public class WaterTower : Tower
     protected override void Awake()
     {
         base.Awake();
-        rangeOfTower = _gM.towerManager.rangeOfWater;
     }
 
     protected override void TrackAndShoot()

@@ -17,14 +17,14 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] internal Bullet bulletPrefab = default;
     internal Transform enemyToTarget;
     private CircleCollider2D rangeCollider;
-    internal float rangeOfTower;
+    public float rangeOfTower;
 
     private enum RecoverSpeed { Slow, Mid, Fast }
     [Header("Overheat (Max is 10, scale penalties accordingly)")]
     [SerializeField] private float penaltyPerShot = default;
     [SerializeField] private RecoverSpeed overheatRecoverSpeed = default;
-    private float maxOverheat = 10, overheatRecoveryNum;
-    private float timeOverheated = 0f;
+    private readonly float maxOverheat = 10;
+    private float timeOverheated = 0f, overheatRecoveryRate;
     private bool towerGone = false;
 
     [Header("Timer UI")]
@@ -66,13 +66,13 @@ public abstract class Tower : MonoBehaviour
         switch (overheatRecoverSpeed)
         {
             case RecoverSpeed.Slow:
-                overheatRecoveryNum = 6f;
+                overheatRecoveryRate = 0.5f;
                 break;
             case RecoverSpeed.Mid:
-                overheatRecoveryNum = 4f;
+                overheatRecoveryRate = 2f;
                 break;
             case RecoverSpeed.Fast:
-                overheatRecoveryNum = 2f;
+                overheatRecoveryRate = 4f;
                 break;
         }
     }
@@ -106,7 +106,8 @@ public abstract class Tower : MonoBehaviour
 
         if (timeOverheated > 0)
         {
-            timeOverheated -= Time.deltaTime / overheatRecoveryNum;
+            // If no enemies, recover at full speed. If shooting, recover at quarter speed.
+            timeOverheated -= Time.deltaTime * overheatRecoveryRate / (enemyToTarget == null ? 1 : 4);
         }
     }
     
@@ -224,6 +225,11 @@ public abstract class Tower : MonoBehaviour
     private void DestroyTurret()
     {
         Destroy(gameObject);
+    }
+
+    public void BigEnemyDestroysTower()
+    {
+        timeOverheated = maxOverheat;
     }
     
 }

@@ -7,7 +7,6 @@ public class FridgeTower : Tower
     protected override void Awake()
     {
         base.Awake();
-        rangeOfTower = _gM.towerManager.rangeOfFridge;
     }
 
     protected override void TrackAndShoot()

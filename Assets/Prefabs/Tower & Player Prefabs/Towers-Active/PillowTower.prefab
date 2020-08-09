@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 3029643768634409679}
   m_Layer: 10
   m_Name: PillowTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,6 +297,7 @@ MonoBehaviour:
   gunEnd: {fileID: 6692040349411958347}
   bulletPrefab: {fileID: 2062328406714552009, guid: 5ee637f1837d6954ca16a6af9fb07c7c,
     type: 3}
+  rangeOfTower: 0.8
   penaltyPerShot: 1
   overheatRecoverSpeed: 2
   timerUiPrefab: {fileID: 5833921825391891483, guid: 62d22d53f5dbe064192085e2cd44f4c0,

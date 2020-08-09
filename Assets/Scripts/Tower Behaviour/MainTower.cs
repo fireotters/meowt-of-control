@@ -9,6 +9,7 @@ public class MainTower : MonoBehaviour
     public AudioClip catCannon1, catCannon2;
     float _curTime = 0;
     private const float nextDamage = 1f;
+    private const int stressModeThreshold = 35;
 
     // Health bar
     private float _healthBarFullSize;
@@ -59,7 +60,7 @@ public class MainTower : MonoBehaviour
             TowerIsDead();
         }
 
-        if (_gM.mainTowerHealth <= 25 && _gM.mainTowerHealth != 0)
+        if (_gM.mainTowerHealth <= stressModeThreshold && _gM.mainTowerHealth != 0)
         {
             _gM.gameUi.musicManager.ChangeStressMode();
         }
@@ -78,11 +79,12 @@ public class MainTower : MonoBehaviour
         _mainTowerAnimator.SetBool("isShooting", false);
     }
 
-    public void AnimateShooting()
+    public void AnimateShooting(PlaceableTower missileReticle)
     {
         _mainTowerAnimator.SetBool("isShooting", true);
 
-        cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        cursorPos = missileReticle.transform.position;
         Invoke(nameof(ShootConfetti), 0.5f);
         Invoke(nameof(CancelShooting), 2f);
     }

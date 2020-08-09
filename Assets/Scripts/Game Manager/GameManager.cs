@@ -11,7 +11,7 @@ public partial class GameManager : MonoBehaviour
 
     [Header("Enemy Variables")]
     public int enemyCount = 0;
-    public int enemyMaxCount = 0, enemyNumberSpawned = 0, enemyTotalKilledEver = 0;
+    public int enemyCountMultipler = 5, enemyMaxCount = 0, enemyNumberSpawned = 0, enemyTotalKilledEver = 0;
 
     [Header("Other Variables")]
     public GameUi gameUi;
@@ -19,8 +19,8 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
     public bool gameIsOver = false;
     public GameObject scrapEnemy;
-    public TowerManager towerManager;
     public Transform projectilesInPlayParent;
+    private int yarnMultiplier = 0;
 
     private void Start()
     {
@@ -62,11 +62,15 @@ public partial class GameManager : MonoBehaviour
     {
         // Iterate current round and grant yarn
         currentRound += 1;
-        gameUi.UpdateYarn(20 * currentRound);
+        if (yarnMultiplier < 10)
+        {
+            yarnMultiplier += 1;
+        }
+        gameUi.UpdateYarn(20 * yarnMultiplier);
 
-        // Manage enemy counts. Spawnrate increases each round. RoundNo*7 enemies per round.
+        // Manage enemy counts. Spawnrate increases each round.
         IncreaseEnemySpawnRate();
-        enemyMaxCount = currentRound * 7;
+        enemyMaxCount = currentRound * enemyCountMultipler;
         enemyCount = enemyMaxCount;
         enemyNumberSpawned = 0;
         print($"Enemy count: {enemyCount}");

@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 2135279427459182253}
   m_Layer: 10
   m_Name: WaterTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,7 +155,8 @@ MonoBehaviour:
   gunEnd: {fileID: 6131310503200279371}
   bulletPrefab: {fileID: 4955034945373706700, guid: 3b165ed35b85a3e4990274444c36f459,
     type: 3}
-  penaltyPerShot: 1
+  rangeOfTower: 1.6
+  penaltyPerShot: 1.5
   overheatRecoverSpeed: 1
   timerUiPrefab: {fileID: 5833921825391891483, guid: 62d22d53f5dbe064192085e2cd44f4c0,
     type: 3}

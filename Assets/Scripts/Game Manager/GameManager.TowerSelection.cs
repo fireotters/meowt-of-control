@@ -9,14 +9,14 @@ public partial class GameManager : MonoBehaviour
     public Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
     [HideInInspector] public bool isAlreadyPlacingObject = false;
     public Transform placeableParent, towersInPlayParent;
-    public PlaceableTower placeablePillow, placeableWater, placeableFridge, placeableMissile;
+    public PlaceableTower placeablePillow, placeableWater, placeableFridge;
+    public MissileReticle placeableMissile;
 
     private bool isCancellingTower = false;
     private PlaceableTower currentPlacingTower;
     private PurchaseType currentPurchase = PurchaseType.NoPurchaseActive, newPurchase = PurchaseType.NoPurchaseActive;
     public Transform placementBlockersParent;
     
-
     public enum PurchaseType { PillowTower, WaterTower, FridgeTower, Missile, NoPurchaseActive }
     private int indexOfNewPurchase, indexOfCurrentPurchase;
     /// <summary>

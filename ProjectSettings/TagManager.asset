@@ -12,6 +12,7 @@ TagManager:
   - LargeEnemy
   - PlayerCollider
   - AOE
+  - Tower
   layers:
   - Default
   - TransparentFX

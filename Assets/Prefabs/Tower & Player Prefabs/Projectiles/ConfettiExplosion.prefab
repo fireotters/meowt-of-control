@@ -144,3 +144,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missileMaxDamage: 12
+  attachedReticle: {fileID: 3752944258829151720, guid: 44e73b799e2407244aead9fb3f3a34e8,
+    type: 3}

@@ -6,7 +6,6 @@ public class PillowTower : Tower
     protected override void Awake()
     {
         base.Awake();
-        rangeOfTower = _gM.towerManager.rangeOfPillow;
     }
 
     protected override void TrackAndShoot()

@@ -11,6 +11,7 @@ public class Confetti : MonoBehaviour
     [HideInInspector] public Vector2 landingCoords;
     private bool falling = false;
     [SerializeField] private GameObject confettiRemains = default;
+    [SerializeField] private MissileReticle attachedReticle = default;
 
     private void Start()
     {
@@ -54,7 +55,6 @@ public class Confetti : MonoBehaviour
     private void Explode()
     {
         GameObject remainsCopy = Instantiate(confettiRemains, _gM.projectilesInPlayParent);
-        remainsCopy.GetComponent<ConfettiExplosion>().rangeOfExplosion = _gM.towerManager.rangeOfMissileExpl;
         remainsCopy.transform.position = transform.position;
         Destroy(gameObject);
     }
