@@ -10,10 +10,6 @@ public class MainTower : MonoBehaviour
     float _curTime = 0;
     private const float nextDamage = 1f;
     private const int stressModeThreshold = 35;
-
-    // Health bar
-    private float _healthBarFullSize;
-    private Transform _healthBar;
     [SerializeField] private SpriteRenderer _normalSprite = default, _deathSprite = default;
 
     private Transform confettiLaunchPoint;
@@ -26,9 +22,6 @@ public class MainTower : MonoBehaviour
         _mainTowerAnimator = GetComponentInChildren<Animator>();
         _audioSource = GetComponent<AudioSource>();
 
-        _healthBar = transform.Find("HealthBar");
-        _healthBarFullSize = _healthBar.localScale.x;
-
         confettiLaunchPoint = transform.Find("ConfettiLaunchPoint");
     }
 
@@ -39,12 +32,10 @@ public class MainTower : MonoBehaviour
             if (col.gameObject.CompareTag("LargeEnemy"))
             {
                 _gM.gameUi.UpdateBoxCatHealth(-10);
-                ChangeHealthBar();
             }
             else if(col.gameObject.CompareTag("Enemy"))
             {
                 _gM.gameUi.UpdateBoxCatHealth(-5);
-                ChangeHealthBar();
             }
 
             _curTime = nextDamage;
@@ -97,14 +88,6 @@ public class MainTower : MonoBehaviour
 
         _audioSource.clip = catCannon2;
         _audioSource.Play();
-    }
-
-    public void ChangeHealthBar()
-    {
-        Vector3 scaleChange = _healthBar.localScale;
-        float percentOfLifeLeft = (float)_gM.mainTowerHealth / (float)100;
-        scaleChange.x = percentOfLifeLeft * _healthBarFullSize;
-        _healthBar.localScale = scaleChange;
     }
 
     private void TowerIsDead()

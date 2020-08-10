@@ -19,10 +19,10 @@ public partial class GameUi : BaseUi
 
         // Fill out the 'Reached Round' section
         textRoundReached = gameOverPanel.transform.Find("RoundReached").Find("RoundImage").Find("TextRound").GetComponent<TextMeshProUGUI>();
-        textRoundReached.text = gM.currentRound.ToString();
+        textRoundReached.text = _gM.currentRound.ToString();
 
         // If the game doesn't detect a high score, then shrink the game over window and remove unneeded parts
-        if (!IsThisAHighScore(gM.currentRound))
+        if (!IsThisAHighScore(_gM.currentRound))
         {
             gameOverRt.sizeDelta = new Vector2(gameOverRt.sizeDelta.x, 360);
             gameOverRt.Find("NewScoreParts").gameObject.SetActive(false);
@@ -36,7 +36,7 @@ public partial class GameUi : BaseUi
 
         // This function also handles if a game is ended prematurely, but a high score is accomplished
         // If game is not actually over when UI is called, then remove Retry button and change some strings
-        if (!gM.gameIsOver)
+        if (!_gM.gameIsOver)
         {
             gamePausePanel.SetActive(false);
             gameOverRt.sizeDelta = new Vector2(gameOverRt.sizeDelta.x, 380);
@@ -75,7 +75,7 @@ public partial class GameUi : BaseUi
     }
     private void CheckAndSaveHighscore()
     {
-        if (IsThisAHighScore(gM.currentRound))
+        if (IsThisAHighScore(_gM.currentRound))
         {
             // Set highscore's name depending on which panel's InputField is being used.
             string nameFromField = currentNameField.text;
@@ -87,7 +87,7 @@ public partial class GameUi : BaseUi
             }
 
             // Submit high score
-            PlayerPrefs.SetInt("HighscoreNum", gM.currentRound);
+            PlayerPrefs.SetInt("HighscoreNum", _gM.currentRound);
             PlayerPrefs.SetString("HighscoreName", nameFromField);
         }
     }

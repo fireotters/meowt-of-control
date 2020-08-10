@@ -15,35 +15,39 @@ public partial class GameUi : BaseUi
 
     [Header("Cat Health UI")]
     public TextMeshProUGUI textBoxHealth;
-    public TextMeshProUGUI textCatHealth;
     public Sprite[] gunCatFaces, boxCatFaces;
     public Image gunCatFace, boxCatFace;
+    public GameObject[] gunCatLives;
 
+    // Health bar
+    [SerializeField] private Transform _healthBar;
+    private Vector2 _healthBarFullSize;
+    private RectTransform _healthBarRect;
 
     internal void UpdateYarn(int difference)
     {
-        gM.currentYarn += difference;
-        textYarn.text = gM.currentYarn.ToString();
+        _gM.currentYarn += difference;
+        textYarn.text = _gM.currentYarn.ToString();
     }
 
     internal void UpdateBoxCatHealth(int difference)
     {
-        gM.mainTowerHealth += difference;
-        if (gM.mainTowerHealth < 0)
+        _gM.mainTowerHealth += difference;
+        if (_gM.mainTowerHealth < 0)
         {
-            gM.mainTowerHealth = 0;
+            _gM.mainTowerHealth = 0;
         }
 
         int indexOfBoxCatFace;
-        if (gM.mainTowerHealth > 65) // High health
+        if (_gM.mainTowerHealth > 65) // High health
         {
             indexOfBoxCatFace = 3;
         }
-        else if (gM.mainTowerHealth > 35) // Mid health
+        else if (_gM.mainTowerHealth > 35) // Mid health
         {
             indexOfBoxCatFace = 2;
         }
-        else if (gM.mainTowerHealth >0 ) // Low health
+        else if (_gM.mainTowerHealth >0 ) // Low health
         {
             indexOfBoxCatFace = 1;
         }
@@ -52,19 +56,32 @@ public partial class GameUi : BaseUi
             indexOfBoxCatFace = 0;
         }
         boxCatFace.sprite = boxCatFaces[indexOfBoxCatFace];
-        textBoxHealth.text = gM.mainTowerHealth + "%";
+        textBoxHealth.text = _gM.mainTowerHealth + "%";
+
+        float percentOfLifeLeft = (float)_gM.mainTowerHealth / (float)100;
+        Vector2 scaleChange = _healthBarFullSize;
+        scaleChange.x = percentOfLifeLeft * _healthBarFullSize.x;
+        _healthBarRect.sizeDelta = scaleChange;
     }
 
     internal void UpdateRoundIndicator()
     {
-        float roundProgressLeft = (float)gM.enemyCount / (float)gM.enemyMaxCount;
+        float roundProgressLeft = (float)_gM.enemyCount / (float)_gM.enemyMaxCount;
         roundIndicator.fillAmount = roundProgressLeft;
     }
 
     internal void UpdatePlayerHealth()
     {
-        gunCatFace.sprite = gunCatFaces[gM.player.currentPlayerHealth];
-        textCatHealth.text = gM.player.currentPlayerHealth.ToString();
+        gunCatFace.sprite = gunCatFaces[_gM.player.currentPlayerHealth];
+        // Disable all life icons, and re-enable ones that match player's health
+        foreach (GameObject lifeIcon in gunCatLives)
+        {
+            lifeIcon.SetActive(false);
+        }
+        for (int i = 0; i < _gM.player.currentPlayerHealth; i++)
+        {
+            gunCatLives[i].SetActive(true);
+        }
     }
 
     public void ClickedPurchaseButton(GameManager.PurchaseType whichPurchase)
@@ -72,22 +89,22 @@ public partial class GameUi : BaseUi
         int priceToCheck = 0;
         switch (whichPurchase) {
             case GameManager.PurchaseType.PillowTower:
-                priceToCheck = gM.pricePillow;
+                priceToCheck = _gM.pricePillow;
                 break;
             case GameManager.PurchaseType.WaterTower:
-                priceToCheck = gM.priceWater;
+                priceToCheck = _gM.priceWater;
                 break;
             case GameManager.PurchaseType.FridgeTower:
-                priceToCheck = gM.priceFridge;
+                priceToCheck = _gM.priceFridge;
                 break;
             case GameManager.PurchaseType.Missile:
-                priceToCheck = gM.priceMissile;
+                priceToCheck = _gM.priceMissile;
                 break;
         }
 
-        if (gM.currentYarn >= priceToCheck)
+        if (_gM.currentYarn >= priceToCheck)
         {
-            gM.SpawnPurchasedObject(whichPurchase);
+            _gM.SpawnPurchasedObject(whichPurchase);
         }
         else
         {

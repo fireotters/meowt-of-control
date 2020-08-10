@@ -90,7 +90,6 @@ public partial class GameManager : MonoBehaviour
                 hpToHeal = hpMilkHeals;
             }
             gameUi.UpdateBoxCatHealth(hpToHeal);
-            mainTower.ChangeHealthBar();
         }
 
         if (mainTowerHealth > 25)

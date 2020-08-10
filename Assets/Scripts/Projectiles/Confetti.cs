@@ -11,7 +11,6 @@ public class Confetti : MonoBehaviour
     [HideInInspector] public Vector2 landingCoords;
     private bool falling = false;
     [SerializeField] private GameObject confettiRemains = default;
-    [SerializeField] private MissileReticle attachedReticle = default;
 
     private void Start()
     {

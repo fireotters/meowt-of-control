@@ -157,9 +157,7 @@ public class MusicManager : MonoBehaviour
 
         lastTrackRequested = index;
     }
-    private void Why()
-    {
-    }
+
     public void MusicIsPaused(bool intent)
     {
         if (intent == true && currentMusicPlayer.isPlaying)
