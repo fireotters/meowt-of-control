@@ -82,7 +82,7 @@ public class MainTower : MonoBehaviour
 
     private void ShootConfetti()
     {
-        GameObject confettiCopy = Instantiate(confetti, _gM.projectilesParent);
+        GameObject confettiCopy = Instantiate(confetti, ObjectsInPlay.i.projectilesParent);
         confettiCopy.transform.position = confettiLaunchPoint.position;
         confettiCopy.GetComponent<Confetti>().landingCoords = cursorPos;
 

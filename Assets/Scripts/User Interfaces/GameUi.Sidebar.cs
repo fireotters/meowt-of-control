@@ -20,7 +20,7 @@ public partial class GameUi : BaseUi
     public GameObject[] gunCatLives;
 
     // Health bar
-    [SerializeField] private Transform _healthBar;
+    [SerializeField] private Transform _healthBar = default;
     private Vector2 _healthBarFullSize;
     private RectTransform _healthBarRect;
 

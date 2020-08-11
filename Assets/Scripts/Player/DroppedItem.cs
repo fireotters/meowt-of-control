@@ -7,9 +7,24 @@ public class DroppedItem : MonoBehaviour
     public Player.PickupType typeOfDrop;
     private GameManager gM;
 
+    private static Vector3 droppedItemOffset = new Vector2(0f, -0.5f);
     private Vector3 correctingPlacementOffset = new Vector2(0f, 1f);
 
-    void Start()
+    public static DroppedItem Create(Vector3 position, Player.PickupType pickupType)
+    {
+        GameObject selectedItem = default;
+        if (pickupType == Player.PickupType.Yarn) selectedItem = GameAssets.i.pfDropYarn;
+        else if (pickupType == Player.PickupType.Milk) selectedItem = GameAssets.i.pfDropMilk;
+        Debug.Log(selectedItem);
+
+        Transform droppedItemTransform = Instantiate(selectedItem, position, Quaternion.identity, ObjectsInPlay.i.dropsParent).transform;
+        droppedItemTransform.position += droppedItemOffset;
+
+        DroppedItem droppedItem = droppedItemTransform.GetComponent<DroppedItem>();
+        return droppedItem;
+    }
+
+    private void Awake()
     {
         gM = FindObjectOfType<GameManager>();
     }
@@ -26,7 +41,7 @@ public class DroppedItem : MonoBehaviour
         }
         else if (collision.CompareTag("MainTower") || collision.CompareTag("PlayerCollider"))
         {
-            Destroy(gameObject);
+            transform.position += correctingPlacementOffset;
         }
     }
 }

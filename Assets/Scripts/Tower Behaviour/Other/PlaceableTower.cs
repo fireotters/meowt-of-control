@@ -26,7 +26,7 @@ public class PlaceableTower : MonoBehaviour
     void Update()
     {
         // Move tower placement to where player stands
-        transform.position = player.position + gM.spritePivotOffset;
+        transform.position = player.position + Tower.spritePivotOffset;
 
         // Check for any red zones that block tower placement
         Vector2 plcCheckVector = new Vector2(placementCheck.position.x, placementCheck.position.y);

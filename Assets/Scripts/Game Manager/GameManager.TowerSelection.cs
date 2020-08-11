@@ -6,16 +6,11 @@ using UnityEngine;
 public partial class GameManager : MonoBehaviour
 {
     [Header("Placeable Towers Logic")]
-    public Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
     [HideInInspector] public bool isAlreadyPlacingObject = false;
-    public Transform placeableParent, towersInPlayParent;
-    public PlaceableTower placeablePillow, placeableWater, placeableFridge;
-    public MissileReticle placeableMissile;
 
     private bool isCancellingTower = false;
     private PlaceableTower currentPlacingTower;
     private PurchaseType currentPurchase = PurchaseType.NoPurchaseActive, newPurchase = PurchaseType.NoPurchaseActive;
-    public Transform placementBlockersParent;
     
     public enum PurchaseType { PillowTower, WaterTower, FridgeTower, Missile, NoPurchaseActive }
     private int indexOfNewPurchase, indexOfCurrentPurchase;
@@ -95,11 +90,11 @@ public partial class GameManager : MonoBehaviour
         switch (newPurchase)
         {
             case PurchaseType.PillowTower:
-                return placeablePillow;
+                return GameAssets.i.pfPlaceablePillow;
             case PurchaseType.WaterTower:
-                return placeableWater;
+                return GameAssets.i.pfPlaceableWater;
             case PurchaseType.FridgeTower:
-                return placeableFridge;
+                return GameAssets.i.pfPlaceableFridge;
         }
         return null;
     }
@@ -109,7 +104,7 @@ public partial class GameManager : MonoBehaviour
         // Spawn tower where player is standing
         if (towerToSpawn != null)
         {
-            currentPlacingTower = Instantiate(towerToSpawn, placeableParent);
+            currentPlacingTower = Instantiate(towerToSpawn, ObjectsInPlay.i.placeableParent);
             currentPurchase = newPurchase;
             indexOfCurrentPurchase = Array.IndexOf(Enum.GetValues(currentPurchase.GetType()), currentPurchase);
             gameUi.ToggleTowerColourZones();
@@ -127,7 +122,7 @@ public partial class GameManager : MonoBehaviour
         isAlreadyPlacingObject = true;
         gameUi.UpdateCancelOverlays(indexOfNewPurchase);
 
-        currentPlacingTower = Instantiate(placeableMissile, placeableParent);
+        currentPlacingTower = Instantiate(GameAssets.i.pfPlaceableMissile, ObjectsInPlay.i.placeableParent);
         currentPurchase = newPurchase;
         indexOfCurrentPurchase = Array.IndexOf(Enum.GetValues(currentPurchase.GetType()), currentPurchase);
 

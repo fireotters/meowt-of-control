@@ -6,10 +6,6 @@ using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
-    [Header("Tower Placement Variables")]
-    public GameObject towerBarrierMask;
-    public Tower towerPillow, towerWater, towerFridge;
-    
     /// <summary>
     /// When player confirms placement, check if the PlaceableTower gameobject says placement is valid.
     /// If yes, place a tower and deduct cost.
@@ -28,15 +24,15 @@ public partial class GameManager : MonoBehaviour
         switch (currentPurchase)
         {
             case PurchaseType.PillowTower:
-                towerToSpawn = towerPillow;
+                towerToSpawn = GameAssets.i.pfTowerPillow;
                 gameUi.UpdateYarn(-pricePillow);
                 break;
             case PurchaseType.WaterTower:
-                towerToSpawn = towerWater;
+                towerToSpawn = GameAssets.i.pfTowerWater;
                 gameUi.UpdateYarn(-priceWater);
                 break;
             case PurchaseType.FridgeTower:
-                towerToSpawn = towerFridge;
+                towerToSpawn = GameAssets.i.pfTowerFridge;
                 gameUi.UpdateYarn(-priceFridge);
                 break;
             case PurchaseType.Missile:
@@ -60,12 +56,7 @@ public partial class GameManager : MonoBehaviour
     {
         if (currentPurchase != PurchaseType.Missile)
         {
-            // Place tower and a barrier spritemask. Attach the two, so when the tower is destroyed, so is the barrier.
-            Tower towerPlaced = Instantiate(towerToSpawn, towersInPlayParent);
-            towerPlaced.transform.position = player.transform.position + spritePivotOffset;
-            GameObject newBarrier = Instantiate(towerBarrierMask, placementBlockersParent);
-            newBarrier.transform.position = player.transform.position + spritePivotOffset;
-            towerPlaced.attachedPlacementBlocker = newBarrier;
+            Tower.Create(player.transform.position, towerToSpawn);
         }
         else
         {

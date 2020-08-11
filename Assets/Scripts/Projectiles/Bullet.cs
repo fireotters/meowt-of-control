@@ -20,6 +20,14 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject secondaryEffect = default;
     private GameObject secondaryEffectInstance;
 
+    public static Bullet Create(Vector3 position, Quaternion rotation, Bullet typeToSpawn)
+    {
+        Transform bulletTransform = Instantiate(typeToSpawn, position, rotation, ObjectsInPlay.i.projectilesParent).transform;
+
+        Bullet bullet = bulletTransform.GetComponent<Bullet>();
+        return bullet;
+    }
+
     private void Awake()
     {
         _gM = FindObjectOfType<GameManager>();
@@ -32,6 +40,7 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         _lifeLeft = lifeSpan;
+        Pew();
     }
 
     // Update is called once per frame
@@ -73,7 +82,7 @@ public class Bullet : MonoBehaviour
 
     private void PlayExplosionEffect()
     {
-        attachedFizzleInstance = Instantiate(attachedFizzle, _gM.projectilesParentExtras);
+        attachedFizzleInstance = Instantiate(attachedFizzle, ObjectsInPlay.i.projectilesParentExtras);
         attachedFizzleInstance.transform.position = transform.position;
     }
 
@@ -82,7 +91,7 @@ public class Bullet : MonoBehaviour
     {
         if (typeOfBullet == BulletType.Water || typeOfBullet == BulletType.Fridge)
         {
-            secondaryEffectInstance = Instantiate(secondaryEffect, _gM.projectilesParentExtras);
+            secondaryEffectInstance = Instantiate(secondaryEffect, ObjectsInPlay.i.projectilesParentExtras);
             secondaryEffectInstance.transform.position = transform.position;
         }
     }

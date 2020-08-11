@@ -8,7 +8,6 @@ public class EnemySpawnerController : MonoBehaviour
     private float nextSpawn = 0.0f;
     private GameManager _gM;
     public float spawnRate;
-    public Transform enemiesInPlayParent;
     [SerializeField] private EnemySpawner[] _enemySpawners = default;
     private EnemySpawner _chosenSpawner;
 
@@ -37,15 +36,15 @@ public class EnemySpawnerController : MonoBehaviour
             int randEnemy = Random.Range(0, 30);
             if (randEnemy == 0 && _gM.currentRound > 2) // Spawn Big Chungus (1/30 chance)
             {
-                _chosenSpawner.PrepToSpawnEnemy(enemyBigChungus);
+                _chosenSpawner.SpawnEnemy(enemyBigChungus);
             }
             else if (randEnemy < 5 && _gM.currentRound > 1) // Spawn Sanic (4/30 chance)
             {
-                _chosenSpawner.PrepToSpawnEnemy(enemySanic);
+                _chosenSpawner.SpawnEnemy(enemySanic);
             }
             else if (randEnemy < 25) // Spawn Basic (20/30 chance)
             {
-                _chosenSpawner.PrepToSpawnEnemy(enemyBasic);
+                _chosenSpawner.SpawnEnemy(enemyBasic);
             }
 
             if (randEnemy < 25)

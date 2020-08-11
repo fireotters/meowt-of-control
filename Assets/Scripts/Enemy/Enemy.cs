@@ -1,18 +1,18 @@
 ﻿using Pathfinding;
 using System;
+using System.Net.Sockets;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     public bool breaksThruObstacles = false;
     public float enemyMaxHealth;
-    public float enemyHealthRemaining;
+    private float enemyHealthRemaining;
 
     private AIPath _aiPath;
     private float storedMaxSpeed;
 
     private GameManager _gM;
-    private Vector2 droppedItemOffset = new Vector2(0f, -0.5f);
 
     // Health bar
     private float healthBarFullSize;
@@ -114,28 +114,25 @@ public class Enemy : MonoBehaviour
         if (enemyHealthRemaining <= 0)
         {
             _gM.IncrementEnemyKillCount();
-            DropScrapAndItems(transform.position);
+            DropScrapAndItems();
             Destroy(gameObject);
         }
     }
 
-    private void DropScrapAndItems(Vector2 enemyLastPos)
+    private void DropScrapAndItems()
     {
-        GameObject scrapDrop = Instantiate(_gM.scrapEnemy, _gM.gameUi.dropsInPlayParent);
-        scrapDrop.transform.position = enemyLastPos;
+        Instantiate(GameAssets.i.pfScrap, transform.position, Quaternion.identity, ObjectsInPlay.i.dropsParent);
 
         int randCheck = UnityEngine.Random.Range(0, 30);
         // 1/30 of the time, yarn will drop
         if (randCheck == 0)
         {
-            GameObject yarnDrop = Instantiate(_gM.dropYarn, _gM.gameUi.dropsInPlayParent);
-            yarnDrop.transform.position = enemyLastPos + droppedItemOffset;
+            DroppedItem.Create(transform.position, Player.PickupType.Yarn);
         }
         // 3/30 of the time, milk will drop
-        else if (randCheck < 3)
+        else if (randCheck < 4)
         {
-            GameObject milkDrop = Instantiate(_gM.dropMilk, _gM.gameUi.dropsInPlayParent);
-            milkDrop.transform.position = enemyLastPos + droppedItemOffset;
+            DroppedItem.Create(transform.position, Player.PickupType.Milk);
         }
     }
 

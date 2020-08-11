@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 600
-  lifeSpan: 5
+  lifeSpan: 2
   typeOfBullet: 0
   attachedFizzle: {fileID: 0}
   secondaryEffect: {fileID: 0}

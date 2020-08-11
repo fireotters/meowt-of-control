@@ -13,14 +13,11 @@ public partial class GameUi : BaseUi
     private GameManager _gM;
     public GameObject player;
 
-    [Header("Unity Inspector Organisation")]
-    public Transform dropsInPlayParent;
-
     private void Awake()
     {
         _gM = FindObjectOfType<GameManager>();
-        sprTowerInvalidArea = _gM.placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
-        sprTowerRange = _gM.placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
+        sprTowerInvalidArea = ObjectsInPlay.i.placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
+        sprTowerRange = ObjectsInPlay.i.placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
 
         musicManager = FindObjectOfType<MusicManager>();
         if (!musicManager)

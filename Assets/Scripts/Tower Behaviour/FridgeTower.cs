@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class FridgeTower : Tower
 {
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     protected override void TrackAndShoot()
     {
         enemyToTarget = TargetBigEnemyFirstThenOthers();
@@ -30,12 +25,5 @@ public class FridgeTower : Tower
             }
         }
         return AcknowledgedEnemies.FirstOrDefault();
-    }
-    
-    protected override void Shoot()
-    {
-        bullet = Instantiate(bulletPrefab, gunEnd.transform.position, gunEnd.rotation, _gM.projectilesParent);
-        
-        base.Shoot();
     }
 }

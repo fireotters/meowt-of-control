@@ -7,7 +7,6 @@ public partial class GameManager : MonoBehaviour
     public Player player;
     public int currentYarn = 0, mainTowerHealth = 100, currentRound = 0;
     private const int maxMainTowerHealth = 100, hpMilkHeals = 25;
-    public GameObject dropMilk, dropYarn;
 
     [Header("Enemy Variables")]
     public int enemyCount = 0;
@@ -18,8 +17,6 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector] public MainTower mainTower;
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
     public bool gameIsOver = false;
-    public GameObject scrapEnemy;
-    public Transform projectilesParent, projectilesParentExtras;
     private int yarnMultiplier = 0;
 
     private void Start()

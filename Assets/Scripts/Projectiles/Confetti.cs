@@ -53,7 +53,7 @@ public class Confetti : MonoBehaviour
 
     private void Explode()
     {
-        GameObject remainsCopy = Instantiate(confettiRemains, _gM.projectilesParent);
+        GameObject remainsCopy = Instantiate(confettiRemains, ObjectsInPlay.i.projectilesParent);
         remainsCopy.transform.position = transform.position;
         Destroy(gameObject);
     }
