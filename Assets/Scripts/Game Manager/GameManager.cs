@@ -6,7 +6,7 @@ public partial class GameManager : MonoBehaviour
     [Header("Stat Variables")]
     public Player player;
     public int currentYarn = 0, mainTowerHealth = 100, currentRound = 0;
-    private const int maxMainTowerHealth = 100, hpMilkHeals = 25;
+    private const int maxMainTowerHealth = 100, hpTapeHeals = 25;
 
     [Header("Enemy Variables")]
     public int enemyCount = 0;
@@ -17,7 +17,7 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector] public MainTower mainTower;
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
     public bool gameIsOver = false;
-    private int yarnMultiplier = 0;
+    private int yarnMultiplier = 1;
 
     private void Start()
     {
@@ -59,11 +59,18 @@ public partial class GameManager : MonoBehaviour
     {
         // Iterate current round and grant yarn
         currentRound += 1;
-        if (yarnMultiplier < 10)
+        // Every second round, multiply the yarn given per round, until a x4 multiplier is reached.
+        if (yarnMultiplier < 4 && currentRound % 3 == 0)
         {
             yarnMultiplier += 1;
         }
         gameUi.UpdateYarn(20 * yarnMultiplier);
+
+        // Every second round, drop a Tape item
+        if (yarnMultiplier < 4 && currentRound % 2 == 0)
+        {
+            mainTower.DropItem(DroppedItem.PickupType.Tape);
+        }
 
         // Manage enemy counts. Spawnrate increases each round.
         IncreaseEnemySpawnRate();
@@ -77,14 +84,14 @@ public partial class GameManager : MonoBehaviour
         gameUi.UpdateRoundIndicator();
     }
 
-    public void HandleMilkPickup()
+    public void HandleTapePickup()
     {
         if (mainTowerHealth < maxMainTowerHealth)
         {
             int hpToHeal = maxMainTowerHealth - mainTowerHealth;
-            if (hpToHeal > hpMilkHeals)
+            if (hpToHeal > hpTapeHeals)
             {
-                hpToHeal = hpMilkHeals;
+                hpToHeal = hpTapeHeals;
             }
             gameUi.UpdateBoxCatHealth(hpToHeal);
         }

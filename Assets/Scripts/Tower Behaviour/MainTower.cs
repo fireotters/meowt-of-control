@@ -12,7 +12,7 @@ public class MainTower : MonoBehaviour
     private const int stressModeThreshold = 35;
     [SerializeField] private SpriteRenderer _normalSprite = default, _deathSprite = default;
 
-    private Transform confettiLaunchPoint;
+    private Transform confettiLaunchPoint, itemDropPoint;
     [SerializeField] private GameObject confetti = default;
     private Vector2 cursorPos;
 
@@ -23,6 +23,7 @@ public class MainTower : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
 
         confettiLaunchPoint = transform.Find("ConfettiLaunchPoint");
+        itemDropPoint = transform.Find("ItemDropPoint");
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -96,5 +97,10 @@ public class MainTower : MonoBehaviour
         _normalSprite.enabled = false;
         _deathSprite.enabled = true;
         _gM.player.PlayerIsDead();
+    }
+
+    public void DropItem(DroppedItem.PickupType pickupType)
+    {
+        DroppedItem.Create(itemDropPoint.position, pickupType);
     }
 }

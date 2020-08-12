@@ -12,6 +12,14 @@ public class ConfettiExplosion : MonoBehaviour
     [SerializeField] private float missileMaxDamage = default;
     [SerializeField] private MissileReticle attachedReticle = default;
 
+    public static ConfettiExplosion Create(Vector3 position)
+    {
+        Transform explosionTransform = Instantiate(GameAssets.i.pfConfettiExplosion, position, Quaternion.identity, ObjectsInPlay.i.towersParent).transform;
+
+        ConfettiExplosion explosion = explosionTransform.GetComponent<ConfettiExplosion>();
+        return explosion;
+    }
+
     private void Start()
     {
         rangeCollider = GetComponent<CircleCollider2D>();

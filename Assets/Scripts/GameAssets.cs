@@ -13,11 +13,11 @@ public class GameAssets : MonoBehaviour
 
     [Header("Drop-Related Prefabs")]
     public GameObject pfScrap;
-    public GameObject pfDropMilk, pfDropYarn;
+    public GameObject pfDropMilk, pfDropYarn, pfDropTape;
 
     [Header("Tower-Related Prefabs")]
     public MissileReticle pfPlaceableMissile;
-    public GameObject pfCircleBarrier, pfTowerOverheatTimer;
+    public GameObject pfCircleBarrier, pfTowerOverheatTimer, pfConfettiExplosion;
     public Tower pfTowerPillow, pfTowerWater, pfTowerFridge;
     public PlaceableTower pfPlaceablePillow, pfPlaceableWater, pfPlaceableFridge;
 

@@ -10,7 +10,6 @@ public class Confetti : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     [HideInInspector] public Vector2 landingCoords;
     private bool falling = false;
-    [SerializeField] private GameObject confettiRemains = default;
 
     private void Start()
     {
@@ -53,8 +52,7 @@ public class Confetti : MonoBehaviour
 
     private void Explode()
     {
-        GameObject remainsCopy = Instantiate(confettiRemains, ObjectsInPlay.i.projectilesParent);
-        remainsCopy.transform.position = transform.position;
+        ConfettiExplosion.Create(transform.position);
         Destroy(gameObject);
     }
 }

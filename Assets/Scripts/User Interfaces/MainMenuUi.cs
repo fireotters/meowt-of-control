@@ -20,7 +20,7 @@ public class MainMenuUi : BaseUi
     private MusicManager musicManager;
     public AudioSource sfxDemoSlider;
 
-    private DiscordManager discordManager;
+    //private DiscordManager discordManager;
 
     void Start()
     {

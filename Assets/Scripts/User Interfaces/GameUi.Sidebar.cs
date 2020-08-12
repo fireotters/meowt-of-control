@@ -108,17 +108,13 @@ public partial class GameUi : BaseUi
         }
         else
         {
-            textYarn.color = Color.red;
-            textYarn.GetComponent<AudioSource>().Play();
-            CancelInvoke(nameof(EndYarnRedFlash));
-            Invoke(nameof(EndYarnRedFlash), 0.5f);
+            BeginYarnRedFlash();
         }
     }
 
     public void PurchaseFromButton(string whichPurchase)
     {
-        GameManager.PurchaseType purchaseType;
-        if (Enum.TryParse(whichPurchase, true, out purchaseType))
+        if (Enum.TryParse(whichPurchase, true, out GameManager.PurchaseType purchaseType))
         {
             ClickedPurchaseButton(purchaseType);
         }
@@ -149,6 +145,14 @@ public partial class GameUi : BaseUi
         {
             btn.BlockClicking();
         }
+    }
+
+    public void BeginYarnRedFlash()
+    {
+        textYarn.color = Color.red;
+        textYarn.GetComponent<AudioSource>().Play();
+        CancelInvoke(nameof(EndYarnRedFlash));
+        Invoke(nameof(EndYarnRedFlash), 0.5f);
     }
     private void EndYarnRedFlash()
     {

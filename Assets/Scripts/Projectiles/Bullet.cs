@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     private enum BulletType { Player, Pillow, Water, Fridge }
 
     [Header("Specific Bullet Type Attributes")]
+    public float damageToEnemy;
     [SerializeField] private BulletType typeOfBullet = default;
     [SerializeField] private GameObject attachedFizzle = default;
     private GameObject attachedFizzleInstance;

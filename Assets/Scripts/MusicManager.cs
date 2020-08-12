@@ -138,7 +138,7 @@ public class MusicManager : MonoBehaviour
         }
 
         // Play main menu music and stop drums
-        if (index == 0)
+        if (index == 0 && currentMusicPlayer.clip != musicMainMenu)
         {
             currentMusicPlayer.clip = musicMainMenu;
             currentMusicPlayer.Play();

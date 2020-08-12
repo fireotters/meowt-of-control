@@ -45,10 +45,20 @@ public class Player : MonoBehaviour
         {
             DamagePlayer();
         }
-        else if (col.gameObject.CompareTag("Scrap") && Input.GetKey(KeyCode.LeftShift) && _gM.currentYarn >= 1)
+        else if (col.gameObject.CompareTag("Scrap") && Input.GetKey(KeyCode.LeftShift))
         {
-            Destroy(col.gameObject);
-            _gM.gameUi.UpdateYarn(-1);
+            if (_gM.currentYarn >= 1)
+            {
+                Destroy(col.gameObject);
+                _gM.gameUi.UpdateYarn(-1);
+            }
+            else
+            {
+                if (_gM.gameUi.textYarn.color == Color.white)
+                {
+                    _gM.gameUi.BeginYarnRedFlash();
+                }
+            }
         }
         //else if (col.gameObject.CompareTag("MainTower"))
         //{
@@ -198,36 +208,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public enum PickupType { Milk, Yarn }
-    
-    /// <summary>
-    /// Function that handles picking up items.
-    /// 
-    /// If milk is picked up: heal the player, or send to GameManager (heal main tower or sell for yarn).
-    /// If yarn is picked up: deposit 50 yarn.
-    /// </summary>
-    /// <param name="type">Item type</param>
-    public void PickupItem(PickupType type)
+    public void HealPlayer()
     {
-        switch (type)
+        if (currentPlayerHealth < maxPlayerHealth)
         {
-            case PickupType.Milk:
-                if (currentPlayerHealth < maxPlayerHealth)
-                {
-                    currentPlayerHealth = maxPlayerHealth;
-                    _gM.gameUi.UpdatePlayerHealth();
-                }
-                else if (currentPlayerHealth == maxPlayerHealth)
-                {
-                    _gM.HandleMilkPickup();
-                }
-                break;
-            case PickupType.Yarn:
-                _gM.gameUi.UpdateYarn(20);
-                break;
-            default:
-                Debug.LogError("GameManger.PickupItem: Invalid pickup type");
-                break;
+            currentPlayerHealth++;
+            _gM.gameUi.UpdatePlayerHealth();
         }
     }
 

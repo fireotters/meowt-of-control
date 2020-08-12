@@ -110,6 +110,11 @@ PrefabInstance:
       propertyPath: speed
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 18814254652573277, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+        type: 3}
+      propertyPath: damageToEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 18814254652573279, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
       propertyPath: m_Name

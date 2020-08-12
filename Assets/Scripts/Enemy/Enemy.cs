@@ -82,7 +82,11 @@ public class Enemy : MonoBehaviour
         // Being hit by projectile reduces HP by one
         if (col.gameObject.CompareTag("PlayerBullet"))
         {
-            DealDamage(1);
+            DealDamage(col.gameObject.GetComponent<Bullet>().damageToEnemy);
+            if (col.gameObject.name.StartsWith("WaterProj"))
+            {
+                justHitByWater = true;
+            }
         }
         // Big chungus destroys any scrap he touches.
         else if (breaksThruObstacles)
@@ -124,15 +128,20 @@ public class Enemy : MonoBehaviour
         Instantiate(GameAssets.i.pfScrap, transform.position, Quaternion.identity, ObjectsInPlay.i.dropsParent);
 
         int randCheck = UnityEngine.Random.Range(0, 30);
-        // 1/30 of the time, yarn will drop
-        if (randCheck == 0)
+        // 2/30 of the time, yarn will drop
+        if (randCheck < 2)
         {
-            DroppedItem.Create(transform.position, Player.PickupType.Yarn);
+            DroppedItem.Create(transform.position, DroppedItem.PickupType.Yarn);
         }
-        // 3/30 of the time, milk will drop
+        // 2/30 of the time, milk will drop
         else if (randCheck < 4)
         {
-            DroppedItem.Create(transform.position, Player.PickupType.Milk);
+            DroppedItem.Create(transform.position, DroppedItem.PickupType.Milk);
+        }
+        // 2/30 of the time, tape will drop
+        else if (randCheck < 6)
+        {
+            DroppedItem.Create(transform.position, DroppedItem.PickupType.Tape);
         }
     }
 
@@ -144,9 +153,5 @@ public class Enemy : MonoBehaviour
     public void SetWaterStatus(bool waterStatus)
     {
         standingOnWater = waterStatus;
-        if (standingOnWater)
-        {
-            justHitByWater = true;
-        }
     }
 }
