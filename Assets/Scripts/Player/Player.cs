@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
     [Header("Tweakable Variables")]
     public int bulletsLeft = 6;
     public int currentPlayerHealth = 3;
-    private readonly float reloadTimePerBullet = 0.25f;
-    private readonly int maxBullets = 6, maxPlayerHealth = 3;
-    // If maxBullets is changed, bullet indicators need to be added in Unity, and assigned to bulletIndicators[]
+    public float pistolReloadTime = 1f;
+    private readonly int pistolMaxBullets = 6, maxPlayerHealth = 3;
+    // If pistolMaxBullets is changed, bullet indicators need to be added in Unity, and assigned to bulletIndicators[]
 
     [Header("Private Components / Other Variables")]
     private float nextPlayerDmg = 0.0f;
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private SoundManager _soundManager;
     private Animator _spriteAnimator;
     private PlayerController _playerController;
+    [SerializeField] private Transform respawnPoint = default;
 
     [Header("Weapon Variables")]
     [SerializeField] private GameObject[] bulletIndicators = default;
@@ -47,23 +48,8 @@ public class Player : MonoBehaviour
         }
         else if (col.gameObject.CompareTag("Scrap") && Input.GetKey(KeyCode.LeftShift))
         {
-            if (_gM.currentYarn >= 1)
-            {
-                Destroy(col.gameObject);
-                _gM.gameUi.UpdateYarn(-1);
-            }
-            else
-            {
-                if (_gM.gameUi.textYarn.color == Color.white)
-                {
-                    _gM.gameUi.BeginYarnRedFlash();
-                }
-            }
+            Destroy(col.gameObject);
         }
-        //else if (col.gameObject.CompareTag("MainTower"))
-        //{
-        //    AttemptReload();
-        //}
     }
     
     /// <summary>
@@ -71,7 +57,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void AttemptReload()
     {
-        if (bulletsLeft < maxBullets && !gunIsReloading)
+        if (bulletsLeft < pistolMaxBullets && !gunIsReloading)
         {
             // Tell the game that gun is being reloaded
             gunIsReloading = true;
@@ -95,9 +81,12 @@ public class Player : MonoBehaviour
     private IEnumerator ReloadAction()
     {
         _spriteAnimator.SetBool("Reloading", true);
+        float reloadSpeed = 1.5f / pistolReloadTime;
+        _spriteAnimator.SetFloat("ReloadingSpeed", reloadSpeed);
+
         while (!gunCanBeUsed)
         {
-            yield return new WaitForSeconds(reloadTimePerBullet);
+            yield return new WaitForSeconds(pistolReloadTime / pistolMaxBullets);
             bulletsLeft++;
             bulletIndicators[bulletsLeft - 1].SetActive(true);
             if (bulletsLeft == 6)
@@ -109,6 +98,7 @@ public class Player : MonoBehaviour
         gunIsReloading = false;
         ShowAmmoPanel();
         _spriteAnimator.SetBool("Reloading", false);
+        _spriteAnimator.SetFloat("ReloadingSpeed", 1);
     }
     
     /// <summary>
@@ -223,6 +213,11 @@ public class Player : MonoBehaviour
         _playerController.enabled = false;
         _spriteAnimator.SetBool("Dying", true);
         _gM.GameIsOverPlayEndScene();
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = respawnPoint.position;
     }
 
 }

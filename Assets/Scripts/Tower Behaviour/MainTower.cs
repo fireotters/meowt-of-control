@@ -32,7 +32,7 @@ public class MainTower : MonoBehaviour
         {
             if (col.gameObject.CompareTag("LargeEnemy"))
             {
-                _gM.gameUi.UpdateBoxCatHealth(-10);
+                _gM.gameUi.UpdateBoxCatHealth(-25);
             }
             else if(col.gameObject.CompareTag("Enemy"))
             {

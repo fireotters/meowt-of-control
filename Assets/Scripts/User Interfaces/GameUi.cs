@@ -34,7 +34,7 @@ public partial class GameUi : BaseUi
         musicManager.SetMixerVolumes();
 
         // Fade in the level
-        StartCoroutine(FadeBlack("from"));
+        StartCoroutine(FadeBlack(FadeType.FromBlack, fullUiFadeBlack));
 
         // Initialise UI values
         _healthBarRect = _healthBar.GetComponent<RectTransform>();

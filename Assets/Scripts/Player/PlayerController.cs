@@ -98,7 +98,8 @@ public class PlayerController : MonoBehaviour
         _spriteAnimator.SetFloat("Speed", _rigidbody2D.velocity.magnitude);
 
         // Bullet emitter direction
-        Vector2 lookDir = _mousePos - _rigidbody2D.position;
+        Vector2 emitterPos = new Vector2(_bulletEmitter.position.x, _bulletEmitter.position.y);
+        Vector2 lookDir = _mousePos - emitterPos;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         Vector3 rotationDir = new Vector3(0, 0, angle);
         _bulletEmitter.rotation = Quaternion.Euler(rotationDir);

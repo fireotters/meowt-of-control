@@ -134,9 +134,9 @@ public partial class GameManager : MonoBehaviour
     }
 
 
-    private void GameOverResetPurchaseState()
+    private void ResetPurchaseState()
     {
-        gameUi.BlockPurchaseUi();
+        gameUi.BlockBuildPanel();
         if (currentPurchase != PurchaseType.NoPurchaseActive)
         {
             SpawnPurchasedObject(currentPurchase);

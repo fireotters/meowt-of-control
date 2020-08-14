@@ -57,4 +57,11 @@ public partial class Tower : MonoBehaviour
     {
         currentOverheat = maxOverheat;
     }
+
+    public void EndOfRoundDestroyTurret()
+    {
+        Destroy(attachedTimerUi.gameObject);
+        Destroy(attachedPlacementBlocker);
+        Destroy(gameObject);
+    }
 }

@@ -7,7 +7,7 @@ using Image = UnityEngine.UI.Image;
 public abstract class BaseUi : MonoBehaviour
 {
     [Header("Base UI")]
-    public GameObject fadeBlack;
+    public GameObject fullUiFadeBlack;
     public GameObject musicManagerIfNotFoundInScene;
 
 
@@ -16,9 +16,10 @@ public abstract class BaseUi : MonoBehaviour
      * ------------------------------------------------------------------------------------------------------------------ */
     private bool fadingInAlready = false;
     private float fadingAlpha = 0f;
-    internal IEnumerator FadeBlack(string ToOrFrom, float delay = 0f)
+    internal enum FadeType { ToBlack, FromBlack }
+    internal IEnumerator FadeBlack(FadeType type, GameObject objectToFade, float delay = 0f)
     {
-        fadeBlack.SetActive(true);
+        objectToFade.SetActive(true);
         yield return new WaitForSeconds(delay);
 
         // If 'fade to' is trigger during 'fade from', this variable stops the while loop that does 'fade from'
@@ -28,11 +29,11 @@ public abstract class BaseUi : MonoBehaviour
             fadingAlpha = 0f;
         }
 
-        Image tempFade = fadeBlack.GetComponent<Image>();
+        Image tempFade = objectToFade.GetComponent<Image>();
         Color origColor = tempFade.color;
         float speedOfFade = 1.2f;
 
-        if (ToOrFrom == "from")
+        if (type == FadeType.FromBlack)
         {
             fadingAlpha = 1f;
             while (fadingAlpha > 0f && fadingInAlready)
@@ -41,11 +42,11 @@ public abstract class BaseUi : MonoBehaviour
                 tempFade.color = new Color(origColor.r, origColor.g, origColor.b, fadingAlpha);
                 yield return null;
             }
-            fadeBlack.SetActive(false);
+            objectToFade.SetActive(false);
             fadingInAlready = false;
         }
 
-        else if (ToOrFrom == "to")
+        else if (type == FadeType.ToBlack)
         {
             while (fadingAlpha < 1f)
             {

@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // Being hit by projectile reduces HP by one
+        // Being hit by projectile reduces HP. If it's water, the enemy is briefly stunned.
         if (col.gameObject.CompareTag("PlayerBullet"))
         {
             DealDamage(col.gameObject.GetComponent<Bullet>().damageToEnemy);
@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
                 justHitByWater = true;
             }
         }
-        // Big chungus destroys any scrap he touches.
+        // Big chungus destroys any scrap or towers he touches.
         else if (breaksThruObstacles)
         {
             if (col.gameObject.CompareTag("Scrap"))

@@ -1870,7 +1870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f351715a6fd91cf46bd6b53dc2378aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeBlack: {fileID: 83190282}
+  fullUiFadeBlack: {fileID: 83190282}
   musicManagerIfNotFoundInScene: {fileID: 8774387490616601870, guid: 81e43bfc2c29e6a468390c166202ba9c,
     type: 3}
   highScoreNum: {fileID: 1690540589}

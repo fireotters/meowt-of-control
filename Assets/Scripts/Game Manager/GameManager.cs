@@ -44,7 +44,7 @@ public partial class GameManager : MonoBehaviour
             if (enemyCount == 0)
             {
                 enemyCount = -1;
-                Invoke(nameof(StartNextRound), 2f);
+                Invoke(nameof(CelebrateEndOfRound), 1f);
             }
         }
 
@@ -55,19 +55,41 @@ public partial class GameManager : MonoBehaviour
         AstarPath.active.Scan();
     }
 
+    private void CelebrateEndOfRound()
+    {
+        ResetPurchaseState();
+        int totalTimeForTransition = 6;
+        gameUi.RoundComplete(totalTimeForTransition);
+        Invoke(nameof(StartNextRound), totalTimeForTransition);
+    }
+    
     private void StartNextRound()
     {
-        // Iterate current round and grant yarn
+        // Player moves to respawn point, Build Panel can be used again
+        player.ResetPosition();
+        gameUi.UnblockBuildPanel();
+        Tower[] towersToDestroy = ObjectsInPlay.i.towersParent.GetComponentsInChildren<Tower>();
+        foreach (Tower tower in towersToDestroy)
+        {
+            tower.EndOfRoundDestroyTurret();
+        }
+        foreach (Transform drop in ObjectsInPlay.i.dropsParent)
+        {
+            Destroy(drop.gameObject);
+        }
+
+        // Update round number
         currentRound += 1;
-        // Every second round, multiply the yarn given per round, until a x4 multiplier is reached.
+
+        // Every third round, multiply the yarn given per round, until a x4 multiplier is reached.
         if (yarnMultiplier < 4 && currentRound % 3 == 0)
         {
             yarnMultiplier += 1;
         }
-        gameUi.UpdateYarn(20 * yarnMultiplier);
+        gameUi.UpdateYarn(50 * yarnMultiplier);
 
         // Every second round, drop a Tape item
-        if (yarnMultiplier < 4 && currentRound % 2 == 0)
+        if (currentRound % 2 == 0)
         {
             mainTower.DropItem(DroppedItem.PickupType.Tape);
         }
@@ -77,9 +99,7 @@ public partial class GameManager : MonoBehaviour
         enemyMaxCount = currentRound * enemyCountMultipler;
         enemyCount = enemyMaxCount;
         enemyNumberSpawned = 0;
-        print($"Enemy count: {enemyCount}");
 
-        // Update round indicator number & percentage marker
         gameUi.textRound.text = currentRound.ToString();
         gameUi.UpdateRoundIndicator();
     }
@@ -105,7 +125,7 @@ public partial class GameManager : MonoBehaviour
     public void GameIsOverPlayEndScene()
     {
         gameIsOver = true;
-        GameOverResetPurchaseState();
+        ResetPurchaseState();
         gameUi.musicManager.ChangeToGameOverMusic();
         gameUi.Invoke(nameof(gameUi.GameIsOverShowUi), 3f);
     }

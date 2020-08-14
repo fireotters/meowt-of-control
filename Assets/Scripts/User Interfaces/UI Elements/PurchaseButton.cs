@@ -11,14 +11,14 @@ public class PurchaseButton : MonoBehaviour
 
     public float cooldown;
     private float _cooldownRemaining = 0;
-    private bool gameOverButtonBlocked = false;
+    private bool buttonBlocked = false;
 
     [Header("Missile-Only Attributes")]
     public float missileButtonCooldown;
     [SerializeField] private bool isMissileButton = false;
     private bool missilePurchaseCancelled = false, inMissileCancelAnim = false;
 
-    private void Start()
+    private void Awake()
     {
         _cancelOverlay = transform.Find("CancelOverlay").gameObject;
         _timerOverlay = transform.Find("TimerOverlay").gameObject;
@@ -104,7 +104,7 @@ public class PurchaseButton : MonoBehaviour
     {
         _timerOverlay.SetActive(false);
         inMissileCancelAnim = false;
-        if (!gameOverButtonBlocked)
+        if (!buttonBlocked)
         {
             _btn.interactable = true;
         }
@@ -113,6 +113,11 @@ public class PurchaseButton : MonoBehaviour
     public void BlockClicking()
     {
         _btn.interactable = false;
-        gameOverButtonBlocked = true;
+        buttonBlocked = true;
+    }
+    public void UnblockClicking()
+    {
+        _btn.interactable = true;
+        buttonBlocked = false;
     }
 }

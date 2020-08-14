@@ -9,9 +9,10 @@ public partial class GameUi : BaseUi
 {
     [Header("Main Sidebar UI")]
     public Image roundIndicator;
-    public TextMeshProUGUI textYarn, textRound;
+    public TextMeshProUGUI textYarn, textRound, textRoundCompleteBox1, textRoundCompleteBox2;
     public PurchaseButton[] purchaseButtons;
-    public GameObject buildModeTexts, launchModeTexts;
+    public GameObject buildModeTexts, launchModeTexts, gameViewFadeBlack;
+    public Animator roundCompletionBoxAnim;
 
     [Header("Cat Health UI")]
     public TextMeshProUGUI textBoxHealth;
@@ -139,11 +140,18 @@ public partial class GameUi : BaseUi
         purchaseButtons[whichTower].ShowCancelOverlay();
     }
 
-    public void BlockPurchaseUi()
+    public void BlockBuildPanel()
     {
         foreach (PurchaseButton btn in purchaseButtons)
         {
             btn.BlockClicking();
+        }
+    }
+    public void UnblockBuildPanel()
+    {
+        foreach (PurchaseButton btn in purchaseButtons)
+        {
+            btn.UnblockClicking();
         }
     }
 
@@ -157,5 +165,30 @@ public partial class GameUi : BaseUi
     private void EndYarnRedFlash()
     {
         textYarn.color = Color.white;
+    }
+
+    public void RoundComplete(int transitionTime)
+    {
+        textRoundCompleteBox1.text = $"Survived Day {_gM.currentRound}!";
+        textRoundCompleteBox2.text = $"Get ready for Day {_gM.currentRound + 1}...";
+
+        StartCoroutine(nameof(FlipOutRoundCompletionSign), transitionTime);
+    }
+
+    private IEnumerator FlipOutRoundCompletionSign(int transitionTime)
+    {
+        int waitSign = 1, waitFadeTo = 2;
+        // Wait to flip out sign
+        yield return new WaitForSeconds(waitSign);
+        roundCompletionBoxAnim.SetBool("RoundFinished", true);
+
+        // Wait to fade to black
+        yield return new WaitForSeconds(waitFadeTo);
+        roundCompletionBoxAnim.SetBool("RoundFinished", false);
+        StartCoroutine(FadeBlack(FadeType.ToBlack, gameViewFadeBlack));
+
+        // Wait to fade from black until GameManager is ready (transitionTime - waits performed here)
+        yield return new WaitForSeconds(transitionTime - waitSign - waitFadeTo);
+        StartCoroutine(FadeBlack(FadeType.FromBlack, gameViewFadeBlack));
     }
 }

@@ -7,9 +7,10 @@ public class HelpMenuUi : BaseUi
 {
     private int currentPage = 0;
     public GameObject firstPage, secondPage, thirdPage;
+    public bool helpMenuVerbose = true;
     void Start()
     {
-        StartCoroutine(FadeBlack("from"));
+        StartCoroutine(FadeBlack(FadeType.FromBlack, fullUiFadeBlack));
     }
 
     public void UpdatePage(int diff)
@@ -43,11 +44,16 @@ public class HelpMenuUi : BaseUi
     }
     public void LeaveHelp()
     {
-        StartCoroutine(FadeBlack("to"));
+        StartCoroutine(FadeBlack(FadeType.FromBlack, fullUiFadeBlack));
         Invoke(nameof(LeaveHelp2), 1f);
     }
     private void LeaveHelp2()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ChangeTextMode()
+    {
+        helpMenuVerbose = !helpMenuVerbose;
     }
 }
