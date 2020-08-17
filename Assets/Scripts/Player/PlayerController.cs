@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Bullet bulletPrefab = default;
     private Transform _gunEnd;
     private Player _player;
-    private GameManager _gM;
 
     private const string HorizontalAxis = "Horizontal";
     private const string VerticalAxis = "Vertical";
@@ -34,7 +33,6 @@ public class PlayerController : MonoBehaviour
     {
         _canShootAgain = shootCadence;
 
-        _gM = FindObjectOfType<GameManager>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteAnimator = GetComponentInChildren<Animator>();
         _cam = Camera.main;
@@ -81,8 +79,7 @@ public class PlayerController : MonoBehaviour
     
     private void Shoot()
     {
-        var bullet = Instantiate(bulletPrefab, _gunEnd.transform.position, _gunEnd.rotation, _gM.projectilesParent);
-        bullet.Pew();
+        Bullet.Create(_gunEnd.transform.position, _gunEnd.rotation, bulletPrefab);
 
         _player.BulletWasShot();
         _canShoot = false;
@@ -101,7 +98,8 @@ public class PlayerController : MonoBehaviour
         _spriteAnimator.SetFloat("Speed", _rigidbody2D.velocity.magnitude);
 
         // Bullet emitter direction
-        Vector2 lookDir = _mousePos - _rigidbody2D.position;
+        Vector2 emitterPos = new Vector2(_bulletEmitter.position.x, _bulletEmitter.position.y);
+        Vector2 lookDir = _mousePos - emitterPos;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         Vector3 rotationDir = new Vector3(0, 0, angle);
         _bulletEmitter.rotation = Quaternion.Euler(rotationDir);
@@ -110,7 +108,5 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
-        
-        // When loose health, call soundManager.soundPlayerHit();
     }
 }

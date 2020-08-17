@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityScript.Steps;
 
 public class Confetti : MonoBehaviour
 {
@@ -10,12 +9,10 @@ public class Confetti : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     [HideInInspector] public Vector2 landingCoords;
     private bool falling = false;
-    [SerializeField] private GameObject confettiRemains = default;
-    [SerializeField] private MissileReticle attachedReticle = default;
 
     private void Start()
     {
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         LaunchUp();
     }
@@ -54,8 +51,7 @@ public class Confetti : MonoBehaviour
 
     private void Explode()
     {
-        GameObject remainsCopy = Instantiate(confettiRemains, _gM.projectilesParent);
-        remainsCopy.transform.position = transform.position;
+        ConfettiExplosion.Create(transform.position);
         Destroy(gameObject);
     }
 }

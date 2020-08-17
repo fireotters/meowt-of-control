@@ -20,7 +20,7 @@ public class MainMenuUi : BaseUi
     private MusicManager musicManager;
     public AudioSource sfxDemoSlider;
 
-    private DiscordManager discordManager;
+    //private DiscordManager discordManager;
 
     void Start()
     {
@@ -53,7 +53,7 @@ public class MainMenuUi : BaseUi
         }
         // Fill in high score section and fade in from black
         FillHighScoreArea();
-        StartCoroutine(FadeBlack("from"));
+        StartCoroutine(FadeBlack(FadeType.FromBlack, fullUiFadeBlack));
     }
 
     private void FillHighScoreArea()
@@ -109,7 +109,7 @@ public class MainMenuUi : BaseUi
     // Other functions
     public void OpenGame()
     {
-        StartCoroutine(FadeBlack("to"));
+        StartCoroutine(FadeBlack(FadeType.ToBlack, fullUiFadeBlack));
         Invoke(nameof(OpenGame2), 1f);
     }
     public void OpenGame2()

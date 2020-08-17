@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlaceableTower : MonoBehaviour
@@ -10,13 +8,13 @@ public class PlaceableTower : MonoBehaviour
     [SerializeField] private Tower attachedTower = default;
     private Transform player, placementCheck, rangeSpriteMask;
     [HideInInspector] public bool placementIsValid = false;
-    private GameManager gM;
+    private GameManager _gM;
     private Color towerFailRed = new Color(0.66f, 0f, 0f, 0.4f);
     private Color towerRangeBlue = new Color(0.34f, 0.45f, 1f, 0.4f);
 
     private void Awake()
     {
-        gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         player = GameObject.Find("Player").transform;
         placementCheck = transform.Find("PlacementCheck");
         rangeSpriteMask = transform.Find("RangeSpriteMask");
@@ -26,7 +24,7 @@ public class PlaceableTower : MonoBehaviour
     void Update()
     {
         // Move tower placement to where player stands
-        transform.position = player.position + gM.spritePivotOffset;
+        transform.position = player.position + Tower.spritePivotOffset;
 
         // Check for any red zones that block tower placement
         Vector2 plcCheckVector = new Vector2(placementCheck.position.x, placementCheck.position.y);
@@ -44,6 +42,6 @@ public class PlaceableTower : MonoBehaviour
         // If there are no barriers blocking placement, turn the overlay colour for the turret's range to blue.
         // If at least one barrier, turn the overlay colour to red.
         placementIsValid = interferingColliders.Count == 0;
-        gM.gameUi.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
+        _gM.gameUi.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
     }
 }

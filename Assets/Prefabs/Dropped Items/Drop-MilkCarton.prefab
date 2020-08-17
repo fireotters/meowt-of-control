@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b511f8463378344a720bc7e91966b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lifeSpan: 12
+  _endBlinkDuration: 5
   typeOfDrop: 0
 --- !u!212 &2983328645377290841
 SpriteRenderer:

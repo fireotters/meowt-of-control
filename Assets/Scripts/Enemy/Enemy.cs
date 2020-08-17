@@ -6,13 +6,15 @@ public class Enemy : MonoBehaviour
 {
     public bool breaksThruObstacles = false;
     public float enemyMaxHealth;
-    public float enemyHealthRemaining;
+    private float enemyHealthRemaining;
 
     private AIPath _aiPath;
     private float storedMaxSpeed;
 
     private GameManager _gM;
-    private Vector2 droppedItemOffset = new Vector2(0f, -0.5f);
+    private SpriteRenderer _sprRenderer;
+    private CircleCollider2D _collider;
+    [SerializeField] AudioSource audMetal = default, audRobotics = default;
 
     // Health bar
     private float healthBarFullSize;
@@ -32,11 +34,13 @@ public class Enemy : MonoBehaviour
         _aiPath = GetComponent<AIPath>();
         storedMaxSpeed = _aiPath.maxSpeed;
 
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         enemyHealthRemaining = enemyMaxHealth;
         healthBar = transform.Find("HealthBar");
         healthBarFullSize = healthBar.localScale.x;
         GetComponent<AIDestinationSetter>().target = _gM.mainTower.transform;
+        _collider = GetComponent<CircleCollider2D>();
+        _sprRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -79,12 +83,16 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // Being hit by projectile reduces HP by one
+        // Being hit by projectile reduces HP. If it's water, the enemy is briefly stunned.
         if (col.gameObject.CompareTag("PlayerBullet"))
         {
-            DealDamage(1);
+            DealDamage(col.gameObject.GetComponent<Bullet>().damageToEnemy);
+            if (col.gameObject.name.StartsWith("WaterProj"))
+            {
+                justHitByWater = true;
+            }
         }
-        // Big chungus destroys any scrap he touches.
+        // Big chungus destroys any scrap or towers he touches.
         else if (breaksThruObstacles)
         {
             if (col.gameObject.CompareTag("Scrap"))
@@ -114,28 +122,32 @@ public class Enemy : MonoBehaviour
         if (enemyHealthRemaining <= 0)
         {
             _gM.IncrementEnemyKillCount();
-            DropScrapAndItems(transform.position);
-            Destroy(gameObject);
+            DropScrapAndItems();
+            PretendEnemyIsGone();
         }
     }
 
-    private void DropScrapAndItems(Vector2 enemyLastPos)
+    private void DropScrapAndItems()
     {
-        GameObject scrapDrop = Instantiate(_gM.scrapEnemy, _gM.gameUi.dropsInPlayParent);
-        scrapDrop.transform.position = enemyLastPos;
+        // Drop scrap, make it bigger if Big Chungus drops it
+        GameObject droppedScrap = Instantiate(GameAssets.i.pfScrap, transform.position, Quaternion.identity, ObjectsInPlay.i.dropsParent);
+        if (breaksThruObstacles) droppedScrap.transform.localScale *= 1.6f;
 
         int randCheck = UnityEngine.Random.Range(0, 30);
-        // 1/30 of the time, yarn will drop
-        if (randCheck == 0)
+        // 2/30 of the time, yarn will drop
+        if (randCheck < 2)
         {
-            GameObject yarnDrop = Instantiate(_gM.dropYarn, _gM.gameUi.dropsInPlayParent);
-            yarnDrop.transform.position = enemyLastPos + droppedItemOffset;
+            DroppedItem.Create(transform.position, DroppedItem.PickupType.Yarn);
         }
-        // 3/30 of the time, milk will drop
-        else if (randCheck < 3)
+        // 2/30 of the time, milk will drop
+        else if (randCheck < 4)
         {
-            GameObject milkDrop = Instantiate(_gM.dropMilk, _gM.gameUi.dropsInPlayParent);
-            milkDrop.transform.position = enemyLastPos + droppedItemOffset;
+            DroppedItem.Create(transform.position, DroppedItem.PickupType.Milk);
+        }
+        // 2/30 of the time, tape will drop
+        else if (randCheck < 6)
+        {
+            DroppedItem.Create(transform.position, DroppedItem.PickupType.Tape);
         }
     }
 
@@ -147,9 +159,22 @@ public class Enemy : MonoBehaviour
     public void SetWaterStatus(bool waterStatus)
     {
         standingOnWater = waterStatus;
-        if (standingOnWater)
-        {
-            justHitByWater = true;
-        }
+    }
+
+    private void PretendEnemyIsGone()
+    {
+        _collider.enabled = false;
+        _sprRenderer.enabled = false;
+        healthBar.gameObject.SetActive(false);
+
+        audMetal.Play();
+        audRobotics.Play();
+
+        Invoke(nameof(ActuallyDestroy), 2f);
+    }
+
+    private void ActuallyDestroy()
+    {
+        Destroy(gameObject);
     }
 }

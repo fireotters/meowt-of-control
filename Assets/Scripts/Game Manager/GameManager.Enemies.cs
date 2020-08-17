@@ -9,17 +9,17 @@ public partial class GameManager : MonoBehaviour
 
 
     /// <summary>
-    /// Enemy spawn rate reduced by 10% of previous rate each round. When it reaches one attempt every 2 seconds, lock the spawn rate.
+    /// Enemy spawn rate reduced by 10% of previous rate each round. When it reaches one attempt every 1 second, lock the spawn rate.
     /// </summary>
     private void IncreaseEnemySpawnRate()
     {
-        if (_spawnController.spawnRate > 2)
+        if (_spawnController.spawnRate > 1)
         {
-            _spawnController.spawnRate *= 0.9f;
+            _spawnController.spawnRate *= 0.85f;
         }
-        if (_spawnController.spawnRate < 2)
+        if (_spawnController.spawnRate < 1)
         {
-            _spawnController.spawnRate = 2;
+            _spawnController.spawnRate = 1;
         }
     }
     public void IncrementEnemyKillCount()

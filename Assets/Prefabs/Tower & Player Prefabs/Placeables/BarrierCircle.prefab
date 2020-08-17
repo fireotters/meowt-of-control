@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2253759834885575863}
   - component: {fileID: 7224530920740763282}
   m_Layer: 0
-  m_Name: BarrierAfterPlacingTower
+  m_Name: CircleBarrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831679843561744280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.028, y: -0.081122324, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class SoundManager : MonoBehaviour
 {

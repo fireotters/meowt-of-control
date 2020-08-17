@@ -8,12 +8,11 @@ public class EnemySpawner : MonoBehaviour
     public bool isHorizontalSpawner;
 
     private Vector2 spawnPlace;
-    [SerializeField] private EnemySpawnerController _spawnController = default;
 
-    public void PrepToSpawnEnemy(Enemy chosenEnemy)
+    public void SpawnEnemy(Enemy chosenEnemy)
     {
         ChooseSpawnLocation();
-        SpawnEnemy(chosenEnemy);
+        Instantiate(chosenEnemy, spawnPlace, Quaternion.identity, ObjectsInPlay.i.enemiesParent);
     }
 
     private void ChooseSpawnLocation()
@@ -28,11 +27,6 @@ public class EnemySpawner : MonoBehaviour
             randY = Random.Range(-3f, 3f);
             spawnPlace = new Vector2(transform.position.x, randY);
         }
-    }
-
-    private void SpawnEnemy(Enemy chosenEnemy)
-    {
-        Instantiate(chosenEnemy, spawnPlace, Quaternion.identity, _spawnController.enemiesInPlayParent);
     }
 
 }

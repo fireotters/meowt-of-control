@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public partial class GameUi : BaseUi
@@ -10,17 +9,14 @@ public partial class GameUi : BaseUi
 
     public GameObject gamePausePanel;
     public GameObject gameOverPanel;
-    private GameManager gM;
+    private GameManager _gM;
     public GameObject player;
-
-    [Header("Unity Inspector Organisation")]
-    public Transform dropsInPlayParent;
 
     private void Awake()
     {
-        gM = FindObjectOfType<GameManager>();
-        sprTowerInvalidArea = gM.placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
-        sprTowerRange = gM.placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
+        _gM = ObjectsInPlay.i.gameManager;
+        sprTowerInvalidArea = ObjectsInPlay.i.placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
+        sprTowerRange = ObjectsInPlay.i.placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
 
         musicManager = FindObjectOfType<MusicManager>();
         if (!musicManager)
@@ -30,16 +26,18 @@ public partial class GameUi : BaseUi
         }
     }
 
-    void Start()
+    private void Start()
     {
         // Change music track
         musicManager.ChangeMusicTrack(choiceOfMusic);
         musicManager.SetMixerVolumes();
 
         // Fade in the level
-        StartCoroutine(FadeBlack("from"));
+        StartCoroutine(FadeBlack(FadeType.FromBlack, fullUiFadeBlack));
 
         // Initialise UI values
+        _healthBarRect = _healthBar.GetComponent<RectTransform>();
+        _healthBarFullSize = _healthBarRect.sizeDelta;
         UpdateBoxCatHealth(0);
     }
 
@@ -64,7 +62,7 @@ public partial class GameUi : BaseUi
 
     public void GameIsPaused(bool intent)
     {
-        if (!gM.gameIsOver)
+        if (!_gM.gameIsOver)
         {
             // Show or hide pause panel and set timescale
             gamePausePanel.SetActive(intent);
@@ -81,7 +79,7 @@ public partial class GameUi : BaseUi
 
     public void ExitGameFromPause()
     {
-        if (IsThisAHighScore(gM.currentRound))
+        if (IsThisAHighScore(_gM.currentRound))
         {
             GameIsOverShowUi();
         }

@@ -6,8 +6,7 @@ public partial class GameManager : MonoBehaviour
     [Header("Stat Variables")]
     public Player player;
     public int currentYarn = 0, mainTowerHealth = 100, currentRound = 0;
-    private const int maxMainTowerHealth = 100, hpMilkHeals = 25;
-    public GameObject dropMilk, dropYarn;
+    private const int maxMainTowerHealth = 100, hpTapeHeals = 25;
 
     [Header("Enemy Variables")]
     public int enemyCount = 0;
@@ -18,9 +17,7 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector] public MainTower mainTower;
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
     public bool gameIsOver = false;
-    public GameObject scrapEnemy;
-    public Transform projectilesParent, projectilesParentExtras;
-    private int yarnMultiplier = 0;
+    private int yarnMultiplier = 1;
 
     private void Start()
     {
@@ -47,7 +44,7 @@ public partial class GameManager : MonoBehaviour
             if (enemyCount == 0)
             {
                 enemyCount = -1;
-                Invoke(nameof(StartNextRound), 2f);
+                Invoke(nameof(CelebrateEndOfRound), 1f);
             }
         }
 
@@ -58,39 +55,58 @@ public partial class GameManager : MonoBehaviour
         AstarPath.active.Scan();
     }
 
+    private void CelebrateEndOfRound()
+    {
+        ResetPurchaseState();
+        int totalTimeForTransition = 6;
+        gameUi.RoundComplete(totalTimeForTransition);
+        Invoke(nameof(StartNextRound), totalTimeForTransition);
+    }
+    
     private void StartNextRound()
     {
-        // Iterate current round and grant yarn
+        // Reset player and game objects, unblock Build Panel
+        player.ResetPosition();
+        gameUi.UnblockBuildPanel();
+        DestroyExistingObjects();
+
+        // Update round number
         currentRound += 1;
-        if (yarnMultiplier < 10)
+
+        // Every third round, multiply the yarn given per round, until a x4 multiplier is reached.
+        if (yarnMultiplier < 4 && currentRound % 3 == 0)
         {
             yarnMultiplier += 1;
         }
-        gameUi.UpdateYarn(20 * yarnMultiplier);
+        gameUi.UpdateYarn(50 * yarnMultiplier);
+
+        // Every second round, drop a Tape item
+        if (currentRound % 2 == 0)
+        {
+            mainTower.DropItem(DroppedItem.PickupType.Tape);
+        }
 
         // Manage enemy counts. Spawnrate increases each round.
         IncreaseEnemySpawnRate();
         enemyMaxCount = currentRound * enemyCountMultipler;
         enemyCount = enemyMaxCount;
         enemyNumberSpawned = 0;
-        print($"Enemy count: {enemyCount}");
 
-        // Update round indicator number & percentage marker
         gameUi.textRound.text = currentRound.ToString();
         gameUi.UpdateRoundIndicator();
     }
 
-    public void HandleMilkPickup()
+    public void HandleTapePickup()
     {
+        // If main tower can be healed, then heal Box for 25% or less, depending on how much there is to go til 100%
         if (mainTowerHealth < maxMainTowerHealth)
         {
             int hpToHeal = maxMainTowerHealth - mainTowerHealth;
-            if (hpToHeal > hpMilkHeals)
+            if (hpToHeal > hpTapeHeals)
             {
-                hpToHeal = hpMilkHeals;
+                hpToHeal = hpTapeHeals;
             }
             gameUi.UpdateBoxCatHealth(hpToHeal);
-            mainTower.ChangeHealthBar();
         }
 
         if (mainTowerHealth > 25)
@@ -102,8 +118,25 @@ public partial class GameManager : MonoBehaviour
     public void GameIsOverPlayEndScene()
     {
         gameIsOver = true;
-        GameOverResetPurchaseState();
+        ResetPurchaseState();
         gameUi.musicManager.ChangeToGameOverMusic();
         gameUi.Invoke(nameof(gameUi.GameIsOverShowUi), 3f);
+    }
+
+    private void DestroyExistingObjects()
+    {
+        Tower[] towersToDestroy = ObjectsInPlay.i.towersParent.GetComponentsInChildren<Tower>();
+        foreach (Tower tower in towersToDestroy)
+        {
+            tower.EndOfRoundDestroyTurret();
+        }
+        foreach (Transform drop in ObjectsInPlay.i.dropsParent)
+        {
+            Destroy(drop.gameObject);
+        }
+        foreach (Transform aoe in ObjectsInPlay.i.projectilesParentExtras)
+        {
+            Destroy(aoe.gameObject);
+        }
     }
 }

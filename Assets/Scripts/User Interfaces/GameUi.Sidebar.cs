@@ -9,41 +9,46 @@ public partial class GameUi : BaseUi
 {
     [Header("Main Sidebar UI")]
     public Image roundIndicator;
-    public TextMeshProUGUI textYarn, textRound;
+    public TextMeshProUGUI textYarn, textRound, textRoundCompleteBox1, textRoundCompleteBox2;
     public PurchaseButton[] purchaseButtons;
-    public GameObject buildModeTexts, launchModeTexts;
+    public GameObject buildModeTexts, launchModeTexts, gameViewFadeBlack;
+    public Animator roundCompletionBoxAnim;
 
     [Header("Cat Health UI")]
     public TextMeshProUGUI textBoxHealth;
-    public TextMeshProUGUI textCatHealth;
     public Sprite[] gunCatFaces, boxCatFaces;
     public Image gunCatFace, boxCatFace;
+    public GameObject[] gunCatLives;
 
+    // Health bar
+    [SerializeField] private Transform _healthBar = default;
+    private Vector2 _healthBarFullSize;
+    private RectTransform _healthBarRect;
 
     internal void UpdateYarn(int difference)
     {
-        gM.currentYarn += difference;
-        textYarn.text = gM.currentYarn.ToString();
+        _gM.currentYarn += difference;
+        textYarn.text = _gM.currentYarn.ToString();
     }
 
     internal void UpdateBoxCatHealth(int difference)
     {
-        gM.mainTowerHealth += difference;
-        if (gM.mainTowerHealth < 0)
+        _gM.mainTowerHealth += difference;
+        if (_gM.mainTowerHealth < 0)
         {
-            gM.mainTowerHealth = 0;
+            _gM.mainTowerHealth = 0;
         }
 
         int indexOfBoxCatFace;
-        if (gM.mainTowerHealth > 65) // High health
+        if (_gM.mainTowerHealth > 65) // High health
         {
             indexOfBoxCatFace = 3;
         }
-        else if (gM.mainTowerHealth > 35) // Mid health
+        else if (_gM.mainTowerHealth > 35) // Mid health
         {
             indexOfBoxCatFace = 2;
         }
-        else if (gM.mainTowerHealth >0 ) // Low health
+        else if (_gM.mainTowerHealth >0 ) // Low health
         {
             indexOfBoxCatFace = 1;
         }
@@ -52,19 +57,32 @@ public partial class GameUi : BaseUi
             indexOfBoxCatFace = 0;
         }
         boxCatFace.sprite = boxCatFaces[indexOfBoxCatFace];
-        textBoxHealth.text = gM.mainTowerHealth + "%";
+        textBoxHealth.text = _gM.mainTowerHealth + "%";
+
+        float percentOfLifeLeft = (float)_gM.mainTowerHealth / (float)100;
+        Vector2 scaleChange = _healthBarFullSize;
+        scaleChange.x = percentOfLifeLeft * _healthBarFullSize.x;
+        _healthBarRect.sizeDelta = scaleChange;
     }
 
     internal void UpdateRoundIndicator()
     {
-        float roundProgressLeft = (float)gM.enemyCount / (float)gM.enemyMaxCount;
+        float roundProgressLeft = (float)_gM.enemyCount / (float)_gM.enemyMaxCount;
         roundIndicator.fillAmount = roundProgressLeft;
     }
 
     internal void UpdatePlayerHealth()
     {
-        gunCatFace.sprite = gunCatFaces[gM.player.currentPlayerHealth];
-        textCatHealth.text = gM.player.currentPlayerHealth.ToString();
+        gunCatFace.sprite = gunCatFaces[_gM.player.currentPlayerHealth];
+        // Disable all life icons, and re-enable ones that match player's health
+        foreach (GameObject lifeIcon in gunCatLives)
+        {
+            lifeIcon.SetActive(false);
+        }
+        for (int i = 0; i < _gM.player.currentPlayerHealth; i++)
+        {
+            gunCatLives[i].SetActive(true);
+        }
     }
 
     public void ClickedPurchaseButton(GameManager.PurchaseType whichPurchase)
@@ -72,36 +90,32 @@ public partial class GameUi : BaseUi
         int priceToCheck = 0;
         switch (whichPurchase) {
             case GameManager.PurchaseType.PillowTower:
-                priceToCheck = gM.pricePillow;
+                priceToCheck = _gM.pricePillow;
                 break;
             case GameManager.PurchaseType.WaterTower:
-                priceToCheck = gM.priceWater;
+                priceToCheck = _gM.priceWater;
                 break;
             case GameManager.PurchaseType.FridgeTower:
-                priceToCheck = gM.priceFridge;
+                priceToCheck = _gM.priceFridge;
                 break;
             case GameManager.PurchaseType.Missile:
-                priceToCheck = gM.priceMissile;
+                priceToCheck = _gM.priceMissile;
                 break;
         }
 
-        if (gM.currentYarn >= priceToCheck)
+        if (_gM.currentYarn >= priceToCheck)
         {
-            gM.SpawnPurchasedObject(whichPurchase);
+            _gM.SpawnPurchasedObject(whichPurchase);
         }
         else
         {
-            textYarn.color = Color.red;
-            textYarn.GetComponent<AudioSource>().Play();
-            CancelInvoke(nameof(EndYarnRedFlash));
-            Invoke(nameof(EndYarnRedFlash), 0.5f);
+            BeginYarnRedFlash();
         }
     }
 
     public void PurchaseFromButton(string whichPurchase)
     {
-        GameManager.PurchaseType purchaseType;
-        if (Enum.TryParse(whichPurchase, true, out purchaseType))
+        if (Enum.TryParse(whichPurchase, true, out GameManager.PurchaseType purchaseType))
         {
             ClickedPurchaseButton(purchaseType);
         }
@@ -126,15 +140,55 @@ public partial class GameUi : BaseUi
         purchaseButtons[whichTower].ShowCancelOverlay();
     }
 
-    public void BlockPurchaseUi()
+    public void BlockBuildPanel()
     {
         foreach (PurchaseButton btn in purchaseButtons)
         {
             btn.BlockClicking();
         }
     }
+    public void UnblockBuildPanel()
+    {
+        foreach (PurchaseButton btn in purchaseButtons)
+        {
+            btn.UnblockClicking();
+        }
+    }
+
+    public void BeginYarnRedFlash()
+    {
+        textYarn.color = Color.red;
+        textYarn.GetComponent<AudioSource>().Play();
+        CancelInvoke(nameof(EndYarnRedFlash));
+        Invoke(nameof(EndYarnRedFlash), 0.5f);
+    }
     private void EndYarnRedFlash()
     {
         textYarn.color = Color.white;
+    }
+
+    public void RoundComplete(int transitionTime)
+    {
+        textRoundCompleteBox1.text = $"Survived Day {_gM.currentRound}!";
+        textRoundCompleteBox2.text = $"Get ready for Day {_gM.currentRound + 1}...";
+
+        StartCoroutine(nameof(FlipOutRoundCompletionSign), transitionTime);
+    }
+
+    private IEnumerator FlipOutRoundCompletionSign(int transitionTime)
+    {
+        int waitSign = 1, waitFadeTo = 2;
+        // Wait to flip out sign
+        yield return new WaitForSeconds(waitSign);
+        roundCompletionBoxAnim.SetBool("RoundFinished", true);
+
+        // Wait to fade to black
+        yield return new WaitForSeconds(waitFadeTo);
+        roundCompletionBoxAnim.SetBool("RoundFinished", false);
+        StartCoroutine(FadeBlack(FadeType.ToBlack, gameViewFadeBlack));
+
+        // Wait to fade from black until GameManager is ready (transitionTime - waits performed here)
+        yield return new WaitForSeconds(transitionTime - waitSign - waitFadeTo);
+        StartCoroutine(FadeBlack(FadeType.FromBlack, gameViewFadeBlack));
     }
 }
