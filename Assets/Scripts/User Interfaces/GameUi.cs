@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public partial class GameUi : BaseUi
@@ -15,7 +14,7 @@ public partial class GameUi : BaseUi
 
     private void Awake()
     {
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         sprTowerInvalidArea = ObjectsInPlay.i.placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
         sprTowerRange = ObjectsInPlay.i.placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
 

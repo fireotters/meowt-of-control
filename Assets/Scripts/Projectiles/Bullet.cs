@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _sprRenderer = GetComponent<SpriteRenderer>();

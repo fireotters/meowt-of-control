@@ -226,7 +226,7 @@ Transform:
   - {fileID: 2040414068579805886}
   - {fileID: 166600005356220152}
   - {fileID: 6133885619585328816}
-  - {fileID: 7756267733871671577}
+  - {fileID: 6561136040091661238}
   - {fileID: 8058963234579397081}
   - {fileID: 7813819412229280304}
   m_Father: {fileID: 0}
@@ -359,7 +359,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.023162842, y: 0.004339829}
+  m_Offset: {x: 0.0034862757, y: 0.035260066}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -370,7 +370,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0791924, y: 0.78813434}
+  m_Size: {x: 0.9498894, y: 0.69256246}
   m_EdgeRadius: 0
 --- !u!50 &7086779616409355995
 Rigidbody2D:
@@ -540,12 +540,12 @@ PrefabInstance:
     - target: {fileID: 3507769882438765482, guid: 4d9a79aa5d4756a49bc04c43bfd1df5b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3507769882438765482, guid: 4d9a79aa5d4756a49bc04c43bfd1df5b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3831679843561744280, guid: 4d9a79aa5d4756a49bc04c43bfd1df5b,
         type: 3}
@@ -554,7 +554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9a79aa5d4756a49bc04c43bfd1df5b, type: 3}
---- !u!4 &7756267733871671577 stripped
+--- !u!4 &6561136040091661238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3507769882438765482, guid: 4d9a79aa5d4756a49bc04c43bfd1df5b,
     type: 3}

@@ -8,13 +8,13 @@ public class PlaceableTower : MonoBehaviour
     [SerializeField] private Tower attachedTower = default;
     private Transform player, placementCheck, rangeSpriteMask;
     [HideInInspector] public bool placementIsValid = false;
-    private GameManager gM;
+    private GameManager _gM;
     private Color towerFailRed = new Color(0.66f, 0f, 0f, 0.4f);
     private Color towerRangeBlue = new Color(0.34f, 0.45f, 1f, 0.4f);
 
     private void Awake()
     {
-        gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         player = GameObject.Find("Player").transform;
         placementCheck = transform.Find("PlacementCheck");
         rangeSpriteMask = transform.Find("RangeSpriteMask");
@@ -42,6 +42,6 @@ public class PlaceableTower : MonoBehaviour
         // If there are no barriers blocking placement, turn the overlay colour for the turret's range to blue.
         // If at least one barrier, turn the overlay colour to red.
         placementIsValid = interferingColliders.Count == 0;
-        gM.gameUi.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
+        _gM.gameUi.sprTowerRange.color = interferingColliders.Count == 0 ? towerRangeBlue : towerFailRed;
     }
 }

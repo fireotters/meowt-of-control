@@ -65,18 +65,10 @@ public partial class GameManager : MonoBehaviour
     
     private void StartNextRound()
     {
-        // Player moves to respawn point, Build Panel can be used again
+        // Reset player and game objects, unblock Build Panel
         player.ResetPosition();
         gameUi.UnblockBuildPanel();
-        Tower[] towersToDestroy = ObjectsInPlay.i.towersParent.GetComponentsInChildren<Tower>();
-        foreach (Tower tower in towersToDestroy)
-        {
-            tower.EndOfRoundDestroyTurret();
-        }
-        foreach (Transform drop in ObjectsInPlay.i.dropsParent)
-        {
-            Destroy(drop.gameObject);
-        }
+        DestroyExistingObjects();
 
         // Update round number
         currentRound += 1;
@@ -106,6 +98,7 @@ public partial class GameManager : MonoBehaviour
 
     public void HandleTapePickup()
     {
+        // If main tower can be healed, then heal Box for 25% or less, depending on how much there is to go til 100%
         if (mainTowerHealth < maxMainTowerHealth)
         {
             int hpToHeal = maxMainTowerHealth - mainTowerHealth;
@@ -128,5 +121,22 @@ public partial class GameManager : MonoBehaviour
         ResetPurchaseState();
         gameUi.musicManager.ChangeToGameOverMusic();
         gameUi.Invoke(nameof(gameUi.GameIsOverShowUi), 3f);
+    }
+
+    private void DestroyExistingObjects()
+    {
+        Tower[] towersToDestroy = ObjectsInPlay.i.towersParent.GetComponentsInChildren<Tower>();
+        foreach (Tower tower in towersToDestroy)
+        {
+            tower.EndOfRoundDestroyTurret();
+        }
+        foreach (Transform drop in ObjectsInPlay.i.dropsParent)
+        {
+            Destroy(drop.gameObject);
+        }
+        foreach (Transform aoe in ObjectsInPlay.i.projectilesParentExtras)
+        {
+            Destroy(aoe.gameObject);
+        }
     }
 }

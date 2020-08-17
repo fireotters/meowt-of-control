@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public abstract partial class Tower : MonoBehaviour
 {
@@ -107,7 +106,7 @@ public abstract partial class Tower : MonoBehaviour
 
     private void FindComponents()
     {
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         bulletEmitter = transform.GetChild(0);
         gunEnd = bulletEmitter.GetChild(0);
         _towerAnimator = transform.Find("tower").GetComponent<Animator>();

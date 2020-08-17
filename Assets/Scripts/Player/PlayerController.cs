@@ -108,7 +108,5 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
-        
-        // When loose health, call soundManager.soundPlayerHit();
     }
 }

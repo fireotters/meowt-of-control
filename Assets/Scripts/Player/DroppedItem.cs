@@ -31,7 +31,7 @@ public class DroppedItem : MonoBehaviour
 
     private void Awake()
     {
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         StartCoroutine(nameof(BlinkBeforeDisappearance));
     }
 

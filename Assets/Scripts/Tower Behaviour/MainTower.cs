@@ -18,7 +18,7 @@ public class MainTower : MonoBehaviour
 
     private void Start()
     {
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         _mainTowerAnimator = GetComponentInChildren<Animator>();
         _audioSource = GetComponent<AudioSource>();
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemySpawnerController : MonoBehaviour
 {
-    [SerializeField] private Enemy enemyBasic = default, enemySanic = default, enemyBigChungus = default;
     private float nextSpawn = 0.0f;
     private GameManager _gM;
     public float spawnRate;
@@ -13,7 +12,7 @@ public class EnemySpawnerController : MonoBehaviour
 
     private void Start()
     {
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
     }
 
     private void Update()
@@ -36,15 +35,15 @@ public class EnemySpawnerController : MonoBehaviour
             int randEnemy = Random.Range(0, 30);
             if (randEnemy == 0 && _gM.currentRound > 2) // Spawn Big Chungus (1/30 chance)
             {
-                _chosenSpawner.SpawnEnemy(enemyBigChungus);
+                _chosenSpawner.SpawnEnemy(GameAssets.i.enemyBigChungus);
             }
             else if (randEnemy < 5 && _gM.currentRound > 1) // Spawn Sanic (4/30 chance)
             {
-                _chosenSpawner.SpawnEnemy(enemySanic);
+                _chosenSpawner.SpawnEnemy(GameAssets.i.enemySanic);
             }
             else if (randEnemy < 25) // Spawn Basic (20/30 chance)
             {
-                _chosenSpawner.SpawnEnemy(enemyBasic);
+                _chosenSpawner.SpawnEnemy(GameAssets.i.enemyBasic);
             }
 
             if (randEnemy < 25)

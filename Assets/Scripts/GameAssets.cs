@@ -21,6 +21,11 @@ public class GameAssets : MonoBehaviour
     public Tower pfTowerPillow, pfTowerWater, pfTowerFridge;
     public PlaceableTower pfPlaceablePillow, pfPlaceableWater, pfPlaceableFridge;
 
+    [Header("Enemies")]
+    public Enemy enemyBasic;
+    public Enemy enemySanic, enemyBigChungus;
+
     [Header("Sounds")]
     public AudioClip audTowerDestroy;
+    public AudioClip audEnemyHit1, audEnemyHit2;
 }

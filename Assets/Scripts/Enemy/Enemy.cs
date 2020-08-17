@@ -1,6 +1,5 @@
 ﻿using Pathfinding;
 using System;
-using System.Net.Sockets;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -13,6 +12,9 @@ public class Enemy : MonoBehaviour
     private float storedMaxSpeed;
 
     private GameManager _gM;
+    private SpriteRenderer _sprRenderer;
+    private CircleCollider2D _collider;
+    [SerializeField] AudioSource audMetal = default, audRobotics = default;
 
     // Health bar
     private float healthBarFullSize;
@@ -32,11 +34,13 @@ public class Enemy : MonoBehaviour
         _aiPath = GetComponent<AIPath>();
         storedMaxSpeed = _aiPath.maxSpeed;
 
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         enemyHealthRemaining = enemyMaxHealth;
         healthBar = transform.Find("HealthBar");
         healthBarFullSize = healthBar.localScale.x;
         GetComponent<AIDestinationSetter>().target = _gM.mainTower.transform;
+        _collider = GetComponent<CircleCollider2D>();
+        _sprRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -119,13 +123,15 @@ public class Enemy : MonoBehaviour
         {
             _gM.IncrementEnemyKillCount();
             DropScrapAndItems();
-            Destroy(gameObject);
+            PretendEnemyIsGone();
         }
     }
 
     private void DropScrapAndItems()
     {
-        Instantiate(GameAssets.i.pfScrap, transform.position, Quaternion.identity, ObjectsInPlay.i.dropsParent);
+        // Drop scrap, make it bigger if Big Chungus drops it
+        GameObject droppedScrap = Instantiate(GameAssets.i.pfScrap, transform.position, Quaternion.identity, ObjectsInPlay.i.dropsParent);
+        if (breaksThruObstacles) droppedScrap.transform.localScale *= 1.6f;
 
         int randCheck = UnityEngine.Random.Range(0, 30);
         // 2/30 of the time, yarn will drop
@@ -153,5 +159,22 @@ public class Enemy : MonoBehaviour
     public void SetWaterStatus(bool waterStatus)
     {
         standingOnWater = waterStatus;
+    }
+
+    private void PretendEnemyIsGone()
+    {
+        _collider.enabled = false;
+        _sprRenderer.enabled = false;
+        healthBar.gameObject.SetActive(false);
+
+        audMetal.Play();
+        audRobotics.Play();
+
+        Invoke(nameof(ActuallyDestroy), 2f);
+    }
+
+    private void ActuallyDestroy()
+    {
+        Destroy(gameObject);
     }
 }

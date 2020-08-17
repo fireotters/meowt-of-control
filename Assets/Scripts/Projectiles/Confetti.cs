@@ -12,7 +12,7 @@ public class Confetti : MonoBehaviour
 
     private void Start()
     {
-        _gM = FindObjectOfType<GameManager>();
+        _gM = ObjectsInPlay.i.gameManager;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         LaunchUp();
     }

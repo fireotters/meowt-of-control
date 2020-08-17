@@ -70,4 +70,12 @@ MonoBehaviour:
     type: 3}
   pfPlaceableFridge: {fileID: 2833609314111091963, guid: aa27b97a982d88949b5cccecad7385f0,
     type: 3}
+  enemyBasic: {fileID: 5638070982843042143, guid: 1d5a6dc55ed808446a62780a01a055fa,
+    type: 3}
+  enemySanic: {fileID: 5314625887060572921, guid: 6cf4790d101472a4bbdc0ef82f0f0e40,
+    type: 3}
+  enemyBigChungus: {fileID: 8285731635449962684, guid: 8dfa6c5347a1ad24faf423ec16e1395d,
+    type: 3}
   audTowerDestroy: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
+  audEnemyHit1: {fileID: 8300000, guid: 2c846f9b38c290c408c1b6d8e6d842c2, type: 3}
+  audEnemyHit2: {fileID: 8300000, guid: bc4a30dc7dcf2cf4a88b55129f810e97, type: 3}

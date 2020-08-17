@@ -14,6 +14,7 @@ public partial class GameManager : MonoBehaviour
     
     public enum PurchaseType { PillowTower, WaterTower, FridgeTower, Missile, NoPurchaseActive }
     private int indexOfNewPurchase, indexOfCurrentPurchase;
+
     /// <summary>
     /// When player selects a tower purchase, spawn a placeable version of a tower prefab on top of them.<br/>
     ///  - If they're swapping from another tower, remove the old and spawn a new placeable tower.<br/>
