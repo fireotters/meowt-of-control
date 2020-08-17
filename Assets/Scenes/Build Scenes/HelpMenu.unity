@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.5237654, b: 0, a: 1}
+  m_Color: {r: 0.6792453, g: 0.4750245, b: 0.0032039948, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -240,162 +240,6 @@ RectTransform:
   m_AnchoredPosition: {x: -197.8, y: -28.020996}
   m_SizeDelta: {x: 373.5, y: 149.97903}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &35597135
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 35597136}
-  - component: {fileID: 35597138}
-  - component: {fileID: 35597137}
-  m_Layer: 5
-  m_Name: Label
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &35597136
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35597135}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1071098575}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.5, y: -0.5}
-  m_SizeDelta: {x: -31, y: -3}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &35597137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35597135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: More detail, please!
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_outlineColor:
-    serializedVersion: 2
-    rgba: 4278190080
-  m_fontSize: 16
-  m_fontSizeBase: 16
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_textAlignment: 513
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
-  m_linkedTextComponent: {fileID: 0}
-  m_isLinkedTextComponent: 0
-  m_isTextTruncated: 0
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_ignoreRectMaskCulling: 0
-  m_ignoreCulling: 1
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_VertexBufferAutoSizeReduction: 1
-  m_firstVisibleCharacter: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_textInfo:
-    textComponent: {fileID: 35597137}
-    characterCount: 20
-    spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
-    linkCount: 0
-    lineCount: 1
-    pageCount: 1
-    materialCount: 1
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
-  m_subTextObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &35597138
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35597135}
-  m_CullTransparentMesh: 0
 --- !u!1 &54333526
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +250,6 @@ GameObject:
   m_Component:
   - component: {fileID: 54333527}
   - component: {fileID: 54333529}
-  - component: {fileID: 54333530}
   - component: {fileID: 54333528}
   m_Layer: 5
   m_Name: TowerPillowText
@@ -453,7 +296,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<b><i>Pillow Fluffer</i></b>
+
+    <u>Low damage. Low range. High fire-rate.</u>
+
+    <i>"Shoots
+    pillows filled with shards of glass, from drinking glasses we pushed from tabletops."</i>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -498,7 +346,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 104
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -522,13 +370,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 54333528}
-    characterCount: 0
+    characterCount: 147
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 21
+    wordCount: 22
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 4
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -553,27 +401,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54333526}
   m_CullTransparentMesh: 0
---- !u!114 &54333530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54333526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: '<b><i>Pillow Fluffer</i></b>: Shoots pillows filled with shards
-    from glasses that were once placed on tabletops.
-
-    <b><i>Low damage. Low range.
-    High fire-rate.</b></i>'
-  helpTextBrief: '<b><i>Pillow Fluffer</i></b>
-
-    Low damage. Low range. High fire-rate.'
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &81229129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +889,6 @@ GameObject:
   m_Component:
   - component: {fileID: 133978364}
   - component: {fileID: 133978366}
-  - component: {fileID: 133978367}
   - component: {fileID: 133978365}
   m_Layer: 5
   m_Name: ConfettiText
@@ -1109,7 +935,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<b><i>Confetti Cannon</i></b>
+
+    <u>High damage. Kills small bots with
+    a direct hit.
+
+    High cost, high cooldown defensive option.</u>
+
+    <i>"This
+    weapon''s effects are just cat-astrophic!"</i>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -1154,7 +988,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 136
+  m_firstOverflowCharacterIndex: 108
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1178,13 +1012,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 133978365}
-    characterCount: 0
+    characterCount: 155
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 22
+    wordCount: 23
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 4
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1209,32 +1043,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133978363}
   m_CullTransparentMesh: 0
---- !u!114 &133978367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133978363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: '<b><i>Confetti Cannon</i></b>: Box Cat''s experiments into weaponising
-    coloured paper have succeeded.
-
-    <b><i>High damage. Kills small bots with
-    a direct hit.
-
-    High cost, high cooldown defensive option.</i></b>'
-  helpTextBrief: '<b><i>Confetti Cannon</i></b>
-
-    High damage. Kills small bots
-    with a direct hit.
-
-    High cost, high cooldown defensive option.'
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &144184398
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,13 +2906,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Machines have gained sentience. Within minutes of ground zero, the knowledge
-    spread to create an electronic hivemind that would soon topple their long-time
-    oppressors, the humans. With most of humanity now in hiding, whatever will become
-    of the adorable pets they left behind?
+    spread to create an electronic hivemind that would topple their long-time oppressors,
+    the humans. With most of humanity now in hiding, whatever will become of the
+    adorable pets they left behind?
 
 
-    Well, one thing was for sure. The
-    <i>cats</i> weren''t going to take it lying down. For a change.'
+    Well, one thing was for sure. The <i>cats</i>
+    weren''t going to take it lying down. For a change.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -3173,10 +2981,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 605280923}
-    characterCount: 367
+    characterCount: 362
     spriteCount: 0
-    spaceCount: 61
-    wordCount: 61
+    spaceCount: 60
+    wordCount: 60
     linkCount: 0
     lineCount: 8
     pageCount: 1
@@ -3443,7 +3251,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1071098574}
+      - m_Target: {fileID: 0}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -4786,7 +4594,6 @@ GameObject:
   m_Component:
   - component: {fileID: 867461516}
   - component: {fileID: 867461518}
-  - component: {fileID: 867461519}
   - component: {fileID: 867461517}
   m_Layer: 5
   m_Name: ScrapText
@@ -4833,7 +4640,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<u><b><i>Scrap</b></i> is dropped by defeated robots.</u>
+
+    It blocks
+    some enemies, but also Gun Cat.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -4902,13 +4712,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 867461517}
-    characterCount: 0
+    characterCount: 78
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 13
+    wordCount: 14
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 2
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -4933,23 +4743,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867461515}
   m_CullTransparentMesh: 0
---- !u!114 &867461519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 867461515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: When robots are defeated, they leave <b><i>Scrap</b></i>. It <b><i>blocks
-    some enemies</b></i> from progressing, but blocks Gun Cat too.
-  helpTextBrief: <b><i>Scrap</b></i> is dropped by defeated robots. It blocks some
-    enemies, but also Gun Cat.
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &886511577
 GameObject:
   m_ObjectHideFlags: 0
@@ -6303,7 +6096,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1062744046}
   - component: {fileID: 1062744048}
-  - component: {fileID: 1062744049}
   - component: {fileID: 1062744047}
   m_Layer: 5
   m_Name: YarnText
@@ -6350,7 +6142,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<u><b><i>Yarn</b></i> is used to purchase things.</u>
+
+    Get more <b><i>each
+    round</i></b>. Some robots drop it.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -6419,13 +6214,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1062744047}
-    characterCount: 0
+    characterCount: 74
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 13
+    wordCount: 14
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 2
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -6450,22 +6245,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062744045}
   m_CullTransparentMesh: 0
---- !u!114 &1062744049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062744045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: <b><i>Yarn</b></i> is the currency of the cat world. <b><i>Each
-    round</i></b>, more is received. Some robots also drop it.
-  helpTextBrief: <b><i>Yarn</b></i> is used to purchase things.
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1065151074
 GameObject:
   m_ObjectHideFlags: 0
@@ -6515,7 +6294,6 @@ MonoBehaviour:
   firstPage: {fileID: 1642958950}
   secondPage: {fileID: 646504121}
   thirdPage: {fileID: 1724529234}
-  helpMenuVerbose: 0
 --- !u!1 &1069716571
 GameObject:
   m_ObjectHideFlags: 0
@@ -6671,176 +6449,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069716571}
-  m_CullTransparentMesh: 0
---- !u!1 &1071098574
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1071098575}
-  - component: {fileID: 1071098576}
-  m_Layer: 5
-  m_Name: VerboseToggle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1071098575
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071098574}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.10925999}
-  m_Children:
-  - {fileID: 1630239115}
-  - {fileID: 35597136}
-  m_Father: {fileID: 1642638208}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000019073, y: -200}
-  m_SizeDelta: {x: 186.9538, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1071098576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071098574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1630239116}
-  toggleTransition: 1
-  graphic: {fileID: 1127128051}
-  m_Group: {fileID: 0}
-  onValueChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1065151076}
-        m_MethodName: ChangeTextMode
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_IsOn: 0
---- !u!1 &1127128049
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1127128050}
-  - component: {fileID: 1127128052}
-  - component: {fileID: 1127128051}
-  m_Layer: 5
-  m_Name: Checkmark
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1127128050
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127128049}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1630239115}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1127128051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127128049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1127128052
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127128049}
   m_CullTransparentMesh: 0
 --- !u!1 &1128513355
 GameObject:
@@ -7081,7 +6689,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1071098574}
+      - m_Target: {fileID: 0}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -7477,7 +7085,7 @@ RectTransform:
   m_LocalScale: {x: 0.37864998, y: 0.37864998, z: 0.37864998}
   m_Children: []
   m_Father: {fileID: 1642638208}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7540,8 +7148,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Using their smug intellect productively for once, cats have devised several
-    defenses. They're paid for using yarn.
+  m_text: Using his smug intellect productively for once, Box Cat has devised several
+    defenses. His comments on them are below.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -7610,10 +7218,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1237528609}
-    characterCount: 114
+    characterCount: 117
     spriteCount: 0
-    spaceCount: 16
-    wordCount: 17
+    spaceCount: 18
+    wordCount: 19
     linkCount: 0
     lineCount: 2
     pageCount: 1
@@ -7883,7 +7491,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1392128641}
   - component: {fileID: 1392128643}
-  - component: {fileID: 1392128644}
   - component: {fileID: 1392128642}
   m_Layer: 5
   m_Name: EnemyBigText
@@ -7930,7 +7537,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<b><i>Tank</b></i>
+
+    <u>High health. Very slow. Destroys obstacles.</u>
+
+    <i>"Rare
+    and dangerous. Instantly destroys anything in its path. Take it down ASAP."</i>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -7975,7 +7587,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 98
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -7999,13 +7611,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1392128642}
-    characterCount: 0
+    characterCount: 130
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 19
+    wordCount: 20
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 4
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -8030,28 +7642,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392128640}
   m_CullTransparentMesh: 0
---- !u!114 &1392128644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392128640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: '<b><i>Tank</b></i>: The big boy. Capable of instantly destroying
-    any scrap or buildings that it touches. Take it down ASAP.
-
-    <b><i>High health.
-    Very slow.</b></i>'
-  helpTextBrief: '<b><i>Tank</b></i>: Instantly destroys most obstacles.
-
-    High
-    health. Very slow.'
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1394604884
 GameObject:
   m_ObjectHideFlags: 0
@@ -8136,7 +7726,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1401883499}
   - component: {fileID: 1401883501}
-  - component: {fileID: 1401883502}
   - component: {fileID: 1401883500}
   m_Layer: 5
   m_Name: OverheatText
@@ -8183,7 +7772,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Towers <b><i>overheat and break</i></b> when shooting for too long. They'll
+    always fire if there's enemies in range. Avoid crowds that will force the turret
+    to overheat.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -8252,13 +7843,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1401883500}
-    characterCount: 0
+    characterCount: 155
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 25
+    wordCount: 26
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 3
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -8283,24 +7874,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401883498}
   m_CullTransparentMesh: 0
---- !u!114 &1401883502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401883498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: Towers <b><i>overheat and break</i></b> when shooting for too
-    long. They'll always fire if there's enemies in range. Avoid crowds that will
-    force the turret to overheat.
-  helpTextBrief: Towers break if left shooting for too long. They'll always fire
-    if they're able to, so avoid crowds that force the turret to overheat.
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1406621988
 GameObject:
   m_ObjectHideFlags: 0
@@ -8649,7 +8222,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1431466903}
   - component: {fileID: 1431466905}
-  - component: {fileID: 1431466906}
   - component: {fileID: 1431466904}
   m_Layer: 5
   m_Name: EnemyFastText
@@ -8696,7 +8268,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<b>Fast</b>
+
+    <u>Low health. The fastest. Ignores obstacles.</u>
+
+    <i>"This
+    model is built for speed. Runs over scrap with ease. Watch out for sneak attacks."</i>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -8741,7 +8318,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 97
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -8765,13 +8342,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1431466904}
-    characterCount: 0
+    characterCount: 137
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 22
+    wordCount: 23
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 4
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -8796,27 +8373,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431466902}
   m_CullTransparentMesh: 0
---- !u!114 &1431466906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431466902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: 'This model is built for speed. Runs over scrap with ease. Watch
-    out for sneak attacks.
-
-    <b><i>Low health. The fastest robot-kind has to offer.</b></i>'
-  helpTextBrief: '<b><i>Fast</b></i>: Runs fast, and right over Scrap.
-
-    Low health.
-    The fastest.'
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1450721209
 GameObject:
   m_ObjectHideFlags: 0
@@ -8911,7 +8467,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1492918934}
   - component: {fileID: 1492918936}
-  - component: {fileID: 1492918937}
   - component: {fileID: 1492918935}
   m_Layer: 5
   m_Name: TowerWaterText
@@ -8958,7 +8513,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<b><i>Water-Balloon Launcher</i></b>
+
+    <u>Mid damage. High range. Mid
+    fire-rate.</u>
+
+    <u>Deals chip damage, stuns robots.</u>
+
+    <i>"The bots''ll
+    soon see why us cats dislike water!"</i>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -9003,7 +8566,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 127
+  m_firstOverflowCharacterIndex: 95
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -9027,13 +8590,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1492918935}
-    characterCount: 0
+    characterCount: 144
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 21
+    wordCount: 22
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 4
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -9058,32 +8621,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492918933}
   m_CullTransparentMesh: 0
---- !u!114 &1492918937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492918933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: '<b><i>Water-Balloon Launcher</i></b>: Fills, ties, and throws
-    water balloons. Easily fries robotic threats.
-
-    <b><i>Deals chip damage, stuns
-    robots.
-
-    High range. Mid fire-rate.</b></i>'
-  helpTextBrief: '<b><i>Water-Balloon Launcher</i></b>
-
-    Deals chip damage, stuns
-    robots.
-
-    High range. Mid fire-rate.'
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1502123447
 GameObject:
   m_ObjectHideFlags: 0
@@ -9547,81 +9084,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616638959}
   m_CullTransparentMesh: 0
---- !u!1 &1630239114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1630239115}
-  - component: {fileID: 1630239117}
-  - component: {fileID: 1630239116}
-  m_Layer: 5
-  m_Name: Background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1630239115
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630239114}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1127128050}
-  m_Father: {fileID: 1071098575}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1630239116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630239114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1630239117
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630239114}
-  m_CullTransparentMesh: 0
 --- !u!1 &1637168402
 GameObject:
   m_ObjectHideFlags: 0
@@ -9706,7 +9168,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1638500982}
   - component: {fileID: 1638500984}
-  - component: {fileID: 1638500985}
   - component: {fileID: 1638500983}
   m_Layer: 5
   m_Name: TowerFridgeText
@@ -9753,7 +9214,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<b><i>Refridgerator</i></b>
+
+    <u>High damage. Mid range. Slow fire-rate.
+
+    Slows
+    down hit robots considerably.</u>
+
+    <i>"The mysterious, never-ending supply
+    of food is now for cat-kind''s taking!"</i>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -9798,7 +9267,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 134
+  m_firstOverflowCharacterIndex: 90
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -9822,13 +9291,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1638500983}
-    characterCount: 0
+    characterCount: 165
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 22
+    wordCount: 23
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 5
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -9853,32 +9322,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638500981}
   m_CullTransparentMesh: 0
---- !u!114 &1638500985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638500981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: '<b><i>Refridgerator</i></b>: The mysterious, never-ending supply
-    of food is now for the cat''s taking.
-
-    <b><i>Double damage, slows robots
-    hit considerably.
-
-    Mid range. Slow fire-rate.</b></i>'
-  helpTextBrief: '<b><i>Refridgerator</i></b>
-
-    Double damage, slows robots hit
-    considerably.
-
-    Mid range. Slow fire-rate.'
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1642638204
 GameObject:
   m_ObjectHideFlags: 0
@@ -9973,7 +9416,6 @@ RectTransform:
   - {fileID: 1642958951}
   - {fileID: 646504122}
   - {fileID: 1724529235}
-  - {fileID: 1071098575}
   - {fileID: 1227974756}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -10154,7 +9596,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1741984099}
   - component: {fileID: 1741984101}
-  - component: {fileID: 1741984102}
   - component: {fileID: 1741984100}
   m_Layer: 5
   m_Name: CatPlayerText
@@ -10201,7 +9642,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Play as <b><i>Gun Cat</i></b>. He sports a laser pistol, and has limited
+    health.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -10270,13 +9712,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1741984100}
-    characterCount: 0
+    characterCount: 66
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 12
+    wordCount: 13
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 2
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -10301,23 +9743,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741984098}
   m_CullTransparentMesh: 0
---- !u!114 &1741984102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741984098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: Play as <b><i>Gun Cat</i></b>. He sports a laser pistol with unlimited
-    ammo. His health is limited though, be careful not to get close to bots.
-  helpTextBrief: Play as <b><i>Gun Cat</i></b>. He sports a laser pistol, and has
-    limited health.
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1770110969
 GameObject:
   m_ObjectHideFlags: 0
@@ -10605,7 +10030,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1819444145}
   - component: {fileID: 1819444147}
-  - component: {fileID: 1819444148}
   - component: {fileID: 1819444146}
   m_Layer: 5
   m_Name: TapeText
@@ -10652,7 +10076,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<u><b><i>Tape</b></i> repairs the Box.</u>
+
+    Provided every <b><i>2
+    rounds</i></b>, and dropped by bots.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -10721,13 +10148,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1819444146}
-    characterCount: 0
+    characterCount: 67
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 11
+    wordCount: 12
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 2
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -10752,22 +10179,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819444144}
   m_CullTransparentMesh: 0
---- !u!114 &1819444148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819444144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: <b><i>Tape</b></i> repairs the Box. It's provided once every <b><i>2
-    rounds</i></b> and occasionally carried by robots.
-  helpTextBrief: <b><i>Tape</b></i> repairs the Box.
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1852025814
 GameObject:
   m_ObjectHideFlags: 0
@@ -10778,7 +10189,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1852025815}
   - component: {fileID: 1852025817}
-  - component: {fileID: 1852025818}
   - component: {fileID: 1852025816}
   m_Layer: 5
   m_Name: BoxText
@@ -10825,7 +10235,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: <b><i>Box Cat</i></b> is targetted by robots at all times. Your goal is
+    to <b><i>defend the Box</i></b> he resides inside of.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -10894,13 +10305,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1852025816}
-    characterCount: 0
+    characterCount: 97
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 19
+    wordCount: 20
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 2
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -10925,24 +10336,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852025814}
   m_CullTransparentMesh: 0
---- !u!114 &1852025818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852025814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: <b><i>Box Cat</i></b> is the genius behind the cat's defences.
-    Robots target their Box at all times. Your goal is to <b><i>defend the Box</i></b>
-    and the helpful weaponry inside.
-  helpTextBrief: <b><i>Box Cat</i></b> is targetted by robots at all times. Your
-    goal is to <b><i>defend the Box</i></b>.
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1876762601
 GameObject:
   m_ObjectHideFlags: 0
@@ -11142,7 +10535,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1890098496}
   - component: {fileID: 1890098498}
-  - component: {fileID: 1890098499}
   - component: {fileID: 1890098497}
   m_Layer: 5
   m_Name: MilkText
@@ -11189,7 +10581,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<u><b><i>Milk</b></i> is used to replenish Gun Cat''s health.</u>
+
+    Only
+    found by defeating robots.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -11258,13 +10653,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1890098497}
-    characterCount: 0
+    characterCount: 75
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 12
+    wordCount: 13
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 2
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -11289,22 +10684,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890098495}
   m_CullTransparentMesh: 0
---- !u!114 &1890098499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1890098495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: <b><i>Milk</b></i> is sometimes brought by robots in an attempt
-    to tempt the cats. Collect it to <b><i>replenish health</b></i>.
-  helpTextBrief: <b><i>Milk</b></i> is used to replenish health.
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &1963175350
 GameObject:
   m_ObjectHideFlags: 0
@@ -11627,7 +11006,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2010844390}
   - component: {fileID: 2010844392}
-  - component: {fileID: 2010844393}
   - component: {fileID: 2010844391}
   m_Layer: 5
   m_Name: EnemyCommonText
@@ -11674,7 +11052,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '<b><i>Common</b></i>
+
+    <u>Medium health. Medium speed.</u>
+
+    <i>"A
+    four-legged variety that tries to find the path of least resistance to the Box."</i>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -11719,7 +11102,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 90
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -11743,13 +11126,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2010844391}
-    characterCount: 0
+    characterCount: 119
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 19
+    wordCount: 20
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 4
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -11774,27 +11157,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010844389}
   m_CullTransparentMesh: 0
---- !u!114 &2010844393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010844389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1641174a26cbebb448c8ef06c0b43056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpTextVerbose: '<b><i>Basic</b></i>: A four-legged variety that tries to find
-    the path of least resistance to the Box.
-
-    <b><i>Medium health. Medium speed.</b></i>'
-  helpTextBrief: '<b><i>Basic</b></i>: Tries to find the shortest path to the Box.
-
-    Medium
-    health. Medium speed.'
-  helpMenuUi: {fileID: 1065151076}
 --- !u!1 &2104644068
 GameObject:
   m_ObjectHideFlags: 0

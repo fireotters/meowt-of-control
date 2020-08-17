@@ -9,20 +9,9 @@ public class HelpMenuUi : BaseUi
 {
     private int currentPage = 0;
     public GameObject firstPage, secondPage, thirdPage;
-    public bool helpMenuVerbose = false;
     void Start()
     {
         StartCoroutine(FadeBlack(FadeType.FromBlack, fullUiFadeBlack));
-        if (PlayerPrefs.GetString("HelpMenuMode") == "Verbose")
-        {
-            helpMenuVerbose = true;
-            Toggle toggle = FindObjectOfType<Toggle>();
-            if (toggle.name.StartsWith("Verbose"))
-            {
-                toggle.isOn = true;
-                ChangeTextMode();
-            }
-        }
     }
 
     public void UpdatePage(int diff)
@@ -62,20 +51,5 @@ public class HelpMenuUi : BaseUi
     private void LeaveHelp2()
     {
         SceneManager.LoadScene("MainMenu");
-    }
-
-    public void ChangeTextMode()
-    {
-        helpMenuVerbose = !helpMenuVerbose;
-        PlayerPrefs.SetString("HelpMenuMode", helpMenuVerbose ? "Verbose" : "Basic");
-
-        TextMeshProUGUI[] textsToChange = FindObjectsOfType<TextMeshProUGUI>();
-        foreach (TextMeshProUGUI text in textsToChange)
-        {
-            if (text.GetComponent<HelpMenuText>() != null)
-            {
-                text.GetComponent<HelpMenuText>().ChangeTextMode();
-            }
-        }
     }
 }
