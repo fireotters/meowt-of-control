@@ -8,8 +8,8 @@ public class MainTower : MonoBehaviour
     private AudioSource _audioSource;
     public AudioClip catCannon1, catCannon2;
     float _curTime = 0;
-    private const float nextDamage = 1f;
-    private const int stressModeThreshold = 35;
+    private const float nextDamage = 0.3f;
+    [HideInInspector] public const int stressModeThreshold = 35;
     [SerializeField] private SpriteRenderer _normalSprite = default, _deathSprite = default;
 
     private Transform confettiLaunchPoint, itemDropPoint;
@@ -32,11 +32,11 @@ public class MainTower : MonoBehaviour
         {
             if (col.gameObject.CompareTag("LargeEnemy"))
             {
-                _gM.gameUi.UpdateBoxCatHealth(-25);
+                _gM.gameUi.UpdateBoxCatHealth(-5);
             }
             else if(col.gameObject.CompareTag("Enemy"))
             {
-                _gM.gameUi.UpdateBoxCatHealth(-5);
+                _gM.gameUi.UpdateBoxCatHealth(-1);
             }
 
             _curTime = nextDamage;

@@ -109,7 +109,7 @@ public partial class GameManager : MonoBehaviour
             gameUi.UpdateBoxCatHealth(hpToHeal);
         }
 
-        if (mainTowerHealth > 25)
+        if (mainTowerHealth > MainTower.stressModeThreshold)
         {
             gameUi.musicManager.ExitStressMode();
         }
@@ -119,7 +119,7 @@ public partial class GameManager : MonoBehaviour
     {
         gameIsOver = true;
         ResetPurchaseState();
-        gameUi.musicManager.ChangeToGameOverMusic();
+        gameUi.musicManager.ChangeMusicTrack(2);
         gameUi.Invoke(nameof(gameUi.GameIsOverShowUi), 3f);
     }
 

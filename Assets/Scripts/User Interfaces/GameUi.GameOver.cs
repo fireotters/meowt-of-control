@@ -94,7 +94,6 @@ public partial class GameUi : BaseUi
     public void RestartGame()
     {
         CheckAndSaveHighscore();
-        musicManager.ResetStageMusicOnRetry();
         SceneManager.LoadScene("GameScene");
         Time.timeScale = 1;
     }

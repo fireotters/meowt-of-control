@@ -5,7 +5,6 @@ public partial class GameUi : BaseUi
 {
     [Header("Game UI")]
     public MusicManager musicManager;
-    public int choiceOfMusic;
 
     public GameObject gamePausePanel;
     public GameObject gameOverPanel;
@@ -29,7 +28,7 @@ public partial class GameUi : BaseUi
     private void Start()
     {
         // Change music track
-        musicManager.ChangeMusicTrack(choiceOfMusic);
+        musicManager.ChangeMusicTrack(1);
         musicManager.SetMixerVolumes();
 
         // Fade in the level

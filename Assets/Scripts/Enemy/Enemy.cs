@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
         scaleChange.x = percentOfLifeLeft * healthBarFullSize;
         healthBar.localScale = scaleChange;
 
-        if (enemyHealthRemaining <= 0)
+        if (enemyHealthRemaining <= 0 && _collider.enabled)
         {
             _gM.IncrementEnemyKillCount();
             DropScrapAndItems();

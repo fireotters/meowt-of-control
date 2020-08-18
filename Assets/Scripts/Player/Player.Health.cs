@@ -19,7 +19,6 @@ public partial class Player : MonoBehaviour
             if (currentPlayerHealth == 0)
             {
                 PlayerIsDead();
-                _gM.GameIsOverPlayEndScene();
             }
             else
             {

@@ -293,19 +293,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a18f16578078a48920630784d1ee1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  penaltyPerShot: 1.5
-  overheatRecoverSpeed: 0
-  timerUiPrefab: {fileID: 5833921825391891483, guid: 62d22d53f5dbe064192085e2cd44f4c0,
-    type: 3}
-  shootCadence: 2
-  rangeOfTower: 1.2
-  _towerAnimator: {fileID: 4405177943123508307}
-  audTowerDestroy: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
   attachedBulletType: {fileID: 6873564271939672047, guid: a9e3f6ebff6f9904d8aef7e43cc12cb1,
     type: 3}
   _attachedScrap: {fileID: 1150217592819545684, guid: 68ee22efbd446864993ee4d31d9784ee,
     type: 3}
   attachedPlacementBlocker: {fileID: 0}
+  penaltyPerShot: 2
+  overheatRecoverSpeedName: 1
+  attachedTimerUi: {fileID: 0}
+  shootCadence: 2
+  rangeOfTower: 1.2
 --- !u!58 &2666020163781443597
 CircleCollider2D:
   m_ObjectHideFlags: 0

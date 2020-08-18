@@ -28,4 +28,5 @@ public class GameAssets : MonoBehaviour
     [Header("Sounds")]
     public AudioClip audTowerDestroy;
     public AudioClip audEnemyHit1, audEnemyHit2;
+    public AudioClip audSignSlide1, audSignSlide2;
 }

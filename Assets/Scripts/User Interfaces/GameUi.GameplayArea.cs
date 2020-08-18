@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public partial class GameUi : BaseUi
@@ -8,8 +9,9 @@ public partial class GameUi : BaseUi
     [HideInInspector] public bool isMissileReticuleActive = false;
     private Color missileRangeOrange = new Color(0.81f, 0.4f, 0.08f, 0.4f);
     private Color towerRangeBlue = new Color(0.34f, 0.45f, 1f, 0.4f);
-    public GameObject demolishTexts;
-    
+    public GameObject demolishText, enemyCountTextObject;
+    public TextMeshProUGUI enemyCountText;
+
     /// <summary>
     /// Enables or disables build Mode hints on placement limits and building ranges.
     /// </summary>
@@ -18,6 +20,7 @@ public partial class GameUi : BaseUi
         sprTowerInvalidArea.enabled = _gM.isAlreadyPlacingObject;
         sprTowerRange.enabled = _gM.isAlreadyPlacingObject;
         buildModeTexts.SetActive(_gM.isAlreadyPlacingObject);
+        enemyCountTextObject.SetActive(!_gM.isAlreadyPlacingObject);
     }
 
     /// <summary>
@@ -36,9 +39,7 @@ public partial class GameUi : BaseUi
         }
         else
         {
-            sprTowerInvalidArea.enabled = _gM.isAlreadyPlacingObject;
-            sprTowerRange.enabled = _gM.isAlreadyPlacingObject;
-            buildModeTexts.SetActive(_gM.isAlreadyPlacingObject);
+            ToggleTowerColourZones();
 
             sprTowerRange.color = towerRangeBlue;
             launchModeTexts.SetActive(false);
@@ -47,6 +48,6 @@ public partial class GameUi : BaseUi
 
     public void ToggleDemolishText()
     {
-        demolishTexts.SetActive(Input.GetKey(KeyCode.LeftShift));
+        demolishText.SetActive(Input.GetKey(KeyCode.LeftShift));
     }
 }

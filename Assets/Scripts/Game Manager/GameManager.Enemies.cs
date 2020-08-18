@@ -21,7 +21,9 @@ public partial class GameManager : MonoBehaviour
         {
             _spawnController.spawnRate = 1;
         }
+        _spawnController.SetBigChungusCap();
     }
+
     public void IncrementEnemyKillCount()
     {
         if (enemyCount > 0)
