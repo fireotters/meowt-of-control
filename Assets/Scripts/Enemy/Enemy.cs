@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public bool breaksThruObstacles = false;
+    public float waterStunTime = 0.5f;
     public float enemyMaxHealth;
     private float enemyHealthRemaining;
 
@@ -66,7 +67,7 @@ public class Enemy : MonoBehaviour
                 justHitByWater = false;
                 currentlyStunnedByWater = true;
                 _aiPath.maxSpeed = 0f;
-                Invoke(nameof(ResetWaterStun), 0.5f);
+                Invoke(nameof(ResetWaterStun), waterStunTime);
             }
         }
         if (standingOnWater)
@@ -83,7 +84,8 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // Being hit by projectile reduces HP. If it's water, the enemy is briefly stunned.
+        // Being hit by projectile reduces HP.
+        // If it's water, the enemy is briefly stunned.
         if (col.gameObject.CompareTag("PlayerBullet"))
         {
             DealDamage(col.gameObject.GetComponent<Bullet>().damageToEnemy);

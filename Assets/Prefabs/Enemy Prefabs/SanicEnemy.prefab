@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: enemyMaxHealth
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2579667382344482714, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: waterStunTime
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3462690377786985872, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
       propertyPath: m_LocalPosition.y
