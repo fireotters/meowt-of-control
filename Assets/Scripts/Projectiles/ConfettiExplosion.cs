@@ -53,21 +53,17 @@ public class ConfettiExplosion : MonoBehaviour
         float normalizedDist = distFromBlast / rangeOfExplosion;
 
         float finalDamage;
-        if (normalizedDist < 0.25f)
+        if (normalizedDist < 0.5f)
         {
             finalDamage = missileMaxDamage;
         }
-        else if (normalizedDist < 0.5f)
+        else if (normalizedDist < 0.75f)
         {
             finalDamage = missileMaxDamage * 0.75f;
         }
-        else if (normalizedDist < 0.75f)
-        {
-            finalDamage = missileMaxDamage * 0.5f;
-        }
         else
         {
-            finalDamage = missileMaxDamage * 0.25f;
+            finalDamage = missileMaxDamage * 0.5f;
         }
         //Debug.Log("Missile dealt damage: " + finalDamage);
         hitEnemy.DealDamage(finalDamage);

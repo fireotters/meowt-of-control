@@ -68,7 +68,7 @@ public class DroppedItem : MonoBehaviour
                 _gM.player.HealPlayer();
                 break;
             case PickupType.Yarn:
-                _gM.gameUi.UpdateYarn(20);
+                _gM.gameUi.UpdateYarn(50 * ((_gM.yarnMultiplier + 1) / 2));
                 break;
             case PickupType.Tape:
                 _gM.HandleTapePickup();

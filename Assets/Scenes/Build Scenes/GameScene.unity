@@ -2083,8 +2083,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c5d268657ab9d2447b2fbdddf3dd3f0e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3933,7 +3933,7 @@ PrefabInstance:
     - target: {fileID: 767394635752762644, guid: 801c1f847ca1091448be0a446300e784,
         type: 3}
       propertyPath: missileButtonCooldown
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 767394635752762645, guid: 801c1f847ca1091448be0a446300e784,
         type: 3}
@@ -6981,8 +6981,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c5d268657ab9d2447b2fbdddf3dd3f0e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8731,7 +8731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3276774a8c0ad2044a8fa7fb924b2e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 4
+  spawnRate: 6.5
   _enemySpawners:
   - {fileID: 1021358796}
   - {fileID: 1499340173}
@@ -10166,6 +10166,7 @@ MonoBehaviour:
   priceFridge: 50
   priceMissile: 20
   gameIsOver: 0
+  yarnMultiplier: 1
 --- !u!1 &1390663259
 GameObject:
   m_ObjectHideFlags: 0

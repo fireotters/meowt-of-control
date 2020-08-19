@@ -17,7 +17,7 @@ public partial class GameManager : MonoBehaviour
     [HideInInspector] public MainTower mainTower;
     [HideInInspector] public int pricePillow = 10, priceWater = 30, priceFridge = 50, priceMissile = 20;
     public bool gameIsOver = false;
-    private int yarnMultiplier = 1;
+    public int yarnMultiplier = 1;
 
     private void Start()
     {
@@ -73,8 +73,8 @@ public partial class GameManager : MonoBehaviour
         // Update round number
         currentRound += 1;
 
-        // Every third round, multiply the yarn given per round, until a x4 multiplier is reached.
-        if (yarnMultiplier < 4 && currentRound % 3 == 0)
+        // Every fourth round, multiply the yarn given per round, until a x5 multiplier is reached.
+        if (yarnMultiplier < 5 && currentRound % 4 == 0)
         {
             yarnMultiplier += 1;
         }
