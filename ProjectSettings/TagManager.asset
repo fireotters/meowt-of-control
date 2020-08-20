@@ -4,13 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SideTower
   - Projectile
   - Enemy
-  - BigChungusEnemy
-  - Corpse
   - MainTower
-  - Sanic
+  - Scrap
+  - PlayerBullet
+  - LargeEnemy
+  - PlayerCollider
+  - AOE
+  - Tower
   layers:
   - Default
   - TransparentFX
@@ -21,14 +23,14 @@ TagManager:
   - 
   - 
   - Enemy
-  - Corpse
-  - Big Chungus
+  - Scrap
+  - Towers
   - MainTower
-  - Sanic
-  - 
-  - 
-  - 
-  - 
+  - BlocksPlayerExit
+  - Player
+  - FriendlyProjectile
+  - EnemyWalksThruScrap
+  - TowerBases
   - 
   - 
   - 
@@ -51,6 +53,9 @@ TagManager:
   - name: Ground (below everything)
     uniqueID: 1752028989
     locked: 0
+  - name: Scrap
+    uniqueID: 951818289
+    locked: 0
   - name: Enemies
     uniqueID: 4205608065
     locked: 0
@@ -66,9 +71,9 @@ TagManager:
   - name: Placeable - Invalid Areas
     uniqueID: 3498946023
     locked: 0
+  - name: Bullets
+    uniqueID: 3802474161
+    locked: 0
   - name: UI
     uniqueID: 1508027155
-    locked: 0
-  - name: Corpse
-    uniqueID: 951818289
     locked: 0

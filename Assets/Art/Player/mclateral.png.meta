@@ -29,6 +29,60 @@ TextureImporter:
   - first:
       213: 2051816003360950756
     second: mclateral_8
+  - first:
+      213: -4022718111876455043
+    second: mclateral_0
+  - first:
+      213: 5998513796046646919
+    second: mclateral_1
+  - first:
+      213: -6252176369744552863
+    second: mclateral_2
+  - first:
+      213: 525612978298425589
+    second: mclateral_3
+  - first:
+      213: -197102336222403631
+    second: mclateral_4
+  - first:
+      213: -7738925920576808306
+    second: mclateral_5
+  - first:
+      213: 3308794679873095832
+    second: mclateral_6
+  - first:
+      213: 3554534494797897877
+    second: mclateral_7
+  - first:
+      213: -792103168252462251
+    second: mclateral_8
+  - first:
+      213: -5981066977990252769
+    second: mclateral_9
+  - first:
+      213: 1589246954205662240
+    second: mclateral_10
+  - first:
+      213: 4152818339553911129
+    second: mclateral_11
+  - first:
+      213: -1047680601129696238
+    second: mclateral_12
+  - first:
+      213: 1351401535449603618
+    second: mclateral_13
+  - first:
+      213: -6437145183536730931
+    second: mclateral_14
+  - first:
+      213: -1155835113563228915
+    second: mclateral_9
+  - first:
+      213: 959041964554605243
+    second: mclateral_10
+  - first:
+      213: -6901459009013352441
+    second: mclateral_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,6 +168,132 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: mclateral_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 64
+        width: 26
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f010dc083a5b4700800000000000000
+      internalID: 525612978298425589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mclateral_4
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 65
+        width: 26
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d360113870c34df0800000000000000
+      internalID: -197102336222403631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mclateral_5
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 65
+        width: 26
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ad4f8b0efc99490800000000000000
+      internalID: -7738925920576808306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mclateral_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 32
+        width: 26
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 898c9880b333bed20800000000000000
+      internalID: 3308794679873095832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mclateral_7
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 32
+        width: 26
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5902d405a4e345130800000000000000
+      internalID: 3554534494797897877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mclateral_8
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 32
+        width: 26
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55bb9de7d52e105f0800000000000000
+      internalID: -792103168252462251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: mclateral_0
       rect:
         serializedVersion: 2
@@ -177,13 +357,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mclateral_3
+      name: mclateral_9
       rect:
         serializedVersion: 2
-        x: 2
-        y: 64
-        width: 26
-        height: 29
+        x: 3
+        y: 0
+        width: 24
+        height: 30
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +371,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 293902b52213fd4b0800000000000000
-      internalID: -5413554203448536174
+      spriteID: d05f32d8616a5ffe0800000000000000
+      internalID: -1155835113563228915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mclateral_4
+      name: mclateral_10
       rect:
         serializedVersion: 2
-        x: 34
-        y: 65
-        width: 26
-        height: 28
+        x: 36
+        y: 0
+        width: 24
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,20 +392,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cd6f0eb50df7e100800000000000000
-      internalID: 137356514763435461
+      spriteID: bb258f5e5933f4d00800000000000000
+      internalID: 959041964554605243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mclateral_5
+      name: mclateral_11
       rect:
         serializedVersion: 2
-        x: 66
-        y: 65
-        width: 26
-        height: 28
+        x: 68
+        y: 0
+        width: 24
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,71 +413,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d9b6fb061c56b790800000000000000
-      internalID: -7514717678461339179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mclateral_6
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 32
-        width: 26
-        height: 29
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d0693eedbbfaf740800000000000000
-      internalID: 5186734714034675924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mclateral_7
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 32
-        width: 26
-        height: 29
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d62368ffe56e4d40800000000000000
-      internalID: 5570501870442718929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mclateral_8
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 32
-        width: 26
-        height: 27
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e98ac8b8c3897c10800000000000000
-      internalID: 2051816003360950756
+      spriteID: 708f6d7c8971930a0800000000000000
+      internalID: -6901459009013352441
       vertices: []
       indices: 
       edges: []

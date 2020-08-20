@@ -3,9 +3,13 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using TMPro;
+using System;
 
 public class MainMenuUi : BaseUi
 {
+    // High Score display
+    public TextMeshProUGUI highScoreNum, highScoreName;
+
     // Option Screen
     public GameObject optionsDialog;
     public Slider optionMusicSlider, optionSFXSlider;
@@ -16,7 +20,7 @@ public class MainMenuUi : BaseUi
     private MusicManager musicManager;
     public AudioSource sfxDemoSlider;
 
-    private DiscordManager discordManager;
+    //private DiscordManager discordManager;
 
     void Start()
     {
@@ -36,20 +40,26 @@ public class MainMenuUi : BaseUi
         {
             musicManager.sfxDemo = optionSFXSlider.GetComponent<AudioSource>();
             musicManager.ChangeMusicTrack(0);
+            musicManager.SetMixerVolumes();
         }
-        if (!PlayerPrefs.HasKey("Music") || !PlayerPrefs.HasKey("SFX"))
+        // Set up PlayerPrefs when game is first ever loaded
+        if (PlayerPrefs.GetInt("FirstLoad") != 1)
         {
+            PlayerPrefs.SetInt("FirstLoad", 1);
             PlayerPrefs.SetFloat("Music", 0.5f);
             PlayerPrefs.SetFloat("SFX", 0.5f);
+            PlayerPrefs.SetInt("HighscoreNum", 0);
+            PlayerPrefs.SetString("HighscoreName", "No Highscore Yet");
         }
-        mixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("Music")) * 20);
-        mixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFX")) * 20);
-        StartCoroutine(FadeBlack("from"));
+        // Fill in high score section and fade in from black
+        FillHighScoreArea();
+        StartCoroutine(FadeBlack(FadeType.FromBlack, fullUiFadeBlack));
     }
 
-    void Update()
+    private void FillHighScoreArea()
     {
-
+        highScoreNum.text = "(Round " + PlayerPrefs.GetInt("HighscoreNum") + ")";
+        highScoreName.text = PlayerPrefs.GetString("HighscoreName");
     }
 
     // Functions related to options menu
@@ -77,6 +87,13 @@ public class MainMenuUi : BaseUi
         Invoke(nameof(SetBtnFullscreenText), 0.1f);
     }
 
+    public void ResetHighScore()
+    {
+        PlayerPrefs.SetInt("HighscoreNum", 0);
+        PlayerPrefs.SetString("HighscoreName", "No Highscore Yet");
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void SetBtnFullscreenText()
     {
         if (Screen.fullScreen)
@@ -92,7 +109,7 @@ public class MainMenuUi : BaseUi
     // Other functions
     public void OpenGame()
     {
-        StartCoroutine(FadeBlack("to"));
+        StartCoroutine(FadeBlack(FadeType.ToBlack, fullUiFadeBlack));
         Invoke(nameof(OpenGame2), 1f);
     }
     public void OpenGame2()
@@ -103,5 +120,10 @@ public class MainMenuUi : BaseUi
     public void DoAboutDevLoad()
     {
         SceneManager.LoadScene("HelpMenu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HelpMenuUi : BaseUi
 {
@@ -9,7 +11,7 @@ public class HelpMenuUi : BaseUi
     public GameObject firstPage, secondPage, thirdPage;
     void Start()
     {
-        StartCoroutine(FadeBlack("from"));
+        StartCoroutine(FadeBlack(FadeType.FromBlack, fullUiFadeBlack));
     }
 
     public void UpdatePage(int diff)
@@ -43,7 +45,7 @@ public class HelpMenuUi : BaseUi
     }
     public void LeaveHelp()
     {
-        StartCoroutine(FadeBlack("to"));
+        StartCoroutine(FadeBlack(FadeType.ToBlack, fullUiFadeBlack));
         Invoke(nameof(LeaveHelp2), 1f);
     }
     private void LeaveHelp2()

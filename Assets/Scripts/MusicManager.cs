@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 
 public class MusicManager : MonoBehaviour
     {
 
     public AudioMixer mixer;
-    public AudioSource sfxDemo, currentMusicPlayer, currentMusicPlayer2;
-    public AudioClip musicMainMenu, stageMusicDrums, stageMusic;
+    public AudioSource sfxDemo, currentMusicPlayer, currentMusicPlayerDrums;
+    public AudioClip musicMainMenu, stageMusicDrums, stageMusic, stageGameOver;
     public AudioClip hoverButton, selectButton;
     public float stressFadeSpeed = 0.08f;
     public float maxPitch = 1.1f;
@@ -45,9 +41,18 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void SetMixerVolumes()
+    {
+        mixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("Music")) * 20);
+        mixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFX")) * 20);
+    }
+
     public void ChangeStressMode()
     {
-        stressMode = true;
+        if (currentMusicPlayer.clip != stageGameOver)
+        {
+            stressMode = true;
+        }
     }
 
     public void ExitStressMode()
@@ -92,12 +97,12 @@ public class MusicManager : MonoBehaviour
         if (stressMode && currentMusicPlayer.pitch < maxPitch)
         {
             currentMusicPlayer.pitch += Time.deltaTime * stressFadeSpeed;
-            currentMusicPlayer2.pitch += Time.deltaTime * stressFadeSpeed;
+            currentMusicPlayerDrums.pitch += Time.deltaTime * stressFadeSpeed;
         }
         else if (!stressMode && currentMusicPlayer.pitch > 1)
         {
             currentMusicPlayer.pitch -= Time.deltaTime * stressFadeSpeed;
-            currentMusicPlayer2.pitch -= Time.deltaTime * stressFadeSpeed;
+            currentMusicPlayerDrums.pitch -= Time.deltaTime * stressFadeSpeed;
         }
     }
 
@@ -105,42 +110,44 @@ public class MusicManager : MonoBehaviour
     {
         Debug.Log($"Music requested: {index} Music last played: {lastTrackRequested}");
 
-        // If lastTrackRequested = -2, then play nothing
+        // If the new track does not equal current track, reset player
+        if (index != lastTrackRequested)
+        {
+            if (currentMusicPlayer.isPlaying) currentMusicPlayer.Stop();
+            if (currentMusicPlayerDrums.isPlaying) currentMusicPlayerDrums.Stop();
+            currentMusicPlayer.pitch = 1;
+            currentMusicPlayerDrums.pitch = 1;
+            currentMusicPlayer.loop = true;
+            stressMode = false;
+        }
+
+        // Play main menu music and stop drums
+        if (index == 0 && currentMusicPlayer.clip != musicMainMenu)
+        {
+            currentMusicPlayer.clip = musicMainMenu;
+            currentMusicPlayer.Play();
+            currentMusicPlayerDrums.Stop();
+        }
+        // Play stage music and start drums
+        else if (index == 1)
+        {
+            currentMusicPlayer.clip = stageMusic;
+            currentMusicPlayerDrums.clip = stageMusicDrums;
+            currentMusicPlayer.Play();
+            currentMusicPlayerDrums.Play();
+        }
+        // Play game over music and stop drums
+        else if (index == 2)
+        {
+            currentMusicPlayer.clip = stageGameOver;
+            currentMusicPlayer.Play();
+            currentMusicPlayer.loop = false;
+
+        }
+        // Play nothing
         if (lastTrackRequested == -2) { }
 
-        // If the new track does not equal current track, replace the track
-        // If it does, then ignore this and continue previous track
-        else if (index != lastTrackRequested)
-        {
-            currentMusicPlayer.enabled = true;
-            if (currentMusicPlayer.isPlaying)
-            {
-                currentMusicPlayer.Stop();
-            }
-            switch (index)
-            {
-                case 0:
-                    currentMusicPlayer.clip = musicMainMenu;
-                    break;
-
-                case 1:
-                    currentMusicPlayer.clip = stageMusic;
-                    break;
-            }
-
-            if (currentMusicPlayer.clip == stageMusic)
-            {
-                currentMusicPlayer2.clip = stageMusicDrums;
-                currentMusicPlayer.Play();
-                currentMusicPlayer2.Play();
-            }
-            else
-            {
-                currentMusicPlayer.Play();
-                currentMusicPlayer2.Stop();
-            }
-            lastTrackRequested = index;
-        }
+        lastTrackRequested = index;
     }
 
     public void MusicIsPaused(bool intent)
@@ -148,12 +155,12 @@ public class MusicManager : MonoBehaviour
         if (intent == true && currentMusicPlayer.isPlaying)
         {
             currentMusicPlayer.Pause();
-            currentMusicPlayer2.Pause();
+            currentMusicPlayerDrums.Pause();
         }
         if (intent == false && !currentMusicPlayer.isPlaying)
         {
             currentMusicPlayer.UnPause();
-            currentMusicPlayer2.UnPause();
+            currentMusicPlayerDrums.UnPause();
         }
     }
 

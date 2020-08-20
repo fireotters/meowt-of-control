@@ -1,35 +1,43 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public partial class GameUi : BaseUi
 {
     [Header("Game UI")]
     public MusicManager musicManager;
-    public int choiceOfMusic;
 
     public GameObject gamePausePanel;
     public GameObject gameOverPanel;
-    public GameManager gM;
+    private GameManager _gM;
     public GameObject player;
 
-    void Start()
+    private void Awake()
     {
-        // Change music track
+        _gM = ObjectsInPlay.i.gameManager;
+        sprTowerInvalidArea = ObjectsInPlay.i.placementBlockersParent.Find("RedArea").GetComponent<SpriteRenderer>();
+        sprTowerRange = ObjectsInPlay.i.placementBlockersParent.Find("TowerRangeArea").GetComponent<SpriteRenderer>();
+
         musicManager = FindObjectOfType<MusicManager>();
         if (!musicManager)
         {
             Instantiate(musicManagerIfNotFoundInScene);
             musicManager = FindObjectOfType<MusicManager>();
         }
-        musicManager.ChangeMusicTrack(choiceOfMusic);
+    }
+
+    private void Start()
+    {
+        // Change music track
+        musicManager.ChangeMusicTrack(1);
+        musicManager.SetMixerVolumes();
 
         // Fade in the level
-        StartCoroutine(FadeBlack("from"));
+        StartCoroutine(FadeBlack(FadeType.FromBlack, fullUiFadeBlack));
 
         // Initialise UI values
-        UpdateCash(0);
-        UpdateHealth(0);
+        _healthBarRect = _healthBar.GetComponent<RectTransform>();
+        _healthBarFullSize = _healthBarRect.sizeDelta;
+        UpdateBoxCatHealth(0);
     }
 
     void Update()
@@ -48,43 +56,53 @@ public partial class GameUi : BaseUi
             // Pause if pause panel isn't open, resume if it is open
             GameIsPaused(!gamePausePanel.activeInHierarchy);
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        // If the purchase button is interactible, then allow binds to click purchase buttons
+        if (Input.GetKeyDown(KeyCode.Alpha1) && purchaseButtons[0].btn.interactable)
         {
-            SwapFullscreen();
+            ClickedPurchaseButton(GameManager.PurchaseType.PillowTower);
         }
-        
+        if (Input.GetKeyDown(KeyCode.Alpha2) && purchaseButtons[1].btn.interactable)
+        {
+            ClickedPurchaseButton(GameManager.PurchaseType.WaterTower);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && purchaseButtons[2].btn.interactable)
+        {
+            ClickedPurchaseButton(GameManager.PurchaseType.FridgeTower);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4) && purchaseButtons[3].btn.interactable)
+        {
+            ClickedPurchaseButton(GameManager.PurchaseType.Missile);
+        }
+
     }
 
     public void GameIsPaused(bool intent)
     {
-        // Show or hide pause panel and set timescale
-        gamePausePanel.SetActive(intent);
-        Time.timeScale = (intent == true) ? 0 : 1;
-
-        // If music manager is present, pause or resume music/sfx
-        if (musicManager != null)
+        if (!_gM.gameIsOver)
         {
-            musicManager.MusicIsPaused(intent);
-            musicManager.FindAllSfxAndPlayPause(intent);
+            // Show or hide pause panel and set timescale
+            gamePausePanel.SetActive(intent);
+            Time.timeScale = (intent == true) ? 0 : 1;
+
+            // If music manager is present, pause or resume music/sfx
+            if (musicManager != null)
+            {
+                musicManager.MusicIsPaused(intent);
+                musicManager.FindAllSfxAndPlayPause(intent);
+            }
         }
     }
 
-    // public void gameOver(bool intent)
-    // {
-    //     gameOverPanel.SetActive(intent);
-    //     Time.timeScale = (intent == true) ? 0 : 1;
-    // }
-
-    // public void restart()
-    // {
-    //     SceneManager.LoadScene(2);
-    //     Time.timeScale = 1;
-    //     gamePausePanel.SetActive(false);
-    // }
-
-    public void ExitLevel()
+    public void ExitGameFromPause()
     {
-        SceneManager.LoadScene("MainMenu");
-        Time.timeScale = 1;
+        if (IsThisAHighScore(_gM.currentRound))
+        {
+            GameIsOverShowUi();
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+            Time.timeScale = 1;
+        }
     }
 }

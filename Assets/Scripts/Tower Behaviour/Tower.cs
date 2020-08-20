@@ -1,52 +1,101 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Tower : MonoBehaviour
+public abstract partial class Tower : MonoBehaviour
 {
+    [Header("Animation, etc")]
+    internal Animator _towerAnimator = default;
+    private static readonly int Direction = Animator.StringToHash("Direction");
+    internal GameManager _gM;
+
+    [Header("Attached Objects")]
+    [SerializeField] internal Bullet attachedBulletType = default;
+    [SerializeField] private GameObject _attachedScrap = default;
+    [HideInInspector] public GameObject attachedPlacementBlocker;
+
+    [Header("Overheat (Max is 10, scale penalties accordingly)")]
+    [SerializeField] private float penaltyPerShot = default;
+    [SerializeField] private RecoverSpeed overheatRecoverSpeedName = default;
+    private readonly float maxOverheat = 10;
+    private float currentOverheat = 0f, overheatRecoverRate;
+    private bool towerGone = false;
+    private enum RecoverSpeed { Slow, Mid, Fast }
+    private readonly float[] recoverSpeedValues = { .5f, 1.5f, 3f };
+
+    [Header("Timer UI")]
+    [SerializeField] private TowerTimerUi attachedTimerUi;
+
+    [Header("Shooting")]
     [SerializeField] internal float shootCadence = 0.5f;
     private float _canShootAgain;
     private bool _canShoot;
+    internal Transform bulletEmitter, gunEnd;
 
-    internal Transform BulletEmitter;
-    internal List<Transform> AcknowledgedEnemies;
-    internal BaseBullet Bullet;
-    [SerializeField] internal Transform gunEnd;
-    [SerializeField] internal BaseBullet bulletPrefab;
-    [SerializeField] internal Animator _towerAnimator;
-    private static readonly int Direction = Animator.StringToHash("Direction");
-    [SerializeField] private SoundManager soundManager;
+    [Header("Targetting")]
+    public float rangeOfTower;
+    private CircleCollider2D rangeCollider;
+    internal Transform enemyToTarget;
+    internal List<Transform> AcknowledgedEnemies = new List<Transform>();
+
+    [HideInInspector] public static Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
+    public static Tower Create(Vector3 position, Tower typeToSpawn)
+    {
+        Transform towerTransform = Instantiate(typeToSpawn, position, Quaternion.identity, ObjectsInPlay.i.towersParent).transform;
+        towerTransform.position += spritePivotOffset;
+
+        Tower tower = towerTransform.GetComponent<Tower>();
+
+        // Attach a placement barrier and timer UI, so when the tower is destroyed, so are they.
+        GameObject newBarrier = Instantiate(GameAssets.i.pfCircleBarrier, towerTransform.position, Quaternion.identity, ObjectsInPlay.i.placementBlockersParent);
+        tower.attachedPlacementBlocker = newBarrier;
+        tower.attachedTimerUi = TowerTimerUi.Create(towerTransform.position);
+        return tower;
+    }
 
     private void Start()
     {
+        FindComponents();
         _canShootAgain = shootCadence;
-        AcknowledgedEnemies = new List<Transform>();
-        BulletEmitter = transform.GetChild(0);
+        rangeCollider.radius *= rangeOfTower;
+
+        // Determine multiplier for recovery speed
+        overheatRecoverRate = recoverSpeedValues[(int)overheatRecoverSpeedName];
     }
 
+    /// If an enemy walks into range, add it to the list of acknowledged enemies.
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Enemy") && !other.CompareTag("BigChungusEnemy")) return;
-        Debug.Log("enemy entered!");
+        if (!other.CompareTag("Enemy") && !other.CompareTag("LargeEnemy")) return;
+
         AcknowledgedEnemies.Add(other.transform);
     }
-    
+
+    /// If an enemy walks out of range, remove it from the list of acknowledged enemies.
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Enemy") && !other.CompareTag("BigChungusEnemy")) return;
-        Debug.Log("exited!");
-        AcknowledgedEnemies.RemoveAt(0);
+        if (!other.CompareTag("Enemy") && !other.CompareTag("LargeEnemy")) return;
+
+        AcknowledgedEnemies.Remove(other.transform);
     }
-    
+
+    /// <summary>
+    /// Reduce the shooting cooldown and overheat time. Update the overheat timer.
+    /// </summary>
     private void Update()
     {
         _canShootAgain -= Time.deltaTime;
+        if (_canShootAgain <= 0) _canShoot = true;
 
-        if (_canShootAgain <= 0)
-        {
-            _canShoot = true;
-        }
+        if (!towerGone) UpdateTimerUi();
+
+        // If no enemies, recover at full speed. If shooting, recover at lower speed.
+        if (currentOverheat > 0) currentOverheat -= Time.deltaTime * overheatRecoverRate / (enemyToTarget == null ? 1 : 4);
     }
     
+    /// <summary>
+    /// When enemy is in range, track and shoot it. When no enemy, reduce overheat.
+    /// </summary>
     private void FixedUpdate()
     {
         if (AcknowledgedEnemies.Count > 0)
@@ -55,47 +104,12 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
-    protected virtual void TrackAndShoot()
+    private void FindComponents()
     {
-        if (_canShoot)
-        {
-            _towerAnimator.SetTrigger("Shoot");
-            Shoot();
-        }
+        _gM = ObjectsInPlay.i.gameManager;
+        bulletEmitter = transform.GetChild(0);
+        gunEnd = bulletEmitter.GetChild(0);
+        _towerAnimator = transform.Find("tower").GetComponent<Animator>();
+        rangeCollider = GetComponent<CircleCollider2D>();
     }
-
-    protected virtual void Shoot()
-    {
-        Bullet.Pew();
-        _canShoot = false;
-        _canShootAgain = shootCadence;
-    }
-
-    protected void SetLookAnimation(float angle)
-    {
-        if (Inbetween(angle, -45, 45))
-        {
-            _towerAnimator.SetInteger(Direction, 3);
-        }
-        else if (Inbetween(angle, 45, 145))
-        {
-            _towerAnimator.SetInteger(Direction, 2);
-        }
-        else if (Inbetween(angle, 145, 180) || Inbetween(angle, -180, -145))
-        {
-            _towerAnimator.SetInteger(Direction, 1);
-        }
-        else if (Inbetween(angle, -145, -45))
-        {
-            _towerAnimator.SetInteger(Direction, 0);
-        }
-    }
-
-    private static bool Inbetween(float target, float val1, float val2)
-    {
-        return target > val1 && target < val2;
-    }
-    
-    //When destroyed, call soundManager SoundDestroyTurret();
-    
 }

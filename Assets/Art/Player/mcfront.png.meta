@@ -29,6 +29,66 @@ TextureImporter:
   - first:
       213: 2377758926282931259
     second: mcfront_8
+  - first:
+      213: -1333648497135536188
+    second: mcfront_0
+  - first:
+      213: 2990989901276325947
+    second: mcfront_1
+  - first:
+      213: -2727465084185238428
+    second: mcfront_2
+  - first:
+      213: 7949162153845545032
+    second: mcfront_3
+  - first:
+      213: 2025671473248084556
+    second: mcfront_4
+  - first:
+      213: -7572407612743952007
+    second: mcfront_5
+  - first:
+      213: 6367211808707392490
+    second: mcfront_6
+  - first:
+      213: -7931436400060997188
+    second: mcfront_7
+  - first:
+      213: -4427806251587025621
+    second: mcfront_8
+  - first:
+      213: 4538215614852149428
+    second: mcfront_9
+  - first:
+      213: 2127764836729582638
+    second: mcfront_10
+  - first:
+      213: 4367219951319247542
+    second: mcfront_11
+  - first:
+      213: 4583580383198416106
+    second: mcfront_12
+  - first:
+      213: -5031808474331145830
+    second: mcfront_13
+  - first:
+      213: 1702377482147279688
+    second: mcfront_9
+  - first:
+      213: -851197524648525722
+    second: mcfront_10
+  - first:
+      213: -1620087829398027210
+    second: mcfront_11
+  - first:
+      213: 193385830507124065
+    second: mcfront_12
+  - first:
+      213: 5771851779869750435
+    second: mcfront_13
+  - first:
+      213: 6287029835708018944
+    second: mcfront_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,7 +178,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10
-        y: 96
+        y: 128
         width: 13
         height: 30
       alignment: 7
@@ -128,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0937879708039e060800000000000000
-      internalID: 6983166025566548880
+      spriteID: 4c7b00102cded7de0800000000000000
+      internalID: -1333648497135536188
       vertices: []
       indices: 
       edges: []
@@ -139,7 +199,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 42
-        y: 96
+        y: 128
         width: 13
         height: 31
       alignment: 7
@@ -149,14 +209,77 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cd76dfd69c0f34c0800000000000000
-      internalID: -4305708876602901050
+      spriteID: b382b50e771228920800000000000000
+      internalID: 2990989901276325947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: mcfront_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 129
+        width: 13
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 464abd7e4f8162ad0800000000000000
+      internalID: -2727465084185238428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mcfront_3
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 99
+        width: 13
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84851f9ccd8115e60800000000000000
+      internalID: 7949162153845545032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mcfront_4
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 98
+        width: 13
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c422892f871ac1c10800000000000000
+      internalID: 2025671473248084556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mcfront_5
       rect:
         serializedVersion: 2
         x: 74
@@ -170,71 +293,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17595936779c42070800000000000000
-      internalID: 8080805146018551153
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mcfront_3
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 67
-        width: 13
-        height: 28
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e07b3bc2e2a89fd00800000000000000
-      internalID: 1006987922617120526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mcfront_4
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 66
-        width: 13
-        height: 29
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c7ddedc9fe6b11e0800000000000000
-      internalID: -2226063571623749691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mcfront_5
-      rect:
-        serializedVersion: 2
-        x: 74
-        y: 65
-        width: 13
-        height: 30
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 142bca76fa1d4e6a0800000000000000
-      internalID: -6420776617434631615
+      spriteID: 979dee3856769e690800000000000000
+      internalID: -7572407612743952007
       vertices: []
       indices: 
       edges: []
@@ -244,7 +304,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10
-        y: 32
+        y: 64
         width: 13
         height: 31
       alignment: 7
@@ -254,8 +314,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cda04bf234b498f0800000000000000
-      internalID: -534604324693561912
+      spriteID: ae33da3b761ec5850800000000000000
+      internalID: 6367211808707392490
       vertices: []
       indices: 
       edges: []
@@ -265,7 +325,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 42
-        y: 32
+        y: 64
         width: 13
         height: 31
       alignment: 7
@@ -275,8 +335,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f336bf169c633e200800000000000000
-      internalID: 208070246349366079
+      spriteID: cb1e2cfdd90ede190800000000000000
+      internalID: -7931436400060997188
       vertices: []
       indices: 
       edges: []
@@ -286,7 +346,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 74
-        y: 32
+        y: 64
         width: 13
         height: 32
       alignment: 7
@@ -296,8 +356,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3cbb92452f7ff020800000000000000
-      internalID: 2377758926282931259
+      spriteID: b25c6e77ca54d82c0800000000000000
+      internalID: -4427806251587025621
       vertices: []
       indices: 
       edges: []
