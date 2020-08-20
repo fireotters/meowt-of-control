@@ -172,7 +172,7 @@ public class Enemy : MonoBehaviour
         audMetal.Play();
         audRobotics.Play();
 
-        Invoke(nameof(ActuallyDestroy), 2f);
+        Invoke(nameof(ActuallyDestroy), 1f);
     }
 
     private void ActuallyDestroy()

@@ -15,7 +15,7 @@ public partial class GameManager : MonoBehaviour
     {
         if (_spawnController.spawnRate > 2)
         {
-            _spawnController.spawnRate -= 0.5f;
+            _spawnController.spawnRate -= 0.3f;
         }
         if (_spawnController.spawnRate < 2)
         {

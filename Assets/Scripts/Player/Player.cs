@@ -5,10 +5,10 @@ using UnityEngine;
 public partial class Player : MonoBehaviour
 {
     [Header("Tweakable Variables")]
-    public int bulletsLeft = 6;
+    public int bulletsLeft = 4;
     public int currentPlayerHealth = 3;
     public float pistolReloadTime = 1f;
-    private readonly int pistolMaxBullets = 6, maxPlayerHealth = 3;
+    private readonly int pistolMaxBullets = 4, maxPlayerHealth = 3;
     // If pistolMaxBullets is changed, bullet indicators need to be added in Unity, and assigned to bulletIndicators[]
 
     [Header("Private Components / Other Variables")]

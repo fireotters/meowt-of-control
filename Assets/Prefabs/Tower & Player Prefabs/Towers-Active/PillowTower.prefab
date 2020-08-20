@@ -315,7 +315,7 @@ MonoBehaviour:
   _attachedScrap: {fileID: 2800798197951234208, guid: fed3859f9e94617419e865a05d99c80c,
     type: 3}
   attachedPlacementBlocker: {fileID: 0}
-  penaltyPerShot: 1
+  penaltyPerShot: 0.9
   overheatRecoverSpeedName: 2
   attachedTimerUi: {fileID: 0}
   shootCadence: 0.5
