@@ -56,7 +56,7 @@ public partial class Player : MonoBehaviour
             yield return new WaitForSeconds(pistolReloadTime / pistolMaxBullets);
             bulletsLeft++;
             bulletIndicators[bulletsLeft - 1].SetActive(true);
-            if (bulletsLeft == 6)
+            if (bulletsLeft == pistolMaxBullets)
             {
                 gunCanBeUsed = true;
             }

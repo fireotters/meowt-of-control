@@ -21,7 +21,7 @@ public abstract partial class Tower : MonoBehaviour
     private float currentOverheat = 0f, overheatRecoverRate;
     private bool towerGone = false;
     private enum RecoverSpeed { Slow, Mid, Fast }
-    private readonly float[] recoverSpeedValues = { 0.5f, 2f, 4f };
+    private readonly float[] recoverSpeedValues = { .5f, 1.5f, 3f };
 
     [Header("Timer UI")]
     [SerializeField] private TowerTimerUi attachedTimerUi;
@@ -89,7 +89,7 @@ public abstract partial class Tower : MonoBehaviour
 
         if (!towerGone) UpdateTimerUi();
 
-        // If no enemies, recover at full speed. If shooting, recover at quarter speed.
+        // If no enemies, recover at full speed. If shooting, recover at lower speed.
         if (currentOverheat > 0) currentOverheat -= Time.deltaTime * overheatRecoverRate / (enemyToTarget == null ? 1 : 4);
     }
     

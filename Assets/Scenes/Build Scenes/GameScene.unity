@@ -4363,20 +4363,10 @@ PrefabInstance:
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 49787380}
-    - target: {fileID: 1529135591953529364, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: pistolReloadTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2991865322832994288, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991865322832994292, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
-        type: 3}
-      propertyPath: shootCadence
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2991865322832994293, guid: a7f6932bd1ae7fc47be39b3b2d26e167,
         type: 3}
@@ -5285,14 +5275,14 @@ MonoBehaviour:
   m_text: 0 Robots Left
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4eda1e48f27b6d4cb63688c8695c69d, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: ad030fc46bad4fc4b81485d30ba208ac, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 3000213e8c9429d4d866c568bd5fd243, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294938368
-  m_fontColor: {r: 0, g: 0.56078434, b: 1, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9153,7 +9143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3276774a8c0ad2044a8fa7fb924b2e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 6.5
+  spawnRate: 5.3
   _enemySpawners:
   - {fileID: 1021358796}
   - {fileID: 1499340173}
