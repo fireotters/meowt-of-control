@@ -13,6 +13,7 @@ public partial class GameUi : BaseUi
     public PurchaseButton[] purchaseButtons;
     public GameObject buildModeTexts, launchModeTexts, gameViewFadeBlack;
     public Animator roundCompletionBoxAnim;
+    public AudioSource roundCompletionBoxAudio;
 
     [Header("Cat Health UI")]
     public TextMeshProUGUI textBoxHealth;
@@ -69,6 +70,8 @@ public partial class GameUi : BaseUi
     {
         float roundProgressLeft = (float)_gM.enemyCount / (float)_gM.enemyMaxCount;
         roundIndicator.fillAmount = roundProgressLeft;
+        string robotOrRobots = _gM.enemyCount == 1 ? " Robot Left" : " Robots Left";
+        enemyCountText.text = _gM.enemyCount + robotOrRobots;
     }
 
     internal void UpdatePlayerHealth()
@@ -181,10 +184,14 @@ public partial class GameUi : BaseUi
         // Wait to flip out sign
         yield return new WaitForSeconds(waitSign);
         roundCompletionBoxAnim.SetBool("RoundFinished", true);
+        roundCompletionBoxAudio.clip = GameAssets.i.audSignSlide1;
+        roundCompletionBoxAudio.Play();
 
         // Wait to fade to black
         yield return new WaitForSeconds(waitFadeTo);
         roundCompletionBoxAnim.SetBool("RoundFinished", false);
+        roundCompletionBoxAudio.clip = GameAssets.i.audSignSlide2;
+        roundCompletionBoxAudio.Play();
         StartCoroutine(FadeBlack(FadeType.ToBlack, gameViewFadeBlack));
 
         // Wait to fade from black until GameManager is ready (transitionTime - waits performed here)

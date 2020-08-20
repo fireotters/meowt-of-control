@@ -16,6 +16,7 @@ public class PlaceableTower : MonoBehaviour
     {
         _gM = ObjectsInPlay.i.gameManager;
         player = GameObject.Find("Player").transform;
+        transform.position = player.position + Tower.spritePivotOffset;
         placementCheck = transform.Find("PlacementCheck");
         rangeSpriteMask = transform.Find("RangeSpriteMask");
         rangeSpriteMask.localScale *= attachedTower.rangeOfTower;

@@ -5,7 +5,6 @@ public partial class GameUi : BaseUi
 {
     [Header("Game UI")]
     public MusicManager musicManager;
-    public int choiceOfMusic;
 
     public GameObject gamePausePanel;
     public GameObject gameOverPanel;
@@ -29,7 +28,7 @@ public partial class GameUi : BaseUi
     private void Start()
     {
         // Change music track
-        musicManager.ChangeMusicTrack(choiceOfMusic);
+        musicManager.ChangeMusicTrack(1);
         musicManager.SetMixerVolumes();
 
         // Fade in the level
@@ -57,7 +56,24 @@ public partial class GameUi : BaseUi
             // Pause if pause panel isn't open, resume if it is open
             GameIsPaused(!gamePausePanel.activeInHierarchy);
         }
-        
+        // If the purchase button is interactible, then allow binds to click purchase buttons
+        if (Input.GetKeyDown(KeyCode.Alpha1) && purchaseButtons[0].btn.interactable)
+        {
+            ClickedPurchaseButton(GameManager.PurchaseType.PillowTower);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && purchaseButtons[1].btn.interactable)
+        {
+            ClickedPurchaseButton(GameManager.PurchaseType.WaterTower);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && purchaseButtons[2].btn.interactable)
+        {
+            ClickedPurchaseButton(GameManager.PurchaseType.FridgeTower);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4) && purchaseButtons[3].btn.interactable)
+        {
+            ClickedPurchaseButton(GameManager.PurchaseType.Missile);
+        }
+
     }
 
     public void GameIsPaused(bool intent)

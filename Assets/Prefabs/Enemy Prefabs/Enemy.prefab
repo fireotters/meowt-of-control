@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breaksThruObstacles: 0
+  waterStunTime: 0.5
   enemyMaxHealth: 0
   audMetal: {fileID: 8597359058699581272}
   audRobotics: {fileID: -3807757288310591777}
@@ -203,7 +204,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8be905b75d9418643adace433451b31c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

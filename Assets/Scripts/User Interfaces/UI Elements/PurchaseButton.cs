@@ -7,7 +7,7 @@ public class PurchaseButton : MonoBehaviour
 {
     private GameObject _cancelOverlay, _timerOverlay;
     private Image timerCircle;
-    private Button _btn;
+    public Button btn;
 
     public float cooldown;
     private float _cooldownRemaining = 0;
@@ -23,7 +23,7 @@ public class PurchaseButton : MonoBehaviour
         _cancelOverlay = transform.Find("CancelOverlay").gameObject;
         _timerOverlay = transform.Find("TimerOverlay").gameObject;
         timerCircle = _timerOverlay.transform.Find("TimerCircle").GetComponent<Image>();
-        _btn = GetComponent<Button>();
+        btn = GetComponent<Button>();
     }
 
     private void Update()
@@ -93,7 +93,7 @@ public class PurchaseButton : MonoBehaviour
     {
         _timerOverlay.SetActive(true);
         _cooldownRemaining = cooldown;
-        _btn.interactable = false;
+        btn.interactable = false;
     }
 
     /// <summary>
@@ -106,18 +106,18 @@ public class PurchaseButton : MonoBehaviour
         inMissileCancelAnim = false;
         if (!buttonBlocked)
         {
-            _btn.interactable = true;
+            btn.interactable = true;
         }
     }
 
     public void BlockClicking()
     {
-        _btn.interactable = false;
+        btn.interactable = false;
         buttonBlocked = true;
     }
     public void UnblockClicking()
     {
-        _btn.interactable = true;
+        btn.interactable = true;
         buttonBlocked = false;
     }
 }

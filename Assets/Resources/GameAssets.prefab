@@ -79,3 +79,5 @@ MonoBehaviour:
   audTowerDestroy: {fileID: 8300000, guid: fe71bcf6783e5794bb847dfdf79f6a53, type: 3}
   audEnemyHit1: {fileID: 8300000, guid: 2c846f9b38c290c408c1b6d8e6d842c2, type: 3}
   audEnemyHit2: {fileID: 8300000, guid: bc4a30dc7dcf2cf4a88b55129f810e97, type: 3}
+  audSignSlide1: {fileID: 8300000, guid: 8019cbabd3eb1c540ac5e3176a2c4df5, type: 3}
+  audSignSlide2: {fileID: 8300000, guid: 5c010198cbb3a1641b03277dc0559245, type: 3}

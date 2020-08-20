@@ -60,23 +60,6 @@ public class MusicManager : MonoBehaviour
         stressMode = false;
     }
 
-    public void ChangeToGameOverMusic()
-    {
-        stressMode = false;
-        currentMusicPlayer.clip = stageGameOver;
-        currentMusicPlayer.pitch = 1;
-        currentMusicPlayer.Play();
-        currentMusicPlayer.loop = false;
-        currentMusicPlayerDrums.pitch = 1;
-        currentMusicPlayerDrums.Stop();
-    }
-
-    public void ResetStageMusicOnRetry()
-    {
-        currentMusicPlayer.Stop();
-        currentMusicPlayerDrums.Stop();
-    }
-
     public void FindAllSfxAndPlayPause(bool intent)
     {
         List<GameObject> listOfSfxObjects = new List<GameObject>();
@@ -130,11 +113,12 @@ public class MusicManager : MonoBehaviour
         // If the new track does not equal current track, reset player
         if (index != lastTrackRequested)
         {
-            currentMusicPlayer.enabled = true;
-            if (currentMusicPlayer.isPlaying)
-            {
-                currentMusicPlayer.Stop();
-            }
+            if (currentMusicPlayer.isPlaying) currentMusicPlayer.Stop();
+            if (currentMusicPlayerDrums.isPlaying) currentMusicPlayerDrums.Stop();
+            currentMusicPlayer.pitch = 1;
+            currentMusicPlayerDrums.pitch = 1;
+            currentMusicPlayer.loop = true;
+            stressMode = false;
         }
 
         // Play main menu music and stop drums
@@ -151,6 +135,14 @@ public class MusicManager : MonoBehaviour
             currentMusicPlayerDrums.clip = stageMusicDrums;
             currentMusicPlayer.Play();
             currentMusicPlayerDrums.Play();
+        }
+        // Play game over music and stop drums
+        else if (index == 2)
+        {
+            currentMusicPlayer.clip = stageGameOver;
+            currentMusicPlayer.Play();
+            currentMusicPlayer.loop = false;
+
         }
         // Play nothing
         if (lastTrackRequested == -2) { }
