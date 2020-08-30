@@ -10,6 +10,12 @@ Launch 'Meowt Of Control.exe'. By default, the game starts in fullscreen. To cha
 
 To uninstall this game, delete the entire 'Meowt Of Control v1.1' folder.
 
+------------------
+OS Specific Instructions
+------------------
+Windows 10 - Smartscreen may block the game from opening. Click 'More info' and 'Run anyway'.
+Linux - Game may not work immediately. Go to the executable's 'Properties, Permissions' and check the box for 'Allow executing file as program'.
+Mac OS X - Game may not work immediately. Try going to 'System Preferences - Security & Privacy' to allow the game to run.
 
 ------------------
 Changelog
