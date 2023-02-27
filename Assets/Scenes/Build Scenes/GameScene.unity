@@ -8697,7 +8697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3276774a8c0ad2044a8fa7fb924b2e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 5.3
+  spawnRate: 3.8
   _enemySpawners:
   - {fileID: 1021358796}
   - {fileID: 1499340173}

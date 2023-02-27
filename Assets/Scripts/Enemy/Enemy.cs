@@ -141,13 +141,13 @@ public class Enemy : MonoBehaviour
         {
             DroppedItem.Create(transform.position, DroppedItem.PickupType.Yarn);
         }
-        // 2/30 of the time, milk will drop
-        else if (randCheck < 4)
+        // 1/30 of the time, milk will drop
+        else if (randCheck < 3)
         {
             DroppedItem.Create(transform.position, DroppedItem.PickupType.Milk);
         }
-        // 2/30 of the time, tape will drop
-        else if (randCheck < 6)
+        // 1/30 of the time, tape will drop
+        else if (randCheck < 4)
         {
             DroppedItem.Create(transform.position, DroppedItem.PickupType.Tape);
         }
