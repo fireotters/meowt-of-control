@@ -56,7 +56,7 @@ public abstract partial class Tower : MonoBehaviour
     private void Start()
     {
         FindComponents();
-        _canShootAgain = shootCadence;
+        _canShootAgain = shootCadence / 3f; // First shot has lower cooldown
         rangeCollider.radius *= rangeOfTower;
 
         // Determine multiplier for recovery speed

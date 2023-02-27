@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     private Transform healthBar;
 
     // Status Effects
-    public float waterDamageScale;
+    public float waterDamageScale, iceSlowdownScale; // Water: higher = more damage taken, Ice: higher = less affected by ice
     private bool standingOnIce = false, standingOnWater = false, justHitByWater = false, currentlyStunnedByWater = false;
 
     private void Awake()
@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
         if (!currentlyStunnedByWater)
         {
             // Ice speed reduction if not stunned by water
-            _aiPath.maxSpeed = standingOnIce ? storedMaxSpeed * 0.2f : storedMaxSpeed;
+            _aiPath.maxSpeed = standingOnIce ? storedMaxSpeed * iceSlowdownScale : storedMaxSpeed;
 
             if (justHitByWater)
             {
