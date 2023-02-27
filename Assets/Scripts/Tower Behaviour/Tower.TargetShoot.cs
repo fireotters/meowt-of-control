@@ -18,10 +18,6 @@ public partial class Tower : MonoBehaviour
 
             bulletEmitter.rotation = Quaternion.Euler(rotationDir);
         }
-        else
-        {
-            AcknowledgedEnemies.Remove(enemyToTarget);
-        }
 
         if (_canShoot)
         {

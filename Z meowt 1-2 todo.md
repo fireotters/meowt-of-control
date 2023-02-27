@@ -9,3 +9,6 @@
 - Big enemies more health, much less effect from slowing towers
 - Shoot attempt sound when reloading
 - Add letterboxing and custom window sizes
+
+Done
+- Overheating too forgiving

@@ -6,24 +6,28 @@ public class FridgeTower : Tower
 {
     protected override void TrackAndShoot()
     {
-        enemyToTarget = TargetBigEnemyFirstThenOthers();
+        enemyToTarget = TrackingPriority();
 
         base.TrackAndShoot();
     }
 
-    private Transform TargetBigEnemyFirstThenOthers()
+    // Prioritise enemies which haven't been frozen yet
+    private Transform TrackingPriority()
     {
         foreach (var enemyTransform in AcknowledgedEnemies)
         {
             if (enemyTransform == null)
             {
+                // Ignore any unexpected dead enemies
                 break;
             }
-            if (enemyTransform.CompareTag("LargeEnemy"))
+            if (enemyTransform.GetFreezeStatus() == false)
             {
-                return enemyTransform;
+                // Shoot an unfrozen enemy
+                return enemyTransform.transform;
             }
         }
-        return AcknowledgedEnemies.FirstOrDefault();
+        // Else, do not shoot. Fridge Tower ignores any non-frozen enemies.
+        return null;
     }
 }

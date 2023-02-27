@@ -36,7 +36,7 @@ public abstract partial class Tower : MonoBehaviour
     public float rangeOfTower;
     private CircleCollider2D rangeCollider;
     internal Transform enemyToTarget;
-    internal List<Transform> AcknowledgedEnemies = new List<Transform>();
+    internal List<Enemy> AcknowledgedEnemies = new List<Enemy>();
 
     [HideInInspector] public static Vector3 spritePivotOffset = new Vector3(0, 0.5f, 0);
     public static Tower Create(Vector3 position, Tower typeToSpawn)
@@ -68,7 +68,7 @@ public abstract partial class Tower : MonoBehaviour
     {
         if (!other.CompareTag("Enemy") && !other.CompareTag("LargeEnemy")) return;
 
-        AcknowledgedEnemies.Add(other.transform);
+        AcknowledgedEnemies.Add(other.GetComponent<Enemy>());
     }
 
     /// If an enemy walks out of range, remove it from the list of acknowledged enemies.
@@ -76,7 +76,7 @@ public abstract partial class Tower : MonoBehaviour
     {
         if (!other.CompareTag("Enemy") && !other.CompareTag("LargeEnemy")) return;
 
-        AcknowledgedEnemies.Remove(other.transform);
+        AcknowledgedEnemies.Remove(other.GetComponent<Enemy>());
     }
 
     /// <summary>

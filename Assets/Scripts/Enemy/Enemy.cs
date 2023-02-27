@@ -153,11 +153,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public bool GetFreezeStatus()
+    {
+       return standingOnIce;
+    }
     public void SetFreezeStatus(bool iceStatus)
     {
         standingOnIce = iceStatus;
     }
 
+    public bool GetWaterStatus()
+    {
+        return standingOnWater;
+    }
     public void SetWaterStatus(bool waterStatus)
     {
         standingOnWater = waterStatus;
