@@ -324,11 +324,11 @@ MonoBehaviour:
   _attachedScrap: {fileID: 1150217592819545684, guid: 68ee22efbd446864993ee4d31d9784ee,
     type: 3}
   attachedPlacementBlocker: {fileID: 0}
-  penaltyPerShot: 3
+  penaltyPerShot: 2
   overheatRecoverSpeedName: 1
   attachedTimerUi: {fileID: 0}
   shootCadence: 2
-  rangeOfTower: 2.4
+  rangeOfTower: 2.1
 --- !u!58 &2666020163781443597
 CircleCollider2D:
   m_ObjectHideFlags: 0

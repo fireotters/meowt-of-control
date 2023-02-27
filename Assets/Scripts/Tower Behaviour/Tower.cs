@@ -21,7 +21,7 @@ public abstract partial class Tower : MonoBehaviour
     private float currentOverheat = 0f, overheatRecoverRate;
     private bool towerGone = false;
     private enum RecoverSpeed { Slow, Mid, Fast }
-    private readonly float[] recoverSpeedValues = { .5f, 1.5f, 3f };
+    private readonly float[] recoverSpeedValues = { .4f, 1f, 2f };
 
     [Header("Timer UI")]
     [SerializeField] private TowerTimerUi attachedTimerUi;

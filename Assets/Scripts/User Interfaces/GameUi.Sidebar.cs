@@ -172,8 +172,7 @@ public partial class GameUi : BaseUi
 
     public void RoundComplete(int transitionTime)
     {
-        textRoundCompleteBox1.text = $"Survived Day {_gM.currentRound}!";
-        textRoundCompleteBox2.text = $"Get ready for Day {_gM.currentRound + 1}...";
+        textRoundCompleteBox1.text = $"Survived\nDay {_gM.currentRound}!";
 
         StartCoroutine(nameof(FlipOutRoundCompletionSign), transitionTime);
     }

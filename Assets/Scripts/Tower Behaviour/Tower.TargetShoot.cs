@@ -17,12 +17,12 @@ public partial class Tower : MonoBehaviour
             var rotationDir = new Vector3(0, 0, angle);
 
             bulletEmitter.rotation = Quaternion.Euler(rotationDir);
-        }
 
-        if (_canShoot)
-        {
-            _towerAnimator.SetTrigger("Shoot");
-            Shoot();
+            if (_canShoot)
+            {
+                _towerAnimator.SetTrigger("Shoot");
+                Shoot();
+            }
         }
     }
 

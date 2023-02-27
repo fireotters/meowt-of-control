@@ -329,7 +329,7 @@ MonoBehaviour:
   overheatRecoverSpeedName: 1
   attachedTimerUi: {fileID: 0}
   shootCadence: 0.5
-  rangeOfTower: 0.8
+  rangeOfTower: 0.9
 --- !u!58 &-627020821372308523
 CircleCollider2D:
   m_ObjectHideFlags: 0

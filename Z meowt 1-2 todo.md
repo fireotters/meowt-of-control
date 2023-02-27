@@ -1,8 +1,7 @@
 Todo
 - Limit on towers. Very low water towers, water towers should be 50
 - Show prompts on first round
-- Too much yarn early on, have yarn be an optional objective
-- Shoot attempt sound when reloading
+- Too much yarn early on
 
 Done
 - Overheating too forgiving
