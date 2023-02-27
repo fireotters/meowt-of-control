@@ -126,10 +126,10 @@ TextureImporter:
       name: areasOfEffect_Ice
       rect:
         serializedVersion: 2
-        x: 3
-        y: 43
-        width: 25
-        height: 11
+        x: 4
+        y: 42
+        width: 23
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: areasOfEffect_Water
       rect:
         serializedVersion: 2
-        x: 3
-        y: 10
-        width: 25
-        height: 11
+        x: 4
+        y: 9
+        width: 23
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
