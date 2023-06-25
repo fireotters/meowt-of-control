@@ -162,7 +162,7 @@ MonoBehaviour:
     type: 3}
   attachedPlacementBlocker: {fileID: 0}
   penaltyPerShot: 2
-  overheatRecoverSpeedName: 1
+  overheatRecoverSpeedName: 2
   attachedTimerUi: {fileID: 0}
   shootCadence: 1.2
   rangeOfTower: 1.6

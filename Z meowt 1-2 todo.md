@@ -1,7 +1,7 @@
 Todo
 - Limit on towers. Very low water towers, water towers should be 50
-- Show prompts on first round
-- Too much yarn early on
+- Too much yarn early on, too little later
+- Accuracy rating for pistol, bonus per level
 
 Done
 - Overheating too forgiving

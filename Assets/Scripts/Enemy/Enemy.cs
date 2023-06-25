@@ -135,18 +135,21 @@ public class Enemy : MonoBehaviour
         GameObject droppedScrap = Instantiate(GameAssets.i.pfScrap, transform.position, Quaternion.identity, ObjectsInPlay.i.dropsParent);
         if (breaksThruObstacles) droppedScrap.transform.localScale *= 1.6f;
 
+        // Drop items. Normal enemies drop 4/30 of the time, but Big Chungus guarantees a drop
         int randCheck = UnityEngine.Random.Range(0, 30);
-        // 2/30 of the time, yarn will drop
+        if (breaksThruObstacles) randCheck = UnityEngine.Random.Range(0, 4);
+
+        // Yarn drop. Normal: 2/30, Chungus: 2/4
         if (randCheck < 2)
         {
             DroppedItem.Create(transform.position, DroppedItem.PickupType.Yarn);
         }
-        // 1/30 of the time, milk will drop
+        // Milk drop. Normal: 1/30, Chungus: 1/4
         else if (randCheck < 3)
         {
             DroppedItem.Create(transform.position, DroppedItem.PickupType.Milk);
         }
-        // 1/30 of the time, tape will drop
+        // Tape drop. Normal: 1/30, Chungus: 1/4
         else if (randCheck < 4)
         {
             DroppedItem.Create(transform.position, DroppedItem.PickupType.Tape);
