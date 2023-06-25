@@ -1,7 +1,3 @@
-Todo
-- Too much yarn early on, too little later
-- Normal enemies touching scrap for long enough destroys it
-
 Done
 - Overheating too forgiving
     - All towers now have mid recovery rate, higher penalties
@@ -13,3 +9,4 @@ Done
     - All towers no longer prioritise Big Chungus. It's up to the player to finish off smaller enemies to avoid distracting the towers
     - Big Chungus are also bigger & more health
     - AoE effects them less
+- Normal enemies touching scrap for long enough destroys it

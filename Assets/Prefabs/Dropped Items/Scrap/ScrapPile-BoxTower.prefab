@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 138297121705789818, guid: 64f5dc81289a23e469f6ca2393846740,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 190959101785212045, guid: 64f5dc81289a23e469f6ca2393846740,
         type: 3}
       propertyPath: m_Sprite
@@ -36,6 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4349836573955106207, guid: 64f5dc81289a23e469f6ca2393846740,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349836573955106207, guid: 64f5dc81289a23e469f6ca2393846740,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -48,6 +58,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349836573955106207, guid: 64f5dc81289a23e469f6ca2393846740,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4349836573955106207, guid: 64f5dc81289a23e469f6ca2393846740,
         type: 3}
@@ -66,16 +81,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4349836573955106207, guid: 64f5dc81289a23e469f6ca2393846740,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4349836573955106207, guid: 64f5dc81289a23e469f6ca2393846740,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4349836573955106207, guid: 64f5dc81289a23e469f6ca2393846740,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -89,5 +94,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3179916634917435895, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
+    - {fileID: 138297121705789818, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 64f5dc81289a23e469f6ca2393846740, type: 3}
