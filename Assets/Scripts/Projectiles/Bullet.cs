@@ -60,8 +60,14 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        // If bullet hits an enemy, and the bullet is from a player, increase the ShotsHit metric
+        if (other.collider.CompareTag("Enemy") || other.collider.CompareTag("LargeEnemy")) {
+            if (typeOfBullet == BulletType.Player) {
+                _gM.playerShotsHit++;
+            }
+        }
         // Ignore colliders that are not enemies
-        if (!other.collider.CompareTag("Enemy") && !other.collider.CompareTag("LargeEnemy"))
+        else
         {
             return;
         }

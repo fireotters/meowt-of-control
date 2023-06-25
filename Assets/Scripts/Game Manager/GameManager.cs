@@ -5,6 +5,7 @@ public partial class GameManager : MonoBehaviour
 {
     [Header("Stat Variables")]
     public Player player;
+    [HideInInspector] public int playerShotsHit = 0, playerShotsTotal = 0;
     public int currentYarn = 0, mainTowerHealth = 100, currentRound = 0;
     private const int maxMainTowerHealth = 100, hpTapeHeals = 25;
 
@@ -59,7 +60,8 @@ public partial class GameManager : MonoBehaviour
     {
         ResetPurchaseState();
         int totalTimeForTransition = 6;
-        gameUi.RoundComplete(totalTimeForTransition);
+        int accuracyPercentage = (int)(((float)playerShotsHit / (float)playerShotsTotal) * 100);
+        gameUi.RoundComplete(totalTimeForTransition, accuracyPercentage);
         Invoke(nameof(StartNextRound), totalTimeForTransition);
     }
     
@@ -67,6 +69,7 @@ public partial class GameManager : MonoBehaviour
     {
         // Reset player and game objects, unblock Build Panel
         player.ResetPosition();
+        playerShotsHit = 0; playerShotsTotal = 0;
         gameUi.UnblockBuildPanel();
         DestroyExistingObjects();
 

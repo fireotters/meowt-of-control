@@ -170,10 +170,10 @@ public partial class GameUi : BaseUi
         textYarn.color = Color.white;
     }
 
-    public void RoundComplete(int transitionTime)
+    public void RoundComplete(int transitionTime, int accuracyPercentage)
     {
         textRoundCompleteBox1.text = $"Survived\nDay {_gM.currentRound}!";
-
+        // print(accuracyPercentage);
         StartCoroutine(nameof(FlipOutRoundCompletionSign), transitionTime);
     }
 

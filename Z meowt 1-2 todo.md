@@ -1,7 +1,6 @@
 Todo
-- Limit on towers. Very low water towers, water towers should be 50
 - Too much yarn early on, too little later
-- Accuracy rating for pistol, bonus per level
+- Normal enemies touching scrap for long enough destroys it
 
 Done
 - Overheating too forgiving
