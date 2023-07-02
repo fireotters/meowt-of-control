@@ -19,13 +19,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2579667382344482714, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
+      propertyPath: enemyMaxHealth
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579667382344482714, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
       propertyPath: breaksThruScrap
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2579667382344482714, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
-      propertyPath: enemyMaxHealth
-      value: 8
+      propertyPath: iceSlowdownScale
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925385967676941587, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4925385967676941587, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
@@ -44,6 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4925385967676941587, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925385967676941587, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -56,16 +71,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925385967676941587, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4925385967676941587, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4925385967676941587, guid: 9609ebb8cb8a10449936b8ff34ce49c6,
         type: 3}

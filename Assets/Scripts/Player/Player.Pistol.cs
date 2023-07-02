@@ -97,6 +97,7 @@ public partial class Player : MonoBehaviour
     {
         ShowAmmoPanel();
         bulletsLeft--;
+        _gM.playerShotsTotal++;
         bulletIndicators[bulletsLeft].SetActive(false);
         if (bulletsLeft == 0)
         {

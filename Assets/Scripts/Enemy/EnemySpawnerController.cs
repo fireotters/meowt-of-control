@@ -29,36 +29,32 @@ public class EnemySpawnerController : MonoBehaviour
             // Iterate spawn rate
             nextSpawn = Time.time + spawnRate;
 
-            // Choose one of four directions for the new enemy to come from
-            int randSpawner = Random.Range(0, 4);
-            _chosenSpawner = _enemySpawners[randSpawner];
-
-            // Determine which enemy to spawn
+            // Basic Enemy by default, and choose where to spawn it
             int randEnemy = Random.Range(1, 101);
+            Enemy _chosenEnemy = GameAssets.i.enemyBasic;
+            int randSpawner = Random.Range(0, 4);
 
-            // Spawn Big Chungus
+            // Choose Big Chungus instead
             if (randEnemy <= bigChungusChance)
             {
                 if (bigChungusSpawned < bigChungusCap)
                 {
                     bigChungusSpawned++;
                     nextSpawn += 8f; // Big Chungus spawn delays further spawns
-                    _chosenSpawner.SpawnEnemy(GameAssets.i.enemyBigChungus);
-                    _gM.enemyNumberSpawned++;
+                    _chosenEnemy = GameAssets.i.enemyBigChungus;
+                    randSpawner = Random.Range(3, 4); // Ensure Big Chungus only spawns on left/right side (to give players time to finish him)
                 }
             }
-            // Spawn Sanic
+            // Choose Sanic instead
             else if (randEnemy <= sanicChance + bigChungusChance)
             {
-                _chosenSpawner.SpawnEnemy(GameAssets.i.enemySanic);
-                _gM.enemyNumberSpawned++;
+                _chosenEnemy = GameAssets.i.enemySanic;
             }
-            // Spawn Basic
-            else
-            {
-                _chosenSpawner.SpawnEnemy(GameAssets.i.enemyBasic);
-                _gM.enemyNumberSpawned++;
-            }
+
+            // Spawn the enemy
+            _chosenSpawner = _enemySpawners[randSpawner];
+            _chosenSpawner.SpawnEnemy(_chosenEnemy);
+            _gM.enemyNumberSpawned++;
         }
     }
 

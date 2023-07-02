@@ -9,12 +9,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 18814254652573266, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -425630168779711172, guid: 75183467f67242841972d815728d9094,
-        type: 3}
-    - target: {fileID: 18814254652573266, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
-        type: 3}
       propertyPath: m_Size.x
       value: 3.2
       objectReference: {fileID: 0}
@@ -25,8 +19,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 18814254652573266, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -425630168779711172, guid: 75183467f67242841972d815728d9094,
+        type: 3}
+    - target: {fileID: 18814254652573266, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+        type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
@@ -45,6 +60,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -57,16 +77,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
@@ -83,28 +93,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 18814254652573267, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 18814254652573277, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
-        type: 3}
-      propertyPath: attachedExplosion
-      value: 
-      objectReference: {fileID: 2039779501809772672, guid: 47aee6ecd88127f4192a88cf25fd43f1,
-        type: 3}
-    - target: {fileID: 18814254652573277, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
-        type: 3}
-      propertyPath: attachedFizzle
-      value: 
-      objectReference: {fileID: 2324015397168022121, guid: aed182979f2adfc4aaa599aa83ae621e,
-        type: 3}
     - target: {fileID: 18814254652573277, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
       propertyPath: speed
@@ -113,8 +101,20 @@ PrefabInstance:
     - target: {fileID: 18814254652573277, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
       propertyPath: damageToEnemy
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 18814254652573277, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+        type: 3}
+      propertyPath: attachedFizzle
+      value: 
+      objectReference: {fileID: 2324015397168022121, guid: aed182979f2adfc4aaa599aa83ae621e,
+        type: 3}
+    - target: {fileID: 18814254652573277, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
+        type: 3}
+      propertyPath: attachedExplosion
+      value: 
+      objectReference: {fileID: 2039779501809772672, guid: 47aee6ecd88127f4192a88cf25fd43f1,
+        type: 3}
     - target: {fileID: 18814254652573279, guid: b2fa230ff2cfc964fbb81c99bae6d5d0,
         type: 3}
       propertyPath: m_Name

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public bool breaksThruObstacles = false;
+
+    private enum EnemyType { Basic, Sanic, BigChungus }
+    [SerializeField] EnemyType typeOfEnemy = default;
     public float waterStunTime = 0.5f;
     public float enemyMaxHealth;
     private float enemyHealthRemaining;
@@ -22,7 +24,7 @@ public class Enemy : MonoBehaviour
     private Transform healthBar;
 
     // Status Effects
-    public float waterDamageScale;
+    public float waterDamageScale, iceSlowdownScale; // Water: higher = more damage taken, Ice: higher = less affected by ice
     private bool standingOnIce = false, standingOnWater = false, justHitByWater = false, currentlyStunnedByWater = false;
 
     private void Awake()
@@ -60,7 +62,7 @@ public class Enemy : MonoBehaviour
         if (!currentlyStunnedByWater)
         {
             // Ice speed reduction if not stunned by water
-            _aiPath.maxSpeed = standingOnIce ? storedMaxSpeed * 0.2f : storedMaxSpeed;
+            _aiPath.maxSpeed = standingOnIce ? storedMaxSpeed * iceSlowdownScale : storedMaxSpeed;
 
             if (justHitByWater)
             {
@@ -94,18 +96,19 @@ public class Enemy : MonoBehaviour
                 justHitByWater = true;
             }
         }
-        // Big chungus destroys any scrap or towers he touches.
-        else if (breaksThruObstacles)
+
+        // Big Chungus destroys any scrap or towers he touches.
+        if (typeOfEnemy == EnemyType.BigChungus)
         {
-            if (col.gameObject.CompareTag("Scrap"))
-            {
+            if (col.gameObject.CompareTag("Scrap")) {
                 Destroy(col.gameObject);
             }
-            else if (col.gameObject.CompareTag("Tower"))
-            {
+            else if (col.gameObject.CompareTag("Tower")) {
                 col.transform.GetComponent<Tower>().BigEnemyDestroysTower();
             }
         }
+        // Basic enemies destroys scrap after touching it for a while (the scrap itself tracks this). Cannot destroy active towers.
+        // Sanic walks through scrap. Does not destroy it.
     }
     
     public void DealDamage(float damage)
@@ -131,33 +134,46 @@ public class Enemy : MonoBehaviour
 
     private void DropScrapAndItems()
     {
-        // Drop scrap, make it bigger if Big Chungus drops it
+        // Drop scrap & roll for item drops
         GameObject droppedScrap = Instantiate(GameAssets.i.pfScrap, transform.position, Quaternion.identity, ObjectsInPlay.i.dropsParent);
-        if (breaksThruObstacles) droppedScrap.transform.localScale *= 1.6f;
-
         int randCheck = UnityEngine.Random.Range(0, 30);
-        // 2/30 of the time, yarn will drop
+
+        // Big Chungus drops larger scrap pieces, and guarantees an item drop
+        if (typeOfEnemy == EnemyType.BigChungus) {
+            droppedScrap.GetComponent<EnemyScrap>().ScrapIsBigChungus();
+            randCheck = UnityEngine.Random.Range(0, 4);
+        }
+
+        // Yarn drop. Normal: 2/30, Chungus: 2/4
         if (randCheck < 2)
         {
             DroppedItem.Create(transform.position, DroppedItem.PickupType.Yarn);
         }
-        // 2/30 of the time, milk will drop
-        else if (randCheck < 4)
+        // Milk drop. Normal: 1/30, Chungus: 1/4
+        else if (randCheck < 3)
         {
             DroppedItem.Create(transform.position, DroppedItem.PickupType.Milk);
         }
-        // 2/30 of the time, tape will drop
-        else if (randCheck < 6)
+        // Tape drop. Normal: 1/30, Chungus: 1/4
+        else if (randCheck < 4)
         {
             DroppedItem.Create(transform.position, DroppedItem.PickupType.Tape);
         }
     }
 
+    public bool GetFreezeStatus()
+    {
+       return standingOnIce;
+    }
     public void SetFreezeStatus(bool iceStatus)
     {
         standingOnIce = iceStatus;
     }
 
+    public bool GetWaterStatus()
+    {
+        return standingOnWater;
+    }
     public void SetWaterStatus(bool waterStatus)
     {
         standingOnWater = waterStatus;
