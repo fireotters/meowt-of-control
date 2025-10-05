@@ -1,4 +1,4 @@
-Meowt Of Control v1.2
+Meowt Of Control v1.2.1
 
 Developed by: AlfaLeon, benchi99, CrossfireCam, Darelt, TeslaSP2
 Full credits and itch.io links are in the game's Help menu
@@ -8,19 +8,24 @@ How To Start Game
 ------------------
 Launch 'Meowt Of Control.exe'. By default, the game starts in fullscreen. To change this, visit 'Options'. You'll also find volume and control options here.
 
-To uninstall this game, delete the entire 'Meowt Of Control v1.2' folder.
+To uninstall this game, delete the entire 'Meowt Of Control v1.2.1' folder.
 
 ------------------
-Troubleshooting
+OS Specific Instructions
 ------------------
-GAME NOT STARTING?
-- Windows: Smartscreen may block the game from opening. Click 'More info' and 'Run anyway'
-- Linux: Permissions may block the game from opening. On Ubuntu for example, go to 'Properties > Permissions' and check the box for 'Allow executing file as program'
-- You can always play the game online: https://benchi99.itch.io/meowt-of-control
+Windows - Smartscreen may block the game from opening. Click 'More info' and 'Run anyway'.
+
+Linux - The game may not run as an executable.
+• For Ubuntu, go to the executable's 'Properties, Permissions' and check the box for 'Allow executing file as program'.
+• For other distros, you could run "chmod +x" on the executable to mark it as an executable.
+• If the game crashes immediately, check "~/.config/unity3d/FireOtters/Meowt of Control" for an error log
 
 ------------------
 Changelog
 ------------------
+v1.2.1 - Patch for CVE-2025-59489 (5 October 2025)
+• Patched a Unity vulnerability (https://unity.com/security/sept-2025-01)
+
 v1.2 - Final Improvements (June 2023)
 • While shelving our older game projects, Meowt of Control's game balance was revisited.
   • The game is now complete. We're still open to bug reports.
